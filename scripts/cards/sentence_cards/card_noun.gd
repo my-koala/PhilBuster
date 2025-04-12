@@ -1,2 +1,0 @@
-class_name CardNoun
-extends SentenceCard

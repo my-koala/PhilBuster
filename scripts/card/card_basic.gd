@@ -1,7 +1,7 @@
 # I saw that CardNoun and CardVerb are essentially copies of each other
 # so object oriented brain go brrrrrrrrrrr
 ## Base class for cards that must go into ad-libbed sentences
-class_name SentenceCard
+class_name CardBasic
 extends Card
 
 @export var dollars: int
