@@ -2,5 +2,5 @@
 class_name Card
 extends Node2D
 
-@export var word : String
-@export var rarity : int
+@export var word: String
+@export var rarity: int

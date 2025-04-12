@@ -4,6 +4,6 @@
 class_name ModifierCard
 extends Card
 
-@export var dollar_multiplier : float
-@export var time_multiplier : float
-@export var bust_multiplier : float
+@export var dollar_multiplier: float
+@export var time_multiplier: float
+@export var bust_multiplier: float
