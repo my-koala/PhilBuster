@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://2eoq76ffybbi"]
+
+[ext_resource type="Script" uid="uid://danpdqp8m7b14" path="res://assets/clock/clock.gd" id="1_rrx2h"]
+[ext_resource type="Texture2D" uid="uid://ybq725ka1vpi" path="res://assets/clock/white_pixel.png" id="2_lngx1"]
+
+[node name="clock" type="Node2D"]
+script = ExtResource("1_rrx2h")
+
+[node name="hour_hand" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lngx1")
+metadata/_edit_use_anchors_ = true
+
+[node name="minute_hand" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lngx1")
+metadata/_edit_use_anchors_ = true
