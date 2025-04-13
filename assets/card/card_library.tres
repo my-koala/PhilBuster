@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardLibrary" load_steps=2 format=3 uid="uid://dumpea5gd0dfn"]
+
+[ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_euxi3"]
+
+[resource]
+script = ExtResource("1_euxi3")
+base_card_path = "res://assets/card"
+metadata/_custom_type_script = "uid://bjvyiulweseaw"
