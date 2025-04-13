@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd4a04syaq7r7"]
+
+[ext_resource type="Script" uid="uid://dqgfgfldo4jm0" path="res://scripts/sentence_container/sentence_container.gd" id="1_3lou6"]
+
+[node name="sentence_container" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3lou6")
+
+[node name="flow_container" type="FlowContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 16
+alignment = 1

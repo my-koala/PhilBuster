@@ -1,2 +1,0 @@
-class_name CardModifierAdverb
-extends CardModifier

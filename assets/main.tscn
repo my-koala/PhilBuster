@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdyp8mpw52ws3"]
+
+[ext_resource type="Script" uid="uid://crsfhee7ojlr5" path="res://scripts/session.gd" id="1_836ik"]
+[ext_resource type="PackedScene" uid="uid://cd4a04syaq7r7" path="res://assets/sentence_container/sentence_container.tscn" id="1_db5cl"]
+[ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="2_06ig3"]
+[ext_resource type="Script" uid="uid://l3hpmq8srq2a" path="res://scripts/hand_container/hand_container.gd" id="3_j2eim"]
+[ext_resource type="PackedScene" uid="uid://bjh0uxpfofbd1" path="res://assets/bust_meter/bust_meter.tscn" id="5_j2eim"]
+
+[node name="main" type="Node"]
+
+[node name="session" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_836ik")
+
+[node name="sentence_container" parent="session" instance=ExtResource("1_db5cl")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 385.0
+offset_top = 85.0
+offset_right = 1585.0
+offset_bottom = 636.0
+
+[node name="hand_container" type="HBoxContainer" parent="session"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.9
+anchor_right = 0.75
+anchor_bottom = 0.9
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_j2eim")
+
+[node name="card" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+layout_mode = 2
+
+[node name="card2" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+layout_mode = 2
+
+[node name="card3" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+layout_mode = 2
+
+[node name="card4" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+layout_mode = 2
+
+[node name="card5" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+layout_mode = 2
+
+[node name="card6" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+layout_mode = 2
+
+[node name="bust_meter" parent="session" instance=ExtResource("5_j2eim")]
+unique_name_in_owner = true
+offset_left = 166.0
+offset_top = 311.0
+offset_right = 206.0
+offset_bottom = 351.0
+
+[node name="clocktemp" type="Label" parent="session"]
+layout_mode = 2
+offset_left = 70.0
+offset_top = 38.0
+offset_right = 319.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "put a clock
+here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="discard" type="ColorRect" parent="session"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.03
+offset_top = -304.765
+offset_right = -44.03
+offset_bottom = -48.765
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(1, 0.536812, 0.441343, 1)
+
+[node name="label" type="Label" parent="session/discard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -33.5
+offset_right = 102.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "DISCARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="shop" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

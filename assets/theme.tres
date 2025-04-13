@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://qm7h04x08t3m"]
+
+[resource]
+HBoxContainer/constants/separation = 8
+Label/font_sizes/font_size = 32
+RichTextLabel/font_sizes/bold_font_size = 32
+RichTextLabel/font_sizes/bold_italics_font_size = 32
+RichTextLabel/font_sizes/italics_font_size = 32
+RichTextLabel/font_sizes/mono_font_size = 32
+RichTextLabel/font_sizes/normal_font_size = 32

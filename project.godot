@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="The Legend of Phil A. Buster"
+run/main_scene="uid://cdyp8mpw52ws3"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [debug]
@@ -40,6 +41,18 @@ window/stretch/mode="canvas_items"
 
 naming/node_name_casing=2
 
+[gui]
+
+theme/custom="uid://qm7h04x08t3m"
+
+[input]
+
+mouse_left={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+
 [physics]
 
 common/physics_ticks_per_second=20
@@ -53,3 +66,4 @@ common/enable_object_picking=false
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.362964, 0.361466, 0.408845, 1)
