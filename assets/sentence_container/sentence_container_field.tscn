@@ -1,24 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxoep4mh56aj8"]
+[gd_scene load_steps=5 format=3 uid="uid://bxoep4mh56aj8"]
 
 [ext_resource type="Script" uid="uid://biqs5na3rw42k" path="res://scripts/sentence_container/sentence_container_field.gd" id="1_y5l5o"]
+[ext_resource type="PackedScene" uid="uid://dskiemvv8csjm" path="res://scripts/highlight/highlight.tscn" id="2_tjf6p"]
 
-[node name="sentence_container_field" type="CenterContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjf6p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjf6p"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.899258, 0.899258, 0.899258, 1)
+
+[node name="sentence_container_field" type="PanelContainer"]
+offset_right = 132.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tjf6p")
 script = ExtResource("1_y5l5o")
 
 [node name="h_box_container" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="padding_left" type="Control" parent="h_box_container"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="rich_text_label" type="RichTextLabel" parent="h_box_container"]
 unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
+mouse_filter = 2
 mouse_default_cursor_shape = 2
 bbcode_enabled = true
 text = "([i]noun[/i])"
@@ -37,22 +51,40 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -4.0
-offset_top = -4.0
 offset_right = 4.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 0, 0, 1)
 
-[node name="pickable" type="Control" parent="h_box_container/rich_text_label"]
+[node name="preview" type="PanelContainer" parent="h_box_container/rich_text_label"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 64.0
+offset_right = 84.0
+offset_bottom = 296.0
 grow_horizontal = 2
-grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(84, 0)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tjf6p")
 
 [node name="padding_right" type="Control" parent="h_box_container"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
+mouse_filter = 2
+
+[node name="highlight" parent="." instance=ExtResource("2_tjf6p")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true

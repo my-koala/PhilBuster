@@ -1,12 +1,12 @@
 @tool
-extends Control
+extends Button
 class_name CardInstance
+
+signal drag_started()
+signal drag_stopped()
 
 # TODO: Texture swap based on card type.
 # TODO: Animations on select, mouse hover, deselect.
-
-signal select_started()
-signal select_stopped()
 
 var card_info: CardInfo = null:
 	get:
@@ -14,84 +14,84 @@ var card_info: CardInfo = null:
 	set(value):
 		if card_info != value:
 			card_info = value
-			_update_display()
-
-@export
-var selectable: bool = true:
-	get:
-		return selectable
-	set(value):
-		selectable = value
-		if !selectable && _selected:
-			deselect()
+			_dirty = true
 
 @onready
 var _label: Label = %label as Label
 @onready
 var _color_rect: ColorRect = %color_rect as ColorRect
-@onready
-var _pickable: Control = %pickable as Control
 
-var _input_mouse_hovering: bool = false
+var _dirty: bool = true
 
-var _selected: bool = false
+var _drag: bool = false
 
-func is_selected() -> bool:
-	return _selected
-
-func select() -> void:
-	if selectable && !_selected:
-		_selected = true
-		select_started.emit()
-
-func deselect() -> void:
-	if _selected:
-		_selected = false
-		select_stopped.emit()
+func start_drag() -> void:
+	if !_drag:
+		_drag = true
+		drag_started.emit()
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	_pickable.mouse_entered.connect(func() -> void: _input_mouse_hovering = true)
-	_pickable.mouse_exited.connect(func() -> void: _input_mouse_hovering = false)
-
-func _input(event: InputEvent) -> void:
-	if Engine.is_editor_hint():
-		return
-	
-	if Input.is_action_just_pressed(&"mouse_left") && _input_mouse_hovering:
-		if !_selected:
-			select()
-		else:
-			deselect()
 
 func _update_display() -> void:
 	if is_instance_valid(card_info):
 		_label.text = card_info.word
 		
 		if card_info is CardInfoBasicNoun:
-			_color_rect.color = Color.RED
+			modulate = Color.RED
 		elif card_info is CardInfoBasicVerb:
-			_color_rect.color = Color.BLUE
+			modulate = Color.BLUE
 		elif card_info is CardInfoModifierAdjective:
-			_color_rect.color = Color.ORANGE_RED
+			modulate = Color.ORANGE_RED
 		elif card_info is CardInfoModifierAdverb:
-			_color_rect.color = Color.BLUE_VIOLET
+			modulate = Color.BLUE_VIOLET
 	else:
 		_label.text = "N/A"
-		_color_rect.color = Color.GRAY
+		modulate = Color.GRAY
+
+func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	var mouse_pressed: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	
+	if disabled || !mouse_pressed:
+		if _drag:
+			_drag = false
+			drag_stopped.emit()
+	elif button_pressed:
+		if !_drag:
+			_drag = true
+			drag_started.emit()
+	
+	if disabled:
+		mouse_default_cursor_shape = Control.CURSOR_ARROW
+	else:
+		mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	
+	if is_hovered():
+		pass
+	else:
+		pass
+	
+	if _drag || is_hovered():
+		scale = Vector2(1.125, 1.125)
+		z_index = 1
+	else:
+		scale = Vector2(1.0, 1.0)
+		z_index = 0
+	
+	if _drag:
+		global_position = get_global_mouse_position() - pivot_offset
+	
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if _input_mouse_hovering:
-		pass
-	else:
-		pass
+	if _dirty:
+		_update_display()
+		_dirty = false
 	
-	if _selected:
-		pass
-	else:
-		pass
