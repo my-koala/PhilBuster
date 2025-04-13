@@ -6,8 +6,8 @@
 script = ExtResource("1_go2ui")
 dollars = 1
 time = 1
-relevancy_immigration = -0.02
-relevancy_tax = -0.01
-word = "milk"
-rarity = 0
+relevancy_immigration = 0.11
+relevancy_tax = 0.15
+word = "trundle"
+rarity = 2
 metadata/_custom_type_script = "uid://b4o2l2oinf0f8"

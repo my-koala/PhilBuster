@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoBasicNoun" load_steps=2 format=3 uid="uid://dd113hqvjfdgb"]
+
+[ext_resource type="Script" uid="uid://ck5huucey4t5d" path="res://scripts/card/card_info_basic_noun.gd" id="1_kjo7b"]
+
+[resource]
+script = ExtResource("1_kjo7b")
+dollars = 1
+time = 2
+relevancy_immigration = -0.08
+relevancy_tax = -0.08
+word = "rivals"
+rarity = 2
+metadata/_custom_type_script = "uid://ck5huucey4t5d"
