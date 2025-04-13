@@ -7,6 +7,6 @@ script = ExtResource("1_lxpt7")
 dollar_multiplier = 1.0
 time_multiplier = 1.0
 bust_multiplier = 1.0
-word = "great"
+word = "pedantic"
 rarity = 0
 metadata/_custom_type_script = "uid://lfryctu523a1"

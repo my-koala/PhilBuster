@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_i47f7")
-dollar_multiplier = 1.0
-time_multiplier = 1.0
-bust_multiplier = 1.0
-word = "dubious"
+dollar_multiplier = 0.078
+time_multiplier = 2.085
+bust_multiplier = 4.2
+word = "type beat"
 rarity = 0
 metadata/_custom_type_script = "uid://lfryctu523a1"

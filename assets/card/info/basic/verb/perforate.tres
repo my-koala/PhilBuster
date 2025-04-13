@@ -6,8 +6,8 @@
 script = ExtResource("1_olpif")
 dollars = 1
 time = 1
-relevancy_immigration = 0.0
-relevancy_tax = 0.0
+relevancy_immigration = 0.15
+relevancy_tax = -0.12
 word = "cut"
-rarity = 0
+rarity = 2
 metadata/_custom_type_script = "uid://b4o2l2oinf0f8"

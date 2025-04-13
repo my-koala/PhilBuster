@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_gr718")
 dollars = 1
-time = 1
-relevancy_immigration = 0.0
-relevancy_tax = 0.0
-word = "cut"
+time = 3
+relevancy_immigration = -0.18
+relevancy_tax = -0.18
+word = "sous vide"
 rarity = 0
 metadata/_custom_type_script = "uid://b4o2l2oinf0f8"

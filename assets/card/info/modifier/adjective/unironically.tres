@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_2fwor")
-dollar_multiplier = 1.0
-time_multiplier = 1.0
-bust_multiplier = 1.0
-word = "great"
+dollar_multiplier = 0.729
+time_multiplier = 2.193
+bust_multiplier = 1.542
+word = "unironically"
 rarity = 0
 metadata/_custom_type_script = "uid://lfryctu523a1"

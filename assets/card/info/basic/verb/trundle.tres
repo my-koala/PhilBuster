@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoBasicVerb" load_steps=2 format=3 uid="uid://c8lyvwo6c0a6m"]
+
+[ext_resource type="Script" uid="uid://b4o2l2oinf0f8" path="res://scripts/card/card_info_basic_verb.gd" id="1_go2ui"]
+
+[resource]
+script = ExtResource("1_go2ui")
+dollars = 1
+time = 1
+relevancy_immigration = -0.02
+relevancy_tax = -0.01
+word = "milk"
+rarity = 0
+metadata/_custom_type_script = "uid://b4o2l2oinf0f8"

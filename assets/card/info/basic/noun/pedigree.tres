@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_57vee")
 dollars = 1
-time = 1
-relevancy_immigration = 0.0
-relevancy_tax = 0.0
-word = "tariff"
+time = 3
+relevancy_immigration = 0.25
+relevancy_tax = -0.15
+word = "pedigree"
 rarity = 0
 metadata/_custom_type_script = "uid://ck5huucey4t5d"
