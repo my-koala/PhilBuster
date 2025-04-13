@@ -1,19 +1,70 @@
-[gd_scene load_steps=3 format=3 uid="uid://2eoq76ffybbi"]
+[gd_scene load_steps=5 format=3 uid="uid://2eoq76ffybbi"]
 
 [ext_resource type="Script" uid="uid://danpdqp8m7b14" path="res://assets/clock/clock.gd" id="1_rrx2h"]
 [ext_resource type="Texture2D" uid="uid://ybq725ka1vpi" path="res://assets/clock/white_pixel.png" id="2_lngx1"]
+[ext_resource type="Texture2D" uid="uid://cpxy57k5q0pwn" path="res://assets/clock/clock_face.png" id="2_re8fd"]
+[ext_resource type="Texture2D" uid="uid://woc7qxw6cdfy" path="res://assets/clock/clock_face_fill.png" id="4_4ldhw"]
 
 [node name="clock" type="Node2D"]
 script = ExtResource("1_rrx2h")
 
+[node name="clock_face" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_re8fd")
+
+[node name="progress_bar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.72549)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_progress = ExtResource("4_4ldhw")
+
 [node name="hour_hand" type="TextureRect" parent="."]
-offset_right = 40.0
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
 offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(0.285, -2.995)
+pivot_offset = Vector2(20, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_lngx1")
 metadata/_edit_use_anchors_ = true
 
 [node name="minute_hand" type="TextureRect" parent="."]
-offset_right = 40.0
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -6.0
+offset_right = 34.0
 offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(0.285, -4)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_lngx1")
 metadata/_edit_use_anchors_ = true
