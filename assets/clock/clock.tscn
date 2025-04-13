@@ -5,10 +5,18 @@
 [ext_resource type="Texture2D" uid="uid://cpxy57k5q0pwn" path="res://assets/clock/clock_face.png" id="2_re8fd"]
 [ext_resource type="Texture2D" uid="uid://woc7qxw6cdfy" path="res://assets/clock/clock_face_fill.png" id="4_4ldhw"]
 
-[node name="clock" type="Node2D"]
+[node name="clock" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_rrx2h")
+time_region_start = 0
+time_region_duration = 435
+time_passed = 425
+hand_rotation_speed = 5.741
 
 [node name="clock_face" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -22,8 +30,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_re8fd")
 
-[node name="progress_bar" type="TextureProgressBar" parent="."]
+[node name="texture_progress_bar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.72549)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -35,11 +45,18 @@ offset_right = 250.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-fill_mode = 4
+max_value = 1.0
+step = 0.0
+value = 0.0229885
+fill_mode = 5
+radial_initial_angle = 217.5
+radial_fill_degrees = 217.5
 texture_progress = ExtResource("4_4ldhw")
 
 [node name="hour_hand" type="TextureRect" parent="."]
+unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -47,6 +64,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
+rotation = 9.99201
 scale = Vector2(0.285, -2.995)
 pivot_offset = Vector2(20, 0)
 size_flags_horizontal = 3
@@ -55,7 +73,9 @@ texture = ExtResource("2_lngx1")
 metadata/_edit_use_anchors_ = true
 
 [node name="minute_hand" type="TextureRect" parent="."]
+unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -63,6 +83,7 @@ offset_left = -6.0
 offset_right = 34.0
 offset_bottom = 40.0
 grow_horizontal = 2
+rotation = 138.754
 scale = Vector2(0.285, -4)
 size_flags_horizontal = 3
 size_flags_vertical = 3

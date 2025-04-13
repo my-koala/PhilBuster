@@ -1,55 +1,75 @@
-extends Node
+@tool
+extends Control
+class_name Clock
 
-@onready var hour_hand: TextureRect = $hour_hand
-@onready var minute_hand: TextureRect = $minute_hand
-@onready var progress_bar: TextureProgressBar = $progress_bar
+const MINUTES_PER_HOUR: int = 60
+const HOURS_PER_DAY: int = 12
 
-var total_minutes: int = 0
-var minute_degrees_per_minute: int = 360.0 / 60.0
-var hour_degrees_per_hour: int = 360.0 / 12.0
+signal time_exceeded()
+
+@export_range(0, MINUTES_PER_HOUR * HOURS_PER_DAY, 1)
+var time_region_start: int = MINUTES_PER_HOUR * 2:
+	get:
+		return time_region_start
+	set(value):
+		time_region_start = clampi(value, 0, MINUTES_PER_HOUR * HOURS_PER_DAY)
+
+@export_range(0, MINUTES_PER_HOUR * HOURS_PER_DAY, 1)
+var time_region_duration: int = 12 * 6:
+	get:
+		return time_region_duration
+	set(value):
+		time_region_duration = clampi(value, 0, MINUTES_PER_HOUR * HOURS_PER_DAY)
+
+@export_range(0, MINUTES_PER_HOUR * HOURS_PER_DAY, 1)
+var time_passed: int = 0:
+	get:
+		return time_passed
+	set(value):
+		time_passed = clampi(value, 0, MINUTES_PER_HOUR * HOURS_PER_DAY)
+
+@export_range(0.0, 16.0, 0.001, "or_greater")
+var hand_rotation_speed: float = 1.0:
+	get:
+		return hand_rotation_speed
+	set(value):
+		hand_rotation_speed = maxf(value, 0.0)
+
+@onready var _hour_hand: TextureRect = %hour_hand as TextureRect
+@onready var _minute_hand: TextureRect = %minute_hand as TextureRect
+@onready var _texture_progress_bar: TextureProgressBar = %texture_progress_bar as TextureProgressBar
+
+func add_time(time: int) -> void:
+	time_passed += time
+	if time_passed >= time_region_duration:
+		time_exceeded.emit()
 
 func _process(delta: float) -> void:
-	# Test lines to see if it works
-	total_minutes += 1
-	update_clock_hands()
-	pass
-
-# Function to manually add time
-func add_time(minutes_to_add: int) -> void:
-	total_minutes += minutes_to_add
-	update_clock_hands()
-	
-var target_minute_angle: float = 0
-var target_hour_angle: float = 0
-var lerp_speed: float = 0.1
-
-func update_clock_hands() -> void:
-	# Calculate where we want the hand to be at the end of the updates.
-	target_minute_angle = (total_minutes % 60) * minute_degrees_per_minute
-	target_hour_angle = (total_minutes / 60 % 12) * hour_degrees_per_hour
-	
+	# Update clock hands.
 	# Lerp the rotation until it gets there.
-	minute_hand.rotation = lerp_angle(minute_hand.rotation, deg_to_rad(target_minute_angle), lerp_speed)
-	hour_hand.rotation = lerp_angle(hour_hand.rotation, deg_to_rad(target_hour_angle), lerp_speed)
+	var minute_hand_target: float = float((time_passed + time_region_start) % MINUTES_PER_HOUR) / float(MINUTES_PER_HOUR) * TAU
+	_minute_hand.rotation = lerp_angle(_minute_hand.rotation, minute_hand_target, hand_rotation_speed * delta)
 	
-	update_progress_bar()
+	var hour_hand_target: float = (float(time_passed + time_region_start) / float(MINUTES_PER_HOUR)) / HOURS_PER_DAY * TAU
+	_hour_hand.rotation = lerp_angle(_hour_hand.rotation, hour_hand_target, hand_rotation_speed * delta)
 	
+	# Update progress bars.
+	var radial_initial_angle: float = (float(time_region_start) / float(MINUTES_PER_HOUR)) / HOURS_PER_DAY * TAU
+	var radial_fill_angle: float = (float(time_region_duration) / float(MINUTES_PER_HOUR)) / HOURS_PER_DAY * TAU
+	
+	_texture_progress_bar.radial_initial_angle = rad_to_deg(radial_initial_angle + radial_fill_angle)
+	_texture_progress_bar.radial_fill_degrees = rad_to_deg(radial_fill_angle)
+	
+	var texture_progress_bar_target: float = 1.0 - clampf(float(time_passed) / float(time_region_duration), 0.0, 1.0)
+	_texture_progress_bar.value = lerpf(_texture_progress_bar.value, texture_progress_bar_target, hand_rotation_speed * delta)
+
 func set_time(hour: int, minute: int) -> void:
-	hour = clamp(hour, 0, 11)
-	minute = clamp(minute, 0, 59)
+	#hour = clamp(hour, 0, 11)
+	#minute = clamp(minute, 0, 59)
+	pass
+	#total_minutes = (hour * 60) + minute
 
-	total_minutes = (hour * 60) + minute
-
-	# Update the target angles
-	target_minute_angle = minute * minute_degrees_per_minute
-	target_hour_angle = (hour % 12) * hour_degrees_per_hour
-
-	# Lerp the rotation until it gets there.
-	minute_hand.rotation = lerp_angle(minute_hand.rotation, deg_to_rad(target_minute_angle), lerp_speed)
-	hour_hand.rotation = lerp_angle(hour_hand.rotation, deg_to_rad(target_hour_angle), lerp_speed)
-	
-	update_progress_bar()
-	
 func update_progress_bar() -> void:
-	var progress: float = (hour_hand.rotation / deg_to_rad(360))
-	progress_bar.value = progress * progress_bar.max_value
+	#var progress: float = (hour_hand.rotation / deg_to_rad(360))
+	#progress_bar.value = progress * progress_bar.max_value
+	pass
