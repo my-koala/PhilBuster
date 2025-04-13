@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoBasicNoun" load_steps=2 format=3 uid="uid://bnmhlsidww8of"]
+
+[ext_resource type="Script" uid="uid://ck5huucey4t5d" path="res://scripts/card/card_info_basic_noun.gd" id="1_k7lee"]
+
+[resource]
+script = ExtResource("1_k7lee")
+dollars = 1
+time = 2
+relevancy_immigration = -0.17
+relevancy_tax = -0.13
+word = "marsupial"
+rarity = 5
+metadata/_custom_type_script = "uid://ck5huucey4t5d"

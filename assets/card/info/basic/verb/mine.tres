@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoBasicVerb" load_steps=2 format=3 uid="uid://ca5f5kd88grxc"]
+
+[ext_resource type="Script" uid="uid://b4o2l2oinf0f8" path="res://scripts/card/card_info_basic_verb.gd" id="1_jwtw2"]
+
+[resource]
+script = ExtResource("1_jwtw2")
+dollars = 1
+time = 2
+relevancy_immigration = 0.24
+relevancy_tax = 0.2
+word = "mine"
+rarity = 1
+metadata/_custom_type_script = "uid://b4o2l2oinf0f8"

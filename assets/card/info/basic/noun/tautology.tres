@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoBasicNoun" load_steps=2 format=3 uid="uid://dgny2c8kkwlg1"]
+
+[ext_resource type="Script" uid="uid://ck5huucey4t5d" path="res://scripts/card/card_info_basic_noun.gd" id="1_ggbeb"]
+
+[resource]
+script = ExtResource("1_ggbeb")
+dollars = 1
+time = 4
+relevancy_immigration = -0.1
+relevancy_tax = -0.07
+word = "tautology"
+rarity = 2
+metadata/_custom_type_script = "uid://ck5huucey4t5d"

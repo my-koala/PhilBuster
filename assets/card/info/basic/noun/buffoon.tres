@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoBasicNoun" load_steps=2 format=3 uid="uid://cy30hnwela3dy"]
+
+[ext_resource type="Script" uid="uid://ck5huucey4t5d" path="res://scripts/card/card_info_basic_noun.gd" id="1_2v6td"]
+
+[resource]
+script = ExtResource("1_2v6td")
+dollars = 1
+time = 4
+relevancy_immigration = -0.51
+relevancy_tax = -0.51
+word = "buffoon"
+rarity = 2
+metadata/_custom_type_script = "uid://ck5huucey4t5d"
