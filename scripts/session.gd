@@ -8,5 +8,3 @@ var _sentence_container: SentenceContainer = %sentence_container as SentenceCont
 var _hand_container: HandContainer = %hand_container as HandContainer
 @onready
 var _bust_meter: BustMeter = %bust_meter as BustMeter
-
-

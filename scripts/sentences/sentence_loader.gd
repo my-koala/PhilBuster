@@ -22,19 +22,20 @@ func get_topic_sentence(topic: String) -> String:
 	return _generic_sentences[rng] if rng < _generic_sentences.size() else topic_sentences[rng - _generic_sentences.size()]
 
 func _init() -> void:
-	for file_path : String in DirAccess.get_files_at(folder_path):
+	for file : String in DirAccess.get_files_at(folder_path):
 		# (i looked this up on reddit beforehand lmao)
 		# If we are in an exported Godot project, we need to modify our file name slightly
 		# to account for the fact that these files are imported
-		if (file_path.get_extension() == "import"):
-			file_path = file_path.replace('.import', '')
+		if (file.get_extension() == "import"):
+			file = file.replace('.import', '')
 		
 		# hacky way of just getting the name of the file
-		var file_name : String = file_path.get_file().split('.')[0]
+		var file_name : String = file.split('.')[0]
+		var file_path : String = "%s/%s" % [folder_path, file]
 		
 		# Save the generic sentences in their own special place
 		# otherwise append sentences to the dictionary
-		if (file_path.get_file().contains("generic")):
+		if (file_name == "generic"):
 			_generic_sentences = _load_sentence_file(file_path)
 		else:
 			_loaded_sentences[file_name.to_lower()] = _load_sentence_file(file_path)
