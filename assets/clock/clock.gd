@@ -2,6 +2,7 @@ extends Node
 
 @onready var hour_hand: TextureRect = $hour_hand
 @onready var minute_hand: TextureRect = $minute_hand
+@onready var progress_bar: TextureProgressBar = $progress_bar
 
 var total_minutes: int = 0
 var minute_degrees_per_minute: int = 360.0 / 60.0
@@ -9,9 +10,9 @@ var hour_degrees_per_hour: int = 360.0 / 12.0
 
 func _process(delta: float) -> void:
 	# Test lines to see if it works
-	#total_minutes += 1
-	#update_clock_hands()
-	pass
+	total_minutes += 1
+	update_clock_hands()
+	#pass
 
 # Function to manually add time
 func add_time(minutes_to_add: int) -> void:
@@ -31,6 +32,8 @@ func update_clock_hands() -> void:
 	minute_hand.rotation = lerp_angle(minute_hand.rotation, deg_to_rad(target_minute_angle), lerp_speed)
 	hour_hand.rotation = lerp_angle(hour_hand.rotation, deg_to_rad(target_hour_angle), lerp_speed)
 	
+	update_progress_bar()
+	
 func set_time(hour: int, minute: int) -> void:
 	hour = clamp(hour, 0, 11)
 	minute = clamp(minute, 0, 59)
@@ -44,3 +47,9 @@ func set_time(hour: int, minute: int) -> void:
 	# Lerp the rotation until it gets there.
 	minute_hand.rotation = lerp_angle(minute_hand.rotation, deg_to_rad(target_minute_angle), lerp_speed)
 	hour_hand.rotation = lerp_angle(hour_hand.rotation, deg_to_rad(target_hour_angle), lerp_speed)
+	
+	update_progress_bar()
+	
+func update_progress_bar() -> void:
+	var progress: float = (hour_hand.rotation / deg_to_rad(360))
+	progress_bar.value = progress * progress_bar.max_value
