@@ -46,9 +46,10 @@ func _ready() -> void:
 		return
 	
 	# god why doesnt Godot have an easy GetComponentsInChildren<T>
-	for child: Node in get_children():
+	for child: Control in get_children():
 		if is_instance_of(child, MenuView):
 			_all_views[child.name] = child
+			child.visible = false
 	
 	back_button.visible = false
 	back_button.pressed.connect(_on_back_button_pressed)

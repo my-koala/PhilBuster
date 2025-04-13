@@ -1,16 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://m0dkott85qmk"]
+[gd_scene load_steps=8 format=3 uid="uid://m0dkott85qmk"]
 
 [ext_resource type="Script" uid="uid://d23kpmtei5n5y" path="res://scripts/shop/flow_coordinator.gd" id="1_joqlw"]
+[ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_kuxa5"]
 [ext_resource type="PackedScene" uid="uid://boskellw4qds0" path="res://assets/shop/menu_view.tscn" id="1_v8g57"]
+[ext_resource type="Texture2D" uid="uid://m6n0tx1hfr6h" path="res://assets/shop/temp_background.png" id="3_lxv6y"]
+[ext_resource type="Script" uid="uid://b6ieeq5ts4te2" path="res://scripts/shop/shop_view.gd" id="4_k4ejo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_joqlw"]
-font_size = 156
+font_size = 64
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ys3jj"]
 font_size = 61
 
 [node name="shop" type="CanvasLayer"]
+
+[node name="card_library" type="Node" parent="."]
+script = ExtResource("1_kuxa5")
+base_card_path = "res://assets/card"
+metadata/_custom_type_script = ExtResource("1_kuxa5")
 
 [node name="flow_coordinator" type="Control" parent="." node_paths=PackedStringArray("root_view", "back_button")]
 layout_mode = 3
@@ -29,50 +37,95 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.96, 0.76, 1)
+color = Color(0.99, 0.94842, 0.8514, 1)
 
 [node name="menu_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
+visible = false
 modulate = Color(1, 1, 1, 0.984314)
 layout_mode = 1
 
+[node name="texture_rect" type="TextureRect" parent="flow_coordinator/menu_view"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -860.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("3_lxv6y")
+
 [node name="button" type="Button" parent="flow_coordinator/menu_view"]
-layout_mode = 0
-offset_left = 754.0
-offset_top = 620.0
-offset_right = 1203.0
-offset_bottom = 793.0
-text = "TEST MENU"
+layout_mode = 2
+offset_left = 200.0
+offset_top = 400.0
+offset_right = 800.0
+offset_bottom = 472.0
+text = "SHOP"
 
 [node name="button2" type="Button" parent="flow_coordinator/menu_view"]
-layout_mode = 0
-offset_left = 754.0
-offset_top = 824.4
-offset_right = 1203.0
-offset_bottom = 997.4
-text = "TEST MENU 2"
+layout_mode = 2
+offset_left = 200.0
+offset_top = 500.0
+offset_right = 800.0
+offset_bottom = 572.0
+text = "SUITS"
 
-[node name="label" type="Label" parent="flow_coordinator/menu_view"]
-layout_mode = 0
-offset_left = 594.0
-offset_top = 216.0
-offset_right = 1390.0
-offset_bottom = 516.0
-text = "TEST"
-label_settings = SubResource("LabelSettings_joqlw")
+[node name="button3" type="Button" parent="flow_coordinator/menu_view"]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 600.0
+offset_right = 800.0
+offset_bottom = 672.0
+text = "INSIDER TRADING"
 
-[node name="menu_view2" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
+[node name="button4" type="Button" parent="flow_coordinator/menu_view"]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 700.0
+offset_right = 800.0
+offset_bottom = 772.0
+text = "MANAGE DECK"
+
+[node name="button5" type="Button" parent="flow_coordinator/menu_view"]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 900.0
+offset_right = 800.0
+offset_bottom = 972.0
+text = "NEXT SESSION >>>"
+
+[node name="shop_view" parent="flow_coordinator" node_paths=PackedStringArray("card_library") instance=ExtResource("1_v8g57")]
 layout_mode = 1
+script = ExtResource("4_k4ejo")
+card_library = NodePath("../../card_library")
 
-[node name="label" type="Label" parent="flow_coordinator/menu_view2"]
-layout_mode = 0
-offset_left = 594.0
-offset_top = 216.0
-offset_right = 1390.0
-offset_bottom = 516.0
-text = "HOLY SHIT"
+[node name="label" type="Label" parent="flow_coordinator/shop_view"]
+layout_mode = 1
+offset_left = 297.0
+offset_top = 166.0
+offset_right = 582.0
+offset_bottom = 254.0
+rotation = -0.261799
+text = "The Shop"
 label_settings = SubResource("LabelSettings_joqlw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="shop_container" type="HBoxContainer" parent="flow_coordinator/shop_view"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -117.98
+offset_bottom = 106.02
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
 [node name="menu_view3" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
+visible = false
 layout_mode = 1
 
 [node name="label" type="Label" parent="flow_coordinator/menu_view3"]
@@ -123,5 +176,8 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "BACK"
 
-[connection signal="pressed" from="flow_coordinator/menu_view/button" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view2"]]
+[connection signal="pressed" from="flow_coordinator/menu_view/button" to="flow_coordinator" method="push_view_by_name" binds= ["shop_view"]]
 [connection signal="pressed" from="flow_coordinator/menu_view/button2" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
+[connection signal="pressed" from="flow_coordinator/menu_view/button3" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
+[connection signal="pressed" from="flow_coordinator/menu_view/button4" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
+[connection signal="pressed" from="flow_coordinator/menu_view/button5" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
