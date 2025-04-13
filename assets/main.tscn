@@ -13,7 +13,6 @@
 [node name="card_library" type="Node" parent="."]
 script = ExtResource("1_ujfqy")
 base_card_path = "res://assets/card"
-metadata/_custom_type_script = "uid://bjvyiulweseaw"
 
 [node name="session" type="Control" parent="."]
 layout_mode = 3
