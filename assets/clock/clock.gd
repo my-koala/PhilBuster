@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	# Test lines to see if it works
 	total_minutes += 1
 	update_clock_hands()
-	#pass
+	pass
 
 # Function to manually add time
 func add_time(minutes_to_add: int) -> void:

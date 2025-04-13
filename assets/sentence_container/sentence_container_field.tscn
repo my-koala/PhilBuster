@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxoep4mh56aj8"]
+[gd_scene load_steps=3 format=3 uid="uid://bxoep4mh56aj8"]
 
 [ext_resource type="Script" uid="uid://biqs5na3rw42k" path="res://scripts/sentence_container/sentence_container_field.gd" id="1_y5l5o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjf6p"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.899258, 0.899258, 0.899258, 1)
 
 [node name="sentence_container_field" type="CenterContainer"]
 offset_right = 40.0
@@ -56,3 +63,22 @@ grow_vertical = 2
 [node name="padding_right" type="Control" parent="h_box_container"]
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
+
+[node name="control" type="Control" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="preview" type="PanelContainer" parent="control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 40.0
+offset_right = 84.0
+offset_bottom = 272.0
+grow_horizontal = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(84, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_tjf6p")

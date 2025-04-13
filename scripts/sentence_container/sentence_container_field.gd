@@ -33,6 +33,8 @@ var _color_rect: ColorRect = %color_rect as ColorRect
 var _pickable: Control = %pickable as Control
 @onready
 var _rich_text_label: RichTextLabel = %rich_text_label as RichTextLabel
+@onready
+var _preview: Control = %preview as Control
 
 var _dirty: bool = false
 
@@ -40,7 +42,7 @@ var _card_instance: CardInstance = null
 
 var _input_mouse_hovered: bool = false
 
-func _card_type_check(card_instance: CardInstance) -> bool:
+func check_card_type(card_instance: CardInstance) -> bool:
 	if !is_instance_valid(card_instance):
 		return false
 	
@@ -55,6 +57,21 @@ func _card_type_check(card_instance: CardInstance) -> bool:
 			return card_instance.card_info is CardInfoModifierAdverb
 	return false
 
+func check_card_type_modifier(card_instance: CardInstance) -> bool:
+	if !is_instance_valid(card_instance):
+		return false
+	
+	match card_type:
+		CardType.NOUN:
+			return card_instance.card_info is CardInfoModifierAdjective
+		CardType.VERB:
+			return card_instance.card_info is CardInfoModifierAdverb
+		CardType.ADJECTIVE:
+			return false
+		CardType.ADVERB:
+			return false
+	return false
+
 func add_card_instance(card_instance: CardInstance) -> bool:
 	if !is_instance_valid(card_instance):
 		return false
@@ -65,7 +82,7 @@ func add_card_instance(card_instance: CardInstance) -> bool:
 	if _card_instance == card_instance:
 		return false
 	
-	if !_card_type_check(card_instance):
+	if !check_card_type(card_instance):
 		return false
 	
 	_card_instance = card_instance
@@ -76,6 +93,9 @@ func add_card_instance(card_instance: CardInstance) -> bool:
 
 func get_card_instance() -> CardInstance:
 	return _card_instance
+
+func has_card_instance() -> bool:
+	return !is_instance_valid(_card_instance)
 
 func remove_card_instance() -> bool:
 	if !is_instance_valid(_card_instance):

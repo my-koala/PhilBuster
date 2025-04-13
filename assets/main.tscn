@@ -44,22 +44,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_j2eim")
 
-[node name="card" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+[node name="card_instance" parent="session/hand_container" instance=ExtResource("2_06ig3")]
 layout_mode = 2
 
-[node name="card2" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+[node name="card_instance2" parent="session/hand_container" instance=ExtResource("2_06ig3")]
 layout_mode = 2
 
-[node name="card3" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+[node name="card_instance3" parent="session/hand_container" instance=ExtResource("2_06ig3")]
 layout_mode = 2
 
-[node name="card4" parent="session/hand_container" instance=ExtResource("2_06ig3")]
-layout_mode = 2
-
-[node name="card5" parent="session/hand_container" instance=ExtResource("2_06ig3")]
-layout_mode = 2
-
-[node name="card6" parent="session/hand_container" instance=ExtResource("2_06ig3")]
+[node name="card_instance4" parent="session/hand_container" instance=ExtResource("2_06ig3")]
 layout_mode = 2
 
 [node name="bust_meter" parent="session" instance=ExtResource("5_j2eim")]
@@ -115,6 +109,20 @@ text = "DISCARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="drag_overlay" type="ColorRect" parent="session"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.258824)
+
+[node name="drag" type="Control" parent="session"]
+unique_name_in_owner = true
+anchors_preset = 0
+
 [node name="shop" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -122,3 +130,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="texture_progress_bar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

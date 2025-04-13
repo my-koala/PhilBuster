@@ -5,66 +5,30 @@ class_name CardInstance
 # TODO: Texture swap based on card type.
 # TODO: Animations on select, mouse hover, deselect.
 
-signal select_started()
-signal select_stopped()
-
 var card_info: CardInfo = null:
 	get:
 		return card_info
 	set(value):
 		if card_info != value:
 			card_info = value
-			_update_display()
-
-@export
-var selectable: bool = true:
-	get:
-		return selectable
-	set(value):
-		selectable = value
-		if !selectable && _selected:
-			deselect()
+			_dirty = true
 
 @onready
 var _label: Label = %label as Label
 @onready
 var _color_rect: ColorRect = %color_rect as ColorRect
 @onready
-var _pickable: Control = %pickable as Control
+var _drag_grabber: DragGrabber = %drag_grabber as DragGrabber
 
-var _input_mouse_hovering: bool = false
+var _dirty: bool = false
 
-var _selected: bool = false
-
-func is_selected() -> bool:
-	return _selected
-
-func select() -> void:
-	if selectable && !_selected:
-		_selected = true
-		select_started.emit()
-
-func deselect() -> void:
-	if _selected:
-		_selected = false
-		select_stopped.emit()
+func get_drag_grabber() -> DragGrabber:
+	return _drag_grabber
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	_pickable.mouse_entered.connect(func() -> void: _input_mouse_hovering = true)
-	_pickable.mouse_exited.connect(func() -> void: _input_mouse_hovering = false)
-
-func _input(event: InputEvent) -> void:
-	if Engine.is_editor_hint():
-		return
-	
-	if Input.is_action_just_pressed(&"mouse_left") && _input_mouse_hovering:
-		if !_selected:
-			select()
-		else:
-			deselect()
 
 func _update_display() -> void:
 	if is_instance_valid(card_info):
@@ -82,16 +46,31 @@ func _update_display() -> void:
 		_label.text = "N/A"
 		_color_rect.color = Color.GRAY
 
+func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	if _drag_grabber.is_grabbed():
+		global_position = _drag_grabber.get_grab_position()
+	else:
+		pass
+	
+	if _drag_grabber.is_grabbed() || _drag_grabber.is_hovered():
+		scale = Vector2(1.125, 1.125)
+		z_index = 1
+	else:
+		scale = Vector2(1.0, 1.0)
+		z_index = 0
+
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if _input_mouse_hovering:
-		pass
-	else:
-		pass
+	if _dirty:
+		_update_display()
+		_dirty = false
 	
-	if _selected:
+	if _drag_grabber.is_grabbed():
 		pass
 	else:
 		pass
