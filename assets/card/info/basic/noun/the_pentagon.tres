@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoBasicNoun" load_steps=2 format=3 uid="uid://bqdsi28ykg1ai"]
+
+[ext_resource type="Script" uid="uid://ck5huucey4t5d" path="res://scripts/card/card_info_basic_noun.gd" id="1_o05e1"]
+
+[resource]
+script = ExtResource("1_o05e1")
+dollars = 1
+time = 1
+relevancy_immigration = 0.0
+relevancy_tax = 0.0
+word = "tariff"
+rarity = 0
+metadata/_custom_type_script = "uid://ck5huucey4t5d"
