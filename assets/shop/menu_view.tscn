@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://boskellw4qds0"]
+
+[ext_resource type="Script" uid="uid://cbdh5ey656ac2" path="res://scripts/shop/menu_view.gd" id="1_vptut"]
+
+[node name="menu_view" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+script = ExtResource("1_vptut")
+metadata/_custom_type_script = ExtResource("1_vptut")

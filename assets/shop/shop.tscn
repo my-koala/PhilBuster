@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=3 uid="uid://m0dkott85qmk"]
+
+[ext_resource type="Script" uid="uid://d23kpmtei5n5y" path="res://scripts/shop/flow_coordinator.gd" id="1_joqlw"]
+[ext_resource type="PackedScene" uid="uid://boskellw4qds0" path="res://assets/shop/menu_view.tscn" id="1_v8g57"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_joqlw"]
+font_size = 156
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ys3jj"]
+font_size = 61
+
+[node name="shop" type="CanvasLayer"]
+
+[node name="flow_coordinator" type="Control" parent="." node_paths=PackedStringArray("root_view", "back_button")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_joqlw")
+root_view = NodePath("menu_view")
+back_button = NodePath("heading_banner/button")
+metadata/_custom_type_script = ExtResource("1_joqlw")
+
+[node name="temp_background" type="ColorRect" parent="flow_coordinator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.96, 0.76, 1)
+
+[node name="menu_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
+modulate = Color(1, 1, 1, 0.984314)
+layout_mode = 1
+
+[node name="button" type="Button" parent="flow_coordinator/menu_view"]
+layout_mode = 0
+offset_left = 754.0
+offset_top = 620.0
+offset_right = 1203.0
+offset_bottom = 793.0
+text = "TEST MENU"
+
+[node name="button2" type="Button" parent="flow_coordinator/menu_view"]
+layout_mode = 0
+offset_left = 754.0
+offset_top = 824.4
+offset_right = 1203.0
+offset_bottom = 997.4
+text = "TEST MENU 2"
+
+[node name="label" type="Label" parent="flow_coordinator/menu_view"]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 216.0
+offset_right = 1390.0
+offset_bottom = 516.0
+text = "TEST"
+label_settings = SubResource("LabelSettings_joqlw")
+
+[node name="menu_view2" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
+layout_mode = 1
+
+[node name="label" type="Label" parent="flow_coordinator/menu_view2"]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 216.0
+offset_right = 1390.0
+offset_bottom = 516.0
+text = "HOLY SHIT"
+label_settings = SubResource("LabelSettings_joqlw")
+
+[node name="menu_view3" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
+layout_mode = 1
+
+[node name="label" type="Label" parent="flow_coordinator/menu_view3"]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 159.0
+offset_right = 1401.0
+offset_bottom = 588.0
+text = "MENU SYSTEM
+JUST DROPPED"
+label_settings = SubResource("LabelSettings_joqlw")
+
+[node name="heading_banner" type="ColorRect" parent="flow_coordinator"]
+layout_mode = 0
+offset_left = -683.0
+offset_top = 128.0
+offset_right = 1113.0
+offset_bottom = 426.0
+rotation = -0.261799
+color = Color(0, 0, 0, 1)
+
+[node name="label" type="Label" parent="flow_coordinator/heading_banner"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -165.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BREAK TIME"
+label_settings = SubResource("LabelSettings_ys3jj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="button" type="Button" parent="flow_coordinator/heading_banner"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.858
+offset_top = 6.8812
+offset_right = -170.858
+offset_bottom = 86.8812
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+
+[connection signal="pressed" from="flow_coordinator/menu_view/button" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view2"]]
+[connection signal="pressed" from="flow_coordinator/menu_view/button2" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
