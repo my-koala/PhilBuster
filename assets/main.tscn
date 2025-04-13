@@ -1,18 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=8 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://crsfhee7ojlr5" path="res://scripts/session.gd" id="1_836ik"]
 [ext_resource type="PackedScene" uid="uid://cd4a04syaq7r7" path="res://assets/sentence_container/sentence_container.tscn" id="1_db5cl"]
-[ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
+[ext_resource type="Script" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="2_06ig3"]
 [ext_resource type="Script" uid="uid://l3hpmq8srq2a" path="res://scripts/hand_container/hand_container.gd" id="3_j2eim"]
 [ext_resource type="PackedScene" uid="uid://bjh0uxpfofbd1" path="res://assets/bust_meter/bust_meter.tscn" id="5_j2eim"]
+[ext_resource type="PackedScene" uid="uid://dskiemvv8csjm" path="res://scripts/highlight/highlight.tscn" id="6_ujfqy"]
 
 [node name="main" type="Node"]
 
 [node name="card_library" type="Node" parent="."]
 script = ExtResource("1_ujfqy")
 base_card_path = "res://assets/card"
-metadata/_custom_type_script = ExtResource("1_ujfqy")
+metadata/_custom_type_script = "uid://bjvyiulweseaw"
 
 [node name="session" type="Control" parent="."]
 layout_mode = 3
@@ -108,6 +109,14 @@ grow_vertical = 2
 text = "DISCARD"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="highlight" parent="session/discard" instance=ExtResource("6_ujfqy")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="drag_overlay" type="ColorRect" parent="session"]
 unique_name_in_owner = true

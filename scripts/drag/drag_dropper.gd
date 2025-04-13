@@ -22,10 +22,22 @@ var _input_mouse_pressed: bool = false
 var _hover: bool = false
 var _press: bool = false
 
+func highlight() -> void:
+	pass
+
+func unhighlight() -> void:
+	pass
+
+func dim() -> void:
+	pass
+
+func undim() -> void:
+	pass
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	Button
+	
 	mouse_entered.connect(func() -> void: _input_mouse_hovered = true)
 	mouse_exited.connect(func() -> void: _input_mouse_hovered = false)
 

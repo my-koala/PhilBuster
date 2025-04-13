@@ -10,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fdoqd")
-enabled = null
 
 [node name="color_rect_dim" type="ColorRect" parent="."]
 visible = false

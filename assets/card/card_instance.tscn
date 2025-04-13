@@ -1,38 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4n0r7gnn28om"]
+[gd_scene load_steps=2 format=3 uid="uid://d4n0r7gnn28om"]
 
 [ext_resource type="Script" uid="uid://lur78koemyo2" path="res://scripts/card/card_instance.gd" id="1_40wyd"]
-[ext_resource type="Script" uid="uid://cebqx0s1w7d4x" path="res://scripts/drag/drag_grabber.gd" id="1_ud434"]
 
-[node name="card_instance" type="Control"]
+[node name="card_instance" type="Button"]
 physics_interpolation_mode = 1
+self_modulate = Color(1, 1, 1, 0.309804)
 custom_minimum_size = Vector2(160, 224)
-layout_mode = 3
-anchors_preset = 0
 offset_left = -80.0
 offset_top = -112.0
 offset_right = 80.0
 offset_bottom = 112.0
-pivot_offset = Vector2(80, 112)
+pivot_offset = Vector2(80, 24)
+action_mode = 0
+keep_pressed_outside = true
 script = ExtResource("1_40wyd")
 
 [node name="color_rect" type="ColorRect" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 224)
+show_behind_parent = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -112.0
-offset_right = 80.0
-offset_bottom = 112.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.911851, 0.375096, 0.342316, 1)
 
-[node name="label" type="Label" parent="color_rect"]
+[node name="label" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 46.0
@@ -44,15 +39,3 @@ grow_vertical = 2
 text = "card"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="drag_grabber" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(80, 16)
-script = ExtResource("1_ud434")
-metadata/_custom_type_script = "uid://cebqx0s1w7d4x"

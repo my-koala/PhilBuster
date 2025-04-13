@@ -1,6 +1,9 @@
 @tool
-extends Control
+extends Button
 class_name CardInstance
+
+signal drag_started()
+signal drag_stopped()
 
 # TODO: Texture swap based on card type.
 # TODO: Animations on select, mouse hover, deselect.
@@ -17,13 +20,15 @@ var card_info: CardInfo = null:
 var _label: Label = %label as Label
 @onready
 var _color_rect: ColorRect = %color_rect as ColorRect
-@onready
-var _drag_grabber: DragGrabber = %drag_grabber as DragGrabber
 
-var _dirty: bool = false
+var _dirty: bool = true
 
-func get_drag_grabber() -> DragGrabber:
-	return _drag_grabber
+var _drag: bool = false
+
+func start_drag() -> void:
+	if !_drag:
+		_drag = true
+		drag_started.emit()
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -35,32 +40,52 @@ func _update_display() -> void:
 		_label.text = card_info.word
 		
 		if card_info is CardInfoBasicNoun:
-			_color_rect.color = Color.RED
+			modulate = Color.RED
 		elif card_info is CardInfoBasicVerb:
-			_color_rect.color = Color.BLUE
+			modulate = Color.BLUE
 		elif card_info is CardInfoModifierAdjective:
-			_color_rect.color = Color.ORANGE_RED
+			modulate = Color.ORANGE_RED
 		elif card_info is CardInfoModifierAdverb:
-			_color_rect.color = Color.BLUE_VIOLET
+			modulate = Color.BLUE_VIOLET
 	else:
 		_label.text = "N/A"
-		_color_rect.color = Color.GRAY
+		modulate = Color.GRAY
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if _drag_grabber.is_grabbed():
-		global_position = _drag_grabber.get_grab_position()
+	var mouse_pressed: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	
+	if disabled || !mouse_pressed:
+		if _drag:
+			_drag = false
+			drag_stopped.emit()
+	elif button_pressed:
+		if !_drag:
+			_drag = true
+			drag_started.emit()
+	
+	if disabled:
+		mouse_default_cursor_shape = Control.CURSOR_ARROW
+	else:
+		mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	
+	if is_hovered():
+		pass
 	else:
 		pass
 	
-	if _drag_grabber.is_grabbed() || _drag_grabber.is_hovered():
+	if _drag || is_hovered():
 		scale = Vector2(1.125, 1.125)
 		z_index = 1
 	else:
 		scale = Vector2(1.0, 1.0)
 		z_index = 0
+	
+	if _drag:
+		global_position = get_global_mouse_position() - pivot_offset
+	
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -70,7 +95,3 @@ func _process(delta: float) -> void:
 		_update_display()
 		_dirty = false
 	
-	if _drag_grabber.is_grabbed():
-		pass
-	else:
-		pass

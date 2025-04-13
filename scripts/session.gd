@@ -22,6 +22,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
+	_sentence_container.field_press_started.connect(_on_sentence_container_field_press_started)
+	
 	var card_infos: Array[CardInfo] = [
 		load("res://assets/card/info/basic/noun/tariff.tres") as CardInfo,
 		load("res://assets/card/info/basic/verb/cut.tres") as CardInfo,
@@ -33,8 +35,8 @@ func _ready() -> void:
 		var card_instance: CardInstance = CARD_INSTANCE_SCENE.instantiate() as CardInstance
 		_hand_container.add_child(card_instance)
 		card_instance.card_info = card_info
-		card_instance.get_drag_grabber().grab_started.connect(_on_card_instance_drag_grabber_started.bind(card_instance))
-		card_instance.get_drag_grabber().grab_stopped.connect(_on_card_instance_drag_grabber_stopped.bind(card_instance))
+		card_instance.drag_started.connect(_on_card_instance_drag_started.bind(card_instance))
+		card_instance.drag_stopped.connect(_on_card_instance_drag_stopped.bind(card_instance))
 		_hand_basic_card_instances.append(card_instance)
 	
 	_sentence_container.clear_sentence()
@@ -45,7 +47,14 @@ func _ready() -> void:
 
 var _card_instance_drag: CardInstance = null
 
-func _on_card_instance_drag_grabber_started(card_instance: CardInstance) -> void:
+func _on_sentence_container_field_press_started(sentence_container_field: SentenceContainerField) -> void:
+	assert(!is_instance_valid(_card_instance_drag))
+	if sentence_container_field.has_card_instance():
+		var card_instance: CardInstance = sentence_container_field.get_card_instance()
+		sentence_container_field.remove_card_instance()
+		card_instance.start_drag()
+
+func _on_card_instance_drag_started(card_instance: CardInstance) -> void:
 	assert(!is_instance_valid(_card_instance_drag))
 	
 	_card_instance_drag = card_instance
@@ -53,7 +62,11 @@ func _on_card_instance_drag_grabber_started(card_instance: CardInstance) -> void
 	_drag_overlay.visible = true
 	_drag_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
 	
-	card_instance.reparent(_drag)
+	var parent: Node = card_instance.get_parent()
+	if is_instance_valid(parent):
+		parent.remove_child(card_instance)
+	_drag.add_child(card_instance)
+	card_instance.global_position = card_instance.get_global_mouse_position()
 	card_instance.reset_physics_interpolation()
 	
 	for sentence_container_field: SentenceContainerField in _sentence_container.get_fields():
@@ -62,7 +75,7 @@ func _on_card_instance_drag_grabber_started(card_instance: CardInstance) -> void
 		else:
 			pass# Dim field.
 
-func _on_card_instance_drag_grabber_stopped(card_instance: CardInstance) -> void:
+func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 	assert(is_instance_valid(_card_instance_drag))
 	assert(_card_instance_drag == card_instance)
 	
@@ -77,5 +90,14 @@ func _on_card_instance_drag_grabber_stopped(card_instance: CardInstance) -> void
 	# TODO:
 	# check for field that's hovered, and try add.
 	# if fail, fallback to hand container
-	card_instance.reparent(_hand_container)
-	card_instance.reset_physics_interpolation()
+	var success: bool = false
+	var sentence_container_field: SentenceContainerField = _sentence_container.get_focused_field()
+	if is_instance_valid(sentence_container_field):
+		if sentence_container_field.add_card_instance(card_instance):
+			success = true
+		elif _sentence_container.add_field_modifier(sentence_container_field, card_instance):
+			success = true
+	
+	if !success:
+		card_instance.reparent(_hand_container)
+		card_instance.reset_physics_interpolation()
