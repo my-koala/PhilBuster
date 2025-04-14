@@ -99,11 +99,10 @@ offset_right = 800.0
 offset_bottom = 972.0
 text = "NEXT SESSION >>>"
 
-[node name="shop_view" parent="flow_coordinator" node_paths=PackedStringArray("card_library") instance=ExtResource("1_v8g57")]
+[node name="shop_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
 visible = false
 layout_mode = 1
 script = ExtResource("4_k4ejo")
-card_library = NodePath("../../card_library")
 
 [node name="label" type="Label" parent="flow_coordinator/shop_view"]
 layout_mode = 1

@@ -9,6 +9,8 @@ class_name GameStats
 const DECK_MAX_COUNT: int = 30
 
 var _deck: Array[CardInstance] = []
+var _money: int = 0
+var _sessions: int = 0
 
 func get_deck() -> Array[CardInstance]:
 	var deck: Array[CardInstance] = _deck.duplicate()
@@ -65,3 +67,21 @@ func deck_clear() -> void:
 	for card_instance: CardInstance in _deck:
 		card_instance.free()
 	_deck.clear()
+
+func get_money() -> int:
+	return _money
+
+func money_add(amount: int) -> void:
+	_money += amount
+
+func money_remove(amount: int) -> void:
+	_money -= amount
+
+func calculate_price_for(card_info : CardInfo) -> int:
+	return card_info.rarity * (floori(_sessions * 0.25) + 1)
+
+func get_sessions() -> int:
+	return _sessions
+
+func session_finished() -> void:
+	_sessions += 1
