@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://m0dkott85qmk"]
+[gd_scene load_steps=9 format=3 uid="uid://m0dkott85qmk"]
 
 [ext_resource type="Script" uid="uid://d23kpmtei5n5y" path="res://scripts/shop/flow_coordinator.gd" id="1_joqlw"]
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_kuxa5"]
@@ -9,6 +9,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_joqlw"]
 font_size = 64
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kuxa5"]
+font_size = 72
+font_color = Color(0.59, 0.59, 0.59, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ys3jj"]
 font_size = 61
@@ -96,6 +100,7 @@ offset_bottom = 972.0
 text = "NEXT SESSION >>>"
 
 [node name="shop_view" parent="flow_coordinator" node_paths=PackedStringArray("card_library") instance=ExtResource("1_v8g57")]
+visible = false
 layout_mode = 1
 script = ExtResource("4_k4ejo")
 card_library = NodePath("../../card_library")
@@ -124,19 +129,50 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="purchase_container" type="ColorRect" parent="flow_coordinator/shop_view"]
+modulate = Color(0, 0, 0, 0.25098)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -238.0
+offset_right = -26.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="label" type="Label" parent="flow_coordinator/shop_view/purchase_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PURCHASE"
+label_settings = SubResource("LabelSettings_kuxa5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="menu_view3" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
 visible = false
 layout_mode = 1
 
 [node name="label" type="Label" parent="flow_coordinator/menu_view3"]
-layout_mode = 0
-offset_left = 294.0
-offset_top = 159.0
-offset_right = 1401.0
-offset_bottom = 588.0
-text = "MENU SYSTEM
-JUST DROPPED"
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<< UNDER CONSTRUCTION >>
+
+PLEASE YELL AT JAMES OR CAEDEN TO IMPLEMENT THIS SCREEN"
 label_settings = SubResource("LabelSettings_joqlw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="heading_banner" type="ColorRect" parent="flow_coordinator"]
 layout_mode = 0
