@@ -8,4 +8,4 @@ extends Resource
 var rarity: int = 0
 
 func get_word() -> String:
-	return resource_path.get_file().get_basename()
+	return resource_path.get_file().get_basename().replace("_", " ")
