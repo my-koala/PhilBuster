@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=15 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_km2eh"]
@@ -13,25 +13,17 @@
 [ext_resource type="Resource" uid="uid://dusjxnka07qjv" path="res://assets/card/info/modifier/adjective/great.tres" id="9_isq2i"]
 [ext_resource type="Resource" uid="uid://dnhuwght5anxd" path="res://assets/card/info/modifier/adjective/haughty.tres" id="10_pd2c5"]
 [ext_resource type="PackedScene" uid="uid://ce5ej8armma4y" path="res://assets/session/session.tscn" id="13_h4xlo"]
+[ext_resource type="PackedScene" uid="uid://m0dkott85qmk" path="res://assets/shop/shop.tscn" id="14_vvw4a"]
 
-[node name="main" type="Node"]
-
-[node name="game" type="Node" parent="."]
+[node name="game" type="Node"]
 script = ExtResource("2_tkxyu")
 default_deck = Array[ExtResource("2_km2eh")]([ExtResource("3_wpieh"), ExtResource("4_ul5qt"), ExtResource("5_2rvxm"), ExtResource("6_2rvxm"), ExtResource("7_6eca0"), ExtResource("8_t6sda"), ExtResource("9_isq2i"), ExtResource("9_isq2i"), ExtResource("10_pd2c5"), ExtResource("9_isq2i"), ExtResource("8_isq2i")])
 
-[node name="card_library" type="Node" parent="game"]
+[node name="card_library" type="Node" parent="."]
 script = ExtResource("1_ujfqy")
 base_card_path = "res://assets/card"
 
-[node name="session" parent="game" instance=ExtResource("13_h4xlo")]
+[node name="session" parent="." instance=ExtResource("13_h4xlo")]
 
-[node name="shop" type="Control" parent="."]
+[node name="shop" parent="." instance=ExtResource("14_vvw4a")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2

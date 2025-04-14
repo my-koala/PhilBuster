@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://m0dkott85qmk"]
+[gd_scene load_steps=8 format=3 uid="uid://m0dkott85qmk"]
 
 [ext_resource type="Script" uid="uid://d23kpmtei5n5y" path="res://scripts/shop/flow_coordinator.gd" id="1_joqlw"]
-[ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_kuxa5"]
 [ext_resource type="PackedScene" uid="uid://boskellw4qds0" path="res://assets/shop/menu_view.tscn" id="1_v8g57"]
 [ext_resource type="Texture2D" uid="uid://m6n0tx1hfr6h" path="res://assets/shop/temp_background.png" id="3_lxv6y"]
 [ext_resource type="Script" uid="uid://b6ieeq5ts4te2" path="res://scripts/shop/shop_view.gd" id="4_k4ejo"]
@@ -18,11 +17,6 @@ font_color = Color(0.59, 0.59, 0.59, 1)
 font_size = 61
 
 [node name="shop" type="CanvasLayer"]
-
-[node name="card_library" type="Node" parent="."]
-script = ExtResource("1_kuxa5")
-base_card_path = "res://assets/card"
-metadata/_custom_type_script = ExtResource("1_kuxa5")
 
 [node name="flow_coordinator" type="Control" parent="." node_paths=PackedStringArray("root_view", "back_button")]
 layout_mode = 3

@@ -2,6 +2,8 @@
 extends Control
 class_name Session
 
+signal session_finished(success: bool)
+
 #const SENTENCE_LOADER: SentenceLoader = preload("res://assets/sentences/sentence_loader.tres") as SentenceLoader
 
 const CARD_INSTANCE_SCENE: PackedScene = preload("res://assets/card/card_instance.tscn")

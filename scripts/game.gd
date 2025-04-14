@@ -38,8 +38,8 @@ func start() -> void:
 	
 	# Initialize card deck.
 	for card_info: CardInfo in default_deck:
-		if !_game_stats.deck_is_full():
-			_game_stats.deck_append(card_info)
+		if !game_stats.deck_is_full():
+			game_stats.deck_append(card_info)
 	
 	_session.start_session(game_stats)
 
