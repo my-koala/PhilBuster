@@ -4,6 +4,8 @@ class_name Session
 
 #const SENTENCE_LOADER: SentenceLoader = preload("res://assets/sentences/sentence_loader.tres") as SentenceLoader
 
+const CARD_INSTANCE_SCENE: PackedScene = preload("res://assets/card/card_instance.tscn")
+
 const HAND_COUNT_MAX: int = 8
 
 @export_range(0.0, 1.0, 0.001)
@@ -34,6 +36,7 @@ var _session_submit: SessionSubmit = %session_submit as SessionSubmit
 @onready
 var _clock: Clock = %clock as Clock
 
+var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
 
 var _game_stats: GameStats = null
@@ -44,14 +47,21 @@ func is_session_active() -> bool:
 	return _session_active
 
 # TODO: session customizations?
-# time = number of minutes. each word will generally be worth 1 tick
+# time = number of minutes. each word will generally be worth 1 minute
 func start_session(game_stats: GameStats, topic: String = "", time: int = 120, bust_max: int = 32, sentence_difficulty: int = 0) -> void:
 	if _session_active:
 		return
 	_session_active = true
 	
 	_game_stats = game_stats
-	_game_stats.deck_shuffle()
+	
+	for card_info: CardInfo in _game_stats.get_deck():
+		var card_instance: CardInstance = CARD_INSTANCE_SCENE.instantiate()
+		card_instance.drag_started.connect(_on_card_instance_drag_started.bind(card_instance))
+		card_instance.drag_stopped.connect(_on_card_instance_drag_stopped.bind(card_instance))
+		card_instance.card_info = card_info
+		_deck_card_instances.append(card_instance)
+	_deck_card_instances.shuffle()
 	
 	_bust_meter.bust_max = bust_max
 	_bust_meter.clear_bust()
@@ -66,11 +76,11 @@ func stop_session() -> void:
 		return
 	_session_active = false
 	
-	for card_instance: CardInstance in _hand_card_instances:
-		_game_stats.deck_append(card_instance)
+	while !_deck_card_instances.is_empty():
+		_deck_card_instances[0].free()
 	
 	while !_hand_card_instances.is_empty():
-		_discard_card_instance_from_hand(_hand_card_instances[0])
+		_hand_card_instances[0].free()
 	
 	_game_stats = null
 
@@ -82,10 +92,12 @@ func _physics_process(delta: float) -> void:
 		# Deal hand if insufficient number of cards.
 		if _deck_deal_cooldown > 0.0:
 			_deck_deal_cooldown -= delta
-		elif !_game_stats.deck_is_empty() && (_hand_card_instances.size() < HAND_COUNT_MAX):
+		elif !_deck_card_instances.is_empty() && (_hand_card_instances.size() < HAND_COUNT_MAX):
 			_deck_deal_cooldown = deck_deal_cooldown
-			
-			_append_card_instance_to_hand(_game_stats.deck_deal())
+			var card_instance: CardInstance = _deck_card_instances[0]
+			_deck_card_instances.pop_front()
+			_hand_card_instances.append(card_instance)
+			_hand_container.add_child(card_instance)
 		
 
 func _ready() -> void:
@@ -140,8 +152,8 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 	# First try discard, then try fields, then fallback to hand container.
 	var fallback: bool = true
 	if _discard.get_global_rect().has_point(global_mouse_position):
-		_discard_card_instance_from_hand(card_instance)
-		_game_stats.deck_append(card_instance)
+		_hand_card_instances.erase(card_instance)
+		_deck_card_instances.append(card_instance)
 		fallback = false
 	elif is_instance_valid(sentence_container_field_focus):
 		if sentence_container_field_focus.add_card_instance(card_instance):
@@ -153,28 +165,3 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 		# Return to hand.
 		_hand_container.add_child(card_instance)
 		card_instance.reset_physics_interpolation()
-
-func _append_card_instance_to_hand(card_instance: CardInstance) -> void:
-	if _hand_card_instances.has(card_instance):
-		return
-	
-	card_instance.drag_started.connect(_on_card_instance_drag_started.bind(card_instance))
-	card_instance.drag_stopped.connect(_on_card_instance_drag_stopped.bind(card_instance))
-	
-	var parent: Node = card_instance.get_parent()
-	if is_instance_valid(parent):
-		parent.remove_child(card_instance)
-	_hand_container.add_child(card_instance)
-	_hand_card_instances.append(card_instance)
-
-func _discard_card_instance_from_hand(card_instance: CardInstance) -> void:
-	if !_hand_card_instances.has(card_instance):
-		return
-	
-	card_instance.drag_started.disconnect(_on_card_instance_drag_started)
-	card_instance.drag_stopped.disconnect(_on_card_instance_drag_stopped)
-	
-	var parent: Node = card_instance.get_parent()
-	if is_instance_valid(parent):
-		parent.remove_child(card_instance)
-	_hand_card_instances.erase(card_instance)
