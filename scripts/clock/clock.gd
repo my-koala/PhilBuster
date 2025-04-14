@@ -8,14 +8,14 @@ const HOURS_PER_DAY: int = 12
 signal time_exceeded()
 
 @export_range(0, MINUTES_PER_HOUR * HOURS_PER_DAY, 1)
-var time_region_start: int = MINUTES_PER_HOUR * 2:
+var time_region_start: int = MINUTES_PER_HOUR * 1:
 	get:
 		return time_region_start
 	set(value):
 		time_region_start = clampi(value, 0, MINUTES_PER_HOUR * HOURS_PER_DAY)
 
 @export_range(0, MINUTES_PER_HOUR * HOURS_PER_DAY, 1)
-var time_region_duration: int = 12 * 6:
+var time_region_duration: int = MINUTES_PER_HOUR * 2:
 	get:
 		return time_region_duration
 	set(value):

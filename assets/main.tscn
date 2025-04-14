@@ -1,29 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=18 format=3 uid="uid://cdyp8mpw52ws3"]
 
-[ext_resource type="Script" uid="uid://crsfhee7ojlr5" path="res://scripts/session/session.gd" id="1_836ik"]
 [ext_resource type="PackedScene" uid="uid://cd4a04syaq7r7" path="res://assets/sentence_container/sentence_container.tscn" id="1_db5cl"]
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
-[ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="2_06ig3"]
+[ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_km2eh"]
+[ext_resource type="Script" uid="uid://crsfhee7ojlr5" path="res://scripts/session/session.gd" id="2_qdlv5"]
+[ext_resource type="Script" uid="uid://ifvr7v6vplvr" path="res://scripts/game.gd" id="2_tkxyu"]
 [ext_resource type="Script" uid="uid://l3hpmq8srq2a" path="res://scripts/hand_container/hand_container.gd" id="3_j2eim"]
+[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="3_wpieh"]
+[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="4_ul5qt"]
+[ext_resource type="Resource" uid="uid://ny5ciekntcql" path="res://assets/card/info/basic/noun/tariff.tres" id="5_2rvxm"]
 [ext_resource type="PackedScene" uid="uid://bjh0uxpfofbd1" path="res://assets/bust_meter/bust_meter.tscn" id="5_j2eim"]
+[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="6_6eca0"]
 [ext_resource type="PackedScene" uid="uid://dskiemvv8csjm" path="res://scripts/highlight/highlight.tscn" id="6_ujfqy"]
+[ext_resource type="Resource" uid="uid://k8x1rtq71aqq" path="res://assets/card/info/basic/noun/wall.tres" id="7_t6sda"]
+[ext_resource type="Resource" uid="uid://buh38gwd47jrf" path="res://assets/card/info/basic/verb/blow_up.tres" id="8_isq2i"]
+[ext_resource type="Resource" uid="uid://bhtk361554el3" path="res://assets/card/info/basic/verb/cut.tres" id="9_pd2c5"]
+[ext_resource type="PackedScene" uid="uid://copv5onr76lmr" path="res://assets/session/session_submit.tscn" id="16_km2eh"]
+[ext_resource type="PackedScene" uid="uid://2eoq76ffybbi" path="res://assets/clock/clock.tscn" id="17_wpieh"]
 
 [node name="main" type="Node"]
 
-[node name="card_library" type="Node" parent="."]
+[node name="game" type="Node" parent="."]
+script = ExtResource("2_tkxyu")
+default_deck = Array[ExtResource("2_km2eh")]([ExtResource("3_wpieh"), ExtResource("4_ul5qt"), ExtResource("5_2rvxm"), ExtResource("6_6eca0"), ExtResource("7_t6sda"), ExtResource("8_isq2i"), ExtResource("9_pd2c5"), ExtResource("8_isq2i"), ExtResource("9_pd2c5")])
+
+[node name="card_library" type="Node" parent="game"]
 script = ExtResource("1_ujfqy")
 base_card_path = "res://assets/card"
 
-[node name="session" type="Control" parent="."]
+[node name="session" type="Control" parent="game"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_836ik")
+script = ExtResource("2_qdlv5")
 
-[node name="sentence_container" parent="session" instance=ExtResource("1_db5cl")]
+[node name="sentence_container" parent="game/session" instance=ExtResource("1_db5cl")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 385.0
@@ -31,7 +45,7 @@ offset_top = 85.0
 offset_right = 1585.0
 offset_bottom = 636.0
 
-[node name="hand_container" type="HBoxContainer" parent="session"]
+[node name="hand_container" type="HBoxContainer" parent="game/session"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -44,55 +58,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_j2eim")
 
-[node name="card_instance" parent="session/hand_container" instance=ExtResource("2_06ig3")]
-layout_mode = 2
-
-[node name="card_instance2" parent="session/hand_container" instance=ExtResource("2_06ig3")]
-layout_mode = 2
-
-[node name="card_instance3" parent="session/hand_container" instance=ExtResource("2_06ig3")]
-layout_mode = 2
-
-[node name="card_instance4" parent="session/hand_container" instance=ExtResource("2_06ig3")]
-layout_mode = 2
-
-[node name="bust_meter" parent="session" instance=ExtResource("5_j2eim")]
+[node name="bust_meter" parent="game/session" instance=ExtResource("5_j2eim")]
 unique_name_in_owner = true
-offset_left = 166.0
-offset_top = 311.0
-offset_right = 206.0
-offset_bottom = 351.0
+offset_left = 546.0
+offset_top = 646.0
+offset_right = 586.0
+offset_bottom = 686.0
+progress_bar_speed = 512.0
 
-[node name="clocktemp" type="Label" parent="session"]
-layout_mode = 2
-offset_left = 70.0
-offset_top = 38.0
-offset_right = 319.0
-offset_bottom = 175.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "put a clock
-here"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="discard" type="ColorRect" parent="session"]
+[node name="discard" type="ColorRect" parent="game/session"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 256)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -300.03
-offset_top = -304.765
-offset_right = -44.03
-offset_bottom = -48.765
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 0
+offset_left = 1601.0
+offset_top = 771.0
+offset_right = 1857.0
+offset_bottom = 1027.0
 color = Color(1, 0.536812, 0.441343, 1)
 
-[node name="label" type="Label" parent="session/discard"]
+[node name="label" type="Label" parent="game/session/discard"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,7 +93,7 @@ text = "DISCARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="highlight" parent="session/discard" instance=ExtResource("6_ujfqy")]
+[node name="highlight" parent="game/session/discard" instance=ExtResource("6_ujfqy")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -117,7 +101,7 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="drag_overlay" type="ColorRect" parent="session"]
+[node name="drag_overlay" type="ColorRect" parent="game/session"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -127,11 +111,36 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.258824)
 
-[node name="drag" type="Control" parent="session"]
+[node name="drag" type="Control" parent="game/session"]
 unique_name_in_owner = true
 anchors_preset = 0
 
+[node name="session_submit" parent="game/session" instance=ExtResource("16_km2eh")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1168.0
+offset_top = 454.0
+offset_right = 1566.0
+offset_bottom = 623.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="clock" parent="game/session" instance=ExtResource("17_wpieh")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 207.0
+offset_top = 156.0
+offset_right = 207.0
+offset_bottom = 156.0
+scale = Vector2(0.5, 0.5)
+
 [node name="shop" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,7 +148,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="texture_progress_bar" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0

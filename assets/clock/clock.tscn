@@ -9,10 +9,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_rrx2h")
-time_region_start = 0
-time_region_duration = 435
-time_passed = 425
-hand_rotation_speed = 5.741
+hand_rotation_speed = 8.0
 
 [node name="clock_face" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -47,10 +44,10 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 1.0
 step = 0.0
-value = 0.0229885
+value = 1.0
 fill_mode = 5
-radial_initial_angle = 217.5
-radial_fill_degrees = 217.5
+radial_initial_angle = 90.0
+radial_fill_degrees = 60.0
 texture_progress = ExtResource("4_4ldhw")
 
 [node name="hour_hand" type="TextureRect" parent="."]
@@ -64,7 +61,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
-rotation = 9.99201
+rotation = 6.80678
 scale = Vector2(0.285, -2.995)
 pivot_offset = Vector2(20, 0)
 size_flags_horizontal = 3
@@ -83,7 +80,7 @@ offset_left = -6.0
 offset_right = 34.0
 offset_bottom = 40.0
 grow_horizontal = 2
-rotation = 138.754
+rotation = 150.796
 scale = Vector2(0.285, -4)
 size_flags_horizontal = 3
 size_flags_vertical = 3

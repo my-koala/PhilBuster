@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://copv5onr76lmr"]
+
+[ext_resource type="Script" uid="uid://blp4tvdlbtc0m" path="res://scripts/session/session_submit.gd" id="1_u1cfd"]
+
+[node name="session_submit" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -84.5
+offset_right = 199.0
+offset_bottom = 84.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u1cfd")
+sentence_complete = true
+
+[node name="v_box_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="button" type="Button" parent="v_box_container"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Submit Sentence"
+
+[node name="rich_text_label" type="RichTextLabel" parent="v_box_container"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

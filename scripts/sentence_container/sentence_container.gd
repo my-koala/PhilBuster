@@ -55,8 +55,6 @@ func set_sentence(sentence: String) -> bool:
 				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
 				field_instance.card_type = SentenceContainerField.CardType.NOUN
 				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.hover_started.connect(_on_field_hover_started.bind(field_instance))
-				field_instance.hover_stopped.connect(_on_field_hover_stopped.bind(field_instance))
 				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
 				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
 				_field_instance_basics.append(field_instance)
@@ -67,8 +65,6 @@ func set_sentence(sentence: String) -> bool:
 				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
 				field_instance.card_type = SentenceContainerField.CardType.VERB
 				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.hover_started.connect(_on_field_hover_started.bind(field_instance))
-				field_instance.hover_stopped.connect(_on_field_hover_stopped.bind(field_instance))
 				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
 				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
 				_field_instance_basics.append(field_instance)
@@ -93,8 +89,6 @@ func add_field_modifier(field: SentenceContainerField, card_instance: CardInstan
 				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
 				field_instance.card_type = SentenceContainerField.CardType.ADJECTIVE
 				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.hover_started.connect(_on_field_hover_started.bind(field_instance))
-				field_instance.hover_stopped.connect(_on_field_hover_stopped.bind(field_instance))
 				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
 				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
 				_flow_container.add_child(field_instance)
@@ -107,8 +101,6 @@ func add_field_modifier(field: SentenceContainerField, card_instance: CardInstan
 				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
 				field_instance.card_type = SentenceContainerField.CardType.ADVERB
 				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.hover_started.connect(_on_field_hover_started.bind(field_instance))
-				field_instance.hover_stopped.connect(_on_field_hover_stopped.bind(field_instance))
 				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
 				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
 				_flow_container.add_child(field_instance)
@@ -128,15 +120,3 @@ func _on_field_card_instance_removed(card_instance: CardInstance, field: Sentenc
 			# Free card instance.
 			_flow_container.remove_child(field)
 			field.queue_free()
-
-var _field_focus: SentenceContainerField = null
-
-func get_focused_field() -> SentenceContainerField:
-	return _field_focus
-
-func _on_field_hover_started(field: SentenceContainerField) -> void:
-	_field_focus = field
-
-func _on_field_hover_stopped(field: SentenceContainerField) -> void:
-	if _field_focus == field:
-		_field_focus = null

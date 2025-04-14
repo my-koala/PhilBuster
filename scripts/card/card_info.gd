@@ -5,6 +5,7 @@ extends Resource
 ## Base class for all word cards.
 
 @export
-var word: String = ""
-@export
 var rarity: int = 0
+
+func get_word() -> String:
+	return resource_path.get_file().get_basename()

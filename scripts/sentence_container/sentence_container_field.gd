@@ -7,8 +7,6 @@ class_name SentenceContainerField
 
 signal press_started()
 signal press_stopped()
-signal hover_started()
-signal hover_stopped()
 signal card_instance_added(card_instance: CardInstance)
 signal card_instance_removed(card_instance: CardInstance)
 
@@ -50,7 +48,6 @@ var _card_instance: CardInstance = null
 var _hover: bool = false
 
 var _input_mouse_hover: bool = false
-var _input_mouse_hover_unblocked: bool = false
 
 func get_highlight() -> Highlight:
 	return _highlight
@@ -138,29 +135,14 @@ func _ready() -> void:
 	
 	_preview.visible = false
 	_button.pressed.connect(press_started.emit)
-	_button.mouse_entered.connect(func() -> void: _input_mouse_hover_unblocked = true)
-	_button.mouse_exited.connect(func() -> void: _input_mouse_hover_unblocked = false)
-
-func _input(event: InputEvent) -> void:
-	if Engine.is_editor_hint():
-		return
-	
-	_input_mouse_hover = get_global_rect().has_point(get_global_mouse_position())
+	_button.mouse_entered.connect(func() -> void: _input_mouse_hover = true)
+	_button.mouse_exited.connect(func() -> void: _input_mouse_hover = false)
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if _input_mouse_hover:
-		if !_hover:
-			_hover = true
-			hover_started.emit()
-	else:
-		if _hover:
-			_hover = false
-			hover_stopped.emit()
-	
-	if _input_mouse_hover_unblocked && has_card_instance():
+	if _input_mouse_hover && has_card_instance():
 		_preview.visible = true
 	else:
 		_preview.visible = false
@@ -187,7 +169,7 @@ func _process(delta: float) -> void:
 			placeholder_text = "adverb"
 	
 	if is_instance_valid(_card_instance):
-		_rich_text_label.text = "[b]%s[/b]" % [_card_instance.card_info.word]
+		_rich_text_label.text = "[b]%s[/b]" % [_card_instance.card_info.get_word()]
 	else:
 		_rich_text_label.text = "([i]%s[i])" % [placeholder_text]
 	

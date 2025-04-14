@@ -37,7 +37,7 @@ func _ready() -> void:
 
 func _update_display() -> void:
 	if is_instance_valid(card_info):
-		_label.text = card_info.word
+		_label.text = card_info.get_word()
 		
 		if card_info is CardInfoBasicNoun:
 			modulate = Color.RED

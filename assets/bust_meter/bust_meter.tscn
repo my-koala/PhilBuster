@@ -11,19 +11,27 @@ bg_color = Color(1, 0.312898, 0.459016, 1)
 [node name="bust_meter" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("1_i8etg")
 
 [node name="v_box_container" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 81.0
-offset_bottom = 363.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = -561.0
+offset_right = 40.5
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
 
 [node name="progress_bar" type="ProgressBar" parent="v_box_container"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 314)
+custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_2d37k")
 theme_override_styles/fill = SubResource("StyleBoxFlat_836ik")
 max_value = 64.0
