@@ -8,64 +8,48 @@ class_name GameStats
 
 const DECK_MAX_COUNT: int = 30
 
-var _deck: Array[CardInstance] = []
+var _deck: Array[CardInfo] = []
 var _money: int = 0
 var _sessions: int = 0
 
-func get_deck() -> Array[CardInstance]:
-	var deck: Array[CardInstance] = _deck.duplicate()
+func get_deck() -> Array[CardInfo]:
+	var deck: Array[CardInfo] = _deck.duplicate()
 	deck.make_read_only()
 	return deck
 
-func deck_shuffle() -> void:
-	_deck.shuffle()
-
-func deck_deal() -> CardInstance:
-	if _deck.is_empty():
-		return null
-	
-	var card_instance: CardInstance = _deck[0]
-	_deck.pop_front()
-	return card_instance
-
-func deck_append(card_instance: CardInstance) -> bool:
-	if !is_instance_valid(card_instance):
+func deck_append(card_info: CardInfo) -> bool:
+	if !is_instance_valid(card_info):
 		return false
 	
 	if _deck.size() == DECK_MAX_COUNT:
 		return false
 	
-	if _deck.has(card_instance):
-		return false
-	
-	_deck.append(card_instance)
+	_deck.append(card_info)
 	return true
 
-func deck_remove(card_instance: CardInstance) -> bool:
-	if !is_instance_valid(card_instance):
+func deck_remove(card_info: CardInfo) -> bool:
+	if !is_instance_valid(card_info):
 		return false
 	
-	if _deck.is_empty():
+	if !_deck.has(card_info):
 		return false
 	
-	if !_deck.has(card_instance):
-		return false
-	
-	_deck.erase(card_instance)
+	_deck.erase(card_info)
 	return true
 
-func deck_has(card_instance: CardInstance) -> bool:
-	return _deck.has(card_instance)
+func deck_has(card_info: CardInfo) -> bool:
+	return _deck.has(card_info)
 
 func deck_is_full() -> bool:
 	return _deck.size() == DECK_MAX_COUNT
+
+func deck_get_size() -> int:
+	return _deck.size()
 
 func deck_is_empty() -> bool:
 	return _deck.is_empty()
 
 func deck_clear() -> void:
-	for card_instance: CardInstance in _deck:
-		card_instance.free()
 	_deck.clear()
 
 func get_money() -> int:
