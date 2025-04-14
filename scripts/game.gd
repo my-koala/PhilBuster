@@ -44,11 +44,22 @@ func start() -> void:
 			game_stats.deck_append(card_info)
 		card_library.pull_card(card_info)
 	
-	#_session.start_session(game_stats)
-	_shop.start_shop(card_library, game_stats)
+	# Subscribe to looping events
+	_session.session_finished.connect(_on_session_finished)
+	_shop.shop_finished.connect(_on_shop_finished)
+	
+	# Start the session loop
+	_session.start_session(game_stats)
 
 func stop() -> void:
 	game_stats.deck_clear()
 	
 	game_stats = null
 	_loop = false
+	
+func _on_session_finished(successful: bool) -> void:
+	if successful:
+		_shop.start_shop(card_library, game_stats)
+
+func _on_shop_finished() -> void:
+	_session.start_session(game_stats)
