@@ -1,53 +1,55 @@
+@tool
 class_name SentenceLoader
-extends Resource
+extends Node
 
-@export var folder_path : String
+# TODO: sentence rarity, difficulty, length filters? may require a csv file
 
-var _generic_sentences : PackedStringArray
-var _loaded_sentences : Dictionary[String, PackedStringArray]
+const SENTENCE_FOLDER_PATH: String = "res://assets/sentences/"
 
-## Given a (case insensitive) topic name, return a random sentence
-func get_topic_sentence(topic: String) -> String:
-	# TODO: Should we consider returning an error if the topic isnt loaded
-	var topic_sentences : PackedStringArray = _loaded_sentences.get(topic.to_lower(), [])
-	
-	var total_topic_length : int = _generic_sentences.size() + topic_sentences.size()
-	
-	# This should only ever be a possibility if we have no loaded sentences and no generic sentences to fall back to
-	if total_topic_length == 0:
-		return "{n} should {v} to Caeden because this shit broke!"
-	
-	var rng : int = randi_range(0, total_topic_length)
-	
-	return _generic_sentences[rng] if rng < _generic_sentences.size() else topic_sentences[rng - _generic_sentences.size()]
+var _global_sentences: PackedStringArray = PackedStringArray()
+var _topic_sentences: Dictionary[String, PackedStringArray] = {}
 
 func _init() -> void:
-	for file : String in DirAccess.get_files_at(folder_path):
-		# (i looked this up on reddit beforehand lmao)
+	for file_path: String in DirAccess.get_files_at(SENTENCE_FOLDER_PATH):
 		# If we are in an exported Godot project, we need to modify our file name slightly
 		# to account for the fact that these files are imported
-		if (file.get_extension() == "import"):
-			file = file.replace('.import', '')
+		if file_path.ends_with(".import"):
+			file_path = file_path.replace(".import", "")
 		
-		# hacky way of just getting the name of the file
-		var file_name : String = file.split('.')[0]
-		var file_path : String = "%s/%s" % [folder_path, file]
+		var file_name: String = file_path.get_file().get_basename()
 		
-		# Save the generic sentences in their own special place
+		# Save the global sentences in their own special place
 		# otherwise append sentences to the dictionary
-		if (file_name == "generic"):
-			_generic_sentences = _load_sentence_file(file_path)
+		if file_name.to_lower() == "global":
+			_global_sentences = _load_sentences(file_path)
 		else:
-			_loaded_sentences[file_name.to_lower()] = _load_sentence_file(file_path)
+			_topic_sentences[file_name.to_lower()] = _load_sentences(file_path)
 
-func _load_sentence_file(path : String) -> PackedStringArray:
-	var sentences : PackedStringArray = []
-	var file : FileAccess = FileAccess.open(path, FileAccess.READ)
+## Given a (case insensitive) topic name, return a random sentence
+func get_random_sentence(topic: String) -> String:
+	topic = topic.to_lower()
+	if topic.is_empty() || topic == "global":
+		return _global_sentences[randi_range(0, _global_sentences.size() - 1)]
 	
-	# Iterate through all lines of our file and append them as sentences
-	# TODO: Should we consider basic parsing to ensure that any curly braces are *ONLY* valid {n} and {v}
+	if !_topic_sentences.has(topic):
+		push_error("Topic '%s' not found." % [topic])
+		return _global_sentences[randi_range(0, _global_sentences.size() - 1)]
+	
+	var index: int = randi_range(0, _global_sentences.size() + _topic_sentences[topic].size() - 1)
+	
+	if index < _global_sentences.size():
+		return _global_sentences[index]
+	return _topic_sentences[topic][index]
+
+func _load_sentences(file_path: String) -> PackedStringArray:
+	var sentences: PackedStringArray = PackedStringArray()
+	var file: FileAccess = FileAccess.open(file_path, FileAccess.READ)
+	
+	if !is_instance_valid(file):
+		push_error("Error reading topic file from file path '%s'." % [file_path])
+		return sentences
+	
 	while !file.eof_reached():
-		var line : String = file.get_line()
-		sentences.append(line)
-		
+		sentences.append(file.get_line())
+	
 	return sentences

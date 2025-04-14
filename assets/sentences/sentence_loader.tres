@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SentenceLoader" load_steps=2 format=3 uid="uid://bliqac6hsusrg"]
-
-[ext_resource type="Script" uid="uid://ctjsh263cksd6" path="res://scripts/sentences/sentence_loader.gd" id="1_p8ucl"]
-
-[resource]
-script = ExtResource("1_p8ucl")
-folder_path = "res://assets/sentences"
-metadata/_custom_type_script = "uid://ctjsh263cksd6"
