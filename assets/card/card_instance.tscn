@@ -11,6 +11,7 @@ offset_top = -112.0
 offset_right = 80.0
 offset_bottom = 112.0
 pivot_offset = Vector2(80, 24)
+focus_mode = 0
 action_mode = 0
 keep_pressed_outside = true
 script = ExtResource("1_40wyd")

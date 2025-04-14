@@ -61,6 +61,7 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 		card_instance.drag_stopped.connect(_on_card_instance_drag_stopped.bind(card_instance))
 		card_instance.card_info = card_info
 		_deck_card_instances.append(card_instance)
+	
 	_deck_card_instances.shuffle()
 	
 	_bust_meter.bust_max = bust_max
@@ -76,11 +77,13 @@ func stop_session() -> void:
 		return
 	_session_active = false
 	
-	while !_deck_card_instances.is_empty():
-		_deck_card_instances[0].free()
+	for card_instance: CardInstance in _deck_card_instances:
+		card_instance.queue_free()
+	_deck_card_instances.clear()
 	
-	while !_hand_card_instances.is_empty():
-		_hand_card_instances[0].free()
+	for card_instance: CardInstance in _hand_card_instances:
+		card_instance.queue_free()
+	_hand_card_instances.clear()
 	
 	_game_stats = null
 
@@ -165,3 +168,6 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 		# Return to hand.
 		_hand_container.add_child(card_instance)
 		card_instance.reset_physics_interpolation()
+
+func _exit_tree() -> void:
+	stop_session()
