@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bfcsoskuqxu8v"]
+[gd_scene load_steps=0 format=3 uid="uid://bfcsoskuqxu8v"]
 
 [node name="button" type="Button"]
 toggle_mode = true
