@@ -11,7 +11,6 @@ var purchase_container: Control = $"purchase_container"
 var purchase_text: Label = $"purchase_container/label"
 
 var _game: Game
-var _session: Session
 var _card_library : CardLibrary
 var _game_stats : GameStats
 
@@ -23,14 +22,12 @@ const CARD_INSTANCE: PackedScene = preload("res://assets/card/card_instance.tscn
 
 func _ready() -> void:
 	_game = get_tree().current_scene as Game
-	_session = get_tree().current_scene.find_child("session") as Session
 	if is_instance_valid(_game):
 		_card_library = _game.card_library
 		_game_stats = _game.game_stats
 		
 	purchase_container.mouse_entered.connect(_on_purchase_container_entered)
 	purchase_container.mouse_exited.connect(_on_purchase_container_exited)
-	_session.session_finished.connect(_on_session_finished)
 
 func reset_shop() -> void:
 	if is_instance_valid(_game):
@@ -50,13 +47,6 @@ func reset_shop() -> void:
 		card_instance.drag_stopped.connect(_on_card_drag_stopped.bind(card_instance))
 		
 		shop_container.add_child(card_instance)
-
-func _on_session_finished(success: bool) -> void:
-	if !success:
-		return
-	
-	visible = true
-	reset_shop()
 
 func _on_purchase_container_entered() -> void:
 	purchase_container.modulate.a = 0.75

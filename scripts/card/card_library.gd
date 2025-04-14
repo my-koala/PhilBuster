@@ -4,9 +4,10 @@ class_name CardLibrary
 @export
 var base_card_path: String
 
-var _available_cards : Array[CardInfo]
-var _available_basic_cards : Array[CardInfo]
-var _available_modifier_cards : Array[CardInfo]
+var pulled_cards: Array[CardInfo] = []
+var _available_cards: Array[CardInfo] = []
+var _available_basic_cards: Array[CardInfo] = []
+var _available_modifier_cards: Array[CardInfo] = []
 var _all_cards: Array[CardInfo]
 
 # TODO: Influence random card selection by rarity somehow
@@ -36,6 +37,7 @@ func pull_card(card_info: CardInfo) -> void:
 	_available_cards.erase(card_info)
 	_available_basic_cards.erase(card_info)
 	_available_modifier_cards.erase(card_info)
+	pulled_cards.append(card_info)
 
 ## Resets the state of the library, allowing every card to be pulled again
 func reset_library() -> void:

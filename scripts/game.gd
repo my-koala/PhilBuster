@@ -40,6 +40,7 @@ func start() -> void:
 	for card_info: CardInfo in default_deck:
 		if !game_stats.deck_is_full():
 			game_stats.deck_append(card_info)
+		card_library.pull_card(card_info)
 	
 	_session.start_session(game_stats)
 
