@@ -10,7 +10,6 @@ var purchase_container: Control = $"purchase_container"
 @onready
 var purchase_text: Label = $"purchase_container/label"
 
-var _game: Game
 var _card_library : CardLibrary
 var _game_stats : GameStats
 
@@ -21,20 +20,12 @@ var _can_purchase: bool = false
 const CARD_INSTANCE: PackedScene = preload("res://assets/card/card_instance.tscn")
 
 func _ready() -> void:
-	_game = get_tree().current_scene as Game
-	if is_instance_valid(_game):
-		_card_library = _game.card_library
-		_game_stats = _game.game_stats
-		
 	purchase_container.mouse_entered.connect(_on_purchase_container_entered)
 	purchase_container.mouse_exited.connect(_on_purchase_container_exited)
 
-func reset_shop() -> void:
-	if is_instance_valid(_game):
-		_card_library = _game.card_library
-		_game_stats = _game.game_stats
-	else:
-		return
+func reset_shop(card_library: CardLibrary, game_stats: GameStats) -> void:
+	_card_library = card_library
+	_game_stats = game_stats
 	
 	for child: Control in shop_container.get_children():
 		child.queue_free()

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bfcsoskuqxu8v"]
 
 [node name="button" type="Button"]
+toggle_mode = true
 text = "WORD"
 alignment = 0

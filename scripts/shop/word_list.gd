@@ -2,12 +2,13 @@ extends Panel
 class_name WordList
 
 signal list_changed()
+signal on_word_hovered(card: CardInfo, hovered: bool)
 
-@onready
-var label: Label = $label
+@export
+var label: Label
 
-@onready
-var container: Container = $word_type/v_box_container
+@export
+var container: Container
 
 var _game_stats: GameStats
 var _cards: Array[CardInfo]
@@ -28,11 +29,12 @@ func init(name: String, cards: Array[CardInfo], game_stats: GameStats) -> void:
 		var button: Button = BUTTON.instantiate() as Button
 		button.text = card.get_word()
 		button.set_pressed_no_signal(game_stats.deck_has(card))
-		button.toggled.connect(func(toggled: bool) -> void: _on_card_button_toggled(button, i, toggled))
+		button.toggled.connect(func(toggled: bool) -> void: _on_card_button_toggled(button, card, toggled))
+		button.mouse_entered.connect(func() -> void: on_word_hovered.emit(card, true))
+		button.mouse_exited.connect(func() -> void: on_word_hovered.emit(card, false))
 		container.add_child(button)
 	
-func _on_card_button_toggled(button: Button, idx: int, toggled: bool) -> void:
-	var card: CardInfo = _cards[idx]
+func _on_card_button_toggled(button: Button, card: CardInfo, toggled: bool) -> void:
 	
 	if toggled:
 		if !_game_stats.deck_append(card):

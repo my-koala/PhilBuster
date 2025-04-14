@@ -41,6 +41,22 @@ func pop_view() -> void:
 	back_button.visible = _current_view != root_view
 	await last_view.show_menu().finished
 
+func pop_all_views() -> void:
+	if _view_stack.size() == 0:
+		return
+	
+	back_button.visible = false
+	
+	var hide_tween: Tween = _current_view.hide_menu()
+	hide_tween.set_speed_scale(10000)
+	await hide_tween.finished
+	
+	var show_tween: Tween = root_view.show_menu()
+	show_tween.set_speed_scale(10000)
+	await show_tween.finished
+	
+	_current_view = root_view
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return

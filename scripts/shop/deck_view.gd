@@ -10,23 +10,26 @@ var progress_bar_label: Label = $progress_bar/label
 @onready
 var word_types_list: Control = $word_types
 
-var _game: Game
-var _session: Session
+@onready
+var card_preview: CardInstance = $card_instance
+
 var _card_library : CardLibrary
 var _game_stats : GameStats
 
 const WORD_LIST: PackedScene = preload("res://assets/shop/word_list.tscn")
 
 func _ready() -> void:
-	_game = get_tree().current_scene as Game
-	_session = get_tree().current_scene.find_child("session") as Session
-	if is_instance_valid(_game):
-		_card_library = _game.card_library
-		_game_stats = _game.game_stats
+	visibility_changed.connect(_on_visibility_changed)
 
-	reset_lists()
+# Reset lists when this view is enabled (so purchased cards can show up)
+func _on_visibility_changed() -> void:
+	if is_instance_valid(_card_library) && is_instance_valid(_game_stats):
+		reset_lists(_card_library, _game_stats)
 
-func reset_lists() -> void:
+func reset_lists(card_library: CardLibrary, game_stats: GameStats) -> void:
+	_card_library = card_library
+	_game_stats = game_stats
+	
 	for child: Node in word_types_list.get_children():
 		child.queue_free()
 	
@@ -46,6 +49,7 @@ func _initialize_list(name: String, cards: Array[CardInfo]) -> void:
 	var word_list: WordList = WORD_LIST.instantiate() as WordList
 	word_list.init(name, cards, _game_stats)
 	word_list.list_changed.connect(_on_word_list_changed)
+	word_list.on_word_hovered.connect(_on_word_hovered)
 	word_types_list.add_child(word_list)
 
 func _on_word_list_changed() -> void:
@@ -55,3 +59,12 @@ func _on_word_list_changed() -> void:
 	progress_bar.max_value = max_cards
 	progress_bar.value = cards
 	progress_bar_label.text = "Cards: %d / %d" % [cards, max_cards]
+	
+func _on_word_hovered(card: CardInfo, hovered: bool) -> void:
+	# This makes the card preview flicker a lot but I can find a better solution later TM
+	card_preview.visible = hovered
+	
+	if !hovered:
+		return
+	
+	card_preview.card_info = card

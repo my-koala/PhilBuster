@@ -8,6 +8,9 @@ signal drag_stopped()
 # TODO: Texture swap based on card type.
 # TODO: Animations on select, mouse hover, deselect.
 
+@export
+var can_drag: bool = true
+
 var card_info: CardInfo = null:
 	get:
 		return card_info
@@ -52,7 +55,7 @@ func _update_display() -> void:
 		modulate = Color.GRAY
 
 func _physics_process(delta: float) -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() || !can_drag:
 		return
 	
 	var mouse_pressed: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)

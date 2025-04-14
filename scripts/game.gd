@@ -19,6 +19,8 @@ var default_deck: Array[CardInfo] = []
 var card_library: CardLibrary = $card_library as CardLibrary
 @onready
 var _session: Session = $session as Session
+@onready
+var _shop: Shop = $shop as Shop
 
 var _loop: bool = false
 var game_stats: GameStats = null
@@ -42,7 +44,8 @@ func start() -> void:
 			game_stats.deck_append(card_info)
 		card_library.pull_card(card_info)
 	
-	_session.start_session(game_stats)
+	#_session.start_session(game_stats)
+	_shop.start_shop(card_library, game_stats)
 
 func stop() -> void:
 	game_stats.deck_clear()
