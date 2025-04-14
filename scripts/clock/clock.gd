@@ -63,6 +63,9 @@ func _process(delta: float) -> void:
 	var texture_progress_bar_target: float = 1.0 - clampf(float(time_passed) / float(time_region_duration), 0.0, 1.0)
 	_texture_progress_bar.value = lerpf(_texture_progress_bar.value, texture_progress_bar_target, hand_rotation_speed * delta)
 
+func is_time_exceeded() -> bool:
+	return time_passed >= time_region_duration
+
 func set_time(hour: int, minute: int) -> void:
 	#hour = clamp(hour, 0, 11)
 	#minute = clamp(minute, 0, 59)

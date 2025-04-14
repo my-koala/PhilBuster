@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd4a04syaq7r7"]
+[gd_scene load_steps=3 format=3 uid="uid://cd4a04syaq7r7"]
 
 [ext_resource type="Script" uid="uid://dqgfgfldo4jm0" path="res://scripts/sentence_container/sentence_container.gd" id="1_3lou6"]
+[ext_resource type="Script" uid="uid://ctjsh263cksd6" path="res://scripts/sentences/sentence_loader.gd" id="2_3lou6"]
 
 [node name="sentence_container" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3lou6")
+read_sentence_cooldown = 0.125
+
+[node name="sentence_loader" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_3lou6")
+metadata/_custom_type_script = "uid://ctjsh263cksd6"
 
 [node name="flow_container" type="FlowContainer" parent="."]
 unique_name_in_owner = true

@@ -9,8 +9,6 @@ const PROGRESS_BAR_SIZE_MAX: float = 256.0
 const PROGRESS_BAR_SIZE_MIN: float = 1.0
 const PROGRESS_BAR_BUST_UNIT: float = 32.0
 
-signal busted()
-
 @export_range(0.0, 1024.0, 1.0, "or_greater")
 var progress_bar_speed: float = 256.0:
 	get:
@@ -24,18 +22,17 @@ var bust_max: int = 64:
 		return bust_max
 	set(value):
 		bust_max = maxi(value, 0)
-		if _bust >= bust_max:
-			busted.emit()
 
 @onready
 var _progress_bar: ProgressBar = %progress_bar as ProgressBar
 
 var _bust: int = 0
 
+func is_full() -> bool:
+	return _bust >= bust_max
+
 func add_bust(bust: int) -> void:
 	_bust += bust
-	if _bust >= bust_max:
-		busted.emit()
 
 func remove_bust(bust: int) -> void:
 	_bust = maxi(_bust - maxi(bust, 0), 0)
