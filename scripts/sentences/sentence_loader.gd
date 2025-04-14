@@ -11,10 +11,13 @@ var _topic_sentences: Dictionary[String, PackedStringArray] = {}
 
 func _init() -> void:
 	for file_path: String in DirAccess.get_files_at(SENTENCE_FOLDER_PATH):
+		file_path = SENTENCE_FOLDER_PATH + file_path
 		# If we are in an exported Godot project, we need to modify our file name slightly
 		# to account for the fact that these files are imported
 		if file_path.ends_with(".import"):
 			file_path = file_path.replace(".import", "")
+		if file_path.ends_with(".uid"):
+			continue
 		
 		var file_name: String = file_path.get_file().get_basename()
 		

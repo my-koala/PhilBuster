@@ -69,12 +69,13 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 	_bust_meter.bust_max = bust_max
 	_bust_meter.clear_bust()
 	
+	_clock.time_passed = 0
 	_clock.time_region_start = 0
 	_clock.time_region_duration = time
 	
-	_session_submit.enabled = false
+	_session_submit.enabled = true
 
-func stop_session() -> void:
+func stop_session(success: bool) -> void:
 	if !_session_active:
 		return
 	_session_active = false
@@ -86,6 +87,10 @@ func stop_session() -> void:
 	for card_instance: CardInstance in _hand_card_instances:
 		card_instance.queue_free()
 	_hand_card_instances.clear()
+	
+	_session_submit.enabled = false
+	
+	session_finished.emit(success)
 	
 	_game_stats = null
 
@@ -109,6 +114,13 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
+	_sentence_container.read_started.connect(_on_sentence_container_read_started)
+	_sentence_container.read_word.connect(_on_sentence_container_read_word)
+	_sentence_container.read_field_empty.connect(_on_sentence_container_read_field_empty)
+	_sentence_container.read_field_basic.connect(_on_sentence_container_read_field_basic)
+	_sentence_container.read_field_modifier.connect(_on_sentence_container_read_field_modifier)
+	_sentence_container.read_stopped.connect(_on_sentence_container_read_stopped)
+	
 	_sentence_container.field_press_started.connect(_on_sentence_container_field_press_started)
 	
 	_sentence_container.clear_sentence()
@@ -116,6 +128,59 @@ func _ready() -> void:
 	
 	_drag_overlay.visible = false
 	_drag_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	_session_submit.submitted.connect(_on_session_submit_submitted)
+
+func _on_session_submit_submitted() -> void:
+	_sentence_container.read_sentence()
+
+func _on_sentence_container_read_started() -> void:
+	_session_submit.enabled = false
+	for card_instance: CardInstance in _deck_card_instances:
+		card_instance.disabled = true
+	for card_instance: CardInstance in _hand_card_instances:
+		card_instance.disabled = true
+
+func _on_sentence_container_read_stopped() -> void:
+	if _bust_meter.is_full():
+		stop_session(false)
+		return
+	
+	if _clock.is_time_exceeded():
+		stop_session(true)
+		return
+	
+	_session_submit.enabled = true
+	for card_instance: CardInstance in _deck_card_instances:
+		card_instance.disabled = false
+	for card_instance: CardInstance in _hand_card_instances:
+		card_instance.disabled = false
+	
+	# Clear all fields from hand card instances
+	for sentence_container_field: SentenceContainerField in _sentence_container.get_fields():
+		var card_instance: CardInstance = sentence_container_field.get_card_instance()
+		if is_instance_valid(card_instance) && _hand_card_instances.has(card_instance):
+			sentence_container_field.remove_card_instance()
+			_hand_card_instances.erase(card_instance)
+			_deck_card_instances.append(card_instance)
+	
+	# Clear and generate next sentence
+	_sentence_container.clear_sentence()
+	_sentence_container.generate_sentence("")
+
+func _on_sentence_container_read_word(time: int) -> void:
+	_clock.add_time(time)
+
+func _on_sentence_container_read_field_empty(bust: int) -> void:
+	_bust_meter.add_bust(bust)
+
+func _on_sentence_container_read_field_basic(time: int, money: int, bust: int) -> void:
+	_bust_meter.add_bust(bust)
+	_game_stats.money_add(money)
+	_clock.add_time(time)
+
+func _on_sentence_container_read_field_modifier(time_multiplier: float, moeny_multiplier: float, bust_multiplier: float) -> void:
+	pass
 
 func _on_sentence_container_field_press_started(sentence_container_field: SentenceContainerField) -> void:
 	if sentence_container_field.has_card_instance():
@@ -172,4 +237,4 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 		card_instance.reset_physics_interpolation()
 
 func _exit_tree() -> void:
-	stop_session()
+	stop_session(false)
