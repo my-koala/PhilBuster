@@ -18,8 +18,6 @@ signal read_stopped()
 signal field_press_started(field: SentenceContainerField)
 
 @onready
-var _sentence_loader: SentenceLoader = %sentence_loader as SentenceLoader
-@onready
 var _flow_container: FlowContainer = %flow_container as FlowContainer
 
 var _word_instances: Array[SentenceContainerWord] = []
@@ -115,9 +113,6 @@ func set_sentence(sentence: String) -> bool:
 		_flow_container.add_child(word_instance)
 	
 	return true
-
-func generate_sentence(topic: String) -> bool:
-	return set_sentence(_sentence_loader.get_random_sentence(topic))
 
 func add_field_modifier(field: SentenceContainerField, card_instance: CardInstance) -> bool:
 	if !(card_instance.card_info is CardInfoModifier):
@@ -222,7 +217,7 @@ func _physics_process(delta: float) -> void:
 								if _field_instance_modifiers[field_modifier] == field:
 									var card_info_modifier: CardInfoModifier = field_modifier.get_card_instance().card_info
 									time *= card_info_modifier.time_multiplier
-									money *= card_info_modifier.dollar_multiplier
+									money *= card_info_modifier.reward_multiplier
 									bust *= card_info_modifier.bust_multiplier
 							
 							# TODO: some sort of pop up display with info
@@ -232,7 +227,7 @@ func _physics_process(delta: float) -> void:
 						var card_info_modifier: CardInfoModifier = field.get_card_instance().card_info as CardInfoModifier
 						assert(is_instance_valid(card_info_modifier))
 						var time_multiplier: int = card_info_modifier.time_multiplier
-						var money_multiplier: int = card_info_modifier.dollar_multiplier
+						var money_multiplier: int = card_info_modifier.reward_multiplier
 						var bust_multiplier: int = card_info_modifier.bust_multiplier
 						read_field_modifier.emit(time_multiplier, money_multiplier, bust_multiplier)
 			

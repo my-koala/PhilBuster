@@ -39,6 +39,8 @@ var _session_submit: SessionSubmit = %session_submit as SessionSubmit
 var _clock: Clock = %clock as Clock
 @onready
 var _phil: Background = %background as Background
+@onready
+var _topic_loader: TopicLoader = %topic_loader as TopicLoader
 
 var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
@@ -74,6 +76,10 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 	_clock.time_passed = 0
 	_clock.time_region_start = 0
 	_clock.time_region_duration = time
+	
+	#_topic_loader.set_topic(topic)
+	# temporary
+	_topic_loader.set_topic(_topic_loader.get_topic_names()[0])
 	
 	_session_submit.enabled = true
 	_phil.reset_phil()
@@ -173,7 +179,7 @@ func _on_sentence_container_read_stopped() -> void:
 	
 	# Clear and generate next sentence
 	_sentence_container.clear_sentence()
-	_sentence_container.generate_sentence("")
+	_sentence_container.set_sentence(_topic_loader.get_topic_sentence())
 
 func _on_sentence_container_read_word(time: int) -> void:
 	_clock.add_time(time)

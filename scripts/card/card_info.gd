@@ -7,6 +7,7 @@ extends Resource
 ## Base shop price for this card
 @export
 var price: int = 1
+
 ## How many duplicates of this card to add into the global card pool
 @export
 var pool_count: int = 2

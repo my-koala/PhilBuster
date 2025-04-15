@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://dnufshybpgjg8"]
+
+[ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_srtkf"]
+[ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="2_uq6b0"]
+
+[resource]
+script = ExtResource("2_uq6b0")
+sentences = PackedStringArray("This begs the question: should we {v} the {n}?", "Now—let me be clear: {n} is the largest threat to the {n}.", "The {n} is taking over. We must {v} immediately!", "Let me tell you, {n} is what we should focus on.", "The solution is simple, we just need to {v} the {n}.", "{n} are everywhere, and must be stopped!", "{n}, {n}, and {n}. What do they have in common? {n}.", "If we don\'t {v} the {n} now, it will be too late.")
+relevant_words = Array[ExtResource("1_srtkf")]([])
+irrelevant_words = Array[ExtResource("1_srtkf")]([])
+metadata/_custom_type_script = "uid://c7giyb4t438lj"
