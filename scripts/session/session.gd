@@ -151,11 +151,11 @@ func _on_sentence_container_read_stopped() -> void:
 		stop_session(false)
 		return
 	
+	await _phil.finished_speaking()
+	
 	if _clock.is_time_exceeded():
 		stop_session(true)
 		return
-	
-	await _phil.finished_speaking()
 	
 	_session_submit.enabled = true
 	for card_instance: CardInstance in _deck_card_instances:
