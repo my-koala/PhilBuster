@@ -21,6 +21,8 @@ var card_library: CardLibrary = $card_library as CardLibrary
 var _session: Session = $session as Session
 @onready
 var _shop: Shop = $shop as Shop
+@onready
+var _transition: Transition = $transition/transition as Transition
 
 var _loop: bool = false
 var game_stats: GameStats = null
@@ -49,18 +51,31 @@ func start() -> void:
 	_shop.shop_finished.connect(_on_shop_finished)
 	
 	# Start the session loop
-	_session.start_session(game_stats)
+	start_session()
 
 func stop() -> void:
 	game_stats.deck_clear()
 	
 	game_stats = null
 	_loop = false
+
+func start_session() -> void:
+	await _transition.fade_in("A bill concerning {n}...")
+	await get_tree().create_timer(2).timeout
+	_shop.hide_shop()
+	_session.start_session(game_stats)
+	await _transition.fade_out()
+
+func start_shop() -> void:
+	await _transition.fade_in("Senate has called recess...")
+	await get_tree().create_timer(2).timeout
+	_shop.start_shop(card_library, game_stats)
+	await _transition.fade_out()
 	
 func _on_session_finished(successful: bool) -> void:
 	if successful:
 		game_stats.session_finished()
-		_shop.start_shop(card_library, game_stats)
+		start_shop()
 
 func _on_shop_finished() -> void:
-	_session.start_session(game_stats)
+	start_session()

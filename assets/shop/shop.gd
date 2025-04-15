@@ -19,6 +19,8 @@ func start_shop(card_library: CardLibrary, game_stats: GameStats) -> void:
 	shop_view.reset_shop(card_library, game_stats)
 	deck_view.reset_lists(card_library, game_stats)
 
-func exit_shop() -> void:
+func hide_shop() -> void:
 	visible = false
+
+func exit_shop() -> void:
 	shop_finished.emit()

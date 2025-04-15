@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=16 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_km2eh"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://dnhuwght5anxd" path="res://assets/card/info/modifier/adjective/haughty.tres" id="10_pd2c5"]
 [ext_resource type="PackedScene" uid="uid://ce5ej8armma4y" path="res://assets/session/session.tscn" id="13_h4xlo"]
 [ext_resource type="PackedScene" uid="uid://m0dkott85qmk" path="res://assets/shop/shop.tscn" id="14_vvw4a"]
+[ext_resource type="PackedScene" uid="uid://b278yipnxx0xj" path="res://assets/transitions/transition.tscn" id="15_ew6cl"]
 
 [node name="game" type="Node"]
 script = ExtResource("2_tkxyu")
@@ -27,3 +28,5 @@ base_card_path = "res://assets/card/info"
 
 [node name="shop" parent="." instance=ExtResource("14_vvw4a")]
 visible = false
+
+[node name="transition" parent="." instance=ExtResource("15_ew6cl")]
