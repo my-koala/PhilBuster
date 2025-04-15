@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://dtxfpwtyg1a8t" path="res://assets/shop/shop.gd" id="1_u7rti"]
 [ext_resource type="PackedScene" uid="uid://boskellw4qds0" path="res://assets/shop/menu_view.tscn" id="1_v8g57"]
 [ext_resource type="Theme" uid="uid://qm7h04x08t3m" path="res://assets/theme.tres" id="2_msibo"]
-[ext_resource type="Texture2D" uid="uid://m6n0tx1hfr6h" path="res://assets/shop/temp_background.png" id="3_lxv6y"]
 [ext_resource type="Script" uid="uid://b6ieeq5ts4te2" path="res://scripts/shop/shop_view.gd" id="4_k4ejo"]
+[ext_resource type="Texture2D" uid="uid://yjiw6s3gc03v" path="res://assets/shop/phil_shop.png" id="5_msibo"]
 [ext_resource type="Script" uid="uid://dywu1p8i2ubxi" path="res://scripts/shop/deck_view.gd" id="5_u7rti"]
 [ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="7_vox5x"]
 
@@ -53,10 +53,12 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -860.0
+offset_left = -876.0
+offset_top = 204.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("3_lxv6y")
+texture = ExtResource("5_msibo")
+expand_mode = 1
 
 [node name="button" type="Button" parent="flow_coordinator/menu_view"]
 layout_mode = 2
