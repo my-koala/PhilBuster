@@ -21,7 +21,7 @@ default_deck = Array[ExtResource("2_km2eh")]([ExtResource("3_wpieh"), ExtResourc
 
 [node name="card_library" type="Node" parent="."]
 script = ExtResource("1_ujfqy")
-base_card_path = "res://assets/card"
+base_card_path = "res://assets/card/info"
 
 [node name="session" parent="." instance=ExtResource("13_h4xlo")]
 

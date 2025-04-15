@@ -22,7 +22,7 @@ var card_info: CardInfo = null:
 @onready
 var _label: Label = %label as Label
 @onready
-var _color_rect: ColorRect = %color_rect as ColorRect
+var _border_img: CanvasItem = %border as CanvasItem
 
 var _dirty: bool = true
 
@@ -43,16 +43,16 @@ func _update_display() -> void:
 		_label.text = card_info.get_word()
 		
 		if card_info is CardInfoBasicNoun:
-			modulate = Color.RED
+			_border_img.modulate = Color.RED
 		elif card_info is CardInfoBasicVerb:
-			modulate = Color.BLUE
+			_border_img.modulate = Color.BLUE
 		elif card_info is CardInfoModifierAdjective:
-			modulate = Color.ORANGE_RED
+			_border_img.modulate = Color.ORANGE_RED
 		elif card_info is CardInfoModifierAdverb:
-			modulate = Color.BLUE_VIOLET
+			_border_img.modulate = Color.BLUE_VIOLET
 	else:
 		_label.text = "N/A"
-		modulate = Color.GRAY
+		_border_img.modulate = Color.GRAY
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint() || !can_drag:
