@@ -52,7 +52,7 @@ texture_progress = ExtResource("4_4ldhw")
 
 [node name="hour_hand" type="TextureRect" parent="."]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.415686, 0.333333, 0.243137, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -71,7 +71,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="minute_hand" type="TextureRect" parent="."]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.415686, 0.333333, 0.243137, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
