@@ -68,7 +68,8 @@ func _load_folder(path: DirAccess) -> void:
 		if (!is_instance_valid(card_info)):
 			continue
 		
-		_all_cards.append(card_info)
+		for i: int in range(card_info.pool_count):
+			_all_cards.append(card_info)
 	
 	# Recurse into subdirectories (EXIT CONDITION: no subdirs)
 	for subdirectory: String in path.get_directories():

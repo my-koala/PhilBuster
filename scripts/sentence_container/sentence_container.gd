@@ -213,7 +213,7 @@ func _physics_process(delta: float) -> void:
 							var card_info_basic: CardInfoBasic = field.get_card_instance().card_info as CardInfoBasic
 							assert(is_instance_valid(card_info_basic))
 							var time: int = card_info_basic.time
-							var money: int = card_info_basic.dollars
+							var money: int = card_info_basic.reward
 							# TODO: calculate relevancies
 							var bust: int = 0
 							

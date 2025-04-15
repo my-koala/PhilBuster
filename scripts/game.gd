@@ -59,6 +59,7 @@ func stop() -> void:
 	
 func _on_session_finished(successful: bool) -> void:
 	if successful:
+		game_stats.session_finished()
 		_shop.start_shop(card_library, game_stats)
 
 func _on_shop_finished() -> void:

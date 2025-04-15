@@ -62,7 +62,7 @@ func money_remove(amount: int) -> void:
 	_money -= amount
 
 func calculate_price_for(card_info : CardInfo) -> int:
-	return card_info.rarity * (floori(_sessions * 0.25) + 1)
+	return card_info.price * (floori(_sessions * 0.25) + 1)
 
 func get_sessions() -> int:
 	return _sessions
