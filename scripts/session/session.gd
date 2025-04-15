@@ -37,6 +37,8 @@ var _discard_highlight: Highlight = %discard/highlight as Highlight
 var _session_submit: SessionSubmit = %session_submit as SessionSubmit
 @onready
 var _clock: Clock = %clock as Clock
+@onready
+var _phil: Background = %background as Background
 
 var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
@@ -74,6 +76,7 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 	_clock.time_region_duration = time
 	
 	_session_submit.enabled = true
+	_phil.reset_phil()
 
 func stop_session(success: bool) -> void:
 	if !_session_active:
@@ -132,6 +135,7 @@ func _ready() -> void:
 	_session_submit.submitted.connect(_on_session_submit_submitted)
 
 func _on_session_submit_submitted() -> void:
+	await _phil.sentence_complete()
 	_sentence_container.read_sentence()
 
 func _on_sentence_container_read_started() -> void:
@@ -143,12 +147,15 @@ func _on_sentence_container_read_started() -> void:
 
 func _on_sentence_container_read_stopped() -> void:
 	if _bust_meter.is_full():
+		await _phil.busted()
 		stop_session(false)
 		return
 	
 	if _clock.is_time_exceeded():
 		stop_session(true)
 		return
+	
+	await _phil.finished_speaking()
 	
 	_session_submit.enabled = true
 	for card_instance: CardInstance in _deck_card_instances:
@@ -173,6 +180,7 @@ func _on_sentence_container_read_word(time: int) -> void:
 
 func _on_sentence_container_read_field_empty(bust: int) -> void:
 	_bust_meter.add_bust(bust)
+	_phil.bust_meter_increased()
 
 func _on_sentence_container_read_field_basic(time: int, money: int, bust: int) -> void:
 	_bust_meter.add_bust(bust)

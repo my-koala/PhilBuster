@@ -1,16 +1,36 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://qm7h04x08t3m"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://qm7h04x08t3m"]
 
 [ext_resource type="FontFile" uid="uid://uojuf5ikdikq" path="res://assets/fonts/CourierPrime-Bold.ttf" id="1_wl1kw"]
 [ext_resource type="Texture2D" uid="uid://dv64ofp8dqvs8" path="res://assets/button/square button.png" id="2_lu33j"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wl1kw"]
+texture = ExtResource("2_lu33j")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.25, 0.25, 0.25, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lu33j"]
+texture = ExtResource("2_lu33j")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.5, 0.5, 0.5, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wycmq"]
 texture = ExtResource("2_lu33j")
 texture_margin_left = 9.0
+texture_margin_top = 9.0
 texture_margin_right = 9.0
+texture_margin_bottom = 9.0
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/fonts/font = ExtResource("1_wl1kw")
+Button/styles/focus = SubResource("StyleBoxTexture_wl1kw")
+Button/styles/hover = SubResource("StyleBoxTexture_lu33j")
 Button/styles/normal = SubResource("StyleBoxTexture_wycmq")
 HBoxContainer/constants/separation = 8
 Label/font_sizes/font_size = 32
