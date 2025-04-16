@@ -93,10 +93,10 @@ func reset_topic_sentence_pool() -> void:
 
 func is_word_relevant(word: String) -> bool:
 	if is_instance_valid(_topic):
-		return _topic.relevant_words.has(word)
+		return _topic.relevant_words.find_custom(func(card_info: CardInfo) -> bool: return card_info.get_word() == word)
 	return false
 
 func is_word_irrelevant(word: String) -> bool:
 	if is_instance_valid(_topic):
-		return _topic.irrelevant_words.has(word)
+		return _topic.irrelevant_words.find_custom(func(card_info: CardInfo) -> bool: return card_info.get_word() == word)
 	return false

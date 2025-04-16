@@ -4,6 +4,10 @@ extends Resource
 
 ## Base class for all word cards.
 
+## Amount of session time taken to say this word
+@export
+var time: int = 1
+
 ## Base shop price for this card
 @export
 var price: int = 1

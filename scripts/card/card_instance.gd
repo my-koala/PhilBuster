@@ -68,13 +68,13 @@ func _physics_process(delta: float) -> void:
 	if disabled || !mouse_pressed:
 		if _drag:
 			_drag = false
-			drag_stopped.emit()
 			_card_drop.play()
+			drag_stopped.emit()
 	elif button_pressed:
 		if !_drag:
 			_drag = true
-			drag_started.emit()
 			_card_drop.play()
+			drag_started.emit()
 	
 	if disabled:
 		mouse_default_cursor_shape = Control.CURSOR_ARROW

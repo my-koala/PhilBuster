@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxoep4mh56aj8"]
+[gd_scene load_steps=6 format=3 uid="uid://bxoep4mh56aj8"]
 
 [ext_resource type="Script" uid="uid://biqs5na3rw42k" path="res://scripts/sentence_container/sentence_container_field.gd" id="1_y5l5o"]
+[ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="2_ox75f"]
 [ext_resource type="PackedScene" uid="uid://dskiemvv8csjm" path="res://scripts/highlight/highlight.tscn" id="2_tjf6p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjf6p"]
@@ -17,6 +18,7 @@ offset_right = 132.0
 offset_bottom = 48.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_tjf6p")
 script = ExtResource("1_y5l5o")
+card_type = 0
 
 [node name="h_box_container" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -72,6 +74,11 @@ scale = Vector2(0.75, 0.75)
 pivot_offset = Vector2(84, 0)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tjf6p")
+
+[node name="card_instance" parent="h_box_container/rich_text_label/preview" instance=ExtResource("2_ox75f")]
+unique_name_in_owner = true
+layout_mode = 2
+can_drag = false
 
 [node name="padding_right" type="Control" parent="h_box_container"]
 custom_minimum_size = Vector2(8, 0)

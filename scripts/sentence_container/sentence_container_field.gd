@@ -7,13 +7,12 @@ class_name SentenceContainerField
 
 signal press_started()
 signal press_stopped()
-signal card_instance_added(card_instance: CardInstance)
-signal card_instance_removed(card_instance: CardInstance)
 
 # TODO:
 # Draw crawling ants border animation.
 
 enum CardType {
+	NONE,
 	NOUN,
 	VERB,
 	ADJECTIVE,
@@ -28,7 +27,7 @@ var card_type: CardType = CardType.NOUN:
 		if card_type != value:
 			card_type = value
 			_dirty = true
-			remove_card_instance()
+			set_card_info(null)
 
 @onready
 var _color_rect: ColorRect = %color_rect as ColorRect
@@ -40,94 +39,84 @@ var _preview: Control = %preview as Control
 var _highlight: Highlight = %highlight as Highlight
 @onready
 var _button: Button = %button as Button
+@onready
+var _card_instance: CardInstance = %card_instance as CardInstance
+
+var _card_info: CardInfo = null
 
 var _dirty: bool = false
-
-var _card_instance: CardInstance = null
-
-var _hover: bool = false
 
 var _input_mouse_hover: bool = false
 
 func get_highlight() -> Highlight:
 	return _highlight
 
-func check_card_type(card_instance: CardInstance) -> bool:
-	if !is_instance_valid(card_instance):
+static func get_card_type(card_info: CardInfo) -> CardType:
+	if !is_instance_valid(card_info):
+		return CardType.NONE
+	
+	if card_info is CardInfoBasicNoun:
+		return CardType.NOUN
+	if card_info is CardInfoBasicVerb:
+		return CardType.VERB
+	if card_info is CardInfoModifierAdjective:
+		return CardType.ADJECTIVE
+	if card_info is CardInfoModifierAdverb:
+		return CardType.ADVERB
+	return CardType.NONE
+
+func check_card_type(card_info: CardInfo) -> bool:
+	if !is_instance_valid(card_info):
+		return false
+	
+	match card_type:
+		CardType.NONE:
+			return false
+		CardType.NOUN:
+			return card_info is CardInfoBasicNoun
+		CardType.VERB:
+			return card_info is CardInfoBasicVerb
+		CardType.ADJECTIVE:
+			return card_info is CardInfoModifierAdjective
+		CardType.ADVERB:
+			return card_info is CardInfoModifierAdverb
+	return false
+
+func check_card_type_modifier(card_info_modifier: CardInfoModifier) -> bool:
+	if !is_instance_valid(card_info_modifier):
 		return false
 	
 	match card_type:
 		CardType.NOUN:
-			return card_instance.card_info is CardInfoBasicNoun
+			return card_info_modifier is CardInfoModifierAdjective
 		CardType.VERB:
-			return card_instance.card_info is CardInfoBasicVerb
+			return card_info_modifier is CardInfoModifierAdverb
 		CardType.ADJECTIVE:
-			return card_instance.card_info is CardInfoModifierAdjective
+			return card_info_modifier is CardInfoModifierAdjective
 		CardType.ADVERB:
-			return card_instance.card_info is CardInfoModifierAdverb
+			return card_info_modifier is CardInfoModifierAdverb
 	return false
 
-func check_card_type_modifier(card_instance: CardInstance) -> bool:
-	if !is_instance_valid(card_instance):
-		return false
-	
-	match card_type:
-		CardType.NOUN:
-			return card_instance.card_info is CardInfoModifierAdjective
-		CardType.VERB:
-			return card_instance.card_info is CardInfoModifierAdverb
-		CardType.ADJECTIVE:
-			return false
-		CardType.ADVERB:
-			return false
-	return false
+func get_card_info() -> CardInfo:
+	return _card_info
 
-func add_card_instance(card_instance: CardInstance) -> bool:
-	if !is_instance_valid(card_instance):
-		return false
+func set_card_info(card_info: CardInfo, forced: bool = false) -> bool:
+	if _card_info == card_info:
+		return true
 	
-	if is_instance_valid(_card_instance):
-		return false
+	if is_instance_valid(card_info):
+		if forced:
+			card_type = get_card_type(card_info)
+		elif !check_card_type(card_info):
+			return false
 	
-	if _card_instance == card_instance:
-		return false
+	_card_info = card_info
 	
-	if !check_card_type(card_instance):
-		return false
-	
-	_card_instance = card_instance
 	_dirty = true
-	
-	var parent: Node = _card_instance.get_parent()
-	var pos: Vector2 = _card_instance.global_position
-	if is_instance_valid(parent):
-		parent.remove_child(_card_instance)
-	_preview.add_child(_card_instance)
-	_card_instance.position = Vector2.ZERO
-	_card_instance.reset_physics_interpolation()
-	
-	card_instance_added.emit(card_instance)
 	return true
 
-func get_card_instance() -> CardInstance:
-	return _card_instance
-
-func has_card_instance() -> bool:
-	return is_instance_valid(_card_instance)
-
-func remove_card_instance() -> bool:
-	if !is_instance_valid(_card_instance):
-		return false
-	
-	var card_instance: CardInstance = _card_instance
-	
-	_preview.remove_child(_card_instance)
-	
-	_card_instance = null
-	_dirty = true
-	
-	card_instance_removed.emit(card_instance)
-	return true
+func has_card_info() -> bool:
+	return is_instance_valid(_card_info)
 
 var _tween_read_animation: Tween = null
 
@@ -150,27 +139,33 @@ func _ready() -> void:
 		return
 	
 	_preview.visible = false
-	_button.pressed.connect(press_started.emit)
+	
+	_button.button_down.connect(press_started.emit)
+	_button.button_up.connect(press_stopped.emit)
 	_button.mouse_entered.connect(func() -> void: _input_mouse_hover = true)
 	_button.mouse_exited.connect(func() -> void: _input_mouse_hover = false)
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if _input_mouse_hover && has_card_instance():
+	if _input_mouse_hover && is_instance_valid(_card_info):
 		_preview.visible = true
 	else:
 		_preview.visible = false
-
-func _process(delta: float) -> void:
+	
 	if !_dirty:
 		return
 	_dirty = false
 	
+	_card_instance.card_info = _card_info
+	
 	var placeholder_text: String = ""
 	
 	match card_type:
+		CardType.NONE:
+			_color_rect.color = Color.GRAY
+			placeholder_text = "none"
 		CardType.NOUN:
 			_color_rect.color = Color.RED
 			placeholder_text = "noun"
@@ -184,8 +179,8 @@ func _process(delta: float) -> void:
 			_color_rect.color = Color.BLUE_VIOLET
 			placeholder_text = "adverb"
 	
-	if is_instance_valid(_card_instance):
-		_rich_text_label.text = "[b]%s[/b]" % [_card_instance.card_info.get_word()]
+	if is_instance_valid(_card_info):
+		_rich_text_label.text = "[b]%s[/b]" % [_card_info.get_word()]
 	else:
 		_rich_text_label.text = "([i]%s[i])" % [placeholder_text]
 	

@@ -6,23 +6,18 @@ class_name SentenceContainer
 
 const FIELD_SCENE: PackedScene = preload("res://assets/sentence_container/sentence_container_field.tscn")
 
-const EMPTY_BUST_PENALTY: int = 10
-
 signal read_started()
-signal read_word(time: int)
-signal read_field_empty(bust: int)
-signal read_field_basic(time: int, money: int, bust: int)
-signal read_field_modifier(time_multiplier: float, money_multiplier: float, bust_multiplier: float)
+signal read_word()
+signal read_field(card_info: CardInfo)
 signal read_stopped()
 
-signal field_press_started(field: SentenceContainerField)
+signal card_info_removed(card_info: CardInfo)
 
 @onready
 var _flow_container: FlowContainer = %flow_container as FlowContainer
 
 var _word_instances: Array[SentenceContainerWord] = []
-var _field_instance_basics: Array[SentenceContainerField] = []
-var _field_instance_modifiers: Dictionary[SentenceContainerField, SentenceContainerField] = {}
+var _field_instances: Array[SentenceContainerField] = []
 
 @export_range(0.0, 1.0, 0.001)
 var read_sentence_cooldown: float = 0.1:
@@ -40,15 +35,8 @@ func _ready() -> void:
 		return
 	
 
-func get_fields() -> Array[SentenceContainerField]:
-	var fields: Array[SentenceContainerField] = []
-	fields.append_array(_field_instance_basics)
-	fields.append_array(_field_instance_modifiers.keys())
-	fields.make_read_only()
-	return fields
-
 func has_sentence() -> bool:
-	return !_word_instances.is_empty() && !_field_instance_basics.is_empty()
+	return !_word_instances.is_empty() && !_field_instances.is_empty()
 
 func read_sentence() -> void:
 	if !_read_sentence:
@@ -62,18 +50,13 @@ func clear_sentence() -> void:
 		word_instance.queue_free()
 	_word_instances.clear()
 	
-	for field_instance_basic: SentenceContainerField in _field_instance_basics:
-		_flow_container.remove_child(field_instance_basic)
-		field_instance_basic.queue_free()
-	_field_instance_basics.clear()
-	
-	for field_instance_modifier: SentenceContainerField in _field_instance_modifiers:
-		_flow_container.remove_child(field_instance_modifier)
-		field_instance_modifier.queue_free()
-	_field_instance_modifiers.clear()
+	for field_instance: SentenceContainerField in _field_instances:
+		_flow_container.remove_child(field_instance)
+		field_instance.queue_free()
+	_field_instances.clear()
 
 func set_sentence(sentence: String) -> bool:
-	if !_word_instances.is_empty() || !_field_instance_basics.is_empty():
+	if !_word_instances.is_empty() || !_field_instances.is_empty():
 		return false
 	
 	if sentence.is_empty():
@@ -83,102 +66,77 @@ func set_sentence(sentence: String) -> bool:
 	if tokens.is_empty():
 		return false
 	
-	for token: String in tokens:
-		if token.begins_with("{") && token.ends_with("}"):
-			var word_type: String = token.substr(1, token.length() - 2).to_lower()
-			if word_type == "n":
-				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
-				field_instance.card_type = SentenceContainerField.CardType.NOUN
-				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
-				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
-				_field_instance_basics.append(field_instance)
-				_flow_container.add_child(field_instance)
-				continue
+	var reg_ex: RegEx = RegEx.new()
+	reg_ex.compile("\\{([NVnv])\\}")
+	
+	for token: String in sentence.split(" ", false):
+		var reg_ex_matches: Array[RegExMatch] = reg_ex.search_all(token)
+		var start: int = 0
+		for reg_ex_match: RegExMatch in reg_ex_matches:
+			if reg_ex_match.get_start() > start:
+				var prefix: String = token.substr(start, reg_ex_match.get_start() - start)
+				_insert_word_instance(prefix)
+			start = reg_ex_match.get_end()
 			
-			if word_type == "v":
-				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
-				field_instance.card_type = SentenceContainerField.CardType.VERB
-				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
-				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
-				_field_instance_basics.append(field_instance)
-				_flow_container.add_child(field_instance)
-				continue
+			match reg_ex_match.get_string()[1]:
+				"N", "n":
+					_insert_field_instance(null).card_type = SentenceContainerField.CardType.NOUN
+				"V", "v":
+					_insert_field_instance(null).card_type = SentenceContainerField.CardType.VERB
 		
-		# Create a normal, static word.
-		var word_instance: SentenceContainerWord = SentenceContainerWord.new()
-		word_instance.set_word(token)
-		_word_instances.append(word_instance)
-		_flow_container.add_child(word_instance)
+		if start < token.length():
+			var suffix: String = token.substr(start)
+			_insert_word_instance(suffix)
 	
 	return true
 
-func add_field_modifier(field: SentenceContainerField, card_instance: CardInstance) -> bool:
-	if !(card_instance.card_info is CardInfoModifier):
-		return false
-	
-	match field.card_type:
-		SentenceContainerField.CardType.NOUN:
-			if card_instance.card_info is CardInfoModifierAdjective:
-				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
-				field_instance.card_type = SentenceContainerField.CardType.ADJECTIVE
-				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
-				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
-				_flow_container.add_child(field_instance)
-				_flow_container.move_child(field_instance, field.get_index())
-				field_instance.add_card_instance(card_instance)
-				_field_instance_modifiers[field_instance] = field
+func try_insert_card_info(card_info: CardInfo, insert_position: Vector2) -> bool:
+	for field_instance: SentenceContainerField in _field_instances:
+		if field_instance.get_global_rect().has_point(insert_position):
+			if !field_instance.has_card_info() && field_instance.set_card_info(card_info):
 				return true
-		SentenceContainerField.CardType.ADJECTIVE:
-			if card_instance.card_info is CardInfoModifierAdjective:
-				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
-				field_instance.card_type = SentenceContainerField.CardType.ADJECTIVE
-				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
-				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
-				_flow_container.add_child(field_instance)
-				_flow_container.move_child(field_instance, field.get_index())
-				field_instance.add_card_instance(card_instance)
-				_field_instance_modifiers[field_instance] = _field_instance_modifiers[field]
+			if field_instance.check_card_type_modifier(card_info as CardInfoModifier):
+				_insert_field_instance(card_info, field_instance.get_index())
 				return true
-		SentenceContainerField.CardType.VERB:
-			if card_instance.card_info is CardInfoModifierAdverb:
-				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
-				field_instance.card_type = SentenceContainerField.CardType.ADVERB
-				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
-				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
-				_flow_container.add_child(field_instance)
-				_flow_container.move_child(field_instance, field.get_index())
-				field_instance.add_card_instance(card_instance)
-				_field_instance_modifiers[field_instance] = field
-				return true
-		SentenceContainerField.CardType.ADVERB:
-			if card_instance.card_info is CardInfoModifierAdverb:
-				var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
-				field_instance.card_type = SentenceContainerField.CardType.ADJECTIVE
-				field_instance.press_started.connect(field_press_started.emit.bind(field_instance))
-				field_instance.card_instance_added.connect(_on_field_card_instance_added.bind(field_instance))
-				field_instance.card_instance_removed.connect(_on_field_card_instance_removed.bind(field_instance))
-				_flow_container.add_child(field_instance)
-				_flow_container.move_child(field_instance, field.get_index())
-				field_instance.add_card_instance(card_instance)
-				_field_instance_modifiers[field_instance] = _field_instance_modifiers[field]
-				return true
-	
+			break
 	return false
 
-func _on_field_card_instance_added(card_instance: CardInstance, field: SentenceContainerField) -> void:
-	pass
+func _insert_field_instance(card_info: CardInfo, index: int = -1) -> SentenceContainerField:
+	var field_instance: SentenceContainerField = FIELD_SCENE.instantiate() as SentenceContainerField
+	
+	field_instance.press_started.connect(_on_field_pressed.bind(field_instance))
+	
+	if is_instance_valid(card_info):
+		field_instance.set_card_info(card_info, true)
+	
+	_flow_container.add_child(field_instance)
+	if index > -1:
+		_flow_container.move_child(field_instance, index)
+	
+	_field_instances.append(field_instance)
+	
+	return field_instance
 
-func _on_field_card_instance_removed(card_instance: CardInstance, field: SentenceContainerField) -> void:
-	match field.card_type:
-		SentenceContainerField.CardType.ADJECTIVE, SentenceContainerField.CardType.ADVERB:
-			# Free card instance.
-			_flow_container.remove_child(field)
-			field.queue_free()
+func _insert_word_instance(word: String, index: int = -1) -> SentenceContainerWord:
+	var word_instance: SentenceContainerWord = SentenceContainerWord.new()
+	word_instance.set_word(word)
+	_word_instances.append(word_instance)
+	_flow_container.add_child(word_instance)
+	if index > -1:
+		_flow_container.move_child(word_instance, index)
+	return word_instance
+
+func _on_field_pressed(field_instance: SentenceContainerField) -> void:
+	if field_instance.has_card_info():
+		var card_info: CardInfo = field_instance.get_card_info()
+		field_instance.set_card_info(null)
+		card_info_removed.emit(card_info)
+		
+		match field_instance.card_type:
+			SentenceContainerField.CardType.ADJECTIVE, SentenceContainerField.CardType.ADVERB:
+				_flow_container.remove_child(field_instance)
+				field_instance.queue_free()
+				_field_instances.erase(field_instance)
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -195,41 +153,12 @@ func _physics_process(delta: float) -> void:
 			var word: SentenceContainerWord = node as SentenceContainerWord
 			if is_instance_valid(word):
 				word.play_read_animation()
-				read_word.emit(1)
+				read_word.emit()
 			
-			var field: SentenceContainerField = node as SentenceContainerField
-			if is_instance_valid(field):
-				field.play_read_animation()
-				match field.card_type:
-					SentenceContainerField.CardType.NOUN, SentenceContainerField.CardType.VERB:
-						if !field.has_card_instance():
-							read_field_empty.emit(EMPTY_BUST_PENALTY)
-						else:
-							var card_info_basic: CardInfoBasic = field.get_card_instance().card_info as CardInfoBasic
-							assert(is_instance_valid(card_info_basic))
-							var time: int = card_info_basic.time
-							var money: int = card_info_basic.reward
-							# TODO: calculate relevancies
-							var bust: int = 0
-							
-							# get all modifiers (adjectives/adverbs) that modify this field
-							for field_modifier: SentenceContainerField in _field_instance_modifiers:
-								if _field_instance_modifiers[field_modifier] == field:
-									var card_info_modifier: CardInfoModifier = field_modifier.get_card_instance().card_info
-									time *= card_info_modifier.time_multiplier
-									money *= card_info_modifier.reward_multiplier
-									bust *= card_info_modifier.bust_multiplier
-							
-							# TODO: some sort of pop up display with info
-							read_field_basic.emit(time, money, bust)
-					SentenceContainerField.CardType.ADJECTIVE, SentenceContainerField.CardType.ADVERB:
-						assert(field.has_card_instance())
-						var card_info_modifier: CardInfoModifier = field.get_card_instance().card_info as CardInfoModifier
-						assert(is_instance_valid(card_info_modifier))
-						var time_multiplier: int = card_info_modifier.time_multiplier
-						var money_multiplier: int = card_info_modifier.reward_multiplier
-						var bust_multiplier: int = card_info_modifier.bust_multiplier
-						read_field_modifier.emit(time_multiplier, money_multiplier, bust_multiplier)
+			var field_instance: SentenceContainerField = node as SentenceContainerField
+			if is_instance_valid(field_instance):
+				field_instance.play_read_animation()
+				read_field.emit(field_instance.get_card_info())
 			
 			_read_sentence_index += 1
 			if _read_sentence_index >= _flow_container.get_child_count():
