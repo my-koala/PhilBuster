@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://b4h72ntok3ud3"]
+
+[ext_resource type="AudioStream" uid="uid://cl027hx25xv03" path="res://assets/sfx/clips/card_discard1_new.wav" id="1_h6rmn"]
+[ext_resource type="AudioStream" uid="uid://biat7ygvorttc" path="res://assets/sfx/clips/card_discard2_new.wav" id="2_mvsng"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_h6rmn")
+stream_1/stream = ExtResource("2_mvsng")

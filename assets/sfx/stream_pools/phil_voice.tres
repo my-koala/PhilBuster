@@ -1,0 +1,19 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://4dtp7tvkbhns"]
+
+[ext_resource type="AudioStream" uid="uid://cjyrk37pqj1pp" path="res://assets/sfx/clips/voice_sfx_1.wav" id="1_ip6vn"]
+[ext_resource type="AudioStream" uid="uid://ui037v41m0xe" path="res://assets/sfx/clips/voice_sfx_2.wav" id="2_cmdjm"]
+[ext_resource type="AudioStream" uid="uid://ba1cp5uaqn8i8" path="res://assets/sfx/clips/voice_sfx_3.wav" id="3_2jcdj"]
+[ext_resource type="AudioStream" uid="uid://c4ghg60s5b18h" path="res://assets/sfx/clips/voice_sfx_4.wav" id="4_07a6y"]
+[ext_resource type="AudioStream" uid="uid://cxoriehkle1hr" path="res://assets/sfx/clips/voice_sfx_5.wav" id="5_ql652"]
+[ext_resource type="AudioStream" uid="uid://c6h3825ln0gbh" path="res://assets/sfx/clips/voice_sfx_6.wav" id="6_7dp5f"]
+[ext_resource type="AudioStream" uid="uid://cpulf23s6tfka" path="res://assets/sfx/clips/voice_sfx_7.wav" id="7_i88vx"]
+
+[resource]
+streams_count = 7
+stream_0/stream = ExtResource("1_ip6vn")
+stream_1/stream = ExtResource("2_cmdjm")
+stream_2/stream = ExtResource("3_2jcdj")
+stream_3/stream = ExtResource("4_07a6y")
+stream_4/stream = ExtResource("5_ql652")
+stream_5/stream = ExtResource("6_7dp5f")
+stream_6/stream = ExtResource("7_i88vx")

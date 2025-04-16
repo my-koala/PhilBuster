@@ -23,6 +23,10 @@ var card_info: CardInfo = null:
 var _label: Label = %label as Label
 @onready
 var _border_img: CanvasItem = %border as CanvasItem
+@onready
+var _card_pickup: AudioStreamPlayer = $card_pickup as AudioStreamPlayer
+@onready
+var _card_drop: AudioStreamPlayer = $card_drop as AudioStreamPlayer
 
 var _dirty: bool = true
 
@@ -32,6 +36,7 @@ func start_drag() -> void:
 	if !_drag:
 		_drag = true
 		drag_started.emit()
+		_card_pickup.play()
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -64,10 +69,12 @@ func _physics_process(delta: float) -> void:
 		if _drag:
 			_drag = false
 			drag_stopped.emit()
+			_card_drop.play()
 	elif button_pressed:
 		if !_drag:
 			_drag = true
 			drag_started.emit()
+			_card_drop.play()
 	
 	if disabled:
 		mouse_default_cursor_shape = Control.CURSOR_ARROW

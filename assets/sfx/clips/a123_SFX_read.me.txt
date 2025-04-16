@@ -1,0 +1,22 @@
+SFX NOTES |
+-----------
+
+-I included several voice options; I wasn't sure which ones I liked, so I'll let you guys decide. If y'all don't love any of them, I can make some others. 
+
+-I made the voices with an Undertale/Omori typewriter text effect in mind; if this ends up not working for the game or y'all want a different voice effect, I can work on that.
+
+-The clock ticking sound effects would play when a quarter of the time has passed, and the _lastquarter ticking would play in the last quarter of time the player has left. Depending on how the timer ends up working this could be omitted. Also, it can be omitted if it's distracting and/or annoying.
+
+-Any sounds marked "_maybe" I didn't see fitting into the aesthetic of the game, but I left them in because they might be useful...maybe...
+
+-The concept art that was made had Phil grinning after a good sentence, so that's what the teeth_twinkle sound would be used for. Could be omitted if this pose isn't in the final game/it got annoying.
+
+-As of writing I don't know how the bust meter will work in game (how many times it can fill, what the filling animation will look like, etc.), so the sounds included for this may not fit it at all. Or maybe they will! I made two different versions. But if not, these can be changed.
+
+-If not used for the bust meter, the bust meter wobble sounds could possibly also be used as a sound effect when Phil's sprite changes after saying an incorrect word in a phrase (when the word is said in the sentence, the sound would play.)
+
+-The filled-up bust meter sound will be the front end of a song leading into the results/match transcription screen. I'll send this in a separate file along with the rest of the music. If this match-over screen concept is changed to where this won't work, I can make it a sound effect.
+
+
+
+If y'all have any suggestions/changes you'd like to request for these sounds, let me know!

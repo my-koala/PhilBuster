@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4n0r7gnn28om"]
+[gd_scene load_steps=7 format=3 uid="uid://d4n0r7gnn28om"]
 
 [ext_resource type="Script" uid="uid://lur78koemyo2" path="res://scripts/card/card_instance.gd" id="1_40wyd"]
 [ext_resource type="Texture2D" uid="uid://d1hgqy4d5kds3" path="res://assets/card/card_background.png" id="2_duqi3"]
 [ext_resource type="Texture2D" uid="uid://bymyxb3r7f4ci" path="res://assets/card/card_border.png" id="3_iw4tm"]
+[ext_resource type="AudioStream" uid="uid://dp6rwanc6nmlx" path="res://assets/sfx/stream_pools/card_pickup.tres" id="4_dei5m"]
+[ext_resource type="AudioStream" uid="uid://5nd6wy4ww34n" path="res://assets/sfx/stream_pools/card_drop.tres" id="5_5xmu0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dei5m"]
 font_size = 28
@@ -72,3 +74,9 @@ label_settings = SubResource("LabelSettings_dei5m")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="card_pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dei5m")
+
+[node name="card_drop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5xmu0")
