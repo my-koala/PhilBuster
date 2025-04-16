@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://m0dkott85qmk"]
+[gd_scene load_steps=14 format=3 uid="uid://m0dkott85qmk"]
 
 [ext_resource type="Script" uid="uid://d23kpmtei5n5y" path="res://scripts/shop/flow_coordinator.gd" id="1_joqlw"]
-[ext_resource type="Script" path="res://assets/shop/shop.gd" id="1_u7rti"]
+[ext_resource type="Script" uid="uid://dtxfpwtyg1a8t" path="res://assets/shop/shop.gd" id="1_u7rti"]
 [ext_resource type="PackedScene" uid="uid://boskellw4qds0" path="res://assets/shop/menu_view.tscn" id="1_v8g57"]
 [ext_resource type="Theme" uid="uid://qm7h04x08t3m" path="res://assets/theme.tres" id="2_msibo"]
 [ext_resource type="Script" uid="uid://b6ieeq5ts4te2" path="res://scripts/shop/shop_view.gd" id="4_k4ejo"]
 [ext_resource type="Texture2D" uid="uid://yjiw6s3gc03v" path="res://assets/shop/phil_shop.png" id="5_msibo"]
-[ext_resource type="Script" path="res://scripts/shop/deck_view.gd" id="5_u7rti"]
+[ext_resource type="Script" uid="uid://dywu1p8i2ubxi" path="res://scripts/shop/deck_view.gd" id="5_u7rti"]
+[ext_resource type="AudioStream" uid="uid://1rjq1wcarnmq" path="res://assets/sfx/clips/shop_itempurchase.wav" id="7_nyl32"]
 [ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="7_vox5x"]
+[ext_resource type="AudioStream" uid="uid://oxgpw20415fr" path="res://assets/sfx/clips/shop_notenoughmoney_maybe.wav" id="8_01ogr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_joqlw"]
 font_size = 64
@@ -32,7 +34,7 @@ theme = ExtResource("2_msibo")
 script = ExtResource("1_joqlw")
 root_view = NodePath("menu_view")
 back_button = NodePath("heading_banner/button")
-metadata/_custom_type_script = ExtResource("1_joqlw")
+metadata/_custom_type_script = "uid://d23kpmtei5n5y"
 
 [node name="temp_background" type="ColorRect" parent="flow_coordinator"]
 layout_mode = 1
@@ -46,6 +48,7 @@ color = Color(0.99, 0.94842, 0.8514, 1)
 [node name="menu_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
 modulate = Color(1, 1, 1, 0.984314)
 layout_mode = 1
+metadata/_custom_type_script = "uid://cbdh5ey656ac2"
 
 [node name="texture_rect" type="TextureRect" parent="flow_coordinator/menu_view"]
 layout_mode = 1
@@ -104,6 +107,7 @@ text = "NEXT SESSION >>>"
 visible = false
 layout_mode = 1
 script = ExtResource("4_k4ejo")
+metadata/_custom_type_script = "uid://cbdh5ey656ac2"
 
 [node name="label" type="Label" parent="flow_coordinator/shop_view"]
 layout_mode = 1
@@ -155,10 +159,17 @@ label_settings = SubResource("LabelSettings_kuxa5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="shop_purchase" type="AudioStreamPlayer" parent="flow_coordinator/shop_view"]
+stream = ExtResource("7_nyl32")
+
+[node name="shop_fail" type="AudioStreamPlayer" parent="flow_coordinator/shop_view"]
+stream = ExtResource("8_01ogr")
+
 [node name="deck_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
 visible = false
 layout_mode = 1
 script = ExtResource("5_u7rti")
+metadata/_custom_type_script = "uid://cbdh5ey656ac2"
 
 [node name="label" type="Label" parent="flow_coordinator/deck_view"]
 layout_mode = 1
@@ -217,6 +228,7 @@ grow_vertical = 0
 [node name="menu_view3" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
 visible = false
 layout_mode = 1
+metadata/_custom_type_script = "uid://cbdh5ey656ac2"
 
 [node name="label" type="Label" parent="flow_coordinator/menu_view3"]
 layout_mode = 1

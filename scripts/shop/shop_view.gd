@@ -10,6 +10,12 @@ var purchase_container: Control = $"purchase_container"
 @onready
 var purchase_text: Label = $"purchase_container/label"
 
+@onready
+var _purchase_good_sfx: AudioStreamPlayer = $"shop_purchase" as AudioStreamPlayer
+
+@onready
+var _purchase_bad_sfx: AudioStreamPlayer = $"shop_fail" as AudioStreamPlayer
+
 var _card_library : CardLibrary
 var _game_stats : GameStats
 
@@ -63,10 +69,13 @@ func _on_card_drag_stopped(card: CardInstance) -> void:
 	_held_card = null
 	purchase_text.text = "PURCHASE"
 	
-	# TODO: Insert card in player deck
-	if _is_over_purchase && _can_purchase:
+	if !_is_over_purchase:
+		return
+	
+	if _can_purchase:
 		_card_library.pull_card(card.card_info)
 		card.queue_free()
 		_game_stats.money_remove(_game_stats.calculate_price_for(card.card_info))
-		
-	pass
+		_purchase_good_sfx.play()
+	else:
+		_purchase_bad_sfx.play()
