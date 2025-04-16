@@ -4,6 +4,9 @@ class_name Transition
 @onready
 var _label: Label = $label as Label
 
+func _ready() -> void:
+	self.modulate = Color(1, 1, 1, 0)
+
 func fade_in(transition_text: String, duration: float = 1) -> void:
 	_label.text = transition_text
 	visible = true

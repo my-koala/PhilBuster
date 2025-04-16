@@ -1,0 +1,184 @@
+[gd_scene load_steps=6 format=3 uid="uid://08sknccaplbf"]
+
+[ext_resource type="Texture2D" uid="uid://bhqb0spe1qmkt" path="res://assets/title/title.png" id="1_hvp7p"]
+[ext_resource type="Script" uid="uid://b1s0nqyoptfni" path="res://scripts/main_menu/main_menu.gd" id="1_i261q"]
+[ext_resource type="Script" uid="uid://d23kpmtei5n5y" path="res://scripts/shop/flow_coordinator.gd" id="2_g8ye4"]
+[ext_resource type="Texture2D" uid="uid://daes7umygcu4w" path="res://assets/title/logo.png" id="2_o7ot1"]
+[ext_resource type="PackedScene" uid="uid://boskellw4qds0" path="res://assets/shop/menu_view.tscn" id="3_i261q"]
+
+[node name="main_menu" type="CanvasLayer"]
+script = ExtResource("1_i261q")
+
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("1_hvp7p")
+
+[node name="flow_coordinator" type="Control" parent="." node_paths=PackedStringArray("root_view", "back_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+script = ExtResource("2_g8ye4")
+root_view = NodePath("main_view")
+back_button = NodePath("back")
+metadata/_custom_type_script = ExtResource("2_g8ye4")
+
+[node name="main_view" parent="flow_coordinator" instance=ExtResource("3_i261q")]
+layout_mode = 1
+
+[node name="logo" type="TextureRect" parent="flow_coordinator/main_view"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -489.0
+offset_top = 79.0
+offset_right = 541.0
+offset_bottom = 385.0
+grow_horizontal = 2
+pivot_offset = Vector2(692, 411)
+texture = ExtResource("2_o7ot1")
+expand_mode = 1
+
+[node name="play" type="Button" parent="flow_coordinator/main_view"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -297.5
+offset_top = -480.0
+offset_right = 297.5
+offset_bottom = -405.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Play"
+
+[node name="credits" type="Button" parent="flow_coordinator/main_view"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -297.5
+offset_top = -380.0
+offset_right = 297.5
+offset_bottom = -305.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Credits"
+
+[node name="quit LMAOOO?" type="Button" parent="flow_coordinator/main_view"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -297.5
+offset_top = -280.0
+offset_right = 297.5
+offset_bottom = -205.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Quit
+"
+
+[node name="credits_view" parent="flow_coordinator" instance=ExtResource("3_i261q")]
+visible = false
+layout_mode = 1
+
+[node name="panel" type="Panel" parent="flow_coordinator/credits_view"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -262.5
+offset_right = 400.0
+offset_bottom = 262.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="people" type="RichTextLabel" parent="flow_coordinator/credits_view/panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[b]James \"MyKoala\" Brusewitz
+
+Caeden \"Caeden117\" Statia
+
+Dan \"Apollo\" Nguyen
+
+Prahas \"B39_\" Pisipati
+
+Wyatt \"Phyzith\" Sylvester
+
+Riley \"Rwood85\""
+
+[node name="roles" type="RichTextLabel" parent="flow_coordinator/credits_view/panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[right]Programmer
+
+Programmer
+
+Artist
+
+UI Artist
+
+UI Artist
+
+Sound Designer"
+
+[node name="back" type="Button" parent="flow_coordinator"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -297.5
+offset_top = -180.0
+offset_right = 297.5
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Back
+"
+
+[connection signal="pressed" from="flow_coordinator/main_view/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="flow_coordinator/main_view/credits" to="flow_coordinator" method="push_view_by_name" binds= ["credits_view"]]

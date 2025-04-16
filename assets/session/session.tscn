@@ -22,7 +22,6 @@ script = ExtResource("1_heuok")
 [node name="topic_loader" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("9_vmdxw")
-use_global_sentences = null
 metadata/_custom_type_script = "uid://lmtlaovjn688"
 
 [node name="background" parent="." instance=ExtResource("2_vmdxw")]
