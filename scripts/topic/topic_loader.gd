@@ -26,7 +26,9 @@ var _topic_sentence_pool: PackedStringArray = PackedStringArray()
 
 func _init() -> void:
 	for file_path: String in DirAccess.get_files_at(TOPIC_DIRECTORY):
+		print("TopicLoader | Loading topic '%s'..." % [file_path])
 		file_path = file_path.replace(".import", "")
+		file_path = file_path.replace(".remap", "")
 		
 		var topic: Topic = load(TOPIC_DIRECTORY + file_path) as Topic
 		if is_instance_valid(topic):
