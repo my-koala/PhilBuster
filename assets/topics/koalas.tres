@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Topic" load_steps=7 format=3 uid="uid://cnuwsfwmdismw"]
+
+[ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_e1iep"]
+[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="2_e2nvq"]
+[ext_resource type="Resource" uid="uid://btih6e7ffktnc" path="res://assets/card/info/basic/verb/defenestrate.tres" id="4_3lyuu"]
+[ext_resource type="Resource" uid="uid://c8lyvwo6c0a6m" path="res://assets/card/info/basic/verb/trundle.tres" id="5_ldwbl"]
+[ext_resource type="Resource" uid="uid://k8x1rtq71aqq" path="res://assets/card/info/basic/noun/wall.tres" id="10_dcuip"]
+[ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="14_m3hw0"]
+
+[resource]
+script = ExtResource("14_m3hw0")
+sentences = PackedStringArray("We must {v} the {n} to protect the Koalas!", "Australia\'s ban of {n} will {v} the habitats of Koalas nation-wide!", "Koalas need {n} . If we don\'t {v} it for them, they will {v} .", "{n} might mean nothing to us, but Koalas would {v} without it.")
+relevant_words = Array[ExtResource("1_e1iep")]([])
+irrelevant_words = Array[ExtResource("1_e1iep")]([ExtResource("2_e2nvq"), ExtResource("10_dcuip"), ExtResource("4_3lyuu"), ExtResource("5_ldwbl")])
+metadata/_custom_type_script = "uid://c7giyb4t438lj"

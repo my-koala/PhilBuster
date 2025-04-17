@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_qqwry")
-sentences = PackedStringArray("An orphans doesn\'t need a {n}, they need more {n}!", "Give an orphan a {n}, and they will {v}. Teach them to {v}, and they will make {n}.", "An emotionally distraught orphan can not be trusted to {v}, especially when it comes to {n}!", "My son is an orphan and he can {v} just fine!")
+sentences = PackedStringArray("An orphans doesn\'t need a {n} , they need more {n} !", "Give an orphan a {n} , and they will {v} . Teach them to {v} , and they will make {n} .", "An emotionally distraught orphan can not be trusted to {v} , especially when it comes to {n} !", "My son is an orphan and he can {v} just fine!")
 relevant_words = Array[ExtResource("1_06e07")]([])
 irrelevant_words = Array[ExtResource("1_06e07")]([])
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

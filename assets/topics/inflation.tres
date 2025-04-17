@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Topic" load_steps=17 format=3 uid="uid://w6k7yio2oh78"]
+
+[ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_4shac"]
+[ext_resource type="Resource" uid="uid://di5p0qmstfx4m" path="res://assets/card/info/basic/noun/marsupial.tres" id="2_p35nb"]
+[ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="2_vf6jt"]
+[ext_resource type="Resource" uid="uid://dr67po7ck5la3" path="res://assets/card/info/basic/noun/goon.tres" id="3_ragpy"]
+[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="4_2dy4t"]
+[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="5_yc7sm"]
+[ext_resource type="Resource" uid="uid://dkyrkk54csccf" path="res://assets/card/info/basic/noun/jonathan.tres" id="6_47duc"]
+[ext_resource type="Resource" uid="uid://dgjd8f7i5asta" path="res://assets/card/info/modifier/adjective/schizophrenic.tres" id="7_cf2rk"]
+[ext_resource type="Resource" uid="uid://ny5ciekntcql" path="res://assets/card/info/basic/noun/tariff.tres" id="8_2i40y"]
+[ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="9_2ofob"]
+[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="10_7yqmf"]
+[ext_resource type="Resource" uid="uid://btc48l4t3phdq" path="res://assets/card/info/basic/noun/china.tres" id="11_rtdkv"]
+[ext_resource type="Resource" uid="uid://bhtk361554el3" path="res://assets/card/info/basic/verb/cut.tres" id="12_harkd"]
+[ext_resource type="Resource" uid="uid://buh38gwd47jrf" path="res://assets/card/info/basic/verb/blow_up.tres" id="13_taxsh"]
+[ext_resource type="Resource" uid="uid://uiraqcnqqby1" path="res://assets/card/info/basic/noun/price.tres" id="14_2dy4t"]
+[ext_resource type="Resource" uid="uid://bxxt4ducti6r8" path="res://assets/card/info/basic/verb/milk.tres" id="15_yc7sm"]
+
+[resource]
+script = ExtResource("2_vf6jt")
+sentences = PackedStringArray("The {n} is rising, we must {v} it!", "If we don\'t {v} the {n}, prices will continue to {v}!", "The {n} caused by inflation is impeding our ability to {v}!", "We all feel the impact of {n} . We must {v} it, before it\'s too late.")
+relevant_words = Array[ExtResource("1_4shac")]([ExtResource("8_2i40y"), ExtResource("9_2ofob"), ExtResource("10_7yqmf"), ExtResource("11_rtdkv"), ExtResource("12_harkd"), ExtResource("13_taxsh"), ExtResource("14_2dy4t"), ExtResource("15_yc7sm")])
+irrelevant_words = Array[ExtResource("1_4shac")]([ExtResource("2_p35nb"), ExtResource("3_ragpy"), ExtResource("4_2dy4t"), ExtResource("5_yc7sm"), ExtResource("6_47duc"), ExtResource("7_cf2rk")])
+metadata/_custom_type_script = "uid://c7giyb4t438lj"
