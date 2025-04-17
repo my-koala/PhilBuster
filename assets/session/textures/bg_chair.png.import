@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0qoq1dgdyqlv"
-path="res://.godot/imported/phil_p1_open3.png-fd99e9d35004a5dc47f05d8c88f19085.ctex"
+uid="uid://bmote5y6r7ql6"
+path="res://.godot/imported/bg_chair.png-b72d0c595cdbdf4cba9ea31f72ba550b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/phil/pose1 open/phil_p1_open3.png"
-dest_files=["res://.godot/imported/phil_p1_open3.png-fd99e9d35004a5dc47f05d8c88f19085.ctex"]
+source_file="res://assets/session/textures/bg_chair.png"
+dest_files=["res://.godot/imported/bg_chair.png-b72d0c595cdbdf4cba9ea31f72ba550b.ctex"]
 
 [params]
 

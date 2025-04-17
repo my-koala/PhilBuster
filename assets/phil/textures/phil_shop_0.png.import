@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://26xymnfc2tqs"
-path="res://.godot/imported/phil_p2_neutral2.png-c42cb86b2033b734b3ed94e8ac52292b.ctex"
+uid="uid://cp3vu7s0dc5b1"
+path="res://.godot/imported/phil_shop_0.png-f25ff1948fe5a963f6f1a8051bdf680e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/phil/pose2 neutral/phil_p2_neutral2.png"
-dest_files=["res://.godot/imported/phil_p2_neutral2.png-c42cb86b2033b734b3ed94e8ac52292b.ctex"]
+source_file="res://assets/phil/textures/phil_shop_0.png"
+dest_files=["res://.godot/imported/phil_shop_0.png-f25ff1948fe5a963f6f1a8051bdf680e.ctex"]
 
 [params]
 

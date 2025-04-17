@@ -15,7 +15,7 @@ const FIELD_BUST_NEUTRAL: int = 0
 const FIELD_BUST_IRRELEVANT: int = 3
 const FIELD_BUST_EMPTY: int = 5
 
-const TIME_WORD: int = 30
+const TIME_WORD: int = 1
 
 @export_range(0.0, 1.0, 0.001)
 var deck_deal_cooldown: float = 0.125:
@@ -47,7 +47,7 @@ var _session_submit: SessionSubmit = %session_submit as SessionSubmit
 @onready
 var _clock: Clock = %clock as Clock
 @onready
-var _phil: Background = %background as Background
+var _phil: Phil = %phil as Phil
 
 var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
@@ -91,7 +91,7 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 	_sentence_container.set_sentence(_topic_loader.get_topic_sentence())
 	
 	_session_submit.enabled = true
-	_phil.reset_phil()
+	_phil.play_animation_sit()
 
 func stop_session(success: bool) -> void:
 	if !_session_active:
@@ -145,20 +145,35 @@ func _ready() -> void:
 	
 	_session_submit.submitted.connect(_on_session_submit_submitted)
 
-func _on_session_submit_submitted() -> void:
-	await _phil.sentence_complete()
-	_sentence_container.read_sentence()
+var _submitted: bool = false
 
-func _on_sentence_container_read_started() -> void:
+func _on_session_submit_submitted() -> void:
+	# TODO: once sentence container is animated, start immediately and then check if is reading
+	# remove _submitted bool
+	if _submitted:
+		return
+	_submitted = true
+	
 	_session_submit.enabled = false
-	for card_instance: CardInstance in _deck_card_instances:
-		card_instance.disabled = true
 	for card_instance: CardInstance in _hand_card_instances:
 		card_instance.disabled = true
+	
+	_phil.play_animation_stand()
+	# TEMP: give enough time for phil to stand up
+	# TODO: move startup/stopping animations to sentence_container
+	# will animate background dimming, thought bubble changing, etc.
+	await get_tree().create_timer(1.0).timeout
+	_sentence_container.read_sentence()
+	_submitted = false
+
+func _on_sentence_container_read_started() -> void:
+	pass
+	# will move the above submit_submitted code here eventually
+	# once sentence_container has animation stuff for start/stop
 
 func _on_sentence_container_read_stopped() -> void:
-	
-	await _phil.finished_speaking()
+	await get_tree().create_timer(0.5).timeout
+	_phil.play_animation_sit()
 	
 	_session_submit.enabled = true
 	for card_instance: CardInstance in _deck_card_instances:
@@ -174,12 +189,14 @@ func _on_sentence_container_read_stopped() -> void:
 	_hand_card_instances_fields.clear()
 	
 	if _bust_meter.is_full():
-		await _phil.busted()
+		_phil.play_animation_bust()
+		await get_tree().create_timer(1.0).timeout
 		stop_session(false)
 		return
 	
 	if _clock.is_time_exceeded():
 		stop_session(true)
+		await get_tree().create_timer(1.0).timeout
 		return
 	
 	# Clear and generate next sentence
@@ -189,9 +206,11 @@ func _on_sentence_container_read_stopped() -> void:
 var _card_info_modifier_stack: Array[CardInfoModifier] = []
 
 func _on_sentence_container_read_word() -> void:
+	_phil.play_animation_speak()
 	_clock.add_time(TIME_WORD)
 
 func _on_sentence_container_read_field(card_info: CardInfo) -> void:
+	_phil.play_animation_speak()
 	var card_info_basic: CardInfoBasic = card_info as CardInfoBasic
 	if is_instance_valid(card_info_basic):
 		var time_multiplier: float = 1.0
@@ -205,11 +224,12 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 		
 		if _topic_loader.is_word_relevant(card_info.get_word()):
 			_bust_meter.remove_bust(FIELD_BUST_RELEVANT * bust_multiplier)
+			_phil.play_animation_nice()
 		elif _topic_loader.is_word_irrelevant(card_info.get_word()):
 			time_multiplier = 0.0
 			reward_multiplier = 0.0
 			_bust_meter.add_bust(FIELD_BUST_IRRELEVANT * bust_multiplier)
-			_phil.bust_meter_increased()# TEMPORARY
+			_phil.play_animation_goof()
 		else:
 			_bust_meter.add_bust(FIELD_BUST_NEUTRAL * bust_multiplier)
 		
@@ -219,7 +239,7 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 		_clock.add_time(card_info.time)
 	else:
 		_bust_meter.add_bust(FIELD_BUST_EMPTY)
-		_phil.bust_meter_increased()# TEMPORARY
+		_phil.play_animation_goof()
 
 func _on_sentence_container_card_info_removed(card_info: CardInfo) -> void:
 	for card_instance: CardInstance in _hand_card_instances_fields:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6gpumkk3jwlj"
-path="res://.godot/imported/bg_game.png-fde6551d8859e2d76e48c15fc99a0ee9.ctex"
+uid="uid://cxcgn72x7u4nw"
+path="res://.godot/imported/phil_stand_goof_0.png-05ff33445e6bc79f0cc75e5a76b22992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/bg_game.png"
-dest_files=["res://.godot/imported/bg_game.png-fde6551d8859e2d76e48c15fc99a0ee9.ctex"]
+source_file="res://assets/phil/textures/phil_stand_goof_0.png"
+dest_files=["res://.godot/imported/phil_stand_goof_0.png-05ff33445e6bc79f0cc75e5a76b22992.ctex"]
 
 [params]
 

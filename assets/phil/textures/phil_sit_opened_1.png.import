@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjy4f8d11j0yt"
-path="res://.godot/imported/phil_p1_closed3.png-cb85ab50472a3b83964beca51365847c.ctex"
+uid="uid://b7qjq2nmptfnh"
+path="res://.godot/imported/phil_sit_opened_1.png-335447927e7e14f6a5c85d83bf984831.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/phil/pose1 closed/phil_p1_closed3.png"
-dest_files=["res://.godot/imported/phil_p1_closed3.png-cb85ab50472a3b83964beca51365847c.ctex"]
+source_file="res://assets/phil/textures/phil_sit_opened_1.png"
+dest_files=["res://.godot/imported/phil_sit_opened_1.png-335447927e7e14f6a5c85d83bf984831.ctex"]
 
 [params]
 

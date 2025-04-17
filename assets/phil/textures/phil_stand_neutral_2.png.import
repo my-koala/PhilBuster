@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmote5y6r7ql6"
-path="res://.godot/imported/bg_chair.png-f20635249f5f0b3507a9f4aca86f3e4f.ctex"
+uid="uid://4ofjkw8wv81u"
+path="res://.godot/imported/phil_stand_neutral_2.png-b855ca5918e838726335f3b3885ce32d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/bg_chair.png"
-dest_files=["res://.godot/imported/bg_chair.png-f20635249f5f0b3507a9f4aca86f3e4f.ctex"]
+source_file="res://assets/phil/textures/phil_stand_neutral_2.png"
+dest_files=["res://.godot/imported/phil_stand_neutral_2.png-b855ca5918e838726335f3b3885ce32d.ctex"]
 
 [params]
 

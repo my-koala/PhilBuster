@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://haiteon1n201"
-path="res://.godot/imported/logo_crop.png-a266ebcf68e64a4e539111755d5e88c4.ctex"
+uid="uid://b4g4s87ku8v5l"
+path="res://.godot/imported/phil_sit_opened_2.png-45f772836b9029a87deae20f87966b3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/title/logo_crop.png"
-dest_files=["res://.godot/imported/logo_crop.png-a266ebcf68e64a4e539111755d5e88c4.ctex"]
+source_file="res://assets/phil/textures/phil_sit_opened_2.png"
+dest_files=["res://.godot/imported/phil_sit_opened_2.png-45f772836b9029a87deae20f87966b3b.ctex"]
 
 [params]
 
