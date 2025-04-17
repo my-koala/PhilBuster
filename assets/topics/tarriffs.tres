@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://w6k7yio2oh78"]
+
+[ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_m68e4"]
+[ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="2_lrea3"]
+
+[resource]
+script = ExtResource("2_lrea3")
+sentences = PackedStringArray("An orphans doesn\'t need a {n}, they need more {n}!", "Give an orphan a {n}, and they will {v}. Teach them to {v}, and they will make {n}.", "An emotionally distraught orphan can not be trusted to {v}, especially when it comes to {n}!", "My son is an orphan and he can {v} just fine!")
+relevant_words = Array[ExtResource("1_m68e4")]([])
+irrelevant_words = Array[ExtResource("1_m68e4")]([])
+metadata/_custom_type_script = "uid://c7giyb4t438lj"

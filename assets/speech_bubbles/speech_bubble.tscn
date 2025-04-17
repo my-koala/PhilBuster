@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8hxw12hg8c4p"]
+
+[ext_resource type="Texture2D" uid="uid://d1p2ne8av5kc3" path="res://assets/speech_bubbles/thought_bubble.png" id="1_e472h"]
+
+[node name="speech_bubble" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="nine_patch_rect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("1_e472h")
+region_rect = Rect2(0, 0, 1024, 1024)
+patch_margin_left = 256
+patch_margin_top = 256
+patch_margin_right = 256
+patch_margin_bottom = 256
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
