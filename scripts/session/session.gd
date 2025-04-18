@@ -102,6 +102,7 @@ func start_session(game_stats: GameStats) -> void:
 	#_topic_loader.set_topic(topic)
 	# temporary
 	_sentence_container.set_sentence(_game_stats.topic_get_sentence())
+	_sentence_container.set_bubble_thought(true)
 	_game_over.stop()
 	
 	_label_session.text = "Session #%d\nBill Topic: %s" % [_game_stats.get_session(), _game_stats.topic_get_name()]
@@ -186,6 +187,7 @@ func _on_session_speak_submitted() -> void:
 	# will animate background dimming, thought bubble changing, etc.
 	await get_tree().create_timer(1.0).timeout
 	_sentence_container.read_sentence()
+	_sentence_container.set_bubble_thought(false)
 	_submitted = false
 
 func _on_sentence_container_read_started() -> void:
@@ -225,6 +227,7 @@ func _on_sentence_container_read_stopped() -> void:
 	# Clear and generate next sentence
 	_sentence_container.clear_sentence()
 	_sentence_container.set_sentence(_game_stats.topic_get_sentence())
+	_sentence_container.set_bubble_thought(true)
 
 var _card_info_modifier_stack: Array[CardInfoModifier] = []
 

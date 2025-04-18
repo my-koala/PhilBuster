@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd4a04syaq7r7"]
+[gd_scene load_steps=5 format=3 uid="uid://cd4a04syaq7r7"]
 
 [ext_resource type="Script" uid="uid://dqgfgfldo4jm0" path="res://scripts/sentence_container/sentence_container.gd" id="1_3lou6"]
+[ext_resource type="Texture2D" uid="uid://d1p2ne8av5kc3" path="res://assets/speech_bubbles/thought_bubble.png" id="2_3lou6"]
+[ext_resource type="Texture2D" uid="uid://d1am35e8v8e27" path="res://assets/speech_bubbles/speech_bubble.png" id="3_qwyvb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lou6"]
 
 [node name="sentence_container" type="Control"]
 layout_mode = 3
@@ -8,15 +12,74 @@ anchors_preset = 0
 script = ExtResource("1_3lou6")
 read_sentence_cooldown = 0.125
 
-[node name="flow_container" type="FlowContainer" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(512, 64)
+[node name="panel_container" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3lou6")
+
+[node name="control" type="Control" parent="panel_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="bubble_thought" type="NinePatchRect" parent="panel_container/control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -96.0
+offset_right = 2016.0
+offset_bottom = 672.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_3lou6")
+region_rect = Rect2(96, 88, 840, 848)
+patch_margin_left = 256
+patch_margin_top = 256
+patch_margin_right = 256
+patch_margin_bottom = 256
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="bubble_speech" type="NinePatchRect" parent="panel_container/control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -288.0
+offset_top = -96.0
+offset_right = 2016.0
+offset_bottom = 672.0
+scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_qwyvb")
+region_rect = Rect2(128, 128, 768, 768)
+patch_margin_left = 256
+patch_margin_top = 256
+patch_margin_right = 256
+patch_margin_bottom = 256
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="flow_container" type="FlowContainer" parent="panel_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 16
 alignment = 1
+
+[node name="bubble" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

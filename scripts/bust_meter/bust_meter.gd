@@ -55,3 +55,11 @@ func _process(delta: float) -> void:
 	_blade.position.y = clampf(move_toward(_blade.position.y, lerpf(_progress_bar.size.y, 0.0, float(_bust) / float(bust_max)), delta * progress_bar_speed), 0.0, _progress_bar.size.y)
 	
 	_label_count.text = "%d/%d" % [_bust, bust_max]
+
+var _play_animation: bool = false
+
+func play_animation() -> void:
+	_play_animation = true
+
+func stop_animation() -> void:
+	_play_animation = false

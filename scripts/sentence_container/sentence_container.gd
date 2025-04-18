@@ -138,6 +138,22 @@ func _on_field_pressed(field_instance: SentenceContainerField) -> void:
 				field_instance.queue_free()
 				_field_instances.erase(field_instance)
 
+@onready
+var _bubble_thought: NinePatchRect = %bubble_thought as NinePatchRect
+@onready
+var _bubble_speech: NinePatchRect = %bubble_speech as NinePatchRect
+
+func _process(delta: float) -> void:
+	var margin_hack: Vector2 = Vector2(64.0, 64.0)
+	_bubble_thought.size = (_flow_container.size + margin_hack) / _bubble_thought.scale
+	_bubble_thought.position = -(_bubble_thought.size / 2.0) * _bubble_thought.scale
+	_bubble_speech.size = (_flow_container.size + margin_hack) / _bubble_speech.scale
+	_bubble_speech.position = -(_bubble_speech.size / 2.0) * _bubble_speech.scale
+
+func set_bubble_thought(foo: bool) -> void:
+	_bubble_thought.visible = foo
+	_bubble_speech.visible = !foo
+
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return

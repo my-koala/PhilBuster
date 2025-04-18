@@ -102,7 +102,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
-text = "Time Left:
+text = "Time Until Recess:
 120 Minutes"
 horizontal_alignment = 1
 vertical_alignment = 1

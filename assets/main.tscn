@@ -60,7 +60,6 @@ game_stats = SubResource("Resource_vqaxa")
 script = ExtResource("1_ujfqy")
 
 [node name="session" parent="." instance=ExtResource("13_h4xlo")]
-bust_field_empty = 10
 
 [node name="shop" parent="." instance=ExtResource("14_vvw4a")]
 visible = false

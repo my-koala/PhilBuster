@@ -32,6 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="background" type="TextureRect" parent="environment"]
+modulate = Color(0.616922, 0.580826, 0.61109, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,15 +64,15 @@ stretch_mode = 3
 
 [node name="sentence_container" parent="." instance=ExtResource("2_sxs0h")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(1000, 100)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -500.0
-offset_top = 133.295
+offset_top = 167.86
 offset_right = 500.0
-offset_bottom = 333.295
+offset_bottom = 267.86
 grow_horizontal = 2
 
 [node name="hand_container" type="HBoxContainer" parent="."]
@@ -148,6 +149,7 @@ vertical_alignment = 1
 
 [node name="drag_overlay" type="ColorRect" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
