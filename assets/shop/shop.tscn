@@ -158,9 +158,11 @@ vertical_alignment = 1
 
 [node name="shop_purchase" type="AudioStreamPlayer" parent="flow_coordinator/shop_view"]
 stream = ExtResource("7_nyl32")
+bus = &"Sound"
 
 [node name="shop_fail" type="AudioStreamPlayer" parent="flow_coordinator/shop_view"]
 stream = ExtResource("8_01ogr")
+bus = &"Sound"
 
 [node name="deck_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
 visible = false
