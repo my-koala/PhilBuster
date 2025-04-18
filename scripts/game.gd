@@ -66,11 +66,11 @@ func start_menu() -> void:
 	_main_menu.present_menu()
 
 func start_session() -> void:
-	await _transition.fade_in("A bill concerning {n}...")
-	await get_tree().create_timer(2).timeout
+	game_stats.topic_randomize()
+	await _transition.fade_in("A bill concerning %s..." % [game_stats.topic_get_name()])
 	_shop.hide_shop()
 	_main_menu.visible = false
-	game_stats.topic_randomize()
+	await get_tree().create_timer(2).timeout
 	_session.start_session(game_stats)
 	await _transition.fade_out()
 
