@@ -27,8 +27,6 @@ var deck_deal_cooldown: float = 0.125:
 var _deck_deal_cooldown: float = 0.0
 
 @onready
-var _topic_loader: TopicLoader = %topic_loader as TopicLoader
-@onready
 var _sentence_container: SentenceContainer = %sentence_container as SentenceContainer
 @onready
 var _hand_container: HandContainer = %hand_container as HandContainer
@@ -87,8 +85,7 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 	
 	#_topic_loader.set_topic(topic)
 	# temporary
-	_topic_loader.set_topic(_topic_loader.get_topic_names()[0])
-	_sentence_container.set_sentence(_topic_loader.get_topic_sentence())
+	_sentence_container.set_sentence(_game_stats.topic_get_sentence())
 	
 	_session_submit.enabled = true
 	_phil.play_animation_sit()
@@ -201,7 +198,7 @@ func _on_sentence_container_read_stopped() -> void:
 	
 	# Clear and generate next sentence
 	_sentence_container.clear_sentence()
-	_sentence_container.set_sentence(_topic_loader.get_topic_sentence())
+	_sentence_container.set_sentence(_game_stats.topic_get_sentence())
 
 var _card_info_modifier_stack: Array[CardInfoModifier] = []
 
@@ -222,10 +219,10 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 			reward_multiplier *= card_info_modifier.reward_multiplier
 			bust_multiplier *= card_info_modifier.bust_multiplier
 		
-		if _topic_loader.is_word_relevant(card_info.get_word()):
+		if _game_stats.topic_is_word_relevant(card_info.get_word()):
 			_bust_meter.remove_bust(FIELD_BUST_RELEVANT * bust_multiplier)
 			_phil.play_animation_nice()
-		elif _topic_loader.is_word_irrelevant(card_info.get_word()):
+		elif _game_stats.topic_is_word_irrelevant(card_info.get_word()):
 			time_multiplier = 0.0
 			reward_multiplier = 0.0
 			_bust_meter.add_bust(FIELD_BUST_IRRELEVANT * bust_multiplier)

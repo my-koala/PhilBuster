@@ -13,10 +13,10 @@ enum State {
 }
 
 @export
-var default_deck: Array[CardInfo] = []
+var game_stats: GameStats = GameStats.new()
 
 @onready
-var card_library: CardLibrary = $card_library as CardLibrary
+var _card_library: CardLibrary = $card_library as CardLibrary
 @onready
 var _session: Session = $session as Session
 @onready
@@ -27,7 +27,6 @@ var _transition: Transition = $transition/transition as Transition
 var _main_menu: MainMenu = $main_menu as MainMenu
 
 var _loop: bool = false
-var game_stats: GameStats = null
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -40,13 +39,16 @@ func start() -> void:
 		return
 	
 	_loop = true
-	game_stats = GameStats.new()
 	
-	# Initialize card deck.
-	for card_info: CardInfo in default_deck:
-		if !game_stats.deck_is_full():
-			game_stats.deck_append(card_info)
-		card_library.pull_card(card_info)
+	game_stats.reset_deck()
+	game_stats.reset_money()
+	game_stats.topic_randomize()
+	game_stats.reset_topic_memory()
+	
+	_card_library.reset_library()
+	
+	for card_info: CardInfo in game_stats.get_deck():
+		_card_library.pull_card(card_info)
 	
 	# Subscribe to looping events
 	_session.session_finished.connect(_on_session_finished)
@@ -57,9 +59,6 @@ func start() -> void:
 	start_menu()
 
 func stop() -> void:
-	game_stats.deck_clear()
-	
-	game_stats = null
 	_loop = false
 
 func start_menu() -> void:
@@ -71,18 +70,19 @@ func start_session() -> void:
 	await get_tree().create_timer(2).timeout
 	_shop.hide_shop()
 	_main_menu.visible = false
+	game_stats.topic_randomize()
 	_session.start_session(game_stats)
 	await _transition.fade_out()
 
 func start_shop() -> void:
 	await _transition.fade_in("Senate has called recess...")
 	await get_tree().create_timer(2).timeout
-	_shop.start_shop(card_library, game_stats)
+	_shop.start_shop(_card_library, game_stats)
 	await _transition.fade_out()
-	
+
 func _on_session_finished(successful: bool) -> void:
 	if successful:
-		game_stats.session_finished()
+		game_stats.session_increment()
 		start_shop()
 
 func _on_shop_finished() -> void:

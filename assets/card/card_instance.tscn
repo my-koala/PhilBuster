@@ -325,6 +325,7 @@ offset_top = 20.0
 offset_right = 48.0
 offset_bottom = 84.0
 rotation = -0.785398
+color = Color(0.745098, 0.745098, 0.745098, 1)
 
 [node name="v_box_container" type="VBoxContainer" parent="display"]
 layout_mode = 1
