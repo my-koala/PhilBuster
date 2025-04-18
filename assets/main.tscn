@@ -1,25 +1,35 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=20 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
+[ext_resource type="Script" uid="uid://c5o0vh6ubr54t" path="res://scripts/game_stats.gd" id="2_fphxj"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_km2eh"]
 [ext_resource type="Script" uid="uid://ifvr7v6vplvr" path="res://scripts/game.gd" id="2_tkxyu"]
 [ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="3_wpieh"]
-[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="4_ul5qt"]
-[ext_resource type="Resource" uid="uid://ny5ciekntcql" path="res://assets/card/info/basic/noun/tariff.tres" id="5_2rvxm"]
-[ext_resource type="Resource" uid="uid://bilitm4bxpmtl" path="res://assets/card/info/modifier/adjective/abundant.tres" id="6_2rvxm"]
-[ext_resource type="Resource" uid="uid://832jc02c2401" path="res://assets/card/info/modifier/adjective/dubious.tres" id="7_6eca0"]
-[ext_resource type="Resource" uid="uid://buh38gwd47jrf" path="res://assets/card/info/basic/verb/blow_up.tres" id="8_isq2i"]
-[ext_resource type="Resource" uid="uid://b5lmsnltrmh6r" path="res://assets/card/info/modifier/adjective/gibbous.tres" id="8_t6sda"]
-[ext_resource type="Resource" uid="uid://dusjxnka07qjv" path="res://assets/card/info/modifier/adjective/great.tres" id="9_isq2i"]
-[ext_resource type="Resource" uid="uid://dnhuwght5anxd" path="res://assets/card/info/modifier/adjective/haughty.tres" id="10_pd2c5"]
+[ext_resource type="Resource" uid="uid://cy30hnwela3dy" path="res://assets/card/info/basic/noun/buffoon.tres" id="4_ul5qt"]
+[ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="5_2rvxm"]
+[ext_resource type="Resource" uid="uid://bnmhlsidww8of" path="res://assets/card/info/basic/noun/cradle.tres" id="6_6eca0"]
+[ext_resource type="Resource" uid="uid://dr67po7ck5la3" path="res://assets/card/info/basic/noun/goon.tres" id="8_t6sda"]
+[ext_resource type="Resource" uid="uid://codcagcifku88" path="res://assets/card/info/basic/verb/craft.tres" id="9_isq2i"]
+[ext_resource type="Resource" uid="uid://bhtk361554el3" path="res://assets/card/info/basic/verb/cut.tres" id="10_pd2c5"]
+[ext_resource type="Resource" uid="uid://je33xqvdtirn" path="res://assets/card/info/basic/verb/cycle.tres" id="11_12kgx"]
+[ext_resource type="Resource" uid="uid://btih6e7ffktnc" path="res://assets/card/info/basic/verb/defenestrate.tres" id="12_hsbq6"]
 [ext_resource type="PackedScene" uid="uid://ce5ej8armma4y" path="res://assets/session/session.tscn" id="13_h4xlo"]
+[ext_resource type="Resource" uid="uid://c7qhvkbb80de6" path="res://assets/card/info/basic/verb/extrapolate.tres" id="13_mp1se"]
 [ext_resource type="PackedScene" uid="uid://m0dkott85qmk" path="res://assets/shop/shop.tscn" id="14_vvw4a"]
 [ext_resource type="PackedScene" uid="uid://b278yipnxx0xj" path="res://assets/transitions/transition.tscn" id="15_ew6cl"]
 [ext_resource type="PackedScene" uid="uid://08sknccaplbf" path="res://assets/main_menu/main_menu.tscn" id="15_km2eh"]
 
+[sub_resource type="Resource" id="Resource_vqaxa"]
+script = ExtResource("2_fphxj")
+starting_deck = Array[ExtResource("2_km2eh")]([ExtResource("4_ul5qt"), ExtResource("5_2rvxm"), ExtResource("6_6eca0"), ExtResource("3_wpieh"), ExtResource("8_t6sda"), ExtResource("9_isq2i"), ExtResource("10_pd2c5"), ExtResource("11_12kgx"), ExtResource("12_hsbq6"), ExtResource("13_mp1se")])
+starting_money = 0
+skip_duplicate_sentences = true
+use_global_sentences = true
+use_topic_memory = true
+
 [node name="game" type="Node"]
 script = ExtResource("2_tkxyu")
-default_deck = Array[ExtResource("2_km2eh")]([ExtResource("3_wpieh"), ExtResource("4_ul5qt"), ExtResource("5_2rvxm"), ExtResource("6_2rvxm"), ExtResource("7_6eca0"), ExtResource("8_t6sda"), ExtResource("9_isq2i"), ExtResource("9_isq2i"), ExtResource("10_pd2c5"), ExtResource("9_isq2i"), ExtResource("8_isq2i")])
+game_stats = SubResource("Resource_vqaxa")
 
 [node name="card_library" type="Node" parent="."]
 script = ExtResource("1_ujfqy")
