@@ -14,6 +14,10 @@ config/name="The Legend of Phil A. Buster"
 run/main_scene="uid://cdyp8mpw52ws3"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
+[audio]
+
+buses/default_bus_layout="res://assets/default_bus_layout.tres"
+
 [debug]
 
 gdscript/warnings/unassigned_variable=2
