@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_lxpt7")
-dollar_multiplier = 1.0
+reward_multiplier = 1.0
 time_multiplier = 1.0
 bust_multiplier = 1.0
-word = "pedantic"
-rarity = 0
+time = 3
+price = 1
+pool_count = 2
 metadata/_custom_type_script = "uid://lfryctu523a1"

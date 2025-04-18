@@ -4,10 +4,8 @@
 
 [resource]
 script = ExtResource("1_pdiqm")
-dollars = 1
-time = 1
-relevancy_immigration = 0.0
-relevancy_tax = 0.0
-word = "china"
-rarity = 0
+reward = 1
+time = 2
+price = 1
+pool_count = 2
 metadata/_custom_type_script = "uid://ck5huucey4t5d"

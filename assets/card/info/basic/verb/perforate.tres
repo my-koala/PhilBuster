@@ -4,10 +4,8 @@
 
 [resource]
 script = ExtResource("1_olpif")
-dollars = 1
-time = 1
-relevancy_immigration = 0.15
-relevancy_tax = -0.12
-word = "perforate"
-rarity = 2
+reward = 1
+time = 3
+price = 1
+pool_count = 2
 metadata/_custom_type_script = "uid://b4o2l2oinf0f8"

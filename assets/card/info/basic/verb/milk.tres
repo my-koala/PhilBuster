@@ -4,10 +4,8 @@
 
 [resource]
 script = ExtResource("1_8kxkv")
-dollars = 1
-time = 2
-relevancy_immigration = 0.0
-relevancy_tax = 0.0
-word = ""
-rarity = 0
+reward = 1
+time = 1
+price = 1
+pool_count = 2
 metadata/_custom_type_script = "uid://b4o2l2oinf0f8"
