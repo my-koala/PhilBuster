@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://copv5onr76lmr"]
+
+[ext_resource type="Script" uid="uid://blp4tvdlbtc0m" path="res://scripts/session/session_speak.gd" id="1_n74pq"]
+[ext_resource type="PackedScene" uid="uid://jfp01npsno1" path="res://assets/game_button/game_button.tscn" id="2_8atmh"]
+
+[node name="session_speak" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -84.5
+offset_right = 185.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_n74pq")
+
+[node name="game_button" parent="." instance=ExtResource("2_8atmh")]
+unique_name_in_owner = true
+layout_mode = 1
+text = "Speak"

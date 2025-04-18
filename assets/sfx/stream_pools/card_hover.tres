@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://c2y1r43ogb430"]
+
+[ext_resource type="AudioStream" uid="uid://ch7dpt5nwtple" path="res://assets/sfx/clips/card_hovermouse.wav" id="1_jisnp"]
+
+[resource]
+random_pitch = 1.25
+streams_count = 1
+stream_0/stream = ExtResource("1_jisnp")

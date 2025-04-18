@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hmxhcsa5ytbl"
-path="res://.godot/imported/Trashcan.png-13b4da70b90529229a6094f5a939dbb8.ctex"
+uid="uid://dxxpgnn2hecfd"
+path="res://.godot/imported/squorcle button.png-cf452c31549bf086d410288da0c1a5b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Trashcan.png"
-dest_files=["res://.godot/imported/Trashcan.png-13b4da70b90529229a6094f5a939dbb8.ctex"]
+source_file="res://assets/game_button/squorcle button.png"
+dest_files=["res://.godot/imported/squorcle button.png-cf452c31549bf086d410288da0c1a5b0.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ce5ej8armma4y"]
+[gd_scene load_steps=13 format=3 uid="uid://ce5ej8armma4y"]
 
 [ext_resource type="Script" uid="uid://crsfhee7ojlr5" path="res://scripts/session/session.gd" id="1_heuok"]
 [ext_resource type="PackedScene" uid="uid://cd4a04syaq7r7" path="res://assets/sentence_container/sentence_container.tscn" id="2_sxs0h"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" uid="uid://l3hpmq8srq2a" path="res://scripts/hand_container/hand_container.gd" id="3_vmdxw"]
 [ext_resource type="PackedScene" uid="uid://bjh0uxpfofbd1" path="res://assets/bust_meter/bust_meter.tscn" id="4_qxa6x"]
 [ext_resource type="Texture2D" uid="uid://b6gpumkk3jwlj" path="res://assets/session/textures/bg_game.png" id="5_7ge3d"]
-[ext_resource type="PackedScene" uid="uid://dskiemvv8csjm" path="res://scripts/highlight/highlight.tscn" id="5_g8jqu"]
 [ext_resource type="Texture2D" uid="uid://dxpksenck1p3l" path="res://assets/session/textures/bg_foreground.png" id="6_04yh6"]
-[ext_resource type="PackedScene" uid="uid://copv5onr76lmr" path="res://assets/session/session_submit.tscn" id="6_dl4qr"]
+[ext_resource type="PackedScene" uid="uid://copv5onr76lmr" path="res://assets/session/session_speak.tscn" id="6_dl4qr"]
 [ext_resource type="PackedScene" uid="uid://2eoq76ffybbi" path="res://assets/clock/clock.tscn" id="7_7ge3d"]
+[ext_resource type="PackedScene" uid="uid://bba3ain88b1ih" path="res://assets/session/session_discard.tscn" id="8_g8jqu"]
 [ext_resource type="PackedScene" uid="uid://dmna7dgq05p8t" path="res://assets/game_over/game_over.tscn" id="11_g8jqu"]
+[ext_resource type="AudioStream" uid="uid://b4h72ntok3ud3" path="res://assets/sfx/stream_pools/card_discard.tres" id="12_dl4qr"]
 
 [node name="session" type="Control"]
 layout_mode = 3
@@ -81,6 +82,22 @@ grow_vertical = 2
 alignment = 1
 script = ExtResource("3_vmdxw")
 
+[node name="session_discard" parent="." instance=ExtResource("8_g8jqu")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 638.0
+offset_top = 34.0
+offset_right = 894.0
+offset_bottom = 290.0
+
+[node name="session_speak" parent="." instance=ExtResource("6_dl4qr")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 638.0
+offset_top = -238.0
+offset_right = 894.0
+offset_bottom = 18.0
+
 [node name="bust_meter" parent="." instance=ExtResource("4_qxa6x")]
 unique_name_in_owner = true
 offset_left = 546.0
@@ -90,40 +107,14 @@ offset_bottom = 686.0
 progress_bar_speed = 512.0
 bust_max = 64
 
-[node name="discard" type="ColorRect" parent="."]
+[node name="clock" parent="." instance=ExtResource("7_7ge3d")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(256, 256)
 layout_mode = 0
-offset_left = 1601.0
-offset_top = 771.0
-offset_right = 1857.0
-offset_bottom = 1027.0
-color = Color(1, 0.536812, 0.441343, 1)
-
-[node name="label" type="Label" parent="discard"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -102.0
-offset_top = -33.5
-offset_right = 102.0
-offset_bottom = 33.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "DISCARD"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="highlight" parent="discard" instance=ExtResource("5_g8jqu")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = 207.0
+offset_top = 156.0
+offset_right = 207.0
+offset_bottom = 156.0
+scale = Vector2(0.5, 0.5)
 
 [node name="drag_overlay" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -139,30 +130,12 @@ color = Color(0, 0, 0, 0.258824)
 unique_name_in_owner = true
 anchors_preset = 0
 
-[node name="session_submit" parent="." instance=ExtResource("6_dl4qr")]
-unique_name_in_owner = true
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1168.0
-offset_top = 454.0
-offset_right = 1566.0
-offset_bottom = 623.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="clock" parent="." instance=ExtResource("7_7ge3d")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 207.0
-offset_top = 156.0
-offset_right = 207.0
-offset_bottom = 156.0
-scale = Vector2(0.5, 0.5)
-
 [node name="game_over" parent="." instance=ExtResource("11_g8jqu")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="audio" type="Node" parent="."]
+
+[node name="discard" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("12_dl4qr")
+bus = &"Sound"

@@ -18,7 +18,7 @@ var starting_deck: Array[CardInfo] = []
 @export
 var starting_money: int = 0
 @export
-var max_discards: int = 5
+var discard_count: int = 5
 
 @export
 var skip_duplicate_sentences: bool = true
@@ -26,6 +26,8 @@ var skip_duplicate_sentences: bool = true
 var use_global_sentences: bool = true
 @export
 var use_topic_memory: bool = true
+
+var _discard_count: int = 0
 
 var _deck: Array[CardInfo] = []
 var _money: int = 0
@@ -69,11 +71,10 @@ static func get_topic_count() -> int:
 func _init() -> void:
 	reset_deck()
 	reset_money()
+	reset_discard_count()
 
-func get_deck() -> Array[CardInfo]:
-	var deck: Array[CardInfo] = _deck.duplicate()
-	deck.make_read_only()
-	return deck
+func reset_discard_count() -> void:
+	_discard_count = discard_count
 
 func reset_deck() -> void:
 	_deck = starting_deck.duplicate()
@@ -84,6 +85,17 @@ func reset_money() -> void:
 func reset_topic_memory() -> void:
 	_topic_memory_relevant.clear()
 	_topic_memory_irrelevant.clear()
+
+func get_discard_count() -> int:
+	return _discard_count
+
+func discard_count_decrement() -> void:
+	_discard_count = maxi(_discard_count - 1, 0)
+
+func get_deck() -> Array[CardInfo]:
+	var deck: Array[CardInfo] = _deck.duplicate() as Array[CardInfo]
+	deck.make_read_only()
+	return deck
 
 func deck_append(card_info: CardInfo) -> bool:
 	if !is_instance_valid(card_info):

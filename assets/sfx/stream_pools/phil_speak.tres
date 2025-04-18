@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://4dtp7tvkbhns"]
+
+[ext_resource type="AudioStream" uid="uid://ui037v41m0xe" path="res://assets/sfx/clips/voice_sfx_2.wav" id="1_8fuih"]
+
+[resource]
+random_pitch = 1.1
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("1_8fuih")

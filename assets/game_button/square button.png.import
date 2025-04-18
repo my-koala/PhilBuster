@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4bua5a7nt67o"
-path="res://.godot/imported/Gear.png-fdca90104000017d7f67de10dbeb19fa.ctex"
+uid="uid://dv64ofp8dqvs8"
+path="res://.godot/imported/square button.png-9e4303d9034e12c2733a2d2e8ef18d9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Gear.png"
-dest_files=["res://.godot/imported/Gear.png-fdca90104000017d7f67de10dbeb19fa.ctex"]
+source_file="res://assets/game_button/square button.png"
+dest_files=["res://.godot/imported/square button.png-9e4303d9034e12c2733a2d2e8ef18d9f.ctex"]
 
 [params]
 

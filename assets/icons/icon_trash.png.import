@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jjy1mascbxxg"
-path="res://.godot/imported/hourglass.png-879ee27d794c7d0c5bf7ff6c0461f64b.ctex"
+uid="uid://hmxhcsa5ytbl"
+path="res://.godot/imported/icon_trash.png-c8f32aa46b7a69ceba9f81229a3889bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/hourglass.png"
-dest_files=["res://.godot/imported/hourglass.png-879ee27d794c7d0c5bf7ff6c0461f64b.ctex"]
+source_file="res://assets/icons/icon_trash.png"
+dest_files=["res://.godot/imported/icon_trash.png-c8f32aa46b7a69ceba9f81229a3889bd.ctex"]
 
 [params]
 

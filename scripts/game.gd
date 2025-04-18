@@ -42,11 +42,6 @@ func start() -> void:
 	
 	_loop = true
 	
-	game_stats.reset_deck()
-	game_stats.reset_money()
-	game_stats.topic_randomize()
-	game_stats.reset_topic_memory()
-	
 	_card_library.reset_library()
 	
 	for card_info: CardInfo in game_stats.get_deck():
@@ -71,6 +66,11 @@ func start_menu() -> void:
 	print("presentu")
 
 func start_session() -> void:
+	game_stats.reset_deck()
+	game_stats.reset_money()
+	game_stats.topic_randomize()
+	game_stats.reset_topic_memory()
+	
 	game_stats.topic_randomize()
 	await _transition.fade_in("A bill concerning %s..." % [game_stats.topic_get_name()])
 	_shop.hide_shop()

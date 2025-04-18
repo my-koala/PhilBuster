@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://ddhrrdmmc5gv5"]
+
+[ext_resource type="AudioStream" uid="uid://10o21d8cuar5" path="res://assets/sfx/clips/teeth_twinkle.wav" id="1_1kxeb"]
+
+[resource]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("1_1kxeb")

@@ -37,17 +37,17 @@ var _drag: Control = %drag as Control
 @onready
 var _drag_overlay: ColorRect = %drag_overlay as ColorRect
 @onready
-var _discard: Control = %discard as Control
+var _session_speak: SessionSpeak = %session_speak as SessionSpeak
 @onready
-var _discard_highlight: Highlight = %discard/highlight as Highlight
-@onready
-var _session_submit: SessionSubmit = %session_submit as SessionSubmit
+var _session_discard: SessionDiscard = %session_discard as SessionDiscard
 @onready
 var _clock: Clock = %clock as Clock
 @onready
 var _phil: Phil = %phil as Phil
 @onready
 var _game_over: GameOver = %game_over as GameOver
+@onready
+var _audio_discard: AudioStreamPlayer = $audio/discard as AudioStreamPlayer
 
 var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
@@ -85,12 +85,14 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 	_clock.time_region_start = 0
 	_clock.time_region_duration = time
 	
+	_session_discard.set_discard_count(_game_stats.get_discard_count())
+	
 	#_topic_loader.set_topic(topic)
 	# temporary
 	_sentence_container.set_sentence(_game_stats.topic_get_sentence())
 	_game_over.stop()
 	
-	_session_submit.enabled = true
+	_session_speak.enabled = true
 	_phil.play_animation_sit()
 
 func stop_session(success: bool) -> void:
@@ -108,11 +110,12 @@ func stop_session(success: bool) -> void:
 		card_instance.queue_free()
 	_hand_card_instances.clear()
 	
-	_session_submit.enabled = false
+	_session_speak.enabled = false
 	
 	_game_over.stop()
 	session_finished.emit(success)
 	
+	_game_stats.reset_discard_count()
 	_game_stats = null
 
 func _physics_process(delta: float) -> void:
@@ -144,20 +147,21 @@ func _ready() -> void:
 	_drag_overlay.visible = false
 	_drag_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-	_session_submit.submitted.connect(_on_session_submit_submitted)
+	_session_speak.submitted.connect(_on_session_speak_submitted)
 	
 	_game_over.return_to_menu.connect(stop_session.bind(false))
 
 var _submitted: bool = false
 
-func _on_session_submit_submitted() -> void:
+func _on_session_speak_submitted() -> void:
 	# TODO: once sentence container is animated, start immediately and then check if is reading
 	# remove _submitted bool
 	if _submitted:
 		return
 	_submitted = true
 	
-	_session_submit.enabled = false
+	_session_speak.enabled = false
+	_session_discard.enabled = false
 	for card_instance: CardInstance in _hand_card_instances:
 		card_instance.can_drag = false
 	
@@ -178,9 +182,8 @@ func _on_sentence_container_read_stopped() -> void:
 	await get_tree().create_timer(0.5).timeout
 	_phil.play_animation_sit()
 	
-	_session_submit.enabled = true
-	for card_instance: CardInstance in _deck_card_instances:
-		card_instance.can_drag = true
+	_session_speak.enabled = true
+	_session_discard.enabled = true
 	for card_instance: CardInstance in _hand_card_instances:
 		card_instance.can_drag = true
 	
@@ -273,10 +276,13 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 	_drag.remove_child(card_instance)
 	
 	# First try discard, then try fields, then fallback to hand container.
-	if _discard.get_global_rect().has_point(global_mouse_position):
+	if _session_discard.get_global_rect().has_point(global_mouse_position) && (_game_stats.get_discard_count() > 0):
+		_game_stats.discard_count_decrement()
+		_session_discard.set_discard_count(_game_stats.get_discard_count())
 		_deck_card_instances.append(card_instance)
 		_hand_card_instances.erase(card_instance)
 		_hand_card_instances_fields.erase(card_instance)
+		_audio_discard.play()
 	elif _sentence_container.try_insert_card_info(card_instance.card_info, global_mouse_position):
 		_hand_card_instances_fields.append(card_instance)
 	else:

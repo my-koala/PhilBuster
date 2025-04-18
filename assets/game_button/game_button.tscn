@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://jfp01npsno1"]
+
+[ext_resource type="Script" uid="uid://doikdgjvkiner" path="res://scripts/game_button/game_button.gd" id="1_b2l2r"]
+[ext_resource type="AudioStream" uid="uid://bd8pxejxb5a60" path="res://assets/sfx/clips/mouse_menuiconhover.wav" id="1_d1j5l"]
+[ext_resource type="AudioStream" uid="uid://0h8m6lgshsku" path="res://assets/sfx/clips/mouse_click.wav" id="2_b2l2r"]
+
+[node name="game_button" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_b2l2r")
+
+[node name="audio" type="Node" parent="."]
+
+[node name="hover" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("1_d1j5l")
+bus = &"Sound"
+
+[node name="click" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("2_b2l2r")
+bus = &"Sound"

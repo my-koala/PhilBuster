@@ -66,13 +66,21 @@ var _audio_card_pickup: AudioStreamPlayer = $audio/card_pickup as AudioStreamPla
 @onready
 var _audio_card_drop: AudioStreamPlayer = $audio/card_drop as AudioStreamPlayer
 @onready
+var _audio_card_hover: AudioStreamPlayer = $audio/card_hover as AudioStreamPlayer
+@onready
 var _button: Button = %button as Button
 @onready
 var _animation_player: AnimationPlayer = $animation_player as AnimationPlayer
 @onready
+var _container_stats_reward: Control = %container_stats/reward as Control
+@onready
 var _container_stats_reward_label: Label = %container_stats/reward/label as Label
 @onready
+var _container_stats_time: Control = %container_stats/time as Control
+@onready
 var _container_stats_time_label: Label = %container_stats/time/label as Label
+@onready
+var _container_stats_bust: Control = %container_stats/bust as Control
 @onready
 var _container_stats_bust_label: Label = %container_stats/bust/label as Label
 
@@ -81,6 +89,7 @@ var _dirty: bool = true
 var _drag: bool = false
 
 var _input_mouse_pressed: bool = false
+var _input_mouse_hover: bool = false
 
 func start_drag() -> void:
 	if can_drag && !_drag:
@@ -104,7 +113,7 @@ func _update_display() -> void:
 		if is_instance_valid(card_info_basic):
 			_container_stats_reward_label.text = str(card_info_basic.reward)
 			_container_stats_time_label.text = str(card_info_basic.time)
-			_container_stats_bust_label.visible = false
+			_container_stats_bust.visible = false
 			if card_info is CardInfoBasicNoun:
 				_label_speech.text = "(Noun)"
 				_corner.color = color_noun
@@ -117,7 +126,7 @@ func _update_display() -> void:
 			_container_stats_reward_label.text = str("%.1fx" % [card_info_modifier.reward_multiplier])
 			_container_stats_time_label.text = str("%.1fx" % [card_info_modifier.time_multiplier])
 			_container_stats_bust_label.text = str("%.1fx" % [card_info_modifier.bust_multiplier])
-			_container_stats_bust_label.visible = true
+			_container_stats_bust.visible = true
 			if card_info is CardInfoModifierAdjective:
 				_label_speech.text = "(Adjective)"
 				_corner.color = color_adjective
@@ -155,8 +164,12 @@ func _physics_process(delta: float) -> void:
 	if _drag:
 		_animation_player.play(&"card_instance/drag")
 	elif _button.is_hovered():
-		_animation_player.play(&"card_instance/hover")
+		if !_input_mouse_hover:
+			_input_mouse_hover = true
+			_animation_player.play(&"card_instance/hover")
+			_audio_card_hover.play()
 	else:
+		_input_mouse_hover = false
 		_animation_player.play(&"card_instance/normal")
 	
 	if _drag:

@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bba3ain88b1ih"]
+
+[ext_resource type="Script" uid="uid://c42cwsugag4vs" path="res://scripts/session/session_discard.gd" id="1_ablp0"]
+[ext_resource type="PackedScene" uid="uid://jfp01npsno1" path="res://assets/game_button/game_button.tscn" id="1_ejeoo"]
+[ext_resource type="Texture2D" uid="uid://hmxhcsa5ytbl" path="res://assets/icons/icon_trash.png" id="2_ablp0"]
+[ext_resource type="PackedScene" uid="uid://dskiemvv8csjm" path="res://scripts/highlight/highlight.tscn" id="3_t004u"]
+
+[node name="session_discard" type="Control"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ablp0")
+
+[node name="game_button" parent="." instance=ExtResource("1_ejeoo")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="label" type="Label" parent="."]
+layout_mode = 2
+offset_top = 29.0
+offset_right = 256.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "DISCARD"
+horizontal_alignment = 1
+
+[node name="label_count" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 65.0
+offset_right = 256.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0 left"
+horizontal_alignment = 1
+
+[node name="texture_rect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+offset_left = 64.0
+offset_top = 99.0
+offset_right = 192.0
+offset_bottom = 227.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+mouse_filter = 2
+texture = ExtResource("2_ablp0")
+expand_mode = 1
+
+[node name="highlight" parent="." instance=ExtResource("3_t004u")]
+layout_mode = 1

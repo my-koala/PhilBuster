@@ -6,7 +6,7 @@
 
 [node name="button_sfx_manager" type="Node"]
 script = ExtResource("1_hb1cs")
-metadata/_custom_type_script = ExtResource("1_hb1cs")
+metadata/_custom_type_script = "uid://bxnyv2mmh8i5t"
 
 [node name="mouse_over_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7laea")
