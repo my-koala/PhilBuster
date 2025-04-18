@@ -287,4 +287,12 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 	# TODO: Highlight fields accessible to card instance.
 
 func _exit_tree() -> void:
-	stop_session(false)
+	_sentence_container.clear_sentence()
+	
+	for card_instance: CardInstance in _deck_card_instances:
+		card_instance.queue_free()
+	_deck_card_instances.clear()
+	
+	for card_instance: CardInstance in _hand_card_instances:
+		card_instance.queue_free()
+	_hand_card_instances.clear()
