@@ -56,10 +56,10 @@ var _input_mouse_pressed: bool = false
 var _input_mouse_hover: bool = false
 
 func start_drag() -> void:
-	if is_inside_tree() && can_drag && !_drag:
+	if can_drag && !_drag:
 		_drag = true
-		_audio_card_pickup.play()
 		drag_started.emit()
+		_audio_card_pickup.play()
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
