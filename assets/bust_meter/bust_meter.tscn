@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjh0uxpfofbd1"]
+[gd_scene load_steps=5 format=3 uid="uid://bjh0uxpfofbd1"]
 
 [ext_resource type="Script" uid="uid://bi0f6vnaettce" path="res://scripts/bust_meter/bust_meter.gd" id="1_i8etg"]
+[ext_resource type="Texture2D" uid="uid://byallo4q062d0" path="res://assets/bust_meter/Guillotine.png" id="2_76nd4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2d37k"]
 bg_color = Color(0.304079, 0.322806, 0.321343, 1)
@@ -12,6 +13,7 @@ bg_color = Color(1, 0.312898, 0.459016, 1)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_i8etg")
+bust_max = 4202
 
 [node name="v_box_container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -27,14 +29,35 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[node name="progress_bar" type="ProgressBar" parent="v_box_container"]
+[node name="nine_patch_rect" type="NinePatchRect" parent="v_box_container"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 256)
+custom_minimum_size = Vector2(0, 512)
 layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("2_76nd4")
+region_rect = Rect2(-8, 88, 136, 248)
+patch_margin_left = 40
+patch_margin_top = 32
+patch_margin_right = 40
+patch_margin_bottom = 96
+
+[node name="progress_bar" type="ProgressBar" parent="v_box_container/nine_patch_rect"]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 27.0
+offset_right = -19.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_2d37k")
 theme_override_styles/fill = SubResource("StyleBoxFlat_836ik")
-max_value = 64.0
+max_value = 4202.0
 step = 0.0
 fill_mode = 3
 show_percentage = false
