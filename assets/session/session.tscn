@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ce5ej8armma4y"]
+[gd_scene load_steps=12 format=3 uid="uid://ce5ej8armma4y"]
 
 [ext_resource type="Script" uid="uid://crsfhee7ojlr5" path="res://scripts/session/session.gd" id="1_heuok"]
 [ext_resource type="PackedScene" uid="uid://cd4a04syaq7r7" path="res://assets/sentence_container/sentence_container.tscn" id="2_sxs0h"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dxpksenck1p3l" path="res://assets/session/textures/bg_foreground.png" id="6_04yh6"]
 [ext_resource type="PackedScene" uid="uid://copv5onr76lmr" path="res://assets/session/session_submit.tscn" id="6_dl4qr"]
 [ext_resource type="PackedScene" uid="uid://2eoq76ffybbi" path="res://assets/clock/clock.tscn" id="7_7ge3d"]
-[ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="8_dl4qr"]
 [ext_resource type="Script" uid="uid://lmtlaovjn688" path="res://scripts/topic/topic_loader.gd" id="9_vmdxw"]
 
 [node name="session" type="Control"]
@@ -86,27 +85,6 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 script = ExtResource("3_vmdxw")
-
-[node name="card_instance" parent="hand_container" instance=ExtResource("8_dl4qr")]
-layout_mode = 2
-
-[node name="card_instance2" parent="hand_container" instance=ExtResource("8_dl4qr")]
-layout_mode = 2
-
-[node name="card_instance3" parent="hand_container" instance=ExtResource("8_dl4qr")]
-layout_mode = 2
-
-[node name="card_instance4" parent="hand_container" instance=ExtResource("8_dl4qr")]
-layout_mode = 2
-
-[node name="card_instance5" parent="hand_container" instance=ExtResource("8_dl4qr")]
-layout_mode = 2
-
-[node name="card_instance6" parent="hand_container" instance=ExtResource("8_dl4qr")]
-layout_mode = 2
-
-[node name="card_instance7" parent="hand_container" instance=ExtResource("8_dl4qr")]
-layout_mode = 2
 
 [node name="bust_meter" parent="." instance=ExtResource("4_qxa6x")]
 unique_name_in_owner = true
