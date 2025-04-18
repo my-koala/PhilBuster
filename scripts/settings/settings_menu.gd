@@ -5,13 +5,16 @@ class_name SettingsMenu
 var _menu_base : Control = $nine_patch_rect
 
 @onready
+var _button : BaseButton = $texture_button
+
+@onready
 var _music_slider : HSlider = %music_slider
 
 @onready
 var _sfx_slider : HSlider = %sfx_slider
 
 func show_menu() -> void:
-	_menu_base.visible = true
+	_menu_base.visible = !_menu_base.visible
 
 func hide_menu() -> void:
 	_menu_base.visible = false
@@ -36,5 +39,5 @@ func _input(event: InputEvent) -> void:
 	
 	var mouse_position: Vector2 = mouse_event.global_position
 	
-	if !_menu_base.get_global_rect().has_point(mouse_position):
+	if !_menu_base.get_global_rect().has_point(mouse_position) && !_button.get_global_rect().has_point(mouse_position):
 		hide_menu()
