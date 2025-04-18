@@ -10,6 +10,8 @@ metadata/_custom_type_script = ExtResource("1_hb1cs")
 
 [node name="mouse_over_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7laea")
+bus = &"Sound"
 
 [node name="click_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_i5qmu")
+bus = &"Sound"
