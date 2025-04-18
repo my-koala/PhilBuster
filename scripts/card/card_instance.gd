@@ -60,7 +60,7 @@ var _label_word: Label = %label_word as Label
 @onready
 var _label_speech: Label = %label_speech as Label
 @onready
-var _border_img: CanvasItem = %border as CanvasItem
+var _corner: ColorRect = %corner as ColorRect
 @onready
 var _audio_card_pickup: AudioStreamPlayer = $audio/card_pickup as AudioStreamPlayer
 @onready
@@ -107,10 +107,10 @@ func _update_display() -> void:
 			_container_stats_bust_label.visible = false
 			if card_info is CardInfoBasicNoun:
 				_label_speech.text = "(Noun)"
-				_border_img.modulate = color_noun
+				_corner.color = color_noun
 			elif card_info is CardInfoBasicVerb:
 				_label_speech.text = "(Verb)"
-				_border_img.modulate = color_verb
+				_corner.color = color_verb
 		
 		var card_info_modifier: CardInfoModifier = card_info as CardInfoModifier
 		if is_instance_valid(card_info_modifier):
@@ -120,13 +120,13 @@ func _update_display() -> void:
 			_container_stats_bust_label.visible = true
 			if card_info is CardInfoModifierAdjective:
 				_label_speech.text = "(Adjective)"
-				_border_img.modulate = color_adjective
+				_corner.color = color_adjective
 			elif card_info is CardInfoModifierAdverb:
 				_label_speech.text = "(Adverb)"
-				_border_img.modulate = color_adverb
+				_corner.color = color_adverb
 	else:
 		_label_word.text = "<Word>"
-		_border_img.modulate = Color.GRAY
+		_corner.color = Color.GRAY
 	
 	# TODO: Resize label font size to fit.
 	
