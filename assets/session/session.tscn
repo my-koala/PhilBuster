@@ -87,6 +87,7 @@ offset_top = 646.0
 offset_right = 586.0
 offset_bottom = 686.0
 progress_bar_speed = 512.0
+bust_max = 64
 
 [node name="discard" type="ColorRect" parent="."]
 unique_name_in_owner = true
