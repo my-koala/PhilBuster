@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://blisf8vvuo532"]
+
+[ext_resource type="Script" uid="uid://b10yh2mq4ni2" path="res://scripts/music_player/music_player.gd" id="1_6yro5"]
+[ext_resource type="AudioStream" uid="uid://d1236gll0ow8b" path="res://assets/music/music_title.mp3" id="2_icbvx"]
+[ext_resource type="AudioStream" uid="uid://dpc5vowyw0rl3" path="res://assets/music/music_main.mp3" id="3_d0be6"]
+[ext_resource type="AudioStream" uid="uid://dyh7yvsrpfpcd" path="res://assets/music/music_recess.mp3" id="4_oy6ev"]
+[ext_resource type="AudioStream" uid="uid://bmouh5tmg5v6f" path="res://assets/music/music_gameover.mp3" id="5_ky30o"]
+[ext_resource type="AudioStream" uid="uid://chqw4pekrqlyg" path="res://assets/music/music_results.mp3" id="6_uskf1"]
+
+[node name="music_player" type="Node"]
+script = ExtResource("1_6yro5")
+transition_duration_in = null
+transition_duration = null
+
+[node name="music_title" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_icbvx")
+bus = &"Music"
+
+[node name="music_main" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d0be6")
+bus = &"Music"
+
+[node name="music_recess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oy6ev")
+bus = &"Music"
+
+[node name="music_gameover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ky30o")
+bus = &"Music"
+
+[node name="music_results" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_uskf1")
+bus = &"Music"
