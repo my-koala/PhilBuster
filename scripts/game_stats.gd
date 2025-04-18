@@ -127,16 +127,14 @@ func get_money() -> int:
 	return _money
 
 func money_add(amount: int) -> void:
-	amount = maxi(amount, 0)
-	if amount > 0:
-		_money += amount
-		money_added.emit(amount)
+	_money += amount
+	money_added.emit()
 
 func money_remove(amount: int) -> void:
 	amount = maxi(mini(amount, _money), 0)
 	if amount > 0:
 		_money -= amount
-		money_added.emit(amount)
+		money_removed.emit(amount)
 
 func calculate_price_for(card_info : CardInfo) -> int:
 	return card_info.price * (floori(_session * 0.25) + 1)

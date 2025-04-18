@@ -446,9 +446,11 @@ flat = true
 
 [node name="card_pickup" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("4_dei5m")
+bus = &"Sound"
 
 [node name="card_drop" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("5_5xmu0")
+bus = &"Sound"
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {

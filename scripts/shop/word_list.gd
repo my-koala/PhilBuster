@@ -10,6 +10,9 @@ var label: Label
 @export
 var container: Container
 
+@onready
+var _sfx_manager: ButtonSFXManager = $button_sfx_manager as ButtonSFXManager
+
 var _game_stats: GameStats
 var _cards: Array[CardInfo]
 
@@ -27,6 +30,8 @@ func init(name: String, cards: Array[CardInfo], game_stats: GameStats) -> void:
 	for i: int in range(cards.size()):
 		var card: CardInfo = cards[i]
 		var button: Button = BUTTON.instantiate() as Button
+		# ABANDON ALL HOPE ALL YE WHO ENTER HERE
+		#_sfx_manager.hook_to_button(button)
 		button.text = card.get_word()
 		button.set_pressed_no_signal(game_stats.deck_has(card))
 		button.toggled.connect(func(toggled: bool) -> void: _on_card_button_toggled(button, card, toggled))

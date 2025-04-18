@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://vekblgd3gvyy"]
+
+[ext_resource type="Script" uid="uid://bxnyv2mmh8i5t" path="res://scripts/sfx/button_sfx_manager.gd" id="1_hb1cs"]
+[ext_resource type="AudioStream" uid="uid://bd8pxejxb5a60" path="res://assets/sfx/clips/mouse_menuiconhover.wav" id="2_7laea"]
+[ext_resource type="AudioStream" uid="uid://0h8m6lgshsku" path="res://assets/sfx/clips/mouse_click.wav" id="3_i5qmu"]
+
+[node name="button_sfx_manager" type="Node"]
+script = ExtResource("1_hb1cs")
+metadata/_custom_type_script = ExtResource("1_hb1cs")
+
+[node name="mouse_over_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7laea")
+bus = &"Sound"
+
+[node name="click_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_i5qmu")
+bus = &"Sound"

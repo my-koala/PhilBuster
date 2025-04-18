@@ -1,12 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3vp5733djmpv"]
+[gd_scene load_steps=3 format=3 uid="uid://d3vp5733djmpv"]
 
 [ext_resource type="Script" uid="uid://xhekt82t5dvq" path="res://scripts/shop/word_list.gd" id="1_e36ut"]
+[ext_resource type="PackedScene" uid="uid://vekblgd3gvyy" path="res://assets/sfx/button_sfx_manager.tscn" id="2_usxk8"]
 
 [node name="word_list" type="Panel" node_paths=PackedStringArray("label", "container")]
 size_flags_horizontal = 3
 script = ExtResource("1_e36ut")
 label = NodePath("label")
 container = NodePath("word_type/v_box_container")
+
+[node name="button_sfx_manager" parent="." instance=ExtResource("2_usxk8")]
 
 [node name="label" type="Label" parent="."]
 layout_mode = 1

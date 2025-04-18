@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=23 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="Script" uid="uid://c5o0vh6ubr54t" path="res://scripts/game_stats.gd" id="2_fphxj"]
@@ -13,11 +13,14 @@
 [ext_resource type="Resource" uid="uid://bhtk361554el3" path="res://assets/card/info/basic/verb/cut.tres" id="10_pd2c5"]
 [ext_resource type="Resource" uid="uid://je33xqvdtirn" path="res://assets/card/info/basic/verb/cycle.tres" id="11_12kgx"]
 [ext_resource type="Resource" uid="uid://btih6e7ffktnc" path="res://assets/card/info/basic/verb/defenestrate.tres" id="12_hsbq6"]
+[ext_resource type="PackedScene" uid="uid://vekblgd3gvyy" path="res://assets/sfx/button_sfx_manager.tscn" id="12_wpieh"]
 [ext_resource type="PackedScene" uid="uid://ce5ej8armma4y" path="res://assets/session/session.tscn" id="13_h4xlo"]
 [ext_resource type="Resource" uid="uid://c7qhvkbb80de6" path="res://assets/card/info/basic/verb/extrapolate.tres" id="13_mp1se"]
 [ext_resource type="PackedScene" uid="uid://m0dkott85qmk" path="res://assets/shop/shop.tscn" id="14_vvw4a"]
 [ext_resource type="PackedScene" uid="uid://b278yipnxx0xj" path="res://assets/transitions/transition.tscn" id="15_ew6cl"]
 [ext_resource type="PackedScene" uid="uid://08sknccaplbf" path="res://assets/main_menu/main_menu.tscn" id="15_km2eh"]
+[ext_resource type="PackedScene" uid="uid://dilmsq4s6dx4f" path="res://assets/money_display/money_display.tscn" id="16_2rvxm"]
+[ext_resource type="PackedScene" uid="uid://yr15lthni1nd" path="res://assets/settings_menu/settings_menu.tscn" id="16_ul5qt"]
 
 [sub_resource type="Resource" id="Resource_vqaxa"]
 script = ExtResource("2_fphxj")
@@ -31,6 +34,8 @@ use_topic_memory = true
 script = ExtResource("2_tkxyu")
 game_stats = SubResource("Resource_vqaxa")
 
+[node name="button_sfx_manager" parent="." instance=ExtResource("12_wpieh")]
+
 [node name="card_library" type="Node" parent="."]
 script = ExtResource("1_ujfqy")
 
@@ -38,6 +43,10 @@ script = ExtResource("1_ujfqy")
 
 [node name="shop" parent="." instance=ExtResource("14_vvw4a")]
 visible = false
+
+[node name="money_display" parent="." instance=ExtResource("16_2rvxm")]
+
+[node name="settings_menu" parent="." instance=ExtResource("16_ul5qt")]
 
 [node name="main_menu" parent="." instance=ExtResource("15_km2eh")]
 visible = false

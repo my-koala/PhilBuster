@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dilmsq4s6dx4f"]
+
+[ext_resource type="Script" uid="uid://dx4r7gccyrt1f" path="res://scripts/flyout/flyout_spawner.gd" id="1_5jjr8"]
+[ext_resource type="Script" uid="uid://cskjv6ipss4qx" path="res://scripts/money_display/money_display.gd" id="1_k07vn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nyl32"]
+font_size = 61
+font_color = Color(0.372549, 0.282353, 0.145098, 1)
+
+[node name="money_display" type="CanvasLayer"]
+script = ExtResource("1_k07vn")
+
+[node name="money_label" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 816.0
+offset_top = -1070.0
+offset_right = -17.9972
+offset_bottom = -911.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$ TEMP DOLLAH BILLS"
+label_settings = SubResource("LabelSettings_nyl32")
+horizontal_alignment = 2
+
+[node name="flyout_spawner" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -133.041
+offset_top = 76.9903
+offset_right = -33.0405
+offset_bottom = 313.99
+grow_horizontal = 0
+script = ExtResource("1_5jjr8")
+metadata/_custom_type_script = ExtResource("1_5jjr8")
+
+[node name="v_box_container" type="VBoxContainer" parent="flyout_spawner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.041
+offset_top = -1.9903
+offset_right = 31.041
+offset_bottom = -1.9903
+grow_horizontal = 2
+grow_vertical = 2
