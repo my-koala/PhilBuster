@@ -1,20 +1,67 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=12 format=3 uid="uid://dus5pobp2nofj"]
+[gd_resource type="Resource" script_class="Topic" load_steps=31 format=3 uid="uid://dus5pobp2nofj"]
 
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_ypbhn"]
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="2_8slyy"]
-[ext_resource type="Resource" uid="uid://cke0xk0w64n04" path="res://assets/card/info/basic/verb/holler.tres" id="2_msxjj"]
 [ext_resource type="Resource" uid="uid://dkyrkk54csccf" path="res://assets/card/info/basic/noun/jonathan.tres" id="3_fnsxk"]
-[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="4_0dv5n"]
+[ext_resource type="Resource" uid="uid://cttw3blf3wea0" path="res://assets/card/info/basic/noun/africa.tres" id="3_pqocq"]
+[ext_resource type="Resource" uid="uid://phpbucme08ir" path="res://assets/card/info/basic/noun/canada.tres" id="4_g78gr"]
 [ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="5_ye3d2"]
 [ext_resource type="Resource" uid="uid://btc48l4t3phdq" path="res://assets/card/info/basic/noun/china.tres" id="6_2kf1t"]
-[ext_resource type="Resource" uid="uid://bb0rud70wo2l5" path="res://assets/card/info/basic/noun/gorge.tres" id="7_fbrg3"]
-[ext_resource type="Resource" uid="uid://dd113hqvjfdgb" path="res://assets/card/info/basic/noun/rivals.tres" id="8_lp6u0"]
+[ext_resource type="Resource" uid="uid://cepfjm0lrjr8b" path="res://assets/card/info/basic/noun/japan.tres" id="6_gtj8w"]
+[ext_resource type="Resource" uid="uid://bxwssu6gygxgq" path="res://assets/card/info/basic/noun/korea.tres" id="7_ayy7r"]
+[ext_resource type="Resource" uid="uid://ef8tlv4tvtin" path="res://assets/card/info/basic/noun/mexico.tres" id="8_fbapk"]
 [ext_resource type="Resource" uid="uid://k8x1rtq71aqq" path="res://assets/card/info/basic/noun/wall.tres" id="9_fr62w"]
-[ext_resource type="Resource" uid="uid://codcagcifku88" path="res://assets/card/info/basic/verb/craft.tres" id="10_bhgy1"]
+[ext_resource type="Resource" uid="uid://dpdlgqaglnlaj" path="res://assets/card/info/basic/noun/rigamarole.tres" id="9_hbxmv"]
+[ext_resource type="Resource" uid="uid://ca2t4tjvrphtx" path="res://assets/card/info/basic/noun/the_eu.tres" id="10_ucne4"]
+[ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="13_rj5h6"]
+[ext_resource type="Resource" uid="uid://dr67po7ck5la3" path="res://assets/card/info/basic/noun/goon.tres" id="14_ghlvs"]
+[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="15_ddraj"]
+[ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="17_egtfv"]
+[ext_resource type="Resource" uid="uid://di5p0qmstfx4m" path="res://assets/card/info/basic/noun/marsupial.tres" id="18_loxhs"]
+[ext_resource type="Resource" uid="uid://bhusuopxodido" path="res://assets/card/info/basic/noun/pedigree.tres" id="19_p4nap"]
+[ext_resource type="Resource" uid="uid://uiraqcnqqby1" path="res://assets/card/info/basic/noun/price.tres" id="20_tmr0l"]
+[ext_resource type="Resource" uid="uid://dgny2c8kkwlg1" path="res://assets/card/info/basic/noun/tautology.tres" id="21_jgk7w"]
+[ext_resource type="Resource" uid="uid://x80e2em6oim0" path="res://assets/card/info/basic/noun/upholstery.tres" id="22_lghbs"]
+[ext_resource type="Resource" uid="uid://btih6e7ffktnc" path="res://assets/card/info/basic/verb/defenestrate.tres" id="23_2uxef"]
+[ext_resource type="Resource" uid="uid://c7qhvkbb80de6" path="res://assets/card/info/basic/verb/extrapolate.tres" id="24_w3cis"]
+[ext_resource type="Resource" uid="uid://ynhgk4eldggm" path="res://assets/card/info/basic/verb/gape.tres" id="25_oa8cb"]
+[ext_resource type="Resource" uid="uid://cgpqdc62r6wm8" path="res://assets/card/info/basic/verb/gas.tres" id="26_mu4cv"]
+[ext_resource type="Resource" uid="uid://c6aduln4nonhl" path="res://assets/card/info/basic/verb/gorge.tres" id="27_pijdo"]
+[ext_resource type="Resource" uid="uid://bbejhkmbee4m7" path="res://assets/card/info/basic/verb/perforate.tres" id="28_l7r4p"]
+[ext_resource type="Resource" uid="uid://d2jj82owqdflc" path="res://assets/card/info/basic/verb/riddle.tres" id="29_460d3"]
+[ext_resource type="Resource" uid="uid://c8lyvwo6c0a6m" path="res://assets/card/info/basic/verb/trundle.tres" id="30_4xajf"]
 
 [resource]
 script = ExtResource("2_8slyy")
 sentences = PackedStringArray("We must {v} the {n} for immigrants, to ensure a just system.", "Ther current policies around {n} in this country cannot stand! We must {v} it immediately!", "Every time we fail to {v} the {n}, we create more problems for ourselves.", "The current state of {n} reform is truly dire. We need to {v} the problem before we can make real change.")
-relevant_words = Array[ExtResource("1_ypbhn")]([ExtResource("6_2kf1t"), ExtResource("7_fbrg3"), ExtResource("8_lp6u0"), ExtResource("9_fr62w"), ExtResource("10_bhgy1")])
-irrelevant_words = Array[ExtResource("1_ypbhn")]([ExtResource("2_msxjj"), ExtResource("3_fnsxk"), ExtResource("4_0dv5n"), ExtResource("5_ye3d2")])
+words = Dictionary[ExtResource("1_ypbhn"), bool]({
+ExtResource("30_4xajf"): false,
+ExtResource("29_460d3"): false,
+ExtResource("28_l7r4p"): false,
+ExtResource("27_pijdo"): false,
+ExtResource("26_mu4cv"): false,
+ExtResource("25_oa8cb"): false,
+ExtResource("24_w3cis"): false,
+ExtResource("23_2uxef"): false,
+ExtResource("22_lghbs"): false,
+ExtResource("21_jgk7w"): false,
+ExtResource("20_tmr0l"): true,
+ExtResource("19_p4nap"): false,
+ExtResource("18_loxhs"): false,
+ExtResource("17_egtfv"): false,
+ExtResource("3_fnsxk"): false,
+ExtResource("15_ddraj"): false,
+ExtResource("14_ghlvs"): false,
+ExtResource("13_rj5h6"): false,
+ExtResource("9_fr62w"): true,
+ExtResource("5_ye3d2"): true,
+ExtResource("10_ucne4"): true,
+ExtResource("9_hbxmv"): false,
+ExtResource("8_fbapk"): true,
+ExtResource("7_ayy7r"): true,
+ExtResource("6_gtj8w"): true,
+ExtResource("6_2kf1t"): true,
+ExtResource("4_g78gr"): true,
+ExtResource("3_pqocq"): true
+})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

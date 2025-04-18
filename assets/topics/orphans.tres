@@ -1,10 +1,67 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://dfrlxk6lu16la"]
+[gd_resource type="Resource" script_class="Topic" load_steps=31 format=3 uid="uid://dfrlxk6lu16la"]
 
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_06e07"]
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="2_qqwry"]
+[ext_resource type="Resource" uid="uid://cpwu6emoy2k00" path="res://assets/card/info/basic/noun/capacity.tres" id="3_e5m7d"]
+[ext_resource type="Resource" uid="uid://uiraqcnqqby1" path="res://assets/card/info/basic/noun/price.tres" id="4_hsget"]
+[ext_resource type="Resource" uid="uid://x80e2em6oim0" path="res://assets/card/info/basic/noun/upholstery.tres" id="5_surqw"]
+[ext_resource type="Resource" uid="uid://dpdlgqaglnlaj" path="res://assets/card/info/basic/noun/rigamarole.tres" id="6_pyydc"]
+[ext_resource type="Resource" uid="uid://ckp6wa1dg7dxp" path="res://assets/card/info/basic/noun/mortality.tres" id="7_jbji0"]
+[ext_resource type="Resource" uid="uid://dgny2c8kkwlg1" path="res://assets/card/info/basic/noun/tautology.tres" id="8_kq2mm"]
+[ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="9_yryh1"]
+[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="10_wy6wp"]
+[ext_resource type="Resource" uid="uid://ddnpnfh7ldysy" path="res://assets/card/info/basic/noun/gas.tres" id="11_urvaq"]
+[ext_resource type="Resource" uid="uid://bb0rud70wo2l5" path="res://assets/card/info/basic/noun/gorge.tres" id="12_x2a2p"]
+[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="13_78dje"]
+[ext_resource type="Resource" uid="uid://cepfjm0lrjr8b" path="res://assets/card/info/basic/noun/japan.tres" id="14_08ibk"]
+[ext_resource type="Resource" uid="uid://cttw3blf3wea0" path="res://assets/card/info/basic/noun/africa.tres" id="15_4gudg"]
+[ext_resource type="Resource" uid="uid://btc48l4t3phdq" path="res://assets/card/info/basic/noun/china.tres" id="16_cwo8p"]
+[ext_resource type="Resource" uid="uid://ef8tlv4tvtin" path="res://assets/card/info/basic/noun/mexico.tres" id="17_0hiq4"]
+[ext_resource type="Resource" uid="uid://bxwssu6gygxgq" path="res://assets/card/info/basic/noun/korea.tres" id="18_6dl58"]
+[ext_resource type="Resource" uid="uid://rjk5mrv33bu" path="res://assets/card/info/modifier/adjective/ablaze.tres" id="19_ijf5a"]
+[ext_resource type="Resource" uid="uid://bnmhlsidww8of" path="res://assets/card/info/basic/noun/cradle.tres" id="20_jixya"]
+[ext_resource type="Resource" uid="uid://bg0p2jvksmp1h" path="res://assets/card/info/basic/verb/combat.tres" id="21_t2bea"]
+[ext_resource type="Resource" uid="uid://btih6e7ffktnc" path="res://assets/card/info/basic/verb/defenestrate.tres" id="22_fw4u0"]
+[ext_resource type="Resource" uid="uid://bxxt4ducti6r8" path="res://assets/card/info/basic/verb/milk.tres" id="23_04pmd"]
+[ext_resource type="Resource" uid="uid://pji6jyax5rr1" path="res://assets/card/info/basic/noun/milk.tres" id="24_f5pi1"]
+[ext_resource type="Resource" uid="uid://7755wnusg5tx" path="res://assets/card/info/modifier/adjective/magnetic.tres" id="25_egepu"]
+[ext_resource type="Resource" uid="uid://blmbbju3dy8d" path="res://assets/card/info/modifier/adjective/judicial.tres" id="26_erftg"]
+[ext_resource type="Resource" uid="uid://brc7rc47382w2" path="res://assets/card/info/modifier/adjective/nothern.tres" id="27_wmv7a"]
+[ext_resource type="Resource" uid="uid://cqml2di6vmuvj" path="res://assets/card/info/modifier/adjective/western.tres" id="28_bf0em"]
+[ext_resource type="Resource" uid="uid://66ggcndjxa4n" path="res://assets/card/info/modifier/adjective/eastern.tres" id="29_7hgy7"]
+[ext_resource type="Resource" uid="uid://uh8qpdafvpsh" path="res://assets/card/info/modifier/adjective/southern.tres" id="30_gsct4"]
 
 [resource]
 script = ExtResource("2_qqwry")
 sentences = PackedStringArray("An orphans doesn\'t need a {n} , they need more {n} !", "Give an orphan a {n} , and they will {v} . Teach them to {v} , and they will make {n} .", "An emotionally distraught orphan can not be trusted to {v} , especially when it comes to {n} !", "My son is an orphan and he can {v} just fine!")
-words = Dictionary[ExtResource("1_06e07"), bool]({})
+words = Dictionary[ExtResource("1_06e07"), bool]({
+ExtResource("30_gsct4"): true,
+ExtResource("29_7hgy7"): true,
+ExtResource("28_bf0em"): true,
+ExtResource("27_wmv7a"): true,
+ExtResource("26_erftg"): false,
+ExtResource("25_egepu"): false,
+ExtResource("24_f5pi1"): true,
+ExtResource("23_04pmd"): true,
+ExtResource("22_fw4u0"): false,
+ExtResource("21_t2bea"): false,
+ExtResource("20_jixya"): true,
+ExtResource("19_ijf5a"): false,
+ExtResource("18_6dl58"): true,
+ExtResource("17_0hiq4"): true,
+ExtResource("16_cwo8p"): true,
+ExtResource("15_4gudg"): true,
+ExtResource("14_08ibk"): true,
+ExtResource("13_78dje"): false,
+ExtResource("12_x2a2p"): false,
+ExtResource("11_urvaq"): false,
+ExtResource("10_wy6wp"): true,
+ExtResource("9_yryh1"): true,
+ExtResource("8_kq2mm"): false,
+ExtResource("7_jbji0"): true,
+ExtResource("6_pyydc"): false,
+ExtResource("5_surqw"): false,
+ExtResource("4_hsget"): true,
+ExtResource("3_e5m7d"): true
+})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

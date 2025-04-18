@@ -1,10 +1,61 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://dtt4d4pps8f4n"]
+[gd_resource type="Resource" script_class="Topic" load_steps=28 format=3 uid="uid://dtt4d4pps8f4n"]
 
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_7butv"]
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="2_ybiaj"]
+[ext_resource type="Resource" uid="uid://bnmhlsidww8of" path="res://assets/card/info/basic/noun/cradle.tres" id="3_2qcnv"]
+[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="4_58cn0"]
+[ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="5_uro3j"]
+[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="6_2qpad"]
+[ext_resource type="Resource" uid="uid://cttw3blf3wea0" path="res://assets/card/info/basic/noun/africa.tres" id="7_uuoob"]
+[ext_resource type="Resource" uid="uid://phpbucme08ir" path="res://assets/card/info/basic/noun/canada.tres" id="8_b5v6o"]
+[ext_resource type="Resource" uid="uid://cepfjm0lrjr8b" path="res://assets/card/info/basic/noun/japan.tres" id="9_hw2bi"]
+[ext_resource type="Resource" uid="uid://bxwssu6gygxgq" path="res://assets/card/info/basic/noun/korea.tres" id="10_ht3x4"]
+[ext_resource type="Resource" uid="uid://di5p0qmstfx4m" path="res://assets/card/info/basic/noun/marsupial.tres" id="11_530ps"]
+[ext_resource type="Resource" uid="uid://ckp6wa1dg7dxp" path="res://assets/card/info/basic/noun/mortality.tres" id="12_wbkqk"]
+[ext_resource type="Resource" uid="uid://uiraqcnqqby1" path="res://assets/card/info/basic/noun/price.tres" id="13_1kdct"]
+[ext_resource type="Resource" uid="uid://dpdlgqaglnlaj" path="res://assets/card/info/basic/noun/rigamarole.tres" id="14_kw8ri"]
+[ext_resource type="Resource" uid="uid://k8x1rtq71aqq" path="res://assets/card/info/basic/noun/wall.tres" id="15_1x4y1"]
+[ext_resource type="Resource" uid="uid://ca2t4tjvrphtx" path="res://assets/card/info/basic/noun/the_eu.tres" id="16_4t2u7"]
+[ext_resource type="Resource" uid="uid://wdop0ef42bci" path="res://assets/card/info/basic/verb/sous_vide.tres" id="17_5d0e0"]
+[ext_resource type="Resource" uid="uid://b7lua867t3ref" path="res://assets/card/info/basic/verb/starve.tres" id="18_8e161"]
+[ext_resource type="Resource" uid="uid://c8lyvwo6c0a6m" path="res://assets/card/info/basic/verb/trundle.tres" id="19_kx18m"]
+[ext_resource type="Resource" uid="uid://cpguxihpdnc01" path="res://assets/card/info/modifier/adjective/fictional.tres" id="20_a8667"]
+[ext_resource type="Resource" uid="uid://832jc02c2401" path="res://assets/card/info/modifier/adjective/dubious.tres" id="21_urkaq"]
+[ext_resource type="Resource" uid="uid://blmbbju3dy8d" path="res://assets/card/info/modifier/adjective/judicial.tres" id="22_76n3o"]
+[ext_resource type="Resource" uid="uid://b0rgrcj6y7ssh" path="res://assets/card/info/modifier/adjective/unironically.tres" id="23_15q3h"]
+[ext_resource type="Resource" uid="uid://clrep63xw2tpm" path="res://assets/card/info/modifier/adverb/consequently.tres" id="24_a6nlo"]
+[ext_resource type="Resource" uid="uid://ckthxp8v8u4ld" path="res://assets/card/info/modifier/adverb/mentally.tres" id="25_sivfc"]
+[ext_resource type="Resource" uid="uid://uwprcfmbq30j" path="res://assets/card/info/modifier/adverb/physically.tres" id="26_26wr7"]
+[ext_resource type="Resource" uid="uid://cyogaq6pgyjbk" path="res://assets/card/info/modifier/adverb/bodaciously.tres" id="27_ioa1i"]
 
 [resource]
 script = ExtResource("2_ybiaj")
 sentences = PackedStringArray("The {n} epidemic is causing our communities to {v}.", "{n} addiction is a serious threat to the {n}. We must {v} it!", "We must stop {n} dealers at the source! We will {v} them!", "We cannot let {n} {v} unchecked!")
-words = Dictionary[ExtResource("1_7butv"), bool]({})
+words = Dictionary[ExtResource("1_7butv"), bool]({
+ExtResource("27_ioa1i"): false,
+ExtResource("26_26wr7"): true,
+ExtResource("25_sivfc"): true,
+ExtResource("24_a6nlo"): true,
+ExtResource("23_15q3h"): false,
+ExtResource("22_76n3o"): true,
+ExtResource("21_urkaq"): true,
+ExtResource("20_a8667"): false,
+ExtResource("19_kx18m"): false,
+ExtResource("18_8e161"): false,
+ExtResource("17_5d0e0"): false,
+ExtResource("16_4t2u7"): true,
+ExtResource("15_1x4y1"): true,
+ExtResource("14_kw8ri"): false,
+ExtResource("13_1kdct"): true,
+ExtResource("12_wbkqk"): true,
+ExtResource("11_530ps"): false,
+ExtResource("10_ht3x4"): false,
+ExtResource("9_hw2bi"): false,
+ExtResource("8_b5v6o"): false,
+ExtResource("7_uuoob"): false,
+ExtResource("6_2qpad"): false,
+ExtResource("5_uro3j"): true,
+ExtResource("4_58cn0"): true,
+ExtResource("3_2qcnv"): false
+})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"
