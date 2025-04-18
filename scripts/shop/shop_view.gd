@@ -1,6 +1,8 @@
 extends MenuView
 class_name ShopView
 
+signal on_card_purchase(price: int)
+
 @onready
 var shop_container: Container = $"shop_container"
 
@@ -74,11 +76,13 @@ func _on_card_drag_stopped(card: CardInstance) -> void:
 	
 	if _can_purchase:
 		var card_info: CardInfo = card.card_info
+		var price: int = _game_stats.calculate_price_for(card_info)
 		
 		_card_library.pull_card(card_info)
 		card.queue_free()
-		_game_stats.money_remove(_game_stats.calculate_price_for(card_info))
+		_game_stats.money_remove(price)
 		_game_stats.deck_append(card_info)
+		on_card_purchase.emit(price)
 		_purchase_good_sfx.play()
 	else:
 		_purchase_bad_sfx.play()

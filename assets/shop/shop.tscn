@@ -278,7 +278,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "BACK"
 
-[node name="label2" type="Label" parent="flow_coordinator/heading_banner"]
+[node name="money_label" type="Label" parent="flow_coordinator/heading_banner"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -294,7 +294,6 @@ rotation = 0.261799
 text = "$ TEMP DOLLAH BILLS"
 label_settings = SubResource("LabelSettings_nyl32")
 horizontal_alignment = 2
-vertical_alignment = 1
 
 [connection signal="pressed" from="flow_coordinator/menu_view/button" to="flow_coordinator" method="push_view_by_name" binds= ["shop_view"]]
 [connection signal="pressed" from="flow_coordinator/menu_view/button2" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
