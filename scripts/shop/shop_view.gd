@@ -73,9 +73,12 @@ func _on_card_drag_stopped(card: CardInstance) -> void:
 		return
 	
 	if _can_purchase:
-		_card_library.pull_card(card.card_info)
+		var card_info: CardInfo = card.card_info
+		
+		_card_library.pull_card(card_info)
 		card.queue_free()
-		_game_stats.money_remove(_game_stats.calculate_price_for(card.card_info))
+		_game_stats.money_remove(_game_stats.calculate_price_for(card_info))
+		_game_stats.deck_append(card_info)
 		_purchase_good_sfx.play()
 	else:
 		_purchase_bad_sfx.play()
