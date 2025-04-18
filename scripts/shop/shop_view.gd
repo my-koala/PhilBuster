@@ -67,6 +67,8 @@ func _on_card_drag_started(card: CardInstance) -> void:
 	purchase_container.modulate = Color(0,1,0, purchase_container.modulate.a) if _can_purchase else Color(1, 0, 0, purchase_container.modulate.a)
 	
 func _on_card_drag_stopped(card: CardInstance) -> void:
+	shop_container.queue_sort()
+	
 	purchase_container.modulate = Color(0, 0, 0, purchase_container.modulate.a)
 	_held_card = null
 	purchase_text.text = "PURCHASE"
@@ -86,3 +88,4 @@ func _on_card_drag_stopped(card: CardInstance) -> void:
 		_purchase_good_sfx.play()
 	else:
 		_purchase_bad_sfx.play()
+	
