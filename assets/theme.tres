@@ -44,6 +44,7 @@ Button/styles/focus = SubResource("StyleBoxTexture_wl1kw")
 Button/styles/hover = SubResource("StyleBoxTexture_lu33j")
 Button/styles/normal = SubResource("StyleBoxTexture_wycmq")
 HBoxContainer/constants/separation = 8
+Label/colors/font_color = Color(0.372549, 0.282353, 0.145098, 1)
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_wl1kw")
 Panel/styles/panel = SubResource("StyleBoxTexture_x2pqw")
