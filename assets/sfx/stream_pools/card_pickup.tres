@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b6ut2cqge6qtr" path="res://assets/sfx/clips/card_pickup3.wav" id="3_jum0f"]
 
 [resource]
+random_pitch = 1.1
 streams_count = 3
 stream_0/stream = ExtResource("1_f4rbf")
 stream_1/stream = ExtResource("2_srin8")

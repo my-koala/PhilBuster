@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://b06t0rj1k3wvq"]
+
+[ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="1_gbt46"]
+
+[sub_resource type="GDScript" id="GDScript_gbt46"]
+resource_name = "card_instance_test"
+script/source = "@tool
+extends Control
+
+@onready
+var _card_instance_none: CardInstance = $h_box_container/card_instance_none as CardInstance
+@onready
+var _card_instance_noun: CardInstance = $h_box_container/card_instance_noun as CardInstance
+@onready
+var _card_instance_verb: CardInstance = $h_box_container/card_instance_verb as CardInstance
+@onready
+var _card_instance_adjective: CardInstance = $h_box_container/card_instance_adjective as CardInstance
+@onready
+var _card_instance_adverb: CardInstance = $h_box_container/card_instance_adverb as CardInstance
+
+func _ready() -> void:
+	_card_instance_none.card_info = null
+	_card_instance_noun.card_info = CardInfoBasicNoun.new()
+	_card_instance_noun.card_info.get_word()
+	_card_instance_verb.card_info = CardInfoBasicVerb.new()
+	_card_instance_adjective.card_info = CardInfoModifierAdjective.new()
+	_card_instance_adverb.card_info = CardInfoModifierAdverb.new()
+"
+
+[node name="card_instance_test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gbt46")
+
+[node name="h_box_container" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="card_instance_none" parent="h_box_container" instance=ExtResource("1_gbt46")]
+layout_mode = 2
+
+[node name="card_instance_noun" parent="h_box_container" instance=ExtResource("1_gbt46")]
+layout_mode = 2
+
+[node name="card_instance_verb" parent="h_box_container" instance=ExtResource("1_gbt46")]
+layout_mode = 2
+
+[node name="card_instance_adjective" parent="h_box_container" instance=ExtResource("1_gbt46")]
+layout_mode = 2
+
+[node name="card_instance_adverb" parent="h_box_container" instance=ExtResource("1_gbt46")]
+layout_mode = 2

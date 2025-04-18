@@ -185,6 +185,7 @@ offset_left = 883.0
 offset_top = 112.0
 offset_right = 1043.0
 offset_bottom = 336.0
+color_adverb = Color(0.454202, 0.852178, 0.930659, 1)
 
 [node name="progress_bar" type="ProgressBar" parent="flow_coordinator/deck_view"]
 layout_mode = 0

@@ -8,7 +8,7 @@ signal session_finished(success: bool)
 
 const CARD_INSTANCE_SCENE: PackedScene = preload("res://assets/card/card_instance.tscn")
 
-const HAND_COUNT_MAX: int = 8
+const HAND_COUNT_MAX: int = 7
 
 const FIELD_BUST_RELEVANT: int = 1
 const FIELD_BUST_NEUTRAL: int = 0
@@ -156,7 +156,7 @@ func _on_session_submit_submitted() -> void:
 	
 	_session_submit.enabled = false
 	for card_instance: CardInstance in _hand_card_instances:
-		card_instance.disabled = true
+		card_instance.can_drag = false
 	
 	_phil.play_animation_stand()
 	# TEMP: give enough time for phil to stand up
@@ -177,9 +177,9 @@ func _on_sentence_container_read_stopped() -> void:
 	
 	_session_submit.enabled = true
 	for card_instance: CardInstance in _deck_card_instances:
-		card_instance.disabled = false
+		card_instance.can_drag = true
 	for card_instance: CardInstance in _hand_card_instances:
-		card_instance.disabled = false
+		card_instance.can_drag = true
 	
 	# NOTE: CardInstances not in the tree are "inside" the fields.
 	# TODO: Find a better of doing this? Adding to an array perhaps.
