@@ -28,6 +28,7 @@ texture_margin_bottom = 9.0
 
 [resource]
 Button/colors/font_color = Color(0.372549, 0.282353, 0.145098, 1)
+Button/font_sizes/font_size = 36
 Button/fonts/font = ExtResource("1_wl1kw")
 Button/styles/focus = SubResource("StyleBoxTexture_wl1kw")
 Button/styles/hover = SubResource("StyleBoxTexture_lu33j")
