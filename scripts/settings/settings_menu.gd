@@ -22,6 +22,7 @@ func hide_menu() -> void:
 func _ready() -> void:
 	_init_slider(_music_slider, "Music")
 	_init_slider(_sfx_slider, "Sound")
+	hide_menu()
 
 func _init_slider(slider: HSlider, name: String) -> void:
 	var idx: int = AudioServer.get_bus_index(name)

@@ -49,6 +49,7 @@ visible = false
 [node name="money_display" parent="." instance=ExtResource("16_2rvxm")]
 
 [node name="settings_menu" parent="." instance=ExtResource("16_ul5qt")]
+layer = 64
 
 [node name="main_menu" parent="." instance=ExtResource("15_km2eh")]
 visible = false
