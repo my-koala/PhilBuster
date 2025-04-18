@@ -25,6 +25,8 @@ var _shop: Shop = $shop as Shop
 var _transition: Transition = $transition/transition as Transition
 @onready
 var _main_menu: MainMenu = $main_menu as MainMenu
+@onready
+var _money_display: MoneyDisplay = $money_display as MoneyDisplay
 
 var _loop: bool = false
 var game_stats: GameStats = null
@@ -47,6 +49,8 @@ func start() -> void:
 		if !game_stats.deck_is_full():
 			game_stats.deck_append(card_info)
 		card_library.pull_card(card_info)
+	
+	_money_display.init(game_stats)
 	
 	# Subscribe to looping events
 	_session.session_finished.connect(_on_session_finished)

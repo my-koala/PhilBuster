@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=20 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_km2eh"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://m0dkott85qmk" path="res://assets/shop/shop.tscn" id="14_vvw4a"]
 [ext_resource type="PackedScene" uid="uid://b278yipnxx0xj" path="res://assets/transitions/transition.tscn" id="15_ew6cl"]
 [ext_resource type="PackedScene" uid="uid://08sknccaplbf" path="res://assets/main_menu/main_menu.tscn" id="15_km2eh"]
+[ext_resource type="PackedScene" uid="uid://dilmsq4s6dx4f" path="res://assets/money_display/money_display.tscn" id="16_2rvxm"]
 [ext_resource type="PackedScene" uid="uid://yr15lthni1nd" path="res://assets/settings_menu/settings_menu.tscn" id="16_ul5qt"]
 
 [node name="game" type="Node"]
@@ -32,6 +33,8 @@ script = ExtResource("1_ujfqy")
 
 [node name="shop" parent="." instance=ExtResource("14_vvw4a")]
 visible = false
+
+[node name="money_display" parent="." instance=ExtResource("16_2rvxm")]
 
 [node name="settings_menu" parent="." instance=ExtResource("16_ul5qt")]
 

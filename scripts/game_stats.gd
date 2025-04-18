@@ -4,6 +4,8 @@ class_name GameStats
 
 ## Class that stores a player's stats, including deck, money, and purchases.
 
+signal money_changed()
+
 # TODO: Add purchases here.
 
 const DECK_MAX_COUNT: int = 30
@@ -57,9 +59,11 @@ func get_money() -> int:
 
 func money_add(amount: int) -> void:
 	_money += amount
+	money_changed.emit()
 
 func money_remove(amount: int) -> void:
 	_money -= amount
+	money_changed.emit()
 
 func calculate_price_for(card_info : CardInfo) -> int:
 	return card_info.price * (floori(_sessions * 0.25) + 1)
