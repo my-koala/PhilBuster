@@ -57,11 +57,6 @@ func _reset() -> void:
 	for card_info: CardInfo in game_stats.get_deck():
 		_card_library.pull_card(card_info)
 	
-	_card_library.reset_library()
-	
-	for card_info: CardInfo in game_stats.get_deck():
-		_card_library.pull_card(card_info)
-	
 	_money_display.init(game_stats)
 
 func start() -> void:
