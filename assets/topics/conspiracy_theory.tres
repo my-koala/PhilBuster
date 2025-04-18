@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Topic" load_steps=6 format=3 uid="uid://c7arqlxcc5lk2"]
+
+[ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_i7q78"]
+[ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_2itv1"]
+[ext_resource type="Resource" uid="uid://biccag1il7e0f" path="res://assets/card/info/modifier/adjective/lizard-like.tres" id="3_3w0ve"]
+[ext_resource type="Resource" uid="uid://dlfx1pv4vt0hp" path="res://assets/card/info/modifier/adjective/flat.tres" id="4_7d4gq"]
+[ext_resource type="Resource" uid="uid://daagn4b0udbrn" path="res://assets/card/info/basic/noun/vaccine.tres" id="5_m2ts0"]
+
+[resource]
+script = ExtResource("1_i7q78")
+sentences = PackedStringArray("", "", "", "")
+words = Dictionary[ExtResource("2_2itv1"), bool]({
+ExtResource("3_3w0ve"): true,
+ExtResource("4_7d4gq"): true,
+ExtResource("5_m2ts0"): true
+})
+metadata/_custom_type_script = "uid://c7giyb4t438lj"

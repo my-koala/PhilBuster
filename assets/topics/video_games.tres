@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://bjfrnujk284yx"]
+
+[ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_haygg"]
+[ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_pwbmp"]
+
+[resource]
+script = ExtResource("1_haygg")
+sentences = PackedStringArray("", "", "", "")
+words = Dictionary[ExtResource("2_pwbmp"), bool]({})
+metadata/_custom_type_script = "uid://c7giyb4t438lj"
