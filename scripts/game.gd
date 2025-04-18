@@ -10,6 +10,7 @@ enum State {
 	MENU,
 	SESSION,
 	SHOP,
+	GAMEOVER,
 }
 
 @export
@@ -27,6 +28,10 @@ var _transition: Transition = $transition/transition as Transition
 var _main_menu: MainMenu = $main_menu as MainMenu
 @onready
 var _money_display: MoneyDisplay = $money_display as MoneyDisplay
+@onready
+var _music_player: MusicPlayer = $music_player as MusicPlayer
+
+var _state: State = State.NONE
 
 var _loop: bool = false
 
@@ -34,13 +39,23 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
+	# Subscribe to looping events
+	_session.gameover.connect(_on_session_gameover)
+	_session.session_finished.connect(_on_session_finished)
+	_shop.shop_finished.connect(_on_shop_finished)
+	_main_menu.play_pressed.connect(_on_main_menu_start)
+	
 	start()
 
-func start() -> void:
-	if _loop:
-		return
+func _reset() -> void:
+	game_stats.reset_deck()
+	game_stats.reset_money()
+	game_stats.topic_randomize()
+	game_stats.reset_topic_memory()
 	
-	_loop = true
+	_card_library.reset_library()
+	for card_info: CardInfo in game_stats.get_deck():
+		_card_library.pull_card(card_info)
 	
 	_card_library.reset_library()
 	
@@ -48,29 +63,25 @@ func start() -> void:
 		_card_library.pull_card(card_info)
 	
 	_money_display.init(game_stats)
+
+func start() -> void:
+	if _loop:
+		return
+	_loop = true
 	
-	# Subscribe to looping events
-	_session.session_finished.connect(_on_session_finished)
-	_shop.shop_finished.connect(_on_shop_finished)
-	_main_menu.play_pressed.connect(_on_main_menu_start)
-	
-	# Start the main menu
+	_reset()
 	start_menu()
 
 func stop() -> void:
 	_loop = false
 
 func start_menu() -> void:
+	_music_player.play_track(MusicPlayer.Track.TITLE)
 	_main_menu.visible = true
 	_main_menu.present_menu()
-	print("presentu")
 
 func start_session() -> void:
-	game_stats.reset_deck()
-	game_stats.reset_money()
-	game_stats.topic_randomize()
-	game_stats.reset_topic_memory()
-	
+	_music_player.play_track(MusicPlayer.Track.MAIN)
 	game_stats.topic_randomize()
 	await _transition.fade_in("A bill concerning %s..." % [game_stats.topic_get_name()])
 	_shop.hide_shop()
@@ -80,10 +91,14 @@ func start_session() -> void:
 	await _transition.fade_out()
 
 func start_shop() -> void:
+	_music_player.play_track(MusicPlayer.Track.RECESS)
 	await _transition.fade_in("Senate has called recess...")
 	await get_tree().create_timer(2).timeout
 	_shop.start_shop(_card_library, game_stats)
 	await _transition.fade_out()
+
+func _on_session_gameover() -> void:
+	_music_player.play_track(MusicPlayer.Track.GAMEOVER)
 
 func _on_session_finished(successful: bool) -> void:
 	if successful:
@@ -92,6 +107,7 @@ func _on_session_finished(successful: bool) -> void:
 	else:
 		await _transition.fade_in("")
 		start_menu()
+		_reset()
 		await _transition.fade_out()
 
 func _on_shop_finished() -> void:

@@ -142,7 +142,7 @@ func get_money() -> int:
 
 func money_add(amount: int) -> void:
 	_money += amount
-	money_added.emit()
+	money_added.emit(amount)
 
 func money_remove(amount: int) -> void:
 	amount = maxi(mini(amount, _money), 0)

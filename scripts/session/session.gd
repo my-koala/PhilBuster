@@ -6,6 +6,8 @@ class_name Session
 
 signal session_finished(success: bool)
 
+signal gameover()
+
 const CARD_INSTANCE_SCENE: PackedScene = preload("res://assets/card/card_instance.tscn")
 
 const HAND_COUNT_MAX: int = 7
@@ -196,6 +198,7 @@ func _on_sentence_container_read_stopped() -> void:
 	
 	if _bust_meter.is_full():
 		_phil.play_animation_bust()
+		gameover.emit()
 		await get_tree().create_timer(1.0).timeout
 		_game_over.set_data(_game_stats.get_session(), _game_stats.get_money(), 69, 420, 1337)
 		_game_over.start()

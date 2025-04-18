@@ -36,7 +36,7 @@ offset_right = -33.0405
 offset_bottom = 313.99
 grow_horizontal = 0
 script = ExtResource("1_5jjr8")
-metadata/_custom_type_script = ExtResource("1_5jjr8")
+metadata/_custom_type_script = "uid://dx4r7gccyrt1f"
 
 [node name="v_box_container" type="VBoxContainer" parent="flyout_spawner"]
 layout_mode = 1

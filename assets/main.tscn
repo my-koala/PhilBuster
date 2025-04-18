@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=24 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="Script" uid="uid://c5o0vh6ubr54t" path="res://scripts/game_stats.gd" id="2_fphxj"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://08sknccaplbf" path="res://assets/main_menu/main_menu.tscn" id="15_km2eh"]
 [ext_resource type="PackedScene" uid="uid://dilmsq4s6dx4f" path="res://assets/money_display/money_display.tscn" id="16_2rvxm"]
 [ext_resource type="PackedScene" uid="uid://yr15lthni1nd" path="res://assets/settings_menu/settings_menu.tscn" id="16_ul5qt"]
+[ext_resource type="PackedScene" uid="uid://blisf8vvuo532" path="res://assets/music/music_player.tscn" id="22_isq2i"]
 
 [sub_resource type="Resource" id="Resource_vqaxa"]
 script = ExtResource("2_fphxj")
@@ -54,3 +55,7 @@ layer = 64
 visible = false
 
 [node name="transition" parent="." instance=ExtResource("15_ew6cl")]
+
+[node name="music_player" parent="." instance=ExtResource("22_isq2i")]
+transition_duration_in = 1.5
+transition_duration = 1.5

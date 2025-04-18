@@ -28,7 +28,7 @@ func update_money(amount: int, offset: int) -> void:
 	_flyout_spawner.spawn_flyout(offset_text, offset_color)
 	_cached_money = _game_stats.get_money()
 	
-func _on_money_changed() -> void:
+func _on_money_changed(amount: int) -> void:
 	var new_money: int = _game_stats.get_money()
 	var offset: int = new_money - _cached_money
 	
