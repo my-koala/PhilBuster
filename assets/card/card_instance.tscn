@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4n0r7gnn28om"]
+[gd_scene load_steps=13 format=3 uid="uid://d4n0r7gnn28om"]
 
 [ext_resource type="Script" uid="uid://lur78koemyo2" path="res://scripts/card/card_instance.gd" id="1_40wyd"]
 [ext_resource type="Texture2D" uid="uid://d1hgqy4d5kds3" path="res://assets/card/card_background.png" id="2_duqi3"]
-[ext_resource type="Texture2D" uid="uid://bymyxb3r7f4ci" path="res://assets/card/card_border.png" id="3_iw4tm"]
 [ext_resource type="Texture2D" uid="uid://cpxy57k5q0pwn" path="res://assets/clock/clock_face.png" id="4_5xmu0"]
 [ext_resource type="AudioStream" uid="uid://dp6rwanc6nmlx" path="res://assets/sfx/stream_pools/card_pickup.tres" id="4_dei5m"]
 [ext_resource type="AudioStream" uid="uid://5nd6wy4ww34n" path="res://assets/sfx/stream_pools/card_drop.tres" id="5_5xmu0"]
@@ -305,9 +304,8 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5xmu0")
 
 [node name="background" type="TextureRect" parent="display"]
-unique_name_in_owner = true
-modulate = Color(0.75, 0.75, 0.75, 1)
 show_behind_parent = true
+clip_children = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -317,6 +315,16 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_duqi3")
 expand_mode = 1
+
+[node name="corner" type="ColorRect" parent="display/background"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.75)
+layout_mode = 0
+offset_left = -48.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 84.0
+rotation = -0.785398
 
 [node name="v_box_container" type="VBoxContainer" parent="display"]
 layout_mode = 1
@@ -351,29 +359,6 @@ theme_override_font_sizes/font_size = 16
 text = "(<Part of Speech>)"
 horizontal_alignment = 1
 autowrap_mode = 3
-
-[node name="border" type="TextureRect" parent="display"]
-unique_name_in_owner = true
-modulate = Color(0.745098, 0.745098, 0.745098, 1)
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("3_iw4tm")
-expand_mode = 1
-
-[node name="texture_rect" type="TextureRect" parent="display/border"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
 
 [node name="container_stats" type="VBoxContainer" parent="display"]
 unique_name_in_owner = true
