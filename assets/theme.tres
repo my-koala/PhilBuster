@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://qm7h04x08t3m"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://qm7h04x08t3m"]
 
 [ext_resource type="FontFile" uid="uid://uojuf5ikdikq" path="res://assets/fonts/CourierPrime-Bold.ttf" id="1_wl1kw"]
 [ext_resource type="Texture2D" uid="uid://dv64ofp8dqvs8" path="res://assets/game_button/square button.png" id="2_lu33j"]
@@ -36,6 +36,13 @@ texture_margin_top = 9.0
 texture_margin_right = 9.0
 texture_margin_bottom = 9.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e8htd"]
+texture = ExtResource("2_lu33j")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
 [resource]
 Button/colors/font_color = Color(0.372549, 0.282353, 0.145098, 1)
 Button/font_sizes/font_size = 36
@@ -48,6 +55,7 @@ Label/colors/font_color = Color(0.372549, 0.282353, 0.145098, 1)
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_wl1kw")
 Panel/styles/panel = SubResource("StyleBoxTexture_x2pqw")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_e8htd")
 RichTextLabel/font_sizes/bold_font_size = 32
 RichTextLabel/font_sizes/bold_italics_font_size = 32
 RichTextLabel/font_sizes/italics_font_size = 32

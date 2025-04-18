@@ -59,7 +59,7 @@ func _on_purchase_container_exited() -> void:
 func _on_card_drag_started(card: CardInstance) -> void:
 	_held_card = card
 	
-	var price: int = _game_stats.calculate_price_for(card.card_info)
+	var price: int = card.card_info.price * _game_stats.get_session_inflation()
 	purchase_text.text = "PURCHASE: $%d" % price
 	_can_purchase = _game_stats.get_money() >= price
 	
@@ -76,7 +76,7 @@ func _on_card_drag_stopped(card: CardInstance) -> void:
 	
 	if _can_purchase:
 		var card_info: CardInfo = card.card_info
-		var price: int = _game_stats.calculate_price_for(card_info)
+		var price: int = card.card_info.price * _game_stats.get_session_inflation()
 		
 		_card_library.pull_card(card_info)
 		card.queue_free()

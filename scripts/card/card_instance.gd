@@ -8,42 +8,6 @@ signal drag_stopped()
 @export
 var can_drag: bool = true
 
-@export
-var color_noun: Color = Color.ORANGE_RED:
-	get:
-		return color_noun
-	set(value):
-		if color_noun != value:
-			color_noun = value
-			_dirty = true
-
-@export
-var color_verb: Color = Color.BLUE_VIOLET:
-	get:
-		return color_verb
-	set(value):
-		if color_verb != value:
-			color_verb = value
-			_dirty = true
-
-@export
-var color_adjective: Color = Color.YELLOW:
-	get:
-		return color_adjective
-	set(value):
-		if color_adjective != value:
-			color_adjective = value
-			_dirty = true
-
-@export
-var color_adverb: Color = Color.VIOLET:
-	get:
-		return color_adverb
-	set(value):
-		if color_adverb != value:
-			color_adverb = value
-			_dirty = true
-
 var card_info: CardInfo = null:
 	get:
 		return card_info
@@ -92,7 +56,7 @@ var _input_mouse_pressed: bool = false
 var _input_mouse_hover: bool = false
 
 func start_drag() -> void:
-	if can_drag && !_drag:
+	if is_inside_tree() && can_drag && !_drag:
 		_drag = true
 		_audio_card_pickup.play()
 		drag_started.emit()
@@ -109,6 +73,8 @@ func _update_display() -> void:
 		if _label_word.text.is_empty():
 			_label_word.text = "<Word>"
 		
+		_corner.color = card_info.get_color()
+		
 		var card_info_basic: CardInfoBasic = card_info as CardInfoBasic
 		if is_instance_valid(card_info_basic):
 			_container_stats_reward_label.text = str(card_info_basic.reward)
@@ -116,10 +82,8 @@ func _update_display() -> void:
 			_container_stats_bust.visible = false
 			if card_info is CardInfoBasicNoun:
 				_label_speech.text = "(Noun)"
-				_corner.color = color_noun
 			elif card_info is CardInfoBasicVerb:
 				_label_speech.text = "(Verb)"
-				_corner.color = color_verb
 		
 		var card_info_modifier: CardInfoModifier = card_info as CardInfoModifier
 		if is_instance_valid(card_info_modifier):
@@ -129,10 +93,8 @@ func _update_display() -> void:
 			_container_stats_bust.visible = true
 			if card_info is CardInfoModifierAdjective:
 				_label_speech.text = "(Adjective)"
-				_corner.color = color_adjective
 			elif card_info is CardInfoModifierAdverb:
 				_label_speech.text = "(Adverb)"
-				_corner.color = color_adverb
 	else:
 		_label_word.text = "<Word>"
 		_corner.color = Color.GRAY

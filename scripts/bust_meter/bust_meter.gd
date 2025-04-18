@@ -25,9 +25,12 @@ var bust_max: int = 64:
 
 @onready
 var _progress_bar: ProgressBar = %progress_bar as ProgressBar
-
 @onready
 var _nine_patch_rect: NinePatchRect = %nine_patch_rect as NinePatchRect
+@onready
+var _blade: TextureRect = %blade as TextureRect
+@onready
+var _label_count: Label = %label_count as Label
 
 var _bust: int = 0
 
@@ -45,7 +48,10 @@ func clear_bust() -> void:
 
 func _process(delta: float) -> void:
 	var minimum_size_y: float = clampf(SIZE_UNIT * float(bust_max), SIZE_MIN, SIZE_MAX)
-	_nine_patch_rect.custom_minimum_size.y = move_toward(_nine_patch_rect.size.y, minimum_size_y, delta * progress_bar_speed)
+	_nine_patch_rect.custom_minimum_size.y = minimum_size_y
 	#_progress_bar.custom_minimum_size.y = move_toward(_progress_bar.size.y, progress_bar_size_y, delta * progress_bar_speed)
 	_progress_bar.max_value = bust_max
 	_progress_bar.value = move_toward(_progress_bar.value, float(_bust), delta * progress_bar_speed)
+	_blade.position.y = clampf(move_toward(_blade.position.y, lerpf(_progress_bar.size.y, 0.0, float(_bust) / float(bust_max)), delta * progress_bar_speed), 0.0, _progress_bar.size.y)
+	
+	_label_count.text = "%d/%d" % [_bust, bust_max]

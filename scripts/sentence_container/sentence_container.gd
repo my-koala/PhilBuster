@@ -143,7 +143,10 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if _read_sentence:
-		if _read_sentence_cooldown > 0.0:
+		if _read_sentence_index >= _flow_container.get_child_count():
+			_read_sentence = false
+			read_stopped.emit()
+		elif _read_sentence_cooldown > 0.0:
 			_read_sentence_cooldown -= delta
 		else:
 			_read_sentence_cooldown = read_sentence_cooldown
@@ -161,6 +164,3 @@ func _physics_process(delta: float) -> void:
 				read_field.emit(field_instance.get_card_info())
 			
 			_read_sentence_index += 1
-			if _read_sentence_index >= _flow_container.get_child_count():
-				_read_sentence = false
-				read_stopped.emit()

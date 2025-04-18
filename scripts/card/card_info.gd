@@ -18,3 +18,6 @@ var pool_count: int = 2
 
 func get_word() -> String:
 	return resource_path.get_file().get_basename().replace("_", " ")
+
+static func get_color() -> Color:
+	return Color.GRAY

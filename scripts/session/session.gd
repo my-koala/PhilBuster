@@ -12,11 +12,6 @@ const CARD_INSTANCE_SCENE: PackedScene = preload("res://assets/card/card_instanc
 
 const HAND_COUNT_MAX: int = 7
 
-const FIELD_BUST_RELEVANT: int = 1
-const FIELD_BUST_NEUTRAL: int = 0
-const FIELD_BUST_IRRELEVANT: int = 3
-const FIELD_BUST_EMPTY: int = 5
-
 const TIME_WORD: int = 1
 
 @export_range(0.0, 1.0, 0.001)
@@ -25,6 +20,17 @@ var deck_deal_cooldown: float = 0.125:
 		return deck_deal_cooldown
 	set(value):
 		deck_deal_cooldown = clampf(value, 0.0, 1.0)
+
+@export
+var bust_word: int = 1
+@export
+var bust_field_empty: int = 10
+@export
+var bust_field_neutral: int = 1
+@export
+var bust_field_relevant: int = 5
+@export
+var bust_field_irrelevant: int = 5
 
 var _deck_deal_cooldown: float = 0.0
 
@@ -50,6 +56,8 @@ var _phil: Phil = %phil as Phil
 var _game_over: GameOver = %game_over as GameOver
 @onready
 var _audio_discard: AudioStreamPlayer = $audio/discard as AudioStreamPlayer
+@onready
+var _audio_deal: AudioStreamPlayer = $audio/deal as AudioStreamPlayer
 
 var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
@@ -64,7 +72,7 @@ func is_session_active() -> bool:
 
 # TODO: session customizations?
 # time = number of minutes. each word will generally be worth 1 minute
-func start_session(game_stats: GameStats, topic: String = "", time: int = 120, bust_max: int = 32, sentence_difficulty: int = 0) -> void:
+func start_session(game_stats: GameStats) -> void:
 	if _session_active:
 		return
 	_session_active = true
@@ -80,12 +88,12 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 	
 	_deck_card_instances.shuffle()
 	
-	_bust_meter.bust_max = bust_max
+	_bust_meter.bust_max = game_stats.get_session_bust_max()
 	_bust_meter.clear_bust()
 	
 	_clock.time_passed = 0
 	_clock.time_region_start = 0
-	_clock.time_region_duration = time
+	_clock.time_region_duration = game_stats.get_session_time_max()
 	
 	_session_discard.set_discard_count(_game_stats.get_discard_count())
 	
@@ -134,6 +142,7 @@ func _physics_process(delta: float) -> void:
 			_deck_card_instances.pop_front()
 			_hand_card_instances.append(card_instance)
 			_hand_container.add_child(card_instance)
+			_audio_deal.play()
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -217,6 +226,7 @@ var _card_info_modifier_stack: Array[CardInfoModifier] = []
 
 func _on_sentence_container_read_word() -> void:
 	_phil.play_animation_speak()
+	_bust_meter.add_bust(bust_word)
 	_clock.add_time(TIME_WORD)
 
 func _on_sentence_container_read_field(card_info: CardInfo) -> void:
@@ -233,22 +243,22 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 			bust_multiplier *= card_info_modifier.bust_multiplier
 		
 		if _game_stats.topic_is_word_relevant(card_info.get_word()):
-			_bust_meter.remove_bust(FIELD_BUST_RELEVANT * bust_multiplier)
+			_bust_meter.remove_bust(bust_field_relevant * bust_multiplier)
 			_phil.play_animation_nice()
 		elif _game_stats.topic_is_word_irrelevant(card_info.get_word()):
 			time_multiplier = 0.0
 			reward_multiplier = 0.0
-			_bust_meter.add_bust(FIELD_BUST_IRRELEVANT * bust_multiplier)
+			_bust_meter.add_bust(bust_field_irrelevant * bust_multiplier)
 			_phil.play_animation_goof()
 		else:
-			_bust_meter.add_bust(FIELD_BUST_NEUTRAL * bust_multiplier)
+			_bust_meter.add_bust(bust_field_neutral * bust_multiplier)
 		
 		_clock.add_time(card_info_basic.time * time_multiplier)
 		_game_stats.money_add(card_info_basic.reward * reward_multiplier)
 	elif is_instance_valid(card_info):
 		_clock.add_time(card_info.time)
 	else:
-		_bust_meter.add_bust(FIELD_BUST_EMPTY)
+		_bust_meter.add_bust(bust_field_empty)
 		_phil.play_animation_goof()
 
 func _on_sentence_container_card_info_removed(card_info: CardInfo) -> void:

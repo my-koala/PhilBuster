@@ -13,8 +13,10 @@ var _cached_money: int = 0
 func init(game_stats: GameStats) -> void:
 	_game_stats = game_stats
 	update_money(game_stats.get_money(), 0)
-	_game_stats.money_added.connect(_on_money_changed)
-	_game_stats.money_removed.connect(_on_money_changed)
+	if !_game_stats.money_added.is_connected(_on_money_changed):
+		_game_stats.money_added.connect(_on_money_changed)
+	if !_game_stats.money_removed.is_connected(_on_money_changed):
+		_game_stats.money_removed.connect(_on_money_changed)
 
 func update_money(amount: int, offset: int) -> void:
 	_money_label.text = "$%d" % _game_stats.get_money()

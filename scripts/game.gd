@@ -83,7 +83,7 @@ func start_menu() -> void:
 func start_session() -> void:
 	_music_player.play_track(MusicPlayer.Track.MAIN)
 	game_stats.topic_randomize()
-	await _transition.fade_in("A bill concerning %s..." % [game_stats.topic_get_name()])
+	await _transition.fade_in("- Session #%d -\nA bill concerning '%s' must be delayed..." % [game_stats.get_session(), game_stats.topic_get_name()], 2.0)
 	_shop.hide_shop()
 	_main_menu.visible = false
 	await get_tree().create_timer(2).timeout

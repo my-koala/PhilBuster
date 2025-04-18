@@ -38,6 +38,7 @@ var hand_rotation_speed: float = 1.0:
 @onready var _hour_hand: TextureRect = %hour_hand as TextureRect
 @onready var _minute_hand: TextureRect = %minute_hand as TextureRect
 @onready var _texture_progress_bar: TextureProgressBar = %texture_progress_bar as TextureProgressBar
+@onready var _label: Label = %label as Label
 
 func add_time(time: int) -> void:
 	time_passed += time
@@ -62,17 +63,8 @@ func _process(delta: float) -> void:
 	
 	var texture_progress_bar_target: float = 1.0 - clampf(float(time_passed) / float(time_region_duration), 0.0, 1.0)
 	_texture_progress_bar.value = lerpf(_texture_progress_bar.value, texture_progress_bar_target, hand_rotation_speed * delta)
+	
+	_label.text = "Session Time Left:\n%d Minutes" % [maxi(time_region_duration - time_passed, 0)]
 
 func is_time_exceeded() -> bool:
 	return time_passed >= time_region_duration
-
-func set_time(hour: int, minute: int) -> void:
-	#hour = clamp(hour, 0, 11)
-	#minute = clamp(minute, 0, 59)
-	pass
-	#total_minutes = (hour * 60) + minute
-
-func update_progress_bar() -> void:
-	#var progress: float = (hour_hand.rotation / deg_to_rad(360))
-	#progress_bar.value = progress * progress_bar.max_value
-	pass

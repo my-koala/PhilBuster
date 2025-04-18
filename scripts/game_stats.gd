@@ -27,6 +27,13 @@ var use_global_sentences: bool = true
 @export
 var use_topic_memory: bool = true
 
+@export
+var bust_max_curve: Curve = Curve.new()
+@export
+var time_max_curve: Curve = Curve.new()
+@export
+var inflation_curve: Curve = Curve.new()
+
 var _discard_count: int = 0
 
 var _deck: Array[CardInfo] = []
@@ -234,3 +241,12 @@ func topic_memory_add_word(word: String) -> void:
 	if !_topic_memory_irrelevant.has(_topic_name):
 		_topic_memory_irrelevant[_topic_name] = Dictionary()
 	_topic_memory_irrelevant[_topic_name][word] = _topic.is_word_irrelevant(word)
+
+func get_session_bust_max() -> int:
+	return int(bust_max_curve.sample(clampf(float(_session), bust_max_curve.min_domain, bust_max_curve.max_domain)))
+
+func get_session_time_max() -> int:
+	return int(time_max_curve.sample(clampf(float(_session), time_max_curve.min_domain, time_max_curve.max_domain)))
+
+func get_session_inflation() -> int:
+	return int(inflation_curve.sample(clampf(float(_session), inflation_curve.min_domain, inflation_curve.max_domain)))

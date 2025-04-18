@@ -9,8 +9,6 @@
 
 [node name="music_player" type="Node"]
 script = ExtResource("1_6yro5")
-transition_duration_in = null
-transition_duration = null
 
 [node name="music_title" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_icbvx")

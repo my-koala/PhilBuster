@@ -164,19 +164,19 @@ func _process(delta: float) -> void:
 	
 	match card_type:
 		CardType.NONE:
-			_color_rect.color = Color.GRAY
+			_color_rect.color = CardInfo.get_color()
 			placeholder_text = "none"
 		CardType.NOUN:
-			_color_rect.color = Color.RED
+			_color_rect.color = CardInfoBasicNoun.get_color()
 			placeholder_text = "noun"
 		CardType.VERB:
-			_color_rect.color = Color.BLUE
+			_color_rect.color = CardInfoBasicVerb.get_color()
 			placeholder_text = "verb"
 		CardType.ADJECTIVE:
-			_color_rect.color = Color.ORANGE_RED
+			_color_rect.color = CardInfoModifierAdjective.get_color()
 			placeholder_text = "adjective"
 		CardType.ADVERB:
-			_color_rect.color = Color.BLUE_VIOLET
+			_color_rect.color = CardInfoModifierAdverb.get_color()
 			placeholder_text = "adverb"
 	
 	if is_instance_valid(_card_info):

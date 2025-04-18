@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=27 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="Script" uid="uid://c5o0vh6ubr54t" path="res://scripts/game_stats.gd" id="2_fphxj"]
@@ -23,6 +23,21 @@
 [ext_resource type="PackedScene" uid="uid://yr15lthni1nd" path="res://assets/settings_menu/settings_menu.tscn" id="16_ul5qt"]
 [ext_resource type="PackedScene" uid="uid://blisf8vvuo532" path="res://assets/music/music_player.tscn" id="22_isq2i"]
 
+[sub_resource type="Curve" id="Curve_isq2i"]
+_limits = [8.0, 96.0, 0.0, 16.0]
+_data = [Vector2(0, 96), 0.0, 0.0, 0, 0, Vector2(7.67663, 34.9521), -7.27134, -7.27134, 0, 0, Vector2(16, 8), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_12kgx"]
+_limits = [1.0, 8.0, 0.0, 16.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(16, 8), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_pd2c5"]
+_limits = [60.0, 360.0, 0.0, 16.0]
+_data = [Vector2(0, 60), 0.0, 0.0, 0, 0, Vector2(0, 60), 0.0, 0.0, 0, 0, Vector2(16, 360), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Resource" id="Resource_vqaxa"]
 script = ExtResource("2_fphxj")
 starting_deck = Array[ExtResource("2_km2eh")]([ExtResource("4_ul5qt"), ExtResource("5_2rvxm"), ExtResource("6_6eca0"), ExtResource("3_wpieh"), ExtResource("8_t6sda"), ExtResource("9_isq2i"), ExtResource("10_pd2c5"), ExtResource("11_12kgx"), ExtResource("12_hsbq6"), ExtResource("13_mp1se")])
@@ -31,6 +46,9 @@ discard_count = 5
 skip_duplicate_sentences = true
 use_global_sentences = true
 use_topic_memory = true
+bust_max_curve = SubResource("Curve_isq2i")
+time_max_curve = SubResource("Curve_pd2c5")
+inflation_curve = SubResource("Curve_12kgx")
 
 [node name="game" type="Node"]
 script = ExtResource("2_tkxyu")
@@ -42,6 +60,7 @@ game_stats = SubResource("Resource_vqaxa")
 script = ExtResource("1_ujfqy")
 
 [node name="session" parent="." instance=ExtResource("13_h4xlo")]
+bust_field_empty = 10
 
 [node name="shop" parent="." instance=ExtResource("14_vvw4a")]
 visible = false
@@ -57,5 +76,3 @@ visible = false
 [node name="transition" parent="." instance=ExtResource("15_ew6cl")]
 
 [node name="music_player" parent="." instance=ExtResource("22_isq2i")]
-transition_duration_in = 1.5
-transition_duration = 1.5

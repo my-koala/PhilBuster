@@ -81,3 +81,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("5_x47xc")
 metadata/_edit_use_anchors_ = true
+
+[node name="panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(512, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 421.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="label" type="Label" parent="panel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "Time Left:
+120 Minutes"
+horizontal_alignment = 1
+vertical_alignment = 1
