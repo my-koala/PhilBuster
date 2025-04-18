@@ -22,7 +22,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_heuok")
-bust_field_empty = null
 
 [node name="environment" type="Control" parent="."]
 layout_mode = 1
@@ -48,6 +47,7 @@ offset_left = 960.0
 offset_top = 940.0
 offset_right = 960.0
 offset_bottom = 940.0
+scale = Vector2(0.875, 0.875)
 
 [node name="desk" type="TextureRect" parent="environment"]
 layout_mode = 1
@@ -69,9 +69,9 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -500.0
-offset_top = 88.0
+offset_top = 133.295
 offset_right = 500.0
-offset_bottom = 288.0
+offset_bottom = 333.295
 grow_horizontal = 2
 
 [node name="hand_container" type="HBoxContainer" parent="."]
@@ -122,6 +122,29 @@ offset_right = 1711.0
 offset_bottom = 185.0
 scale = Vector2(0.5, 0.5)
 time_region_start = 0
+
+[node name="panel_container" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.5
+offset_top = 16.0
+offset_right = 109.5
+offset_bottom = 70.0
+grow_horizontal = 2
+
+[node name="h_box_container" type="HBoxContainer" parent="panel_container"]
+layout_mode = 2
+alignment = 1
+
+[node name="label_session" type="Label" parent="panel_container/h_box_container"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Session #%d
+Bill Topic: '%s'"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="drag_overlay" type="ColorRect" parent="."]
 unique_name_in_owner = true

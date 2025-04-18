@@ -58,6 +58,8 @@ var _game_over: GameOver = %game_over as GameOver
 var _audio_discard: AudioStreamPlayer = $audio/discard as AudioStreamPlayer
 @onready
 var _audio_deal: AudioStreamPlayer = $audio/deal as AudioStreamPlayer
+@onready
+var _label_session: Label= %label_session as Label
 
 var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
@@ -101,6 +103,8 @@ func start_session(game_stats: GameStats) -> void:
 	# temporary
 	_sentence_container.set_sentence(_game_stats.topic_get_sentence())
 	_game_over.stop()
+	
+	_label_session.text = "Session #%d\nBill Topic: %s" % [_game_stats.get_session(), _game_stats.topic_get_name()]
 	
 	_session_speak.enabled = true
 	_phil.play_animation_sit()
