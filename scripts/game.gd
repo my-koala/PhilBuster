@@ -68,6 +68,7 @@ func stop() -> void:
 func start_menu() -> void:
 	_main_menu.visible = true
 	_main_menu.present_menu()
+	print("presentu")
 
 func start_session() -> void:
 	game_stats.topic_randomize()
@@ -88,6 +89,10 @@ func _on_session_finished(successful: bool) -> void:
 	if successful:
 		game_stats.session_increment()
 		start_shop()
+	else:
+		await _transition.fade_in("")
+		start_menu()
+		await _transition.fade_out()
 
 func _on_shop_finished() -> void:
 	start_session()

@@ -26,6 +26,7 @@
 script = ExtResource("2_fphxj")
 starting_deck = Array[ExtResource("2_km2eh")]([ExtResource("4_ul5qt"), ExtResource("5_2rvxm"), ExtResource("6_6eca0"), ExtResource("3_wpieh"), ExtResource("8_t6sda"), ExtResource("9_isq2i"), ExtResource("10_pd2c5"), ExtResource("11_12kgx"), ExtResource("12_hsbq6"), ExtResource("13_mp1se")])
 starting_money = 0
+max_discards = null
 skip_duplicate_sentences = true
 use_global_sentences = true
 use_topic_memory = true

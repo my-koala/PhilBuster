@@ -46,6 +46,8 @@ var _session_submit: SessionSubmit = %session_submit as SessionSubmit
 var _clock: Clock = %clock as Clock
 @onready
 var _phil: Phil = %phil as Phil
+@onready
+var _game_over: GameOver = %game_over as GameOver
 
 var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
@@ -86,6 +88,7 @@ func start_session(game_stats: GameStats, topic: String = "", time: int = 120, b
 	#_topic_loader.set_topic(topic)
 	# temporary
 	_sentence_container.set_sentence(_game_stats.topic_get_sentence())
+	_game_over.stop()
 	
 	_session_submit.enabled = true
 	_phil.play_animation_sit()
@@ -107,6 +110,7 @@ func stop_session(success: bool) -> void:
 	
 	_session_submit.enabled = false
 	
+	_game_over.stop()
 	session_finished.emit(success)
 	
 	_game_stats = null
@@ -141,6 +145,8 @@ func _ready() -> void:
 	_drag_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	_session_submit.submitted.connect(_on_session_submit_submitted)
+	
+	_game_over.return_to_menu.connect(stop_session.bind(false))
 
 var _submitted: bool = false
 
@@ -188,12 +194,13 @@ func _on_sentence_container_read_stopped() -> void:
 	if _bust_meter.is_full():
 		_phil.play_animation_bust()
 		await get_tree().create_timer(1.0).timeout
-		stop_session(false)
+		_game_over.set_data(_game_stats.get_session(), _game_stats.get_money(), 69, 420, 1337)
+		_game_over.start()
 		return
 	
 	if _clock.is_time_exceeded():
-		stop_session(true)
 		await get_tree().create_timer(1.0).timeout
+		stop_session(true)
 		return
 	
 	# Clear and generate next sentence

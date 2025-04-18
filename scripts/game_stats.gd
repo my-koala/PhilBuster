@@ -17,6 +17,8 @@ signal money_removed(amount: int)
 var starting_deck: Array[CardInfo] = []
 @export
 var starting_money: int = 0
+@export
+var max_discards: int = 5
 
 @export
 var skip_duplicate_sentences: bool = true
@@ -29,13 +31,13 @@ var _deck: Array[CardInfo] = []
 var _money: int = 0
 var _session: int = 0
 
-static var _topic_global: Topic = null
-static var _topics: Dictionary[String, Topic] = {}
-
 var _topic: Topic = null
 var _topic_name: String = ""
 var _topic_memory_relevant: Dictionary[String, Dictionary] = {}# Dictionary[String, Dictionary[String, bool]]
 var _topic_memory_irrelevant: Dictionary[String, Dictionary] = {}# Dictionary[String, Dictionary[String, bool]]
+
+static var _topic_global: Topic = null
+static var _topics: Dictionary[String, Topic] = {}
 
 static func _static_init() -> void:
 	for file_path: String in DirAccess.get_files_at(TOPIC_DIRECTORY):
