@@ -185,6 +185,8 @@ func _process(delta: float) -> void:
 			_color_rect.color = CardInfoModifierAdverb.get_color()
 			placeholder_text = "adverb"
 	
+	_color_rect.color.a = 0.5
+	
 	if is_instance_valid(_card_info):
 		_rich_text_label.text = "[b]%s[/b]" % [_card_info.get_word()]
 	else:
