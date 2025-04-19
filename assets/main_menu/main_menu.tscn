@@ -141,7 +141,7 @@ Prahas \"B39_\" Pisipati
 
 Wyatt \"Phyzith\" Sylvester
 
-Riley \"Rwood85\""
+Riley Woodward"
 
 [node name="roles" type="RichTextLabel" parent="flow_coordinator/credits_view/panel"]
 layout_mode = 1
