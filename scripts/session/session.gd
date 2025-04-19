@@ -183,6 +183,8 @@ func _on_session_speak_submitted() -> void:
 		return
 	_submitted = true
 	
+	_sentence_container.set_immutable(true)
+	
 	_session_speak.enabled = false
 	_session_discard.enabled = false
 	for card_instance: CardInstance in _hand_card_instances:
@@ -235,6 +237,8 @@ func _on_sentence_container_read_stopped() -> void:
 	_sentence_container.clear_sentence()
 	_sentence_container.set_sentence(_game_stats.topic_get_sentence())
 	_sentence_container.set_bubble_thought(true)
+	
+	_sentence_container.set_immutable(false)
 
 var _card_info_modifier_stack: Array[CardInfoModifier] = []
 

@@ -35,6 +35,11 @@ func _ready() -> void:
 		return
 	
 
+var _immutable: bool = false
+
+func set_immutable(immutable: bool) -> void:
+	_immutable = immutable
+
 func has_sentence() -> bool:
 	return !_word_instances.is_empty() && !_field_instances.is_empty()
 
@@ -127,6 +132,8 @@ func _insert_word_instance(word: String, index: int = -1) -> SentenceContainerWo
 	return word_instance
 
 func _on_field_pressed(field_instance: SentenceContainerField) -> void:
+	if _immutable:
+		return
 	if field_instance.has_card_info():
 		var card_info: CardInfo = field_instance.get_card_info()
 		field_instance.set_card_info(null)
