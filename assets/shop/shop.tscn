@@ -182,9 +182,9 @@ vertical_alignment = 1
 visible = false
 layout_mode = 0
 offset_left = 883.0
-offset_top = 112.0
-offset_right = 1043.0
-offset_bottom = 336.0
+offset_top = 45.0
+offset_right = 1083.0
+offset_bottom = 325.0
 
 [node name="progress_bar" type="ProgressBar" parent="flow_coordinator/deck_view"]
 layout_mode = 0
