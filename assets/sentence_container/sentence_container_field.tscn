@@ -59,6 +59,7 @@ mouse_filter = 2
 
 [node name="preview" type="PanelContainer" parent="h_box_container/rich_text_label"]
 unique_name_in_owner = true
+z_index = 4
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

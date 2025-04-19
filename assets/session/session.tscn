@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ce5ej8armma4y"]
+[gd_scene load_steps=18 format=3 uid="uid://ce5ej8armma4y"]
 
 [ext_resource type="Script" uid="uid://crsfhee7ojlr5" path="res://scripts/session/session.gd" id="1_heuok"]
 [ext_resource type="PackedScene" uid="uid://cd4a04syaq7r7" path="res://assets/sentence_container/sentence_container.tscn" id="2_sxs0h"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dmna7dgq05p8t" path="res://assets/game_over/game_over.tscn" id="11_g8jqu"]
 [ext_resource type="AudioStream" uid="uid://b4h72ntok3ud3" path="res://assets/sfx/stream_pools/card_discard.tres" id="12_dl4qr"]
 [ext_resource type="AudioStream" uid="uid://vjqo2wtfqtc4" path="res://assets/sfx/stream_pools/card_deal.tres" id="13_7ge3d"]
+[ext_resource type="Script" uid="uid://plaoks5k214c" path="res://scripts/tutorial/tutorial_session.gd" id="14_d4dp2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_04yh6"]
 
@@ -185,6 +186,585 @@ anchors_preset = 0
 unique_name_in_owner = true
 z_index = 64
 layout_mode = 1
+
+[node name="tutorial_session" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("14_d4dp2")
+overlay_rect_grow_speed = 1024.0
+
+[node name="overlay" type="Control" parent="tutorial_session"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="a" type="ColorRect" parent="tutorial_session/overlay"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.729)
+
+[node name="b" type="ColorRect" parent="tutorial_session/overlay"]
+layout_mode = 0
+offset_top = 774.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.729)
+
+[node name="c" type="ColorRect" parent="tutorial_session/overlay"]
+layout_mode = 0
+offset_top = 340.0
+offset_right = 670.0
+offset_bottom = 774.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.729)
+
+[node name="d" type="ColorRect" parent="tutorial_session/overlay"]
+layout_mode = 0
+offset_left = 1262.0
+offset_top = 340.0
+offset_right = 1920.0
+offset_bottom = 774.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.729)
+
+[node name="pages" type="Control" parent="tutorial_session"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_0" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.5
+offset_top = -350.955
+offset_right = 330.5
+offset_bottom = -237.955
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "You are Phil A. Buster.
+You are a Senator."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_0/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_1" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.5
+offset_top = -350.955
+offset_right = 330.5
+offset_bottom = -237.955
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "You must complete sentences and
+delay the bill being until time
+runs out."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_1/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_2" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -402.5
+offset_top = -120.0
+offset_right = 402.5
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Each word ticks away time.
+Complete enough sentences to
+get through the session."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_2/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_3" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -647.5
+offset_top = -131.0
+offset_right = 647.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Empty sentence fields must be
+filled in using your cards.
+Click to drag, and drop them over the fields."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_3/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_4" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -518.0
+offset_top = 29.0
+offset_right = 518.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "You can also discard a card, trading
+for a random card from your deck."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_4/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_5" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -518.0
+offset_top = -228.0
+offset_right = 518.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Beware of your bust meter!
+If it fills up, you will be
+busted for filibustering!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_5/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_6" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -518.0
+offset_top = -228.0
+offset_right = 518.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Bust increases with each word.
+Cards that are irrelevant to the topic
+will also massively increase bust!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_6/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_7" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -518.0
+offset_top = -228.0
+offset_right = 518.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "To decrease bust, you must find
+and play cards that are relevant
+to the topic."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_7/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="page_8" type="Control" parent="tutorial_session/pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session/pages/page_8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -518.0
+offset_top = -228.0
+offset_right = 518.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "After each session, you can buy
+cards at the shop and manage your deck.
+You can also buy cards that will apply
+multiplicative effects."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/pages/page_8/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="label" type="Label" parent="tutorial_session"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -474.0
+offset_right = 269.0
+offset_bottom = -438.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "(click anywhere to continue)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="panel" type="Panel" parent="tutorial_session/label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="boxes" type="Control" parent="tutorial_session"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="box_0" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+offset_left = 670.0
+offset_top = 340.0
+offset_right = 1262.0
+offset_bottom = 774.0
+mouse_filter = 2
+
+[node name="box_1" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+offset_left = 1516.0
+offset_top = 46.0
+offset_right = 1904.0
+offset_bottom = 413.0
+mouse_filter = 2
+
+[node name="box_2" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+offset_left = 406.0
+offset_top = 129.0
+offset_right = 1520.0
+offset_bottom = 374.0
+mouse_filter = 2
+
+[node name="box_3" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+offset_left = 95.0
+offset_top = 700.0
+offset_right = 1831.0
+offset_bottom = 1053.0
+mouse_filter = 2
+
+[node name="box_4" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+offset_left = 1558.0
+offset_top = 515.0
+offset_right = 1870.0
+offset_bottom = 741.0
+mouse_filter = 2
+
+[node name="box_5" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+offset_left = 170.0
+offset_top = 76.0
+offset_right = 373.0
+offset_bottom = 733.0
+mouse_filter = 2
+
+[node name="box_6" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+offset_left = 170.0
+offset_top = 76.0
+offset_right = 373.0
+offset_bottom = 733.0
+mouse_filter = 2
+
+[node name="box_7" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+offset_left = 170.0
+offset_top = 76.0
+offset_right = 373.0
+offset_bottom = 733.0
+mouse_filter = 2
+
+[node name="box_8" type="Control" parent="tutorial_session/boxes"]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="button" type="Button" parent="tutorial_session"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -654.0
+offset_top = -1027.0
+offset_right = -356.0
+offset_bottom = -967.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Skip Tutorial"
 
 [node name="audio" type="Node" parent="."]
 
