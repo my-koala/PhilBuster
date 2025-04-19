@@ -29,7 +29,7 @@ void fragment() {
 shader = SubResource("Shader_i0c5v")
 shader_parameter/ant_color_1 = Color(1, 1, 1, 1)
 shader_parameter/ant_color_2 = Color(0, 0, 0, 1)
-shader_parameter/ant_width = 4.0
+shader_parameter/ant_width = 8.0
 shader_parameter/ant_length = 8.0
 shader_parameter/ant_speed = 64.0
 
