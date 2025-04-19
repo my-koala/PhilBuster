@@ -35,8 +35,8 @@ _data = [Vector2(0, 96), 0.0, -10.9409, 0, 0, Vector2(3.97765, 41.494), -12.3359
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_12kgx"]
-_limits = [1.0, 8.0, 0.0, 8.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3.10615, 4.71084), 1.23127, 1.23127, 0, 0, Vector2(7.10614, 8), 0.0, 0.0, 0, 0]
+_limits = [1.0, 4.0, 0.0, 8.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(4.75362, 2.39205), 0.43353, 0.43353, 0, 0, Vector2(8, 4), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_hsbq6"]
