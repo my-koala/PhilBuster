@@ -62,4 +62,7 @@ texture = ExtResource("2_ablp0")
 expand_mode = 1
 
 [node name="highlight" parent="." instance=ExtResource("3_t004u")]
+unique_name_in_owner = true
 layout_mode = 1
+color = Color(0, 0, 0, 0)
+enabled = false

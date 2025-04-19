@@ -14,6 +14,12 @@ var enabled: bool = true:
 			_dirty = true
 
 @onready
+var _highlight: Highlight = %highlight as Highlight
+
+func get_highlight() -> Highlight:
+	return _highlight
+
+@onready
 var _game_button: GameButton = %game_button as GameButton
 @onready
 var _label_count: Label = %label_count as Label
@@ -28,6 +34,9 @@ func _ready() -> void:
 		return
 	
 	_game_button.pressed.connect(submitted.emit)
+	
+	_highlight.highlight_started.connect(func() -> void: z_index = 8)
+	_highlight.highlight_stopped.connect(func() -> void: z_index = 0)
 	
 	_update()
 

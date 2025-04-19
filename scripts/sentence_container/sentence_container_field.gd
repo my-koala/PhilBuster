@@ -36,20 +36,21 @@ var _rich_text_label: RichTextLabel = %rich_text_label as RichTextLabel
 @onready
 var _preview: Control = %preview as Control
 @onready
-var _highlight: Highlight = %highlight as Highlight
-@onready
 var _button: Button = %button as Button
 @onready
 var _card_instance: CardInstance = %card_instance as CardInstance
+
+@onready
+var _highlight: Highlight = %highlight as Highlight
+
+func get_highlight() -> Highlight:
+	return _highlight
 
 var _card_info: CardInfo = null
 
 var _dirty: bool = false
 
 var _input_mouse_hover: bool = false
-
-func get_highlight() -> Highlight:
-	return _highlight
 
 static func get_card_type(card_info: CardInfo) -> CardType:
 	if !is_instance_valid(card_info):
@@ -144,6 +145,9 @@ func _ready() -> void:
 	_button.button_up.connect(press_stopped.emit)
 	_button.mouse_entered.connect(func() -> void: _input_mouse_hover = true)
 	_button.mouse_exited.connect(func() -> void: _input_mouse_hover = false)
+	
+	_highlight.highlight_started.connect(func() -> void: z_index = 8)
+	_highlight.highlight_stopped.connect(func() -> void: z_index = 0)
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():

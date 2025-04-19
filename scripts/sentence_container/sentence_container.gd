@@ -180,3 +180,7 @@ func _physics_process(delta: float) -> void:
 				read_field.emit(field_instance.get_card_info())
 			
 			_read_sentence_index += 1
+
+func highlight_fields(card_type: SentenceContainerField.CardType) -> void:
+	for field_instance: SentenceContainerField in _field_instances:
+		field_instance.get_highlight().enabled = field_instance.card_type == card_type

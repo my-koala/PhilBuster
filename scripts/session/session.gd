@@ -37,7 +37,11 @@ var _deck_deal_cooldown: float = 0.0
 @onready
 var _sentence_container: SentenceContainer = %sentence_container as SentenceContainer
 @onready
-var _hand_container: HandContainer = %hand_container as HandContainer
+var _hand_container: Container = %hand_container as Container
+@onready
+var _hand_container_cards: HandContainer = %hand_container/cards as HandContainer
+@onready
+var _hand_container_highlight: Highlight = %hand_container/highlight as Highlight
 @onready
 var _bust_meter: BustMeter = %bust_meter as BustMeter
 @onready
@@ -146,7 +150,7 @@ func _physics_process(delta: float) -> void:
 			var card_instance: CardInstance = _deck_card_instances[0]
 			_deck_card_instances.pop_front()
 			_hand_card_instances.append(card_instance)
-			_hand_container.add_child(card_instance)
+			_hand_container_cards.add_child(card_instance)
 			_audio_deal.play()
 
 func _ready() -> void:
@@ -166,6 +170,9 @@ func _ready() -> void:
 	_session_speak.submitted.connect(_on_session_speak_submitted)
 	
 	_game_over.return_to_menu.connect(stop_session.bind(false))
+	
+	_hand_container_highlight.highlight_started.connect(func() -> void: _hand_container.z_index = 8)
+	_hand_container_highlight.highlight_stopped.connect(func() -> void: _hand_container.z_index = 0)
 
 var _submitted: bool = false
 
@@ -280,12 +287,23 @@ func _on_card_instance_drag_started(card_instance: CardInstance) -> void:
 	_drag_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
 	
 	if card_instance.is_inside_tree():
-		_hand_container.remove_child(card_instance)
+		_hand_container_cards.remove_child(card_instance)
 	_drag.add_child(card_instance)
 	card_instance.global_position = card_instance.get_global_mouse_position()
 	card_instance.reset_physics_interpolation()
 	
 	# TODO: Highlight fields accessible to card instance.
+	_hand_container_highlight.enabled = true
+	if _game_stats.get_discard_count() > 0:
+		_session_discard.get_highlight().enabled = true
+	if card_instance.card_info is CardInfoBasicNoun:
+		_sentence_container.highlight_fields(SentenceContainerField.CardType.NOUN)
+	if card_instance.card_info is CardInfoBasicVerb:
+		_sentence_container.highlight_fields(SentenceContainerField.CardType.VERB)
+	if card_instance.card_info is CardInfoModifierAdjective:
+		_sentence_container.highlight_fields(SentenceContainerField.CardType.NOUN)
+	if card_instance.card_info is CardInfoModifierAdverb:
+		_sentence_container.highlight_fields(SentenceContainerField.CardType.VERB)
 
 func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 	_drag_overlay.visible = false
@@ -307,10 +325,13 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 		_hand_card_instances_fields.append(card_instance)
 	else:
 		# Return to hand.
-		_hand_container.add_child(card_instance)
+		_hand_container_cards.add_child(card_instance)
 		card_instance.reset_physics_interpolation()
 	
 	# TODO: Highlight fields accessible to card instance.
+	_hand_container_highlight.enabled = false
+	_session_discard.get_highlight().enabled = false
+	_sentence_container.highlight_fields(SentenceContainerField.CardType.NONE)
 
 func _exit_tree() -> void:
 	_sentence_container.clear_sentence()
