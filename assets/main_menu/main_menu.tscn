@@ -31,10 +31,11 @@ pivot_offset = Vector2(960, 540)
 script = ExtResource("2_g8ye4")
 root_view = NodePath("main_view")
 back_button = NodePath("back")
-metadata/_custom_type_script = ExtResource("2_g8ye4")
+metadata/_custom_type_script = "uid://d23kpmtei5n5y"
 
 [node name="main_view" parent="flow_coordinator" instance=ExtResource("3_i261q")]
 layout_mode = 1
+metadata/_custom_type_script = "uid://cbdh5ey656ac2"
 
 [node name="logo" type="TextureRect" parent="flow_coordinator/main_view"]
 layout_mode = 1
@@ -102,6 +103,7 @@ text = "Quit
 [node name="credits_view" parent="flow_coordinator" instance=ExtResource("3_i261q")]
 visible = false
 layout_mode = 1
+metadata/_custom_type_script = "uid://cbdh5ey656ac2"
 
 [node name="panel" type="Panel" parent="flow_coordinator/credits_view"]
 layout_mode = 1
