@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=43 format=3 uid="uid://b60kmgmrj1tmd"]
+[gd_resource type="Resource" script_class="Topic" load_steps=53 format=3 uid="uid://b60kmgmrj1tmd"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_hvmlo"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_2ivj4"]
@@ -42,11 +42,46 @@
 [ext_resource type="Resource" uid="uid://ckthxp8v8u4ld" path="res://assets/card/info/modifier/adverb/mentally.tres" id="40_gl0g3"]
 [ext_resource type="Resource" uid="uid://uwprcfmbq30j" path="res://assets/card/info/modifier/adverb/physically.tres" id="41_oo5ln"]
 [ext_resource type="Resource" uid="uid://cx2e6tnwv0uib" path="res://assets/card/info/modifier/adverb/always.tres" id="42_pof3u"]
+[ext_resource type="Resource" uid="uid://d2jj82owqdflc" path="res://assets/card/info/basic/verb/riddle.tres" id="43_74t21"]
+[ext_resource type="Resource" uid="uid://c7qhvkbb80de6" path="res://assets/card/info/basic/verb/extrapolate.tres" id="44_f3hth"]
+[ext_resource type="Resource" uid="uid://brp6a7b33h4wp" path="res://assets/card/info/basic/verb/buy.tres" id="45_1qe0a"]
+[ext_resource type="Resource" uid="uid://buh38gwd47jrf" path="res://assets/card/info/basic/verb/blow_up.tres" id="46_qs3id"]
+[ext_resource type="Resource" uid="uid://bp5uo4077q4ca" path="res://assets/card/info/basic/verb/bleed.tres" id="47_g51e6"]
+[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="48_o0o02"]
+[ext_resource type="Resource" uid="uid://df4yacejtmrs3" path="res://assets/card/info/basic/noun/tin_foil.tres" id="49_rhwjv"]
+[ext_resource type="Resource" uid="uid://dsuf5xjp0grvj" path="res://assets/card/info/basic/noun/transactions.tres" id="50_6o5do"]
+[ext_resource type="Resource" uid="uid://cc502thfyri6p" path="res://assets/card/info/basic/noun/green_house.tres" id="51_e2ea1"]
+[ext_resource type="Resource" uid="uid://bf3vxgicbu7id" path="res://assets/card/info/basic/noun/chicken_jockey.tres" id="52_f3hth"]
 
 [resource]
 script = ExtResource("1_hvmlo")
 sentences = PackedStringArray("Fast food is making the {n} {v}! We must {v} this!", "The {n} of {n} is out of control! It\'s {v} ing the youth!", "{n} is the number one reason why the {n} are {v} ing!", "If we replace the {n} with {n}, it would would {v} the {n}.", "We keep {v} {n}, which is making us {v}!", "By {v} on {n}, we ensure {n} is {v}.")
 words = Dictionary[ExtResource("2_2ivj4"), bool]({
+ExtResource("8_sgcst"): true,
+ExtResource("5_vc5ey"): true,
+ExtResource("4_y1a23"): true,
+ExtResource("3_hwofw"): true,
+ExtResource("12_oys1q"): true,
+ExtResource("22_jjakb"): true,
+ExtResource("14_r6b8e"): true,
+ExtResource("15_jjakb"): true,
+ExtResource("16_dm8su"): false,
+ExtResource("17_fyjeb"): false,
+ExtResource("18_avwnd"): true,
+ExtResource("19_h1w35"): false,
+ExtResource("20_py67k"): false,
+ExtResource("21_mqjmj"): false,
+ExtResource("22_ywkwp"): true,
+ExtResource("43_74t21"): false,
+ExtResource("44_f3hth"): false,
+ExtResource("45_1qe0a"): true,
+ExtResource("46_qs3id"): false,
+ExtResource("47_g51e6"): false,
+ExtResource("48_o0o02"): false,
+ExtResource("49_rhwjv"): true,
+ExtResource("50_6o5do"): true,
+ExtResource("51_e2ea1"): false,
+ExtResource("52_f3hth"): true,
 ExtResource("23_7eknr"): true,
 ExtResource("24_anrwr"): true,
 ExtResource("25_um43k"): false,
@@ -68,24 +103,9 @@ ExtResource("40_gl0g3"): false,
 ExtResource("41_oo5ln"): true,
 ExtResource("42_pof3u"): true,
 ExtResource("3_2ipie"): true,
-ExtResource("6_4bi6o"): false,
+ExtResource("6_4bi6o"): true,
 ExtResource("5_tbwnh"): false,
 ExtResource("14_axyi7"): true,
-ExtResource("16_gp8nw"): true,
-ExtResource("8_sgcst"): true,
-ExtResource("5_vc5ey"): true,
-ExtResource("4_y1a23"): true,
-ExtResource("3_hwofw"): true,
-ExtResource("12_oys1q"): true,
-ExtResource("22_jjakb"): true,
-ExtResource("14_r6b8e"): true,
-ExtResource("15_jjakb"): true,
-ExtResource("16_dm8su"): false,
-ExtResource("17_fyjeb"): false,
-ExtResource("18_avwnd"): true,
-ExtResource("19_h1w35"): false,
-ExtResource("20_py67k"): false,
-ExtResource("21_mqjmj"): true,
-ExtResource("22_ywkwp"): true
+ExtResource("16_gp8nw"): true
 })
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

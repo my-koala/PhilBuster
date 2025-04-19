@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=13 format=3 uid="uid://c7arqlxcc5lk2"]
+[gd_resource type="Resource" script_class="Topic" load_steps=43 format=3 uid="uid://c7arqlxcc5lk2"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_i7q78"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_2itv1"]
@@ -12,11 +12,61 @@
 [ext_resource type="Resource" uid="uid://dsakyqs4atvea" path="res://assets/card/info/basic/verb/flat.tres" id="11_rv8gc"]
 [ext_resource type="Resource" uid="uid://ci8hosc2s835k" path="res://assets/card/info/basic/noun/ufo.tres" id="11_ybv76"]
 [ext_resource type="Resource" uid="uid://df4yacejtmrs3" path="res://assets/card/info/basic/noun/tin_foil.tres" id="12_a57x1"]
+[ext_resource type="Resource" uid="uid://cy30hnwela3dy" path="res://assets/card/info/basic/noun/buffoon.tres" id="13_cq8m0"]
+[ext_resource type="Resource" uid="uid://dim83e0jnpbew" path="res://assets/card/info/basic/noun/capitalism.tres" id="14_xuqry"]
+[ext_resource type="Resource" uid="uid://bf3vxgicbu7id" path="res://assets/card/info/basic/noun/chicken_jockey.tres" id="15_slwdv"]
+[ext_resource type="Resource" uid="uid://cyt1qsaffv625" path="res://assets/card/info/basic/noun/government.tres" id="16_bveu1"]
+[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="17_mkfaq"]
+[ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="18_f4vpv"]
+[ext_resource type="Resource" uid="uid://dkyrkk54csccf" path="res://assets/card/info/basic/noun/jonathan.tres" id="19_fe8t1"]
+[ext_resource type="Resource" uid="uid://di5p0qmstfx4m" path="res://assets/card/info/basic/noun/marsupial.tres" id="20_0y4yu"]
+[ext_resource type="Resource" uid="uid://cqm80tt6clgqd" path="res://assets/card/info/basic/noun/marvel.tres" id="21_oyxar"]
+[ext_resource type="Resource" uid="uid://bhusuopxodido" path="res://assets/card/info/basic/noun/pedigree.tres" id="22_ie2fw"]
+[ext_resource type="Resource" uid="uid://bggosb12333kw" path="res://assets/card/info/basic/noun/president.tres" id="23_ekiiy"]
+[ext_resource type="Resource" uid="uid://bortssxp30txl" path="res://assets/card/info/basic/noun/smallpox.tres" id="24_vvher"]
+[ext_resource type="Resource" uid="uid://kw6jqrkg3dux" path="res://assets/card/info/basic/noun/steve.tres" id="25_bo5uk"]
+[ext_resource type="Resource" uid="uid://dgny2c8kkwlg1" path="res://assets/card/info/basic/noun/tautology.tres" id="26_l6wph"]
+[ext_resource type="Resource" uid="uid://cxefi57qx8jqg" path="res://assets/card/info/basic/noun/xbox.tres" id="27_bt16r"]
+[ext_resource type="Resource" uid="uid://bp5uo4077q4ca" path="res://assets/card/info/basic/verb/bleed.tres" id="28_65tn0"]
+[ext_resource type="Resource" uid="uid://b2ijk4sbjjy5a" path="res://assets/card/info/basic/verb/bug.tres" id="29_k4r20"]
+[ext_resource type="Resource" uid="uid://je33xqvdtirn" path="res://assets/card/info/basic/verb/cycle.tres" id="30_rx7tx"]
+[ext_resource type="Resource" uid="uid://btih6e7ffktnc" path="res://assets/card/info/basic/verb/defenestrate.tres" id="31_e15u3"]
+[ext_resource type="Resource" uid="uid://b7sqcg2mlgy4u" path="res://assets/card/info/basic/verb/eat.tres" id="32_4ql0c"]
+[ext_resource type="Resource" uid="uid://c7qhvkbb80de6" path="res://assets/card/info/basic/verb/extrapolate.tres" id="33_w52wo"]
+[ext_resource type="Resource" uid="uid://cv6i58q24ruee" path="res://assets/card/info/basic/verb/gruntle.tres" id="34_52y5u"]
+[ext_resource type="Resource" uid="uid://dbgdovgvu5tqe" path="res://assets/card/info/basic/verb/mar.tres" id="35_vgpbg"]
+[ext_resource type="Resource" uid="uid://b7lua867t3ref" path="res://assets/card/info/basic/verb/starve.tres" id="36_ihobq"]
+[ext_resource type="Resource" uid="uid://wdop0ef42bci" path="res://assets/card/info/basic/verb/sous_vide.tres" id="37_2hwhx"]
+[ext_resource type="Resource" uid="uid://hw18ralo1tu1" path="res://assets/card/info/basic/verb/tax.tres" id="38_0a75x"]
+[ext_resource type="Resource" uid="uid://bwncks4u6maal" path="res://assets/card/info/basic/verb/trade.tres" id="39_vokgb"]
+[ext_resource type="Resource" uid="uid://c8lyvwo6c0a6m" path="res://assets/card/info/basic/verb/trundle.tres" id="40_r20e7"]
+[ext_resource type="Resource" uid="uid://craerigo8dr1m" path="res://assets/card/info/basic/verb/type.tres" id="41_t0qcl"]
+[ext_resource type="Resource" uid="uid://bbejhkmbee4m7" path="res://assets/card/info/basic/verb/perforate.tres" id="42_4d78u"]
 
 [resource]
 script = ExtResource("1_i7q78")
-sentences = PackedStringArray("The {n} in the government are going to cause the world to {n}!", "The government gives us {n} to make us {v}!", "The {n} wants to {v} the new Coca-Cola!", "If you wear a {n} as a hat you wont {v}!", "The Illuminati uses {n} to {v} a portal to get more {n}!", "The president is a {n} in disguise! They want to {v} the {n}.")
+sentences = PackedStringArray("The {n} in the government are going to {v} the world to {n}!", "The government gives us {n} to make us {v}.", "There\'s {n} in our {n} that will {v} and {v} us of our {n}.", "Just what kind of {n} are they hiding? It\'s time for the {n} to {v}.", "One day we will {v} the moon. Don\'t be surprised when {n} {v} for your {n}.", "The {n} is an industry plant, here to {v} our {n}.", "Canada doesn\'t exist.")
 words = Dictionary[ExtResource("2_2itv1"), bool]({
+ExtResource("23_ekiiy"): true,
+ExtResource("24_vvher"): true,
+ExtResource("25_bo5uk"): false,
+ExtResource("26_l6wph"): false,
+ExtResource("27_bt16r"): false,
+ExtResource("28_65tn0"): false,
+ExtResource("29_k4r20"): true,
+ExtResource("30_rx7tx"): false,
+ExtResource("31_e15u3"): false,
+ExtResource("32_4ql0c"): false,
+ExtResource("33_w52wo"): true,
+ExtResource("34_52y5u"): false,
+ExtResource("35_vgpbg"): false,
+ExtResource("36_ihobq"): true,
+ExtResource("37_2hwhx"): false,
+ExtResource("38_0a75x"): false,
+ExtResource("39_vokgb"): false,
+ExtResource("40_r20e7"): false,
+ExtResource("41_t0qcl"): false,
+ExtResource("42_4d78u"): false,
 ExtResource("3_3w0ve"): true,
 ExtResource("4_7d4gq"): true,
 ExtResource("5_m2ts0"): true,
@@ -26,6 +76,16 @@ ExtResource("8_a57x1"): true,
 ExtResource("10_w0wxx"): true,
 ExtResource("11_rv8gc"): true,
 ExtResource("11_ybv76"): true,
-ExtResource("12_a57x1"): true
+ExtResource("12_a57x1"): true,
+ExtResource("13_cq8m0"): false,
+ExtResource("14_xuqry"): true,
+ExtResource("15_slwdv"): true,
+ExtResource("16_bveu1"): true,
+ExtResource("17_mkfaq"): true,
+ExtResource("18_f4vpv"): false,
+ExtResource("19_fe8t1"): false,
+ExtResource("20_0y4yu"): false,
+ExtResource("21_oyxar"): false,
+ExtResource("22_ie2fw"): false
 })
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

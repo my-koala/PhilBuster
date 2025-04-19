@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=11 format=3 uid="uid://cquievx6i3gvr"]
+[gd_resource type="Resource" script_class="Topic" load_steps=47 format=3 uid="uid://cquievx6i3gvr"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_6vb4a"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_lb5el"]
@@ -8,20 +8,92 @@
 [ext_resource type="Resource" uid="uid://b674hr6hl055q" path="res://assets/card/info/basic/noun/earth.tres" id="6_jv3kl"]
 [ext_resource type="Resource" uid="uid://daagn4b0udbrn" path="res://assets/card/info/basic/noun/vaccine.tres" id="7_7rils"]
 [ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="8_pkc4l"]
-[ext_resource type="Resource" uid="uid://ca5f5kd88grxc" path="res://assets/card/info/basic/verb/mine.tres" id="9_5vq3v"]
+[ext_resource type="Resource" uid="uid://btc48l4t3phdq" path="res://assets/card/info/basic/noun/china.tres" id="10_7o7ub"]
 [ext_resource type="Resource" uid="uid://cc502thfyri6p" path="res://assets/card/info/basic/noun/green_house.tres" id="10_omc3x"]
+[ext_resource type="Resource" uid="uid://bimimc86sissn" path="res://assets/card/info/basic/noun/covid.tres" id="11_ompfe"]
+[ext_resource type="Resource" uid="uid://bnmhlsidww8of" path="res://assets/card/info/basic/noun/cradle.tres" id="12_7qegy"]
+[ext_resource type="Resource" uid="uid://cbuoqwninc40k" path="res://assets/card/info/basic/noun/disease.tres" id="13_n34g1"]
+[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="14_g6od1"]
+[ext_resource type="Resource" uid="uid://kp44w87qtbau" path="res://assets/card/info/basic/noun/flu.tres" id="15_7q6b6"]
+[ext_resource type="Resource" uid="uid://0mtxpwt1rstk" path="res://assets/card/info/basic/noun/gamer.tres" id="16_nif4q"]
+[ext_resource type="Resource" uid="uid://t3pwkj107hg7" path="res://assets/card/info/basic/noun/gear.tres" id="17_hs2jp"]
+[ext_resource type="Resource" uid="uid://pji6jyax5rr1" path="res://assets/card/info/basic/noun/milk.tres" id="18_th46m"]
+[ext_resource type="Resource" uid="uid://ckp6wa1dg7dxp" path="res://assets/card/info/basic/noun/mortality.tres" id="19_oiil1"]
+[ext_resource type="Resource" uid="uid://bhusuopxodido" path="res://assets/card/info/basic/noun/pedigree.tres" id="20_rawl8"]
+[ext_resource type="Resource" uid="uid://dpdlgqaglnlaj" path="res://assets/card/info/basic/noun/rigamarole.tres" id="21_368c8"]
+[ext_resource type="Resource" uid="uid://dd113hqvjfdgb" path="res://assets/card/info/basic/noun/rivals.tres" id="22_hs0e1"]
+[ext_resource type="Resource" uid="uid://kw6jqrkg3dux" path="res://assets/card/info/basic/noun/steve.tres" id="23_8ljqq"]
+[ext_resource type="Resource" uid="uid://df4yacejtmrs3" path="res://assets/card/info/basic/noun/tin_foil.tres" id="24_whmer"]
+[ext_resource type="Resource" uid="uid://ci8hosc2s835k" path="res://assets/card/info/basic/noun/ufo.tres" id="25_cljxj"]
+[ext_resource type="Resource" uid="uid://dawl3sj8g03l8" path="res://assets/card/info/basic/noun/you.tres" id="26_wohop"]
+[ext_resource type="Resource" uid="uid://bp5uo4077q4ca" path="res://assets/card/info/basic/verb/bleed.tres" id="27_x5fob"]
+[ext_resource type="Resource" uid="uid://buh38gwd47jrf" path="res://assets/card/info/basic/verb/blow_up.tres" id="28_vu1ja"]
+[ext_resource type="Resource" uid="uid://c4mc7k6j6ygk3" path="res://assets/card/info/basic/verb/boil.tres" id="29_mg7mx"]
+[ext_resource type="Resource" uid="uid://b2ijk4sbjjy5a" path="res://assets/card/info/basic/verb/bug.tres" id="30_8uet1"]
+[ext_resource type="Resource" uid="uid://bg0p2jvksmp1h" path="res://assets/card/info/basic/verb/combat.tres" id="31_mnnhp"]
+[ext_resource type="Resource" uid="uid://codcagcifku88" path="res://assets/card/info/basic/verb/craft.tres" id="32_g5ow1"]
+[ext_resource type="Resource" uid="uid://c7qhvkbb80de6" path="res://assets/card/info/basic/verb/extrapolate.tres" id="33_864rm"]
+[ext_resource type="Resource" uid="uid://ynhgk4eldggm" path="res://assets/card/info/basic/verb/gape.tres" id="34_g4ukm"]
+[ext_resource type="Resource" uid="uid://cgpqdc62r6wm8" path="res://assets/card/info/basic/verb/gas.tres" id="35_4604p"]
+[ext_resource type="Resource" uid="uid://b5pu774n7htq3" path="res://assets/card/info/basic/verb/invest.tres" id="36_jvbub"]
+[ext_resource type="Resource" uid="uid://cke0xk0w64n04" path="res://assets/card/info/basic/verb/holler.tres" id="37_177cd"]
+[ext_resource type="Resource" uid="uid://c2hyjg87b7i0m" path="res://assets/card/info/basic/verb/kill.tres" id="38_6ck84"]
+[ext_resource type="Resource" uid="uid://dbgdovgvu5tqe" path="res://assets/card/info/basic/verb/mar.tres" id="39_ee7t8"]
+[ext_resource type="Resource" uid="uid://bxxt4ducti6r8" path="res://assets/card/info/basic/verb/milk.tres" id="40_sm6sn"]
+[ext_resource type="Resource" uid="uid://bbejhkmbee4m7" path="res://assets/card/info/basic/verb/perforate.tres" id="41_5xy5t"]
+[ext_resource type="Resource" uid="uid://d2jj82owqdflc" path="res://assets/card/info/basic/verb/riddle.tres" id="42_uuifw"]
+[ext_resource type="Resource" uid="uid://wdop0ef42bci" path="res://assets/card/info/basic/verb/sous_vide.tres" id="43_xcnab"]
+[ext_resource type="Resource" uid="uid://hw18ralo1tu1" path="res://assets/card/info/basic/verb/tax.tres" id="44_dj5io"]
+[ext_resource type="Resource" uid="uid://c8lyvwo6c0a6m" path="res://assets/card/info/basic/verb/trundle.tres" id="45_ol4py"]
+[ext_resource type="Resource" uid="uid://craerigo8dr1m" path="res://assets/card/info/basic/verb/type.tres" id="46_fwaip"]
 
 [resource]
 script = ExtResource("1_6vb4a")
-sentences = PackedStringArray("{n}, {n}, and {n}: These are all major causes of climate change.", "If we dont stop the {n}, then the forests will {v}!", "Lets throw some oil paint all over {n}, surely that will {v} the government!", "Climate change is a major threat to {n}, we have to {v} the {n}!", "{n} is in danger because of {n}.", "We must {v} {n} to curb climate change.")
+sentences = PackedStringArray("{n}, {n}, and {n}. Thank them for climate change.", "I love my trees. They provide me {n} and {n}. There\'s never a day that goes by when I don\'t {v} a tree.", "Icebergs melting just means more {n} for {n}!", "Penguins are like {n}; they {v} {n} like {n}.", "When the {n} goes, {n} can {v} right off.")
 words = Dictionary[ExtResource("2_lb5el"), bool]({
+ExtResource("25_cljxj"): false,
+ExtResource("26_wohop"): false,
+ExtResource("27_x5fob"): false,
+ExtResource("28_vu1ja"): true,
+ExtResource("29_mg7mx"): true,
+ExtResource("30_8uet1"): true,
+ExtResource("31_mnnhp"): false,
+ExtResource("32_g5ow1"): false,
+ExtResource("33_864rm"): true,
+ExtResource("34_g4ukm"): false,
+ExtResource("35_4604p"): true,
+ExtResource("36_jvbub"): false,
+ExtResource("37_177cd"): false,
+ExtResource("38_6ck84"): true,
+ExtResource("39_ee7t8"): false,
+ExtResource("40_sm6sn"): false,
+ExtResource("41_5xy5t"): true,
+ExtResource("42_uuifw"): false,
+ExtResource("43_xcnab"): false,
+ExtResource("44_dj5io"): false,
+ExtResource("45_ol4py"): false,
+ExtResource("46_fwaip"): false,
 ExtResource("3_umsuf"): true,
 ExtResource("4_omc3x"): true,
-ExtResource("5_tgyqf"): false,
+ExtResource("5_tgyqf"): true,
 ExtResource("6_jv3kl"): true,
 ExtResource("7_7rils"): false,
 ExtResource("8_pkc4l"): true,
-ExtResource("9_5vq3v"): true,
-ExtResource("10_omc3x"): true
+ExtResource("10_omc3x"): true,
+ExtResource("10_7o7ub"): true,
+ExtResource("11_ompfe"): false,
+ExtResource("12_7qegy"): false,
+ExtResource("13_n34g1"): true,
+ExtResource("14_g6od1"): false,
+ExtResource("15_7q6b6"): true,
+ExtResource("16_nif4q"): false,
+ExtResource("17_hs2jp"): false,
+ExtResource("18_th46m"): false,
+ExtResource("19_oiil1"): true,
+ExtResource("20_rawl8"): false,
+ExtResource("21_368c8"): true,
+ExtResource("22_hs0e1"): false,
+ExtResource("23_8ljqq"): false,
+ExtResource("24_whmer"): true
 })
 metadata/_custom_type_script = "uid://c7giyb4t438lj"
