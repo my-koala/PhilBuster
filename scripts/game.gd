@@ -35,6 +35,14 @@ var _state: State = State.NONE
 
 var _loop: bool = false
 
+func _input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	if Input.is_action_just_pressed(&"mouse_left"):
+		pass
+		_transition
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
@@ -51,7 +59,7 @@ func _reset() -> void:
 	game_stats.reset_deck()
 	game_stats.reset_money()
 	game_stats.topic_randomize()
-	game_stats.reset_topic_memory()
+	#game_stats.reset_topic_memory()
 	game_stats.reset_time_wasted()
 	game_stats.reset_bust_accumulated()
 	game_stats.reset_session()
