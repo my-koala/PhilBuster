@@ -46,6 +46,7 @@ grow_vertical = 2
 color = Color(0.99, 0.94842, 0.8514, 1)
 
 [node name="menu_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
+visible = false
 modulate = Color(1, 1, 1, 0.984314)
 layout_mode = 1
 metadata/_custom_type_script = "uid://cbdh5ey656ac2"
@@ -96,7 +97,6 @@ offset_bottom = 972.0
 text = "NEXT SESSION >>>"
 
 [node name="shop_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
-visible = false
 layout_mode = 1
 script = ExtResource("4_k4ejo")
 metadata/_custom_type_script = "uid://cbdh5ey656ac2"
@@ -112,6 +112,21 @@ text = "The Shop"
 label_settings = SubResource("LabelSettings_joqlw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="reroll" type="Button" parent="flow_coordinator/shop_view"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reroll: $%d"
 
 [node name="shop_container" type="HBoxContainer" parent="flow_coordinator/shop_view"]
 layout_mode = 1
@@ -283,3 +298,4 @@ text = "BACK"
 [connection signal="pressed" from="flow_coordinator/menu_view/button3" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
 [connection signal="pressed" from="flow_coordinator/menu_view/button4" to="flow_coordinator" method="push_view_by_name" binds= ["deck_view"]]
 [connection signal="pressed" from="flow_coordinator/menu_view/button5" to="." method="exit_shop"]
+[connection signal="pressed" from="flow_coordinator/shop_view/reroll" to="flow_coordinator/shop_view" method="reroll_shop"]

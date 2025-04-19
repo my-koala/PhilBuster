@@ -18,6 +18,9 @@ var _purchase_good_sfx: AudioStreamPlayer = $"shop_purchase" as AudioStreamPlaye
 @onready
 var _purchase_bad_sfx: AudioStreamPlayer = $"shop_fail" as AudioStreamPlayer
 
+@onready
+var _reroll_button: Button = $reroll
+
 var _card_library : CardLibrary
 var _game_stats : GameStats
 
@@ -34,6 +37,12 @@ func _ready() -> void:
 func reset_shop(card_library: CardLibrary, game_stats: GameStats) -> void:
 	_card_library = card_library
 	_game_stats = game_stats
+	_game_stats.rerolls_reset()
+	
+	generate_new_cards()
+
+func generate_new_cards() -> void:
+	_reroll_button.text = "Reroll: $%d" % _game_stats.get_reroll_price()
 	
 	for child: Control in shop_container.get_children():
 		child.queue_free()
@@ -46,6 +55,23 @@ func reset_shop(card_library: CardLibrary, game_stats: GameStats) -> void:
 		card_instance.drag_stopped.connect(_on_card_drag_stopped.bind(card_instance))
 		
 		shop_container.add_child(card_instance)
+
+# TODO: Pull from gamestats
+func reroll_shop() -> void:
+	var reroll_price: int = _game_stats.get_reroll_price()
+	
+	if _game_stats.get_money() < reroll_price:
+		_purchase_bad_sfx.play()
+		return
+	
+	_game_stats.money_remove(reroll_price)
+	_purchase_good_sfx.play()
+	_game_stats.rerolls_increment()
+	
+	# You can rightfully call me out for this one, should be renamed to on_transaction
+	on_card_purchase.emit(reroll_price)
+	
+	generate_new_cards()
 
 func _on_purchase_container_entered() -> void:
 	purchase_container.modulate.a = 0.75
@@ -88,4 +114,3 @@ func _on_card_drag_stopped(card: CardInstance) -> void:
 		_purchase_good_sfx.play()
 	else:
 		_purchase_bad_sfx.play()
-	

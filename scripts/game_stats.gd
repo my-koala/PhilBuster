@@ -33,12 +33,15 @@ var bust_max_curve: Curve = Curve.new()
 var time_max_curve: Curve = Curve.new()
 @export
 var inflation_curve: Curve = Curve.new()
+@export
+var reroll_curve: Curve = Curve.new()
 
 var _discard_count: int = 0
 
 var _deck: Array[CardInfo] = []
 var _money: int = 0
 var _session: int = 0
+var _rerolls: int = 0
 
 var _topic: Topic = null
 var _topic_name: String = ""
@@ -166,6 +169,15 @@ func get_session() -> int:
 func session_increment() -> void:
 	_session += 1
 
+func get_rerolls() -> int:
+	return _rerolls
+
+func rerolls_increment() -> void:
+	_rerolls += 1
+
+func rerolls_reset() -> void:
+	_rerolls = 0
+
 var _topic_sentence_pool: PackedStringArray = PackedStringArray()
 
 func set_topic_name(topic_name: String) -> bool:
@@ -250,3 +262,6 @@ func get_session_time_max() -> int:
 
 func get_session_inflation() -> int:
 	return int(inflation_curve.sample(clampf(float(_session), inflation_curve.min_domain, inflation_curve.max_domain)))
+
+func get_reroll_price() -> int:
+	return int(reroll_curve.sample(clampf(float(_rerolls), reroll_curve.min_domain, inflation_curve.max_domain)))
