@@ -115,6 +115,8 @@ func start_session(game_stats: GameStats) -> void:
 	
 	_label_session.text = "Session #%d\nBill Topic: %s" % [_game_stats.get_session(), _game_stats.topic_get_name()]
 	
+	_sentence_container.set_immutable(false)
+	
 	_session_speak.enabled = true
 	_phil.play_animation_sit()
 
@@ -137,6 +139,8 @@ func stop_session(success: bool) -> void:
 	
 	_game_over.stop()
 	session_finished.emit(success)
+	
+	_sentence_container.set_immutable(false)
 	
 	_game_stats.reset_discard_count()
 	_game_stats = null
@@ -230,10 +234,12 @@ func _on_sentence_container_read_stopped() -> void:
 		await get_tree().create_timer(1.0).timeout
 		_game_over.set_data(_game_stats.get_session(), _game_stats.get_money_total(), _game_stats.get_time_wasted(), _game_stats.get_bust_accumulated())
 		_game_over.start()
+		
 		return
 	
 	if _clock.is_time_exceeded():
 		await get_tree().create_timer(1.0).timeout
+		_sentence_container.set_immutable(false)
 		stop_session(true)
 		return
 	
