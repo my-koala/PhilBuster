@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="3_umsuf"]
 [ext_resource type="Resource" uid="uid://ddnpnfh7ldysy" path="res://assets/card/info/basic/noun/gas.tres" id="4_omc3x"]
 [ext_resource type="Resource" uid="uid://cttw3blf3wea0" path="res://assets/card/info/basic/noun/africa.tres" id="5_tgyqf"]
-[ext_resource type="Resource" uid="uid://b674hr6hl055q" path="res://assets/card/info/basic/noun/the_earth.tres" id="6_jv3kl"]
+[ext_resource type="Resource" uid="uid://b674hr6hl055q" path="res://assets/card/info/basic/noun/earth.tres" id="6_jv3kl"]
 [ext_resource type="Resource" uid="uid://daagn4b0udbrn" path="res://assets/card/info/basic/noun/vaccine.tres" id="7_7rils"]
 [ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="8_pkc4l"]
 [ext_resource type="Resource" uid="uid://ca5f5kd88grxc" path="res://assets/card/info/basic/verb/mine.tres" id="9_5vq3v"]

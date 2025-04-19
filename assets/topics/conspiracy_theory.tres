@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dlfx1pv4vt0hp" path="res://assets/card/info/modifier/adjective/flat.tres" id="4_7d4gq"]
 [ext_resource type="Resource" uid="uid://daagn4b0udbrn" path="res://assets/card/info/basic/noun/vaccine.tres" id="5_m2ts0"]
 [ext_resource type="Resource" uid="uid://ddnpnfh7ldysy" path="res://assets/card/info/basic/noun/gas.tres" id="6_qkins"]
-[ext_resource type="Resource" uid="uid://b674hr6hl055q" path="res://assets/card/info/basic/noun/the_earth.tres" id="7_ybv76"]
+[ext_resource type="Resource" uid="uid://b674hr6hl055q" path="res://assets/card/info/basic/noun/earth.tres" id="7_ybv76"]
 [ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="8_a57x1"]
 [ext_resource type="Resource" uid="uid://buh38gwd47jrf" path="res://assets/card/info/basic/verb/blow_up.tres" id="10_w0wxx"]
 [ext_resource type="Resource" uid="uid://dsakyqs4atvea" path="res://assets/card/info/basic/verb/flat.tres" id="11_rv8gc"]

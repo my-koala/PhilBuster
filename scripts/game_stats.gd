@@ -102,6 +102,12 @@ func reset_topic_memory() -> void:
 func reset_time_wasted() -> void:
 	_time_wasted = 0.0
 
+func reset_session() -> void:
+	_session = 0
+
+func reset_rerolls() -> void:
+	_rerolls = 0
+
 func add_time_wasted(time_wasted: int) -> void:
 	_time_wasted += maxi(time_wasted, 0)
 

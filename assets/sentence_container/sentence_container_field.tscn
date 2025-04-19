@@ -46,6 +46,7 @@ vertical_alignment = 1
 
 [node name="color_rect" type="ColorRect" parent="h_box_container/rich_text_label"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.641)
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
