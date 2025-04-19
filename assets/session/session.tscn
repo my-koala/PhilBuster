@@ -316,8 +316,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "You must complete sentences and
-delay the bill being until time
-runs out."
+delay the bill until time runs out."
 horizontal_alignment = 1
 vertical_alignment = 1
 
