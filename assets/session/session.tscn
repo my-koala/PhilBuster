@@ -405,7 +405,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "Empty sentence fields must be
 filled in using your cards.
-Click to drag, and drop them over the fields."
+Click to drag and drop them over the fields."
 horizontal_alignment = 1
 vertical_alignment = 1
 
