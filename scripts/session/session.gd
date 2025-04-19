@@ -265,6 +265,7 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 			time_multiplier *= card_info_modifier.time_multiplier
 			reward_multiplier *= card_info_modifier.reward_multiplier
 			bust_multiplier *= card_info_modifier.bust_multiplier
+		_card_info_modifier_stack.clear()
 		
 		if _game_stats.topic_is_word_relevant(card_info.get_word()):
 			_bust_meter.remove_bust(bust_field_relevant * bust_multiplier)
