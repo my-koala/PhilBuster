@@ -35,7 +35,15 @@ func is_word_irrelevant(word: String) -> bool:
 		_words_dirty = false
 	return _words.has(word) && !_words[word]
 
+func is_word_neutral(word: String) -> bool:
+	if _words_dirty:
+		_update_words()
+		_words_dirty = false
+	return !is_word_relevant(word) && !is_word_irrelevant(word)
+
 func _update_words() -> void:
 	_words.clear()
 	for card_info: CardInfo in words:
+		if !is_instance_valid(card_info):
+			continue
 		_words[card_info.get_word()] = words[card_info]

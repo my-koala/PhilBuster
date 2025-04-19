@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dskiemvv8csjm" path="res://scripts/highlight/highlight.tscn" id="3_t004u"]
 
 [node name="session_discard" type="Control"]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(256, 192)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -16,7 +16,7 @@ anchor_bottom = 0.5
 offset_left = -128.0
 offset_top = -128.0
 offset_right = 128.0
-offset_bottom = 128.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ablp0")
@@ -49,12 +49,12 @@ text = "0 left"
 horizontal_alignment = 1
 
 [node name="texture_rect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(96, 80)
 layout_mode = 2
-offset_left = 64.0
-offset_top = 99.0
-offset_right = 192.0
-offset_bottom = 227.0
+offset_left = 79.0
+offset_top = 100.0
+offset_right = 175.0
+offset_bottom = 180.0
 size_flags_horizontal = 4
 size_flags_vertical = 6
 mouse_filter = 2

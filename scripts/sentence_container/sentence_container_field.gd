@@ -5,6 +5,8 @@ class_name SentenceContainerField
 # NOTE:
 # can't use mouse_entered/exited for hover detection (since card is dragging over)
 
+signal hover_started()
+signal hover_stopped()
 signal press_started()
 signal press_stopped()
 
@@ -143,8 +145,8 @@ func _ready() -> void:
 	
 	_button.button_down.connect(press_started.emit)
 	_button.button_up.connect(press_stopped.emit)
-	_button.mouse_entered.connect(func() -> void: _input_mouse_hover = true)
-	_button.mouse_exited.connect(func() -> void: _input_mouse_hover = false)
+	_button.mouse_entered.connect(func() -> void: _input_mouse_hover = true; hover_started.emit())
+	_button.mouse_exited.connect(func() -> void: _input_mouse_hover = false; hover_stopped.emit())
 	
 	_highlight.highlight_started.connect(func() -> void: z_index = 8)
 	_highlight.highlight_stopped.connect(func() -> void: z_index = 0)

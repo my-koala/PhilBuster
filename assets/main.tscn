@@ -45,7 +45,6 @@ starting_money = 0
 discard_count = 5
 skip_duplicate_sentences = true
 use_global_sentences = true
-use_topic_memory = true
 bust_max_curve = SubResource("Curve_isq2i")
 time_max_curve = SubResource("Curve_pd2c5")
 inflation_curve = SubResource("Curve_12kgx")
