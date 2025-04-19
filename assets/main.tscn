@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=28 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="Script" uid="uid://c5o0vh6ubr54t" path="res://scripts/game_stats.gd" id="2_fphxj"]
@@ -33,6 +33,11 @@ _limits = [1.0, 8.0, 0.0, 16.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(16, 8), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_hsbq6"]
+_limits = [5.0, 50.0, 0.0, 10.0]
+_data = [Vector2(0, 5), 0.0, 4.5, 0, 1, Vector2(10, 50), 4.5, 0.0, 1, 0]
+point_count = 2
+
 [sub_resource type="Curve" id="Curve_pd2c5"]
 _limits = [60.0, 360.0, 0.0, 16.0]
 _data = [Vector2(0, 60), 0.0, 0.0, 0, 0, Vector2(0, 60), 0.0, 0.0, 0, 0, Vector2(16, 360), 0.0, 0.0, 0, 0]
@@ -48,6 +53,7 @@ use_global_sentences = true
 bust_max_curve = SubResource("Curve_isq2i")
 time_max_curve = SubResource("Curve_pd2c5")
 inflation_curve = SubResource("Curve_12kgx")
+reroll_curve = SubResource("Curve_hsbq6")
 
 [node name="game" type="Node"]
 script = ExtResource("2_tkxyu")
