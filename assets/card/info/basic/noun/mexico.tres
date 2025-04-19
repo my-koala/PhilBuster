@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_8c32v")
 reward = 1
-time = 1
-price = 1
+time = 3
+price = 5
 pool_count = 2
 metadata/_custom_type_script = "uid://ck5huucey4t5d"

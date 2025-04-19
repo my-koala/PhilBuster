@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_i47f7")
 reward_multiplier = 1.0
-time_multiplier = 2.085
-bust_multiplier = 4.2
+time_multiplier = 2.0
+bust_multiplier = 4.0
 time = 2
-price = 1
+price = 3
 pool_count = 2
 metadata/_custom_type_script = "uid://lfryctu523a1"

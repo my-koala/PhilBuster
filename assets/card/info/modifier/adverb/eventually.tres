@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_78w10")
-reward_multiplier = 1.0
-time_multiplier = 1.29
-bust_multiplier = 6.478
+reward_multiplier = 2.5
+time_multiplier = 0.5
+bust_multiplier = 1.0
 time = 5
-price = 1
+price = 3
 pool_count = 2
 metadata/_custom_type_script = "uid://cprmc57tudof3"
