@@ -1,10 +1,27 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://cspsj5enrt6jo"]
+[gd_resource type="Resource" script_class="Topic" load_steps=11 format=3 uid="uid://cspsj5enrt6jo"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_jwg5s"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_p0w3e"]
+[ext_resource type="Resource" uid="uid://daagn4b0udbrn" path="res://assets/card/info/basic/noun/vaccine.tres" id="3_fo3tj"]
+[ext_resource type="Resource" uid="uid://ci8hosc2s835k" path="res://assets/card/info/basic/noun/ufo.tres" id="4_sb5jn"]
+[ext_resource type="Resource" uid="uid://bortssxp30txl" path="res://assets/card/info/basic/noun/smallpox.tres" id="5_0rdai"]
+[ext_resource type="Resource" uid="uid://kp44w87qtbau" path="res://assets/card/info/basic/noun/flu.tres" id="6_n173p"]
+[ext_resource type="Resource" uid="uid://bimimc86sissn" path="res://assets/card/info/basic/noun/covid.tres" id="7_cqrbl"]
+[ext_resource type="Resource" uid="uid://b40pf3vdmu2ay" path="res://assets/card/info/basic/noun/black_plague.tres" id="8_khwh2"]
+[ext_resource type="Resource" uid="uid://cnwrjgynaaher" path="res://assets/card/info/basic/noun/activision.tres" id="9_0h5lo"]
+[ext_resource type="Resource" uid="uid://cxefi57qx8jqg" path="res://assets/card/info/basic/noun/xbox.tres" id="10_lt240"]
 
 [resource]
 script = ExtResource("1_jwg5s")
-sentences = PackedStringArray("", "", "", "")
-words = Dictionary[ExtResource("2_p0w3e"), bool]({})
+sentences = PackedStringArray("The {n} pandemic will cause people to {v} thier {n}!", "Many believe the {n} pandemic came from {n}!", "The only way to stop the pandemic is to {v} the {n}! ", "Eating {n} will {v} your disease!")
+words = Dictionary[ExtResource("2_p0w3e"), bool]({
+ExtResource("3_fo3tj"): true,
+ExtResource("4_sb5jn"): false,
+ExtResource("5_0rdai"): true,
+ExtResource("6_n173p"): true,
+ExtResource("7_cqrbl"): true,
+ExtResource("8_khwh2"): true,
+ExtResource("9_0h5lo"): false,
+ExtResource("10_lt240"): false
+})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

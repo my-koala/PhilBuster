@@ -1,10 +1,23 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://bjfrnujk284yx"]
+[gd_resource type="Resource" script_class="Topic" load_steps=9 format=3 uid="uid://bjfrnujk284yx"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_haygg"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_pwbmp"]
+[ext_resource type="Resource" uid="uid://cxefi57qx8jqg" path="res://assets/card/info/basic/noun/xbox.tres" id="3_wlxq2"]
+[ext_resource type="Resource" uid="uid://0mtxpwt1rstk" path="res://assets/card/info/basic/noun/gamer.tres" id="4_psf2m"]
+[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="5_8mkf4"]
+[ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="6_tj62t"]
+[ext_resource type="Resource" uid="uid://cnwrjgynaaher" path="res://assets/card/info/basic/noun/activision.tres" id="7_x3ajs"]
+[ext_resource type="Resource" uid="uid://dsuf5xjp0grvj" path="res://assets/card/info/basic/noun/transactions.tres" id="8_5ulw8"]
 
 [resource]
 script = ExtResource("1_haygg")
-sentences = PackedStringArray("", "", "", "")
-words = Dictionary[ExtResource("2_pwbmp"), bool]({})
+sentences = PackedStringArray("It is proven that video games cause {n} to {v}!", "Crunch culture: it causes {n} to {v} their {n}.", "The video game about {n} makes me want to {v}!", "Microtransactions {v} the {n} and the {n}.")
+words = Dictionary[ExtResource("2_pwbmp"), bool]({
+ExtResource("3_wlxq2"): true,
+ExtResource("4_psf2m"): true,
+ExtResource("5_8mkf4"): false,
+ExtResource("6_tj62t"): false,
+ExtResource("7_x3ajs"): true,
+ExtResource("8_5ulw8"): true
+})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

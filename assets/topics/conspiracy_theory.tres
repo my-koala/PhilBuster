@@ -1,17 +1,31 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=6 format=3 uid="uid://c7arqlxcc5lk2"]
+[gd_resource type="Resource" script_class="Topic" load_steps=13 format=3 uid="uid://c7arqlxcc5lk2"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_i7q78"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_2itv1"]
 [ext_resource type="Resource" uid="uid://biccag1il7e0f" path="res://assets/card/info/modifier/adjective/lizard-like.tres" id="3_3w0ve"]
 [ext_resource type="Resource" uid="uid://dlfx1pv4vt0hp" path="res://assets/card/info/modifier/adjective/flat.tres" id="4_7d4gq"]
 [ext_resource type="Resource" uid="uid://daagn4b0udbrn" path="res://assets/card/info/basic/noun/vaccine.tres" id="5_m2ts0"]
+[ext_resource type="Resource" uid="uid://ddnpnfh7ldysy" path="res://assets/card/info/basic/noun/gas.tres" id="6_qkins"]
+[ext_resource type="Resource" uid="uid://b674hr6hl055q" path="res://assets/card/info/basic/noun/the_earth.tres" id="7_ybv76"]
+[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="8_a57x1"]
+[ext_resource type="Resource" uid="uid://buh38gwd47jrf" path="res://assets/card/info/basic/verb/blow_up.tres" id="10_w0wxx"]
+[ext_resource type="Resource" uid="uid://dsakyqs4atvea" path="res://assets/card/info/basic/verb/flat.tres" id="11_rv8gc"]
+[ext_resource type="Resource" uid="uid://ci8hosc2s835k" path="res://assets/card/info/basic/noun/ufo.tres" id="11_ybv76"]
+[ext_resource type="Resource" uid="uid://df4yacejtmrs3" path="res://assets/card/info/basic/noun/tin_foil.tres" id="12_a57x1"]
 
 [resource]
 script = ExtResource("1_i7q78")
-sentences = PackedStringArray("", "", "", "")
+sentences = PackedStringArray("The {n} in the government are going to cause the world to {n}!", "The government gives us {n} to make us {v}!", "The {n} wants to {v} the new Coca-Cola!", "If you wear a {n} as a hat you wont {v}!", "The Illuminati uses {n} to {v} a portal to get more {n}!", "The president is a {n} in disguise! They want to {v} the {n}.")
 words = Dictionary[ExtResource("2_2itv1"), bool]({
 ExtResource("3_3w0ve"): true,
 ExtResource("4_7d4gq"): true,
-ExtResource("5_m2ts0"): true
+ExtResource("5_m2ts0"): true,
+ExtResource("6_qkins"): true,
+ExtResource("7_ybv76"): true,
+ExtResource("8_a57x1"): true,
+ExtResource("10_w0wxx"): true,
+ExtResource("11_rv8gc"): true,
+ExtResource("11_ybv76"): true,
+ExtResource("12_a57x1"): true
 })
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

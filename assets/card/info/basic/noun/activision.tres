@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardInfoBasicNoun" load_steps=2 format=3 uid="uid://cnwrjgynaaher"]
+
+[ext_resource type="Script" uid="uid://ck5huucey4t5d" path="res://scripts/card/card_info_basic_noun.gd" id="1_bitng"]
+
+[resource]
+script = ExtResource("1_bitng")
+reward = 1
+time = 3
+price = 1
+pool_count = 2
+metadata/_custom_type_script = "uid://ck5huucey4t5d"

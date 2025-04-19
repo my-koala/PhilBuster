@@ -7,5 +7,5 @@ script = ExtResource("1_njpkp")
 reward = 1
 time = 2
 price = 1
-pool_count = 2
+pool_count = 1
 metadata/_custom_type_script = "uid://b4o2l2oinf0f8"

@@ -1,10 +1,27 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://cquievx6i3gvr"]
+[gd_resource type="Resource" script_class="Topic" load_steps=11 format=3 uid="uid://cquievx6i3gvr"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_6vb4a"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_lb5el"]
+[ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="3_umsuf"]
+[ext_resource type="Resource" uid="uid://ddnpnfh7ldysy" path="res://assets/card/info/basic/noun/gas.tres" id="4_omc3x"]
+[ext_resource type="Resource" uid="uid://cttw3blf3wea0" path="res://assets/card/info/basic/noun/africa.tres" id="5_tgyqf"]
+[ext_resource type="Resource" uid="uid://b674hr6hl055q" path="res://assets/card/info/basic/noun/the_earth.tres" id="6_jv3kl"]
+[ext_resource type="Resource" uid="uid://daagn4b0udbrn" path="res://assets/card/info/basic/noun/vaccine.tres" id="7_7rils"]
+[ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="8_pkc4l"]
+[ext_resource type="Resource" uid="uid://ca5f5kd88grxc" path="res://assets/card/info/basic/verb/mine.tres" id="9_5vq3v"]
+[ext_resource type="Resource" uid="uid://cc502thfyri6p" path="res://assets/card/info/basic/noun/green_house.tres" id="10_omc3x"]
 
 [resource]
 script = ExtResource("1_6vb4a")
-sentences = PackedStringArray("", "", "", "")
-words = Dictionary[ExtResource("2_lb5el"), bool]({})
+sentences = PackedStringArray("{n}, {n}, and {n}: These are all major causes of climate change.", "If we dont stop the {n}, then the forests will {v}!", "Lets throw some oil paint all over {n}, surely that will {v} the government!", "Climate change is a major threat to {n}, we have to {v} the {n}!")
+words = Dictionary[ExtResource("2_lb5el"), bool]({
+ExtResource("3_umsuf"): true,
+ExtResource("4_omc3x"): true,
+ExtResource("5_tgyqf"): false,
+ExtResource("6_jv3kl"): true,
+ExtResource("7_7rils"): false,
+ExtResource("8_pkc4l"): true,
+ExtResource("9_5vq3v"): true,
+ExtResource("10_omc3x"): true
+})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

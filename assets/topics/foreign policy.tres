@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_63e0f")
-sentences = PackedStringArray("", "", "", "")
+sentences = PackedStringArray("{n} controls all of the {n} supply!", "If we deport all of the {n}, we must {v} the {n}.", "We must delay {n} because it will {v} the {n} in the U.S.", "")
 words = Dictionary[ExtResource("2_yvn4r"), bool]({})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"
