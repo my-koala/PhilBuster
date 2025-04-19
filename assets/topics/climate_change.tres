@@ -13,7 +13,7 @@
 
 [resource]
 script = ExtResource("1_6vb4a")
-sentences = PackedStringArray("{n}, {n}, and {n}: These are all major causes of climate change.", "If we dont stop the {n}, then the forests will {v}!", "Lets throw some oil paint all over {n}, surely that will {v} the government!", "Climate change is a major threat to {n}, we have to {v} the {n}!")
+sentences = PackedStringArray("{n}, {n}, and {n}: These are all major causes of climate change.", "If we dont stop the {n}, then the forests will {v}!", "Lets throw some oil paint all over {n}, surely that will {v} the government!", "Climate change is a major threat to {n}, we have to {v} the {n}!", "{n} is in danger because of {n}.", "We must {v} {n} to curb climate change.")
 words = Dictionary[ExtResource("2_lb5el"), bool]({
 ExtResource("3_umsuf"): true,
 ExtResource("4_omc3x"): true,

@@ -33,7 +33,7 @@
 
 [resource]
 script = ExtResource("2_8slyy")
-sentences = PackedStringArray("We must {v} the {n} for immigrants, to ensure a just system.", "Ther current policies around {n} in this country cannot stand! We must {v} it immediately!", "Every time we fail to {v} the {n}, we create more problems for ourselves.", "The current state of {n} reform is truly dire. We need to {v} the problem before we can make real change.")
+sentences = PackedStringArray("We must {v} the {n} for immigrants, to ensure a just system.", "Ther current policies around {n} in this country cannot stand! We must {v} it immediately!", "Every time we fail to {v} the {n}, we create more problems for ourselves.", "The current state of {n} reform is truly dire. We need to {v} the problem before we can make real change.", "Solving the influx of {n} is no small task. We need to {v} now!", "We need to {v} our policy with {n}!")
 words = Dictionary[ExtResource("1_ypbhn"), bool]({
 ExtResource("30_4xajf"): false,
 ExtResource("29_460d3"): false,

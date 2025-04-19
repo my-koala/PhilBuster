@@ -29,7 +29,7 @@
 
 [resource]
 script = ExtResource("14_m3hw0")
-sentences = PackedStringArray("We must {v} the {n} to protect the Koalas!", "Australia\'s ban of {n} will {v} the habitats of Koalas nation-wide!", "Koalas need {n} . If we don\'t {v} it for them, they will {v} .", "{n} might mean nothing to us, but Koalas would {v} without it.")
+sentences = PackedStringArray("We must {v} the {n} to protect the Koalas!", "Australia\'s ban of {n} will {v} the habitats of Koalas nation-wide!", "Koalas need {n} . If we don\'t {v} it for them, they will {v} .", "{n} might mean nothing to us, but Koalas would {v} without it.", "The Koala population will {v} unless we {v}.", "Koalas around the world need {n} to survive!")
 words = Dictionary[ExtResource("1_e1iep"), bool]({
 null: false,
 ExtResource("3_g8six"): false,

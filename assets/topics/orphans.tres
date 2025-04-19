@@ -33,7 +33,7 @@
 
 [resource]
 script = ExtResource("2_qqwry")
-sentences = PackedStringArray("An orphans doesn\'t need a {n} , they need more {n} !", "Give an orphan a {n} , and they will {v} . Teach them to {v} , and they will make {n} .", "An emotionally distraught orphan can not be trusted to {v} , especially when it comes to {n} !", "My son is an orphan and he can {v} just fine!")
+sentences = PackedStringArray("An orphans doesn\'t need a {n} , they need more {n} !", "Give an orphan a {n} , and they will {v} . Teach them to {v} , and they will make {n} .", "An emotionally distraught orphan can not be trusted to {v} , especially when it comes to {n} !", "My son is an orphan and he can {v} just fine!", "Orphanges across the country are suffering from {n}.", "We need {n} to {v} our orphanages now!", "The orphans across the street could use more {n}!", "Please {v} {n} to save our children!")
 words = Dictionary[ExtResource("1_06e07"), bool]({
 ExtResource("30_gsct4"): true,
 ExtResource("29_7hgy7"): true,

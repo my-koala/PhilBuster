@@ -13,7 +13,7 @@
 
 [resource]
 script = ExtResource("1_jwg5s")
-sentences = PackedStringArray("The {n} pandemic will cause people to {v} thier {n}!", "Many believe the {n} pandemic came from {n}!", "The only way to stop the pandemic is to {v} the {n}! ", "Eating {n} will {v} your disease!")
+sentences = PackedStringArray("The {n} pandemic will cause people to {v} thier {n}!", "Many believe the {n} pandemic came from {n}!", "The only way to stop the pandemic is to {v} the {n}! ", "Eating {n} will {v} your disease!", "We need to {v} our country to stop spreading {n}.", "Banning {n} fixes the {n} pandemic!", "The pandemic is {v} our {n} as we speak!")
 words = Dictionary[ExtResource("2_p0w3e"), bool]({
 ExtResource("3_fo3tj"): true,
 ExtResource("4_sb5jn"): false,

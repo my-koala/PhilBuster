@@ -34,7 +34,7 @@
 
 [resource]
 script = ExtResource("2_vf6jt")
-sentences = PackedStringArray("The {n} is rising, we must {v} it!", "If we don\'t {v} the {n}, prices will continue to {v}!", "The {n} caused by inflation is impeding our ability to {v}!", "We all feel the impact of {n} . We must {v} it, before it\'s too late.")
+sentences = PackedStringArray("The {n} is rising, we must {v} it!", "If we don\'t {v} the {n}, prices will continue to {v}!", "The {n} caused by inflation is impeding our ability to {v}!", "We all feel the impact of {n} . We must {v} it, before it\'s too late.", "The prices of {n} is too high!!", "We need to make {v} {n} affordable to all citizens.")
 words = Dictionary[ExtResource("1_4shac"), bool]({
 null: false,
 ExtResource("3_g5qqw"): true,

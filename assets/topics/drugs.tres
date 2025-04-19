@@ -30,7 +30,7 @@
 
 [resource]
 script = ExtResource("2_ybiaj")
-sentences = PackedStringArray("The {n} epidemic is causing our communities to {v}.", "{n} addiction is a serious threat to the {n}. We must {v} it!", "We must stop {n} dealers at the source! We will {v} them!", "We cannot let {n} {v} unchecked!")
+sentences = PackedStringArray("The {n} epidemic is causing our communities to {v}.", "{n} addiction is a serious threat to the {n}. We must {v} it!", "We must stop {n} dealers at the source! We will {v} them!", "We cannot let {n} {v} unchecked!", "We must {v} {n}!")
 words = Dictionary[ExtResource("1_7butv"), bool]({
 ExtResource("3_2qcnv"): false,
 ExtResource("4_58cn0"): true,

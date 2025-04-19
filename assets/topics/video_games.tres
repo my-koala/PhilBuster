@@ -11,7 +11,7 @@
 
 [resource]
 script = ExtResource("1_haygg")
-sentences = PackedStringArray("It is proven that video games cause {n} to {v}!", "Crunch culture: it causes {n} to {v} their {n}.", "The video game about {n} makes me want to {v}!", "Microtransactions {v} the {n} and the {n}.")
+sentences = PackedStringArray("It is proven that video games cause {n} to {v}!", "Crunch culture: it causes {n} to {v} their {n}.", "The video game about {n} makes me want to {v}!", "Microtransactions {v} the {n} and the {n}.", "The fault lies with {n}!", "{n} is why children are addicted to video games!", "Game studios {v} their workers!!", "I would never play a video game about {n}!")
 words = Dictionary[ExtResource("2_pwbmp"), bool]({
 ExtResource("3_wlxq2"): true,
 ExtResource("4_psf2m"): true,

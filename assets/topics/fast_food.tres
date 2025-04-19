@@ -45,7 +45,7 @@
 
 [resource]
 script = ExtResource("1_hvmlo")
-sentences = PackedStringArray("Fast food is making the {n} {v}! We must {v} this!", "The {n} of {n} is out of control! It\'s {v} ing the youth!", "{n} is the number one reason why the {n} are {v} ing!", "If we replace the {n} with {n}, it would would {v} the {n}.")
+sentences = PackedStringArray("Fast food is making the {n} {v}! We must {v} this!", "The {n} of {n} is out of control! It\'s {v} ing the youth!", "{n} is the number one reason why the {n} are {v} ing!", "If we replace the {n} with {n}, it would would {v} the {n}.", "We keep {v} {n}, which is making us {v}!", "By {v} on {n}, we ensure {n} is {v}.")
 words = Dictionary[ExtResource("2_2ivj4"), bool]({
 ExtResource("23_7eknr"): true,
 ExtResource("24_anrwr"): true,
