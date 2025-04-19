@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dw6reewyqldxf" path="res://assets/card/card_background_alternate.png" id="2_qhpts"]
 [ext_resource type="Texture2D" uid="uid://dlgthnoj6tfjf" path="res://assets/icons/money.png" id="3_qhpts"]
 [ext_resource type="AudioStream" uid="uid://dp6rwanc6nmlx" path="res://assets/sfx/stream_pools/card_pickup.tres" id="4_dei5m"]
-[ext_resource type="Texture2D" uid="uid://cbrabw2na5c0x" path="res://assets/icons/hourglass.png" id="4_k25dx"]
+[ext_resource type="Texture2D" uid="uid://bci20vd8r3tvb" path="res://assets/icons/hourglass.png" id="4_k25dx"]
 [ext_resource type="Texture2D" uid="uid://bbsfvgnil4pa8" path="res://assets/icons/flame.png" id="5_3lkmd"]
 [ext_resource type="AudioStream" uid="uid://5nd6wy4ww34n" path="res://assets/sfx/stream_pools/card_drop.tres" id="5_5xmu0"]
 [ext_resource type="AudioStream" uid="uid://c2y1r43ogb430" path="res://assets/sfx/stream_pools/card_hover.tres" id="8_qhpts"]
