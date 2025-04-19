@@ -24,8 +24,6 @@ var discard_count: int = 5
 var skip_duplicate_sentences: bool = true
 @export
 var use_global_sentences: bool = true
-@export
-var use_topic_memory: bool = true
 
 @export
 var bust_max_curve: Curve = Curve.new()
@@ -44,6 +42,7 @@ var _topic: Topic = null
 var _topic_name: String = ""
 var _topic_memory_relevant: Dictionary[String, Dictionary] = {}# Dictionary[String, Dictionary[String, bool]]
 var _topic_memory_irrelevant: Dictionary[String, Dictionary] = {}# Dictionary[String, Dictionary[String, bool]]
+var _topic_memory_neutral: Dictionary[String, Dictionary] = {}# Dictionary[String, Dictionary[String, bool]]
 
 static var _topic_global: Topic = null
 static var _topics: Dictionary[String, Topic] = {}
@@ -217,22 +216,13 @@ func topic_reset_sentence_pool() -> void:
 		_topic_sentence_pool.append_array(_topic.sentences)
 
 func topic_is_word_relevant(word: String) -> bool:
-	if use_topic_memory:
-		if !_topic_memory_relevant.has(_topic_name):
-			return false
-		if !_topic_memory_relevant[_topic_name].has(word):
-			return false
-		return _topic_memory_relevant[_topic_name][word]
 	return _topic.is_word_relevant(word)
 
 func topic_is_word_irrelevant(word: String) -> bool:
-	if use_topic_memory:
-		if !_topic_memory_irrelevant.has(_topic_name):
-			return false
-		if !_topic_memory_irrelevant[_topic_name].has(word):
-			return false
-		return _topic_memory_irrelevant[_topic_name][word]
 	return _topic.is_word_irrelevant(word)
+
+func topic_is_word_neutral(word: String) -> bool:
+	return _topic.is_word_neutral(word)
 
 func topic_memory_add_word(word: String) -> void:
 	if !_topic_memory_relevant.has(_topic_name):
@@ -241,6 +231,18 @@ func topic_memory_add_word(word: String) -> void:
 	if !_topic_memory_irrelevant.has(_topic_name):
 		_topic_memory_irrelevant[_topic_name] = Dictionary()
 	_topic_memory_irrelevant[_topic_name][word] = _topic.is_word_irrelevant(word)
+	if !_topic_memory_neutral.has(_topic_name):
+		_topic_memory_neutral[_topic_name] = Dictionary()
+	_topic_memory_neutral[_topic_name][word] = _topic.is_word_neutral(word)
+
+func topic_memory_has_word(word: String) -> bool:
+	if _topic_memory_relevant.has(_topic_name) && _topic_memory_relevant[_topic_name].has(word):
+		return true
+	if _topic_memory_irrelevant.has(_topic_name) && _topic_memory_irrelevant[_topic_name].has(word):
+		return true
+	if _topic_memory_neutral.has(_topic_name) && _topic_memory_neutral[_topic_name].has(word):
+		return true
+	return false
 
 func get_session_bust_max() -> int:
 	return int(bust_max_curve.sample(clampf(float(_session), bust_max_curve.min_domain, bust_max_curve.max_domain)))

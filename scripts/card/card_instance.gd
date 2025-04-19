@@ -2,6 +2,8 @@
 extends Control
 class_name CardInstance
 
+signal hover_started()
+signal hover_stopped()
 signal drag_started()
 signal drag_stopped()
 
@@ -65,7 +67,28 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
+	_button.mouse_entered.connect(_on_button_mouse_entered)
+	_button.mouse_exited.connect(_on_button_mouse_exited)
+	
 	_animation_player.play(&"card_instance/normal")
+
+var _hover: bool = false
+
+func _on_button_mouse_entered() -> void:
+	if _drag:
+		return
+	if _hover:
+		return
+	_hover = true
+	hover_started.emit()
+
+func _on_button_mouse_exited() -> void:
+	if _drag:
+		return
+	if !_hover:
+		return
+	_hover = false
+	hover_stopped.emit()
 
 func _update_display() -> void:
 	if is_instance_valid(card_info):
@@ -73,16 +96,16 @@ func _update_display() -> void:
 		if _label_word.text.is_empty():
 			_label_word.text = "<Word>"
 		
-		_corner.color = card_info.get_color()
-		
 		var card_info_basic: CardInfoBasic = card_info as CardInfoBasic
 		if is_instance_valid(card_info_basic):
 			_container_stats_reward_label.text = str(card_info_basic.reward)
 			_container_stats_time_label.text = str(card_info_basic.time)
 			_container_stats_bust.visible = false
 			if card_info is CardInfoBasicNoun:
+				_corner.color = CardInfoBasicNoun.get_color()
 				_label_speech.text = "(Noun)"
 			elif card_info is CardInfoBasicVerb:
+				_corner.color = CardInfoBasicVerb.get_color()
 				_label_speech.text = "(Verb)"
 		
 		var card_info_modifier: CardInfoModifier = card_info as CardInfoModifier
@@ -92,8 +115,10 @@ func _update_display() -> void:
 			_container_stats_bust_label.text = str("%.1fx" % [card_info_modifier.bust_multiplier])
 			_container_stats_bust.visible = true
 			if card_info is CardInfoModifierAdjective:
+				_corner.color = CardInfoModifierAdjective.get_color()
 				_label_speech.text = "(Adjective)"
 			elif card_info is CardInfoModifierAdverb:
+				_corner.color = CardInfoModifierAdverb.get_color()
 				_label_speech.text = "(Adverb)"
 	else:
 		_label_word.text = "<Word>"
@@ -124,6 +149,9 @@ func _physics_process(delta: float) -> void:
 		_button.mouse_default_cursor_shape = Control.CURSOR_ARROW
 	
 	if _drag:
+		if _input_mouse_hover:
+			_input_mouse_hover = false
+			hover_stopped.emit()
 		_animation_player.play(&"card_instance/drag")
 	elif _button.is_hovered():
 		if !_input_mouse_hover:
@@ -131,7 +159,8 @@ func _physics_process(delta: float) -> void:
 			_animation_player.play(&"card_instance/hover")
 			_audio_card_hover.play()
 	else:
-		_input_mouse_hover = false
+		if _input_mouse_hover:
+			_input_mouse_hover = false
 		_animation_player.play(&"card_instance/normal")
 	
 	if _drag:

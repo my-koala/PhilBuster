@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ce5ej8armma4y"]
+[gd_scene load_steps=17 format=3 uid="uid://ce5ej8armma4y"]
 
 [ext_resource type="Script" uid="uid://crsfhee7ojlr5" path="res://scripts/session/session.gd" id="1_heuok"]
 [ext_resource type="PackedScene" uid="uid://cd4a04syaq7r7" path="res://assets/sentence_container/sentence_container.tscn" id="2_sxs0h"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://copv5onr76lmr" path="res://assets/session/session_speak.tscn" id="6_dl4qr"]
 [ext_resource type="PackedScene" uid="uid://2eoq76ffybbi" path="res://assets/clock/clock.tscn" id="7_7ge3d"]
 [ext_resource type="PackedScene" uid="uid://dskiemvv8csjm" path="res://scripts/highlight/highlight.tscn" id="8_6qgb7"]
+[ext_resource type="PackedScene" uid="uid://p61j42p74llk" path="res://assets/session/session_relevancy.tscn" id="8_d4dp2"]
 [ext_resource type="PackedScene" uid="uid://bba3ain88b1ih" path="res://assets/session/session_discard.tscn" id="8_g8jqu"]
 [ext_resource type="PackedScene" uid="uid://dmna7dgq05p8t" path="res://assets/game_over/game_over.tscn" id="11_g8jqu"]
 [ext_resource type="AudioStream" uid="uid://b4h72ntok3ud3" path="res://assets/sfx/stream_pools/card_discard.tres" id="12_dl4qr"]
@@ -81,17 +82,14 @@ grow_horizontal = 2
 [node name="hand_container" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -892.0
-offset_top = 210.0
-offset_right = 556.0
-offset_bottom = 490.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -297.98
+offset_bottom = -41.98
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_04yh6")
 
 [node name="cards" type="HBoxContainer" parent="hand_container"]
@@ -104,13 +102,19 @@ layout_mode = 2
 color = Color(0, 0, 0, 0)
 enabled = false
 
+[node name="session_relevancy" parent="." instance=ExtResource("8_d4dp2")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_top = 92.0
+offset_bottom = 146.0
+
 [node name="session_discard" parent="." instance=ExtResource("8_g8jqu")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 629.0
-offset_top = 148.0
+offset_top = -8.0
 offset_right = 885.0
-offset_bottom = 404.0
+offset_bottom = 184.0
 
 [node name="session_speak" parent="." instance=ExtResource("6_dl4qr")]
 unique_name_in_owner = true
@@ -118,7 +122,7 @@ layout_mode = 1
 offset_left = 629.0
 offset_top = -124.0
 offset_right = 885.0
-offset_bottom = 132.0
+offset_bottom = -28.0
 
 [node name="bust_meter" parent="." instance=ExtResource("4_qxa6x")]
 unique_name_in_owner = true

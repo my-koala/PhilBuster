@@ -63,7 +63,9 @@ var _audio_discard: AudioStreamPlayer = $audio/discard as AudioStreamPlayer
 @onready
 var _audio_deal: AudioStreamPlayer = $audio/deal as AudioStreamPlayer
 @onready
-var _label_session: Label= %label_session as Label
+var _label_session: Label = %label_session as Label
+@onready
+var _session_relevancy: SessionRelevancy = %session_relevancy as SessionRelevancy
 
 var _deck_card_instances: Array[CardInstance] = []
 var _hand_card_instances: Array[CardInstance] = []
@@ -86,9 +88,11 @@ func start_session(game_stats: GameStats) -> void:
 	_game_stats = game_stats
 	
 	for card_info: CardInfo in _game_stats.get_deck():
-		var card_instance: CardInstance = CARD_INSTANCE_SCENE.instantiate()
+		var card_instance: CardInstance = CARD_INSTANCE_SCENE.instantiate() as CardInstance
 		card_instance.drag_started.connect(_on_card_instance_drag_started.bind(card_instance))
 		card_instance.drag_stopped.connect(_on_card_instance_drag_stopped.bind(card_instance))
+		card_instance.hover_started.connect(_on_card_instance_hover_started.bind(card_instance))
+		card_instance.hover_stopped.connect(_on_card_instance_hover_stopped.bind(card_instance))
 		card_instance.card_info = card_info
 		_deck_card_instances.append(card_instance)
 	
@@ -251,6 +255,8 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 	_phil.play_animation_speak()
 	var card_info_basic: CardInfoBasic = card_info as CardInfoBasic
 	if is_instance_valid(card_info_basic):
+		_game_stats.topic_memory_add_word(card_info.get_word())
+		
 		var time_multiplier: float = 1.0
 		var reward_multiplier: float = 1.0
 		var bust_multiplier: float = 1.0
@@ -274,10 +280,14 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 		_clock.add_time(card_info_basic.time * time_multiplier)
 		_game_stats.money_add(card_info_basic.reward * reward_multiplier)
 	elif is_instance_valid(card_info):
+		var card_info_modifier: CardInfoModifier = card_info as CardInfoModifier
+		if is_instance_valid(card_info_modifier):
+			_card_info_modifier_stack.append(card_info_modifier)
 		_clock.add_time(card_info.time)
 	else:
 		_bust_meter.add_bust(bust_field_empty)
 		_phil.play_animation_goof()
+	
 
 func _on_sentence_container_card_info_removed(card_info: CardInfo) -> void:
 	for card_instance: CardInstance in _hand_card_instances_fields:
@@ -336,6 +346,19 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 	_hand_container_highlight.enabled = false
 	_session_discard.get_highlight().enabled = false
 	_sentence_container.highlight_fields(SentenceContainerField.CardType.NONE)
+
+func _on_card_instance_hover_started(card_instance: CardInstance) -> void:
+	var word: String = card_instance.card_info.get_word()
+	var topic: String = _game_stats.topic_get_name()
+	var has_word: bool = _game_stats.topic_memory_has_word(word)
+	var is_modifier: bool = card_instance.card_info is CardInfoModifier
+	var relevant: bool = has_word && _game_stats.topic_is_word_relevant(word)
+	var irrelevant: bool = has_word && _game_stats.topic_is_word_irrelevant(word)
+	var neutral: bool = has_word && _game_stats.topic_is_word_neutral(word)
+	_session_relevancy.set_status(word, topic, is_modifier, relevant, bust_field_relevant, irrelevant, bust_field_irrelevant, neutral, bust_field_neutral)
+
+func _on_card_instance_hover_stopped(card_instance: CardInstance) -> void:
+	_session_relevancy.clear_status()
 
 func _exit_tree() -> void:
 	_sentence_container.clear_sentence()
