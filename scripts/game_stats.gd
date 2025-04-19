@@ -194,7 +194,7 @@ func money_remove(amount: int) -> void:
 		money_removed.emit(amount)
 
 func calculate_price_for(card_info : CardInfo) -> int:
-	return card_info.price * (floori(_session * 0.25) + 1)
+	return card_info.price #* (floori(_session / 4) + 1)
 
 func get_session() -> int:
 	return _session
