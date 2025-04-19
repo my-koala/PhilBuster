@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=11 format=3 uid="uid://cspsj5enrt6jo"]
+[gd_resource type="Resource" script_class="Topic" load_steps=16 format=3 uid="uid://cspsj5enrt6jo"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_jwg5s"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_p0w3e"]
@@ -10,6 +10,11 @@
 [ext_resource type="Resource" uid="uid://b40pf3vdmu2ay" path="res://assets/card/info/basic/noun/black_plague.tres" id="8_khwh2"]
 [ext_resource type="Resource" uid="uid://cnwrjgynaaher" path="res://assets/card/info/basic/noun/activision.tres" id="9_0h5lo"]
 [ext_resource type="Resource" uid="uid://cxefi57qx8jqg" path="res://assets/card/info/basic/noun/xbox.tres" id="10_lt240"]
+[ext_resource type="Resource" uid="uid://cbuoqwninc40k" path="res://assets/card/info/basic/noun/disease.tres" id="11_khwh2"]
+[ext_resource type="Resource" uid="uid://ckp6wa1dg7dxp" path="res://assets/card/info/basic/noun/mortality.tres" id="12_0h5lo"]
+[ext_resource type="Resource" uid="uid://dd113hqvjfdgb" path="res://assets/card/info/basic/noun/rivals.tres" id="13_lt240"]
+[ext_resource type="Resource" uid="uid://x80e2em6oim0" path="res://assets/card/info/basic/noun/upholstery.tres" id="14_ufvnv"]
+[ext_resource type="Resource" uid="uid://b5pu774n7htq3" path="res://assets/card/info/basic/verb/invest.tres" id="15_ac2ye"]
 
 [resource]
 script = ExtResource("1_jwg5s")
@@ -22,6 +27,11 @@ ExtResource("6_n173p"): true,
 ExtResource("7_cqrbl"): true,
 ExtResource("8_khwh2"): true,
 ExtResource("9_0h5lo"): false,
-ExtResource("10_lt240"): false
+ExtResource("10_lt240"): false,
+ExtResource("11_khwh2"): true,
+ExtResource("12_0h5lo"): true,
+ExtResource("13_lt240"): false,
+ExtResource("14_ufvnv"): false,
+ExtResource("15_ac2ye"): false
 })
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

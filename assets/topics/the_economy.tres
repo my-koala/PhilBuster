@@ -1,10 +1,41 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://djl37cwso1hy7"]
+[gd_resource type="Resource" script_class="Topic" load_steps=18 format=3 uid="uid://djl37cwso1hy7"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_y55xq"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_1flv5"]
+[ext_resource type="Resource" uid="uid://ny5ciekntcql" path="res://assets/card/info/basic/noun/tariff.tres" id="3_jvfrr"]
+[ext_resource type="Resource" uid="uid://uiraqcnqqby1" path="res://assets/card/info/basic/noun/price.tres" id="4_bkmji"]
+[ext_resource type="Resource" uid="uid://bhtk361554el3" path="res://assets/card/info/basic/verb/cut.tres" id="5_qwu6c"]
+[ext_resource type="Resource" uid="uid://dsuf5xjp0grvj" path="res://assets/card/info/basic/noun/transactions.tres" id="6_1das0"]
+[ext_resource type="Resource" uid="uid://ddnpnfh7ldysy" path="res://assets/card/info/basic/noun/gas.tres" id="7_irvsu"]
+[ext_resource type="Resource" uid="uid://dim83e0jnpbew" path="res://assets/card/info/basic/noun/capitalism.tres" id="8_10pxi"]
+[ext_resource type="Resource" uid="uid://cg37vjwwvsdpc" path="res://assets/card/info/basic/noun/burger.tres" id="9_8b3qv"]
+[ext_resource type="Resource" uid="uid://cc502thfyri6p" path="res://assets/card/info/basic/noun/green_house.tres" id="10_88q8l"]
+[ext_resource type="Resource" uid="uid://bnmhlsidww8of" path="res://assets/card/info/basic/noun/cradle.tres" id="11_4hfv1"]
+[ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="12_2jdi1"]
+[ext_resource type="Resource" uid="uid://dkyrkk54csccf" path="res://assets/card/info/basic/noun/jonathan.tres" id="13_xgvju"]
+[ext_resource type="Resource" uid="uid://bggosb12333kw" path="res://assets/card/info/basic/noun/president.tres" id="14_3u0jh"]
+[ext_resource type="Resource" uid="uid://b5pu774n7htq3" path="res://assets/card/info/basic/verb/invest.tres" id="15_1das0"]
+[ext_resource type="Resource" uid="uid://hw18ralo1tu1" path="res://assets/card/info/basic/verb/tax.tres" id="16_irvsu"]
+[ext_resource type="Resource" uid="uid://bwncks4u6maal" path="res://assets/card/info/basic/verb/trade.tres" id="17_10pxi"]
 
 [resource]
 script = ExtResource("1_y55xq")
 sentences = PackedStringArray("The stock market is crashing because of {n}. Time to invest in {n}!", "Countries should {v} the {n} to get more {n}!", "We have to {v} the economy, to {v} the {n}!", "The {n} crisis is going to {v} the economy!", "We need to invest in {n} to save our economy!", "The stock market needs more {n}!", "The government should {v} {n}.", "Stocks are {v} and we need {n} to {v} it!")
-words = Dictionary[ExtResource("2_1flv5"), bool]({})
+words = Dictionary[ExtResource("2_1flv5"), bool]({
+ExtResource("3_jvfrr"): true,
+ExtResource("4_bkmji"): true,
+ExtResource("5_qwu6c"): true,
+ExtResource("6_1das0"): true,
+ExtResource("7_irvsu"): true,
+ExtResource("8_10pxi"): true,
+ExtResource("9_8b3qv"): false,
+ExtResource("10_88q8l"): false,
+ExtResource("11_4hfv1"): false,
+ExtResource("12_2jdi1"): false,
+ExtResource("13_xgvju"): false,
+ExtResource("14_3u0jh"): true,
+ExtResource("15_1das0"): true,
+ExtResource("16_irvsu"): true,
+ExtResource("17_10pxi"): true
+})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

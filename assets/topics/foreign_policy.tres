@@ -1,10 +1,49 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://nml1xymcdsgc"]
+[gd_resource type="Resource" script_class="Topic" load_steps=22 format=3 uid="uid://nml1xymcdsgc"]
 
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="1_yblu6"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_tx4fd"]
+[ext_resource type="Resource" uid="uid://btc48l4t3phdq" path="res://assets/card/info/basic/noun/china.tres" id="3_xt5f3"]
+[ext_resource type="Resource" uid="uid://ef8tlv4tvtin" path="res://assets/card/info/basic/noun/mexico.tres" id="4_feo43"]
+[ext_resource type="Resource" uid="uid://phpbucme08ir" path="res://assets/card/info/basic/noun/canada.tres" id="5_am3ws"]
+[ext_resource type="Resource" uid="uid://ca2t4tjvrphtx" path="res://assets/card/info/basic/noun/the_eu.tres" id="6_csrhw"]
+[ext_resource type="Resource" uid="uid://cyt1qsaffv625" path="res://assets/card/info/basic/noun/government.tres" id="7_hrf5i"]
+[ext_resource type="Resource" uid="uid://dkyrkk54csccf" path="res://assets/card/info/basic/noun/jonathan.tres" id="8_no74a"]
+[ext_resource type="Resource" uid="uid://kw6jqrkg3dux" path="res://assets/card/info/basic/noun/steve.tres" id="9_nwj4w"]
+[ext_resource type="Resource" uid="uid://bf3vxgicbu7id" path="res://assets/card/info/basic/noun/chicken_jockey.tres" id="10_ppj4l"]
+[ext_resource type="Resource" uid="uid://k8x1rtq71aqq" path="res://assets/card/info/basic/noun/wall.tres" id="11_ywent"]
+[ext_resource type="Resource" uid="uid://bggosb12333kw" path="res://assets/card/info/basic/noun/president.tres" id="12_12tvf"]
+[ext_resource type="Resource" uid="uid://ny5ciekntcql" path="res://assets/card/info/basic/noun/tariff.tres" id="13_tpkje"]
+[ext_resource type="Resource" uid="uid://hw18ralo1tu1" path="res://assets/card/info/basic/verb/tax.tres" id="14_m478w"]
+[ext_resource type="Resource" uid="uid://bg0p2jvksmp1h" path="res://assets/card/info/basic/verb/combat.tres" id="15_ppj4l"]
+[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="16_ywent"]
+[ext_resource type="Resource" uid="uid://x80e2em6oim0" path="res://assets/card/info/basic/noun/upholstery.tres" id="17_12tvf"]
+[ext_resource type="Resource" uid="uid://cxefi57qx8jqg" path="res://assets/card/info/basic/noun/xbox.tres" id="18_tpkje"]
+[ext_resource type="Resource" uid="uid://0mtxpwt1rstk" path="res://assets/card/info/basic/noun/gamer.tres" id="19_m478w"]
+[ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="20_d4u3q"]
+[ext_resource type="Resource" uid="uid://di5p0qmstfx4m" path="res://assets/card/info/basic/noun/marsupial.tres" id="21_pthko"]
 
 [resource]
 script = ExtResource("1_yblu6")
 sentences = PackedStringArray("{n} controls all of the {n} supply!", "If we deport all of the {n}, we must {v} the {n}.", "We must delay {n} because it will {v} the {n} in the U.S.", "We must {v} trade negotiations with {n},", "{n} must pay for {v} {n}!", "We need to {v} against {n} by {v} their {n}.")
-words = Dictionary[ExtResource("2_tx4fd"), bool]({})
+words = Dictionary[ExtResource("2_tx4fd"), bool]({
+ExtResource("21_pthko"): false,
+ExtResource("20_d4u3q"): false,
+ExtResource("19_m478w"): false,
+ExtResource("18_tpkje"): false,
+ExtResource("17_12tvf"): false,
+ExtResource("16_ywent"): true,
+ExtResource("15_ppj4l"): true,
+ExtResource("14_m478w"): true,
+ExtResource("13_tpkje"): true,
+ExtResource("12_12tvf"): true,
+ExtResource("11_ywent"): true,
+ExtResource("10_ppj4l"): false,
+ExtResource("9_nwj4w"): false,
+ExtResource("8_no74a"): false,
+ExtResource("7_hrf5i"): true,
+ExtResource("6_csrhw"): true,
+ExtResource("5_am3ws"): true,
+ExtResource("4_feo43"): true,
+ExtResource("3_xt5f3"): true
+})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"
