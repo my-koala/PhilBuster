@@ -52,6 +52,8 @@ func _reset() -> void:
 	game_stats.reset_money()
 	game_stats.topic_randomize()
 	game_stats.reset_topic_memory()
+	game_stats.reset_time_wasted()
+	game_stats.reset_bust_accumulated()
 	
 	_card_library.reset_library()
 	for card_info: CardInfo in game_stats.get_deck():

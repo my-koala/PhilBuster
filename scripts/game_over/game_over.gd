@@ -26,12 +26,12 @@ func _ready() -> void:
 	
 	_button.pressed.connect(return_to_menu.emit)
 
-func set_data(session: int, money: int, time: int, bust: int, cards: int) -> void:
+func set_data(session: int, money: int, time: int, bust: int) -> void:
 	_container_session_label_data.text = str(session)
 	_container_money_label_data.text = str(money)
 	_container_time_label_data.text = str(time)
 	_container_bust_label_data.text = str(bust)
-	_container_cards_label_data.text = str(cards)
+	#_container_cards_label_data.text = str(cards)
 
 func start() -> void:
 	_animation_player.play(&"start")

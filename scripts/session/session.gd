@@ -228,7 +228,7 @@ func _on_sentence_container_read_stopped() -> void:
 		_phil.play_animation_bust()
 		gameover.emit()
 		await get_tree().create_timer(1.0).timeout
-		_game_over.set_data(_game_stats.get_session(), _game_stats.get_money(), 69, 420, 1337)
+		_game_over.set_data(_game_stats.get_session(), _game_stats.get_money_total(), _game_stats.get_time_wasted(), _game_stats.get_bust_accumulated())
 		_game_over.start()
 		return
 	
@@ -249,7 +249,9 @@ var _card_info_modifier_stack: Array[CardInfoModifier] = []
 func _on_sentence_container_read_word() -> void:
 	_phil.play_animation_speak()
 	_bust_meter.add_bust(bust_word)
+	_game_stats.add_bust_accumulated(bust_word)
 	_clock.add_time(TIME_WORD)
+	_game_stats.add_time_wasted(TIME_WORD)
 
 func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 	_phil.play_animation_speak()
@@ -274,19 +276,24 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 			time_multiplier = 0.0
 			reward_multiplier = 0.0
 			_bust_meter.add_bust(bust_field_irrelevant * bust_multiplier)
+			_game_stats.add_bust_accumulated(bust_field_irrelevant * bust_multiplier)
 			_phil.play_animation_goof()
 		else:
 			_bust_meter.add_bust(bust_field_neutral * bust_multiplier)
+			_game_stats.add_bust_accumulated(bust_field_neutral * bust_multiplier)
 		
 		_clock.add_time(card_info_basic.time * time_multiplier)
+		_game_stats.add_time_wasted(card_info_basic.time * time_multiplier)
 		_game_stats.money_add(card_info_basic.reward * reward_multiplier)
 	elif is_instance_valid(card_info):
 		var card_info_modifier: CardInfoModifier = card_info as CardInfoModifier
 		if is_instance_valid(card_info_modifier):
 			_card_info_modifier_stack.append(card_info_modifier)
-		_clock.add_time(card_info.time)
+		#_clock.add_time(card_info.time)
+		#_game_stats.add_time_wasted(card_info_basic.time)
 	else:
 		_bust_meter.add_bust(bust_field_empty)
+		_game_stats.add_bust_accumulated(bust_field_empty)
 		_phil.play_animation_goof()
 	
 

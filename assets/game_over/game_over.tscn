@@ -464,7 +464,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.913725, 0.882353, 0.764706, 1)
 theme_override_font_sizes/font_size = 40
-text = "Money Earned:"
+text = "Total Money Earned:"
 horizontal_alignment = 2
 
 [node name="label_data" type="Label" parent="v_box_container/container_money"]
@@ -487,7 +487,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.913725, 0.882353, 0.764706, 1)
 theme_override_font_sizes/font_size = 40
-text = "Time Wasted:"
+text = "Total Time Wasted:"
 horizontal_alignment = 2
 
 [node name="label_data" type="Label" parent="v_box_container/container_time"]
@@ -528,6 +528,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="label_name" type="Label" parent="v_box_container/container_cards"]
+visible = false
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -537,6 +538,7 @@ text = "Cards Collected:"
 horizontal_alignment = 2
 
 [node name="label_data" type="Label" parent="v_box_container/container_cards"]
+visible = false
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 size_flags_vertical = 0

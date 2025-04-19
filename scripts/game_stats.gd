@@ -38,8 +38,11 @@ var _discard_count: int = 0
 
 var _deck: Array[CardInfo] = []
 var _money: int = 0
+var _money_total: int = 0
 var _session: int = 0
 var _rerolls: int = 0
+
+var _time_wasted: int = 0
 
 var _topic: Topic = null
 var _topic_name: String = ""
@@ -90,10 +93,31 @@ func reset_deck() -> void:
 
 func reset_money() -> void:
 	_money = starting_money
+	_money_total = starting_money
 
 func reset_topic_memory() -> void:
 	_topic_memory_relevant.clear()
 	_topic_memory_irrelevant.clear()
+
+func reset_time_wasted() -> void:
+	_time_wasted = 0.0
+
+func add_time_wasted(time_wasted: int) -> void:
+	_time_wasted += maxi(time_wasted, 0)
+
+func get_time_wasted() -> int:
+	return _time_wasted
+
+var _bust_accumulated: int = 0
+
+func reset_bust_accumulated() -> void:
+	_bust_accumulated = 0
+
+func get_bust_accumulated() -> int:
+	return _bust_accumulated
+
+func add_bust_accumulated(bust: int) -> void:
+	_bust_accumulated += maxi(bust, 0)
 
 func get_discard_count() -> int:
 	return _discard_count
@@ -149,8 +173,12 @@ func deck_clear() -> void:
 func get_money() -> int:
 	return _money
 
+func get_money_total() -> int:
+	return _money_total
+
 func money_add(amount: int) -> void:
 	_money += amount
+	_money_total += amount
 	money_added.emit(amount)
 
 func money_remove(amount: int) -> void:
