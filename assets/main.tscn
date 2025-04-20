@@ -54,7 +54,7 @@ point_count = 2
 
 [sub_resource type="Curve" id="Curve_pd2c5"]
 _limits = [60.0, 720.0, 0.0, 16.0]
-_data = [Vector2(0, 60), 0.0, 40.9938, 0, 0, Vector2(10.9553, 216.463), 26.1542, 26.1542, 0, 0, Vector2(16, 512.047), 143.209, 0.0, 0, 0]
+_data = [Vector2(0, 60), 0.0, 8.24974, 0, 0, Vector2(11.0027, 173.415), 26.1542, 26.1542, 0, 0, Vector2(16, 720), 177.672, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Resource" id="Resource_vqaxa"]
