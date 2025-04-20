@@ -120,7 +120,7 @@ func start_session(game_stats: GameStats) -> void:
 	_session_speak.enabled = true
 	_phil.play_animation_sit()
 
-func stop_session(success: bool) -> void:
+func stop_session(success: bool, forced: bool = false) -> void:
 	if !_session_active:
 		return
 	_session_active = false
@@ -144,7 +144,8 @@ func stop_session(success: bool) -> void:
 	_session_speak.enabled = false
 	
 	_game_over.stop()
-	session_finished.emit(success)
+	if !forced:
+		session_finished.emit(success)
 	
 	_sentence_container.set_immutable(false)
 	
@@ -220,6 +221,8 @@ func _on_sentence_container_read_started() -> void:
 
 func _on_sentence_container_read_stopped() -> void:
 	await get_tree().create_timer(0.5).timeout
+	if !_session_active:
+		return
 	_phil.play_animation_sit()
 	
 	_session_speak.enabled = true

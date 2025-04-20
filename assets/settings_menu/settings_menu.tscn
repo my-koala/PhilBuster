@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://3j5rduv2hsau" path="res://scripts/settings/settings_menu.gd" id="1_mhoig"]
 [ext_resource type="Texture2D" uid="uid://b4bua5a7nt67o" path="res://assets/icons/icon_gear.png" id="1_rn708"]
-[ext_resource type="Texture2D" uid="uid://dv64ofp8dqvs8" path="res://assets/game_button/square button.png" id="2_xqr2b"]
 [ext_resource type="Texture2D" uid="uid://c642jf1c5c4hg" path="res://assets/icons/icon_music.png" id="3_mhoig"]
 [ext_resource type="Texture2D" uid="uid://w7my6ciyrf2j" path="res://assets/icons/icon_sound.png" id="4_f71f6"]
+[ext_resource type="PackedScene" uid="uid://jfp01npsno1" path="res://assets/game_button/game_button.tscn" id="5_mhoig"]
 
 [node name="settings_menu" type="CanvasLayer"]
 script = ExtResource("1_mhoig")
@@ -32,30 +32,15 @@ texture = ExtResource("1_rn708")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="nine_patch_rect" type="NinePatchRect" parent="."]
+[node name="nine_patch_rect" type="PanelContainer" parent="."]
 offset_left = 20.0
 offset_top = 120.0
 offset_right = 651.0
-offset_bottom = 283.7
+offset_bottom = 310.0
 size_flags_vertical = 3
-texture = ExtResource("2_xqr2b")
-region_rect = Rect2(0, 0, 120, 120)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
 
 [node name="v_box_container" type="VBoxContainer" parent="nine_patch_rect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = -32.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="h_box_container" type="HBoxContainer" parent="nine_patch_rect/v_box_container"]
@@ -97,5 +82,10 @@ size_flags_vertical = 4
 focus_mode = 0
 max_value = 1.0
 step = 0.05
+
+[node name="button_return" parent="nine_patch_rect/v_box_container" instance=ExtResource("5_mhoig")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Return to Title Screen"
 
 [connection signal="pressed" from="texture_button" to="." method="show_menu"]
