@@ -40,6 +40,7 @@ func pull_card(card_info: CardInfo) -> void:
 
 ## Resets the state of the library, allowing every card to be pulled again
 func reset_library() -> void:
+	pulled_cards.clear()
 	_available_cards = _all_cards.duplicate()
 	_available_basic_cards = _all_cards.filter(func(card: CardInfo) -> bool: return is_instance_of(card, CardInfoBasic))
 	_available_modifier_cards = _all_cards.filter(func(card: CardInfo) -> bool: return is_instance_of(card, CardInfoModifier))
