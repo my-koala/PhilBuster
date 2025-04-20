@@ -12,25 +12,25 @@ func _ready() -> void:
 	clear_status()
 
 func clear_status() -> void:
-	_rich_text_label.text = ""
+	_rich_text_label.clear()
 	visible = false
 
 func set_status(word: String, topic: String, is_modifier: bool, relevant: bool, relevant_bust: int, irrelevant: bool, irrelevant_bust: int, neutral: bool, neutral_bust: int) -> void:
-	_rich_text_label.text = ""
 	if word.is_empty() || topic.is_empty():
-		visible = false
+		clear_status()
 		return
+	
 	visible = true
 	if is_modifier:
-		_rich_text_label.text = ("'%s' is a modifier" % [word])
+		_rich_text_label.parse_bbcode("'%s' is a modifier" % [word])
 		return
 	if relevant:
-		_rich_text_label.text = ("'%s' is [color=dark_green]relevant[/color] to '%s' (-%d Bust)" % [word, topic, relevant_bust])
+		_rich_text_label.parse_bbcode("'%s' is [color=dark_green]relevant[/color] to '%s' (-%d Bust)" % [word, topic, relevant_bust])
 		return
 	if irrelevant:
-		_rich_text_label.text = ("'%s' is [color=dark_red]irrelevant[/color] to '%s' (+%d Bust)" % [word, topic, irrelevant_bust])
+		_rich_text_label.parse_bbcode("'%s' is [color=dark_red]irrelevant[/color] to '%s' (+%d Bust)" % [word, topic, irrelevant_bust])
 		return
 	if neutral:
-		_rich_text_label.text = ("'%s' is [color=black]neutral[/color] to '%s' (+%d Bust)" % [word, topic, neutral_bust])
+		_rich_text_label.parse_bbcode("'%s' is [color=black]neutral[/color] to '%s' (+%d Bust)" % [word, topic, neutral_bust])
 		return
-	_rich_text_label.text = ("'%s' relevancy to '%s' is [color=dark_gray]unknown[/color]" % [word, topic])
+	_rich_text_label.parse_bbcode("'%s' relevancy to '%s' is [color=dark_gray]unknown[/color]" % [word, topic])
