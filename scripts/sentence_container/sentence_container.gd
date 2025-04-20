@@ -83,11 +83,21 @@ func set_sentence(sentence: String) -> bool:
 				_insert_word_instance(prefix)
 			start = reg_ex_match.get_end()
 			
-			match reg_ex_match.get_string()[1]:
+			var reg_ex_match_string: String = reg_ex_match.get_string()
+			match reg_ex_match_string[1]:
 				"N", "n":
-					_insert_field_instance(null).card_type = SentenceContainerField.CardType.NOUN
+					var field_instance: SentenceContainerField = _insert_field_instance(null)
+					field_instance.card_type = SentenceContainerField.CardType.NOUN
 				"V", "v":
-					_insert_field_instance(null).card_type = SentenceContainerField.CardType.VERB
+					var field_instance: SentenceContainerField = _insert_field_instance(null)
+					field_instance.card_type = SentenceContainerField.CardType.VERB
+					match reg_ex_match_string[2]:
+						"-":
+							# Past Tense
+							field_instance.verb_tense = SentenceContainerField.VerbTense.PAST
+						"+":
+							# Continuous Tense
+							field_instance.verb_tense = SentenceContainerField.VerbTense.CONTINUOUS
 		
 		if start < token.length():
 			var suffix: String = token.substr(start)

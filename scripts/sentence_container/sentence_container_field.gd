@@ -21,6 +21,12 @@ enum CardType {
 	ADVERB,
 }
 
+enum VerbTense {
+	SIMPLE,
+	PAST,
+	CONTINUOUS,
+}
+
 @export
 var card_type: CardType = CardType.NOUN:
 	get:
@@ -30,6 +36,15 @@ var card_type: CardType = CardType.NOUN:
 			card_type = value
 			_dirty = true
 			set_card_info(null)
+
+@export
+var verb_tense: VerbTense = VerbTense.SIMPLE:
+	get:
+		return verb_tense
+	set(value):
+		if verb_tense != value:
+			verb_tense = value
+			_dirty = true
 
 @onready
 var _color_rect: ColorRect = %color_rect as ColorRect
@@ -188,7 +203,46 @@ func _process(delta: float) -> void:
 	_color_rect.color.a = 0.5
 	
 	if is_instance_valid(_card_info):
-		_rich_text_label.text = "[b]%s[/b]" % [_card_info.get_word()]
+		var word: String = _card_info.get_word()
+		var card_info_basic_verb: CardInfoBasicVerb =_card_info as CardInfoBasicVerb
+		if is_instance_valid(card_info_basic_verb):
+			match verb_tense:
+				VerbTense.SIMPLE:
+					pass
+				VerbTense.PAST:
+					word = _get_verb_past_tense(word)
+				VerbTense.CONTINUOUS:
+					word = _get_verb_continuous_tense(word)
+		_rich_text_label.text = "[b]%s[/b]" % [word]
 	else:
 		_rich_text_label.text = "([i]%s[i])" % [placeholder_text]
 	
+
+var _irregular_verb_past_tenses: Dictionary[String, String] = {}
+
+func _get_verb_past_tense(verb: String) -> String:
+	if _irregular_verb_past_tenses.has(verb):
+		return _irregular_verb_past_tenses[verb]
+	
+	if verb.ends_with("e"):
+		return verb + "d"
+	if verb.ends_with("y"):
+		if "aeiou".contains(verb[verb.length() - 2]):
+			return verb.substr(0, verb.length() - 1) + "ied"
+	return verb + "ed"
+
+var _irregular_verb_continuous_tenses: Dictionary[String, String] = {}
+
+func _get_verb_continuous_tense(verb: String) -> String:
+	if _irregular_verb_continuous_tenses.has(verb):
+		return _irregular_verb_continuous_tenses[verb]
+	
+	if verb.ends_with("e"):
+		return verb.substr(0, verb.length() - 1) + "ing"
+	if verb.ends_with("y") && verb.length() > 2:
+		var check_0: String = verb[-3]
+		var check_1: String = verb[-2]
+		var check_2: String = verb[-1]
+		if !"aeiou".contains(check_0) && "aeiou".contains(check_1) && !"aeiou".contains(check_2):
+			return verb + check_2 + "ing"
+	return verb + "ing"
