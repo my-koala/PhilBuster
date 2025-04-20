@@ -38,7 +38,7 @@ func is_full() -> bool:
 	return _bust >= bust_max
 
 func add_bust(bust: int) -> void:
-	_bust += bust
+	_bust = mini(_bust + bust, bust_max)
 
 func remove_bust(bust: int) -> void:
 	_bust = maxi(_bust - maxi(bust, 0), 0)
