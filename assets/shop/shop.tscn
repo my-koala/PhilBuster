@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://m0dkott85qmk"]
+[gd_scene load_steps=15 format=3 uid="uid://m0dkott85qmk"]
 
 [ext_resource type="Script" uid="uid://d23kpmtei5n5y" path="res://scripts/shop/flow_coordinator.gd" id="1_joqlw"]
 [ext_resource type="Script" uid="uid://dtxfpwtyg1a8t" path="res://assets/shop/shop.gd" id="1_u7rti"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b6ieeq5ts4te2" path="res://scripts/shop/shop_view.gd" id="4_k4ejo"]
 [ext_resource type="PackedScene" uid="uid://dqess31lwqmci" path="res://assets/phil/phil_shop.tscn" id="5_nyl32"]
 [ext_resource type="Script" uid="uid://dywu1p8i2ubxi" path="res://scripts/shop/deck_view.gd" id="5_u7rti"]
+[ext_resource type="PackedScene" uid="uid://jfp01npsno1" path="res://assets/game_button/game_button.tscn" id="6_01ogr"]
 [ext_resource type="AudioStream" uid="uid://1rjq1wcarnmq" path="res://assets/sfx/clips/shop_itempurchase.wav" id="7_nyl32"]
 [ext_resource type="PackedScene" uid="uid://d4n0r7gnn28om" path="res://assets/card/card_instance.tscn" id="7_vox5x"]
 [ext_resource type="AudioStream" uid="uid://oxgpw20415fr" path="res://assets/sfx/clips/shop_notenoughmoney_maybe.wav" id="8_01ogr"]
@@ -33,7 +34,7 @@ offset_bottom = 1080.0
 theme = ExtResource("2_msibo")
 script = ExtResource("1_joqlw")
 root_view = NodePath("menu_view")
-back_button = NodePath("heading_banner/button")
+back_button = NodePath("heading_banner/game_button")
 metadata/_custom_type_script = "uid://d23kpmtei5n5y"
 
 [node name="temp_background" type="ColorRect" parent="flow_coordinator"]
@@ -54,47 +55,29 @@ metadata/_custom_type_script = "uid://cbdh5ey656ac2"
 [node name="phil_shop" parent="flow_coordinator/menu_view" instance=ExtResource("5_nyl32")]
 layout_mode = 1
 
-[node name="button" type="Button" parent="flow_coordinator/menu_view"]
-layout_mode = 2
+[node name="game_button" parent="flow_coordinator/menu_view" instance=ExtResource("6_01ogr")]
+layout_mode = 1
 offset_left = 200.0
-offset_top = 400.0
-offset_right = 800.0
-offset_bottom = 472.0
-text = "SHOP"
+offset_top = 382.0
+offset_right = -1120.0
+offset_bottom = -626.0
+text = "Shop"
 
-[node name="button2" type="Button" parent="flow_coordinator/menu_view"]
-visible = false
-layout_mode = 2
+[node name="game_button2" parent="flow_coordinator/menu_view" instance=ExtResource("6_01ogr")]
+layout_mode = 1
 offset_left = 200.0
-offset_top = 500.0
-offset_right = 800.0
-offset_bottom = 572.0
-text = "SUITS"
+offset_top = 511.0
+offset_right = -1120.0
+offset_bottom = -497.0
+text = "Deck Management"
 
-[node name="button3" type="Button" parent="flow_coordinator/menu_view"]
-visible = false
-layout_mode = 2
+[node name="game_button3" parent="flow_coordinator/menu_view" instance=ExtResource("6_01ogr")]
+layout_mode = 1
 offset_left = 200.0
-offset_top = 600.0
-offset_right = 800.0
-offset_bottom = 672.0
-text = "INSIDER TRADING"
-
-[node name="button4" type="Button" parent="flow_coordinator/menu_view"]
-layout_mode = 2
-offset_left = 200.0
-offset_top = 500.0
-offset_right = 800.0
-offset_bottom = 572.0
-text = "MANAGE DECK"
-
-[node name="button5" type="Button" parent="flow_coordinator/menu_view"]
-layout_mode = 2
-offset_left = 200.0
-offset_top = 900.0
-offset_right = 800.0
-offset_bottom = 972.0
-text = "NEXT SESSION >>>"
+offset_top = 782.0
+offset_right = -1120.0
+offset_bottom = -226.0
+text = "Next Session >>>"
 
 [node name="shop_view" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
 layout_mode = 1
@@ -113,7 +96,7 @@ label_settings = SubResource("LabelSettings_joqlw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="reroll" type="Button" parent="flow_coordinator/shop_view"]
+[node name="reroll" parent="flow_coordinator/shop_view" instance=ExtResource("6_01ogr")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,8 +107,6 @@ offset_left = -300.0
 offset_top = -240.0
 offset_right = 300.0
 offset_bottom = -168.0
-grow_horizontal = 2
-grow_vertical = 2
 text = "Reroll: $%d"
 
 [node name="shop_container" type="HBoxContainer" parent="flow_coordinator/shop_view"]
@@ -234,26 +215,6 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="menu_view3" parent="flow_coordinator" instance=ExtResource("1_v8g57")]
-visible = false
-layout_mode = 1
-metadata/_custom_type_script = "uid://cbdh5ey656ac2"
-
-[node name="label" type="Label" parent="flow_coordinator/menu_view3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "<< UNDER CONSTRUCTION >>
-
-PLEASE YELL AT JAMES OR CAEDEN TO IMPLEMENT THIS SCREEN"
-label_settings = SubResource("LabelSettings_joqlw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
 [node name="heading_banner" type="ColorRect" parent="flow_coordinator"]
 layout_mode = 0
 offset_left = -683.0
@@ -277,25 +238,20 @@ label_settings = SubResource("LabelSettings_ys3jj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="button" type="Button" parent="flow_coordinator/heading_banner"]
+[node name="game_button" parent="flow_coordinator/heading_banner" instance=ExtResource("6_01ogr")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -250.858
 offset_top = 6.8812
 offset_right = -170.858
 offset_bottom = 86.8812
-grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 24
 text = "BACK"
 
-[connection signal="pressed" from="flow_coordinator/menu_view/button" to="flow_coordinator" method="push_view_by_name" binds= ["shop_view"]]
-[connection signal="pressed" from="flow_coordinator/menu_view/button2" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
-[connection signal="pressed" from="flow_coordinator/menu_view/button3" to="flow_coordinator" method="push_view_by_name" binds= ["menu_view3"]]
-[connection signal="pressed" from="flow_coordinator/menu_view/button4" to="flow_coordinator" method="push_view_by_name" binds= ["deck_view"]]
-[connection signal="pressed" from="flow_coordinator/menu_view/button5" to="." method="exit_shop"]
+[connection signal="pressed" from="flow_coordinator/menu_view/game_button" to="flow_coordinator" method="push_view_by_name" binds= ["shop_view"]]
+[connection signal="pressed" from="flow_coordinator/menu_view/game_button2" to="flow_coordinator" method="push_view_by_name" binds= ["deck_view"]]
+[connection signal="pressed" from="flow_coordinator/menu_view/game_button3" to="." method="exit_shop"]
 [connection signal="pressed" from="flow_coordinator/shop_view/reroll" to="flow_coordinator/shop_view" method="reroll_shop"]
