@@ -63,3 +63,8 @@ func present_menu() -> void:
 
 func _on_play_pressed() -> void:
 	play_pressed.emit()
+
+
+func _on_quit_pressed() -> void:
+	if OS.get_name() != "Web":
+		get_tree().quit()

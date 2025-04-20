@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://08sknccaplbf"]
+[gd_scene load_steps=9 format=3 uid="uid://08sknccaplbf"]
 
 [ext_resource type="Texture2D" uid="uid://bhqb0spe1qmkt" path="res://assets/title/title.png" id="1_hvp7p"]
 [ext_resource type="Script" uid="uid://b1s0nqyoptfni" path="res://scripts/main_menu/main_menu.gd" id="1_i261q"]
 [ext_resource type="Script" uid="uid://d23kpmtei5n5y" path="res://scripts/shop/flow_coordinator.gd" id="2_g8ye4"]
 [ext_resource type="Texture2D" uid="uid://daes7umygcu4w" path="res://assets/title/logo.png" id="2_o7ot1"]
 [ext_resource type="PackedScene" uid="uid://boskellw4qds0" path="res://assets/shop/menu_view.tscn" id="3_i261q"]
+[ext_resource type="PackedScene" uid="uid://jfp01npsno1" path="res://assets/game_button/game_button.tscn" id="6_eg0vr"]
 [ext_resource type="FontFile" uid="uid://uojuf5ikdikq" path="res://assets/fonts/CourierPrime-Bold.ttf" id="6_ek7h6"]
 [ext_resource type="FontFile" uid="uid://vv2mnjpl54jg" path="res://assets/fonts/CourierPrime-Regular.ttf" id="7_eg0vr"]
 
@@ -51,54 +52,29 @@ pivot_offset = Vector2(692, 411)
 texture = ExtResource("2_o7ot1")
 expand_mode = 1
 
-[node name="play" type="Button" parent="flow_coordinator/main_view"]
+[node name="play" parent="flow_coordinator/main_view" instance=ExtResource("6_eg0vr")]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -297.5
-offset_top = -480.0
-offset_right = 297.5
-offset_bottom = -405.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 36
+offset_left = 663.0
+offset_top = 565.0
+offset_right = -662.0
+offset_bottom = -440.0
 text = "Play"
 
-[node name="credits" type="Button" parent="flow_coordinator/main_view"]
+[node name="credits" parent="flow_coordinator/main_view" instance=ExtResource("6_eg0vr")]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -297.5
-offset_top = -380.0
-offset_right = 297.5
-offset_bottom = -305.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 36
+offset_left = 663.0
+offset_top = 680.0
+offset_right = -662.0
+offset_bottom = -325.0
 text = "Credits"
 
-[node name="quit LMAOOO?" type="Button" parent="flow_coordinator/main_view"]
+[node name="quit" parent="flow_coordinator/main_view" instance=ExtResource("6_eg0vr")]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -297.5
-offset_top = -280.0
-offset_right = 297.5
-offset_bottom = -205.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 36
-text = "Quit
-"
+offset_left = 663.0
+offset_top = 795.0
+offset_right = -662.0
+offset_bottom = -210.0
+text = "Quit"
 
 [node name="credits_view" parent="flow_coordinator" instance=ExtResource("3_i261q")]
 visible = false
@@ -170,22 +146,19 @@ UI Artist
 
 Sound Designer"
 
-[node name="back" type="Button" parent="flow_coordinator"]
+[node name="back" parent="flow_coordinator" instance=ExtResource("6_eg0vr")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -297.5
+offset_left = -297.0
 offset_top = -180.0
-offset_right = 297.5
+offset_right = 298.0
 offset_bottom = -105.0
-grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 36
-text = "Back
-"
+text = "Back"
 
 [connection signal="pressed" from="flow_coordinator/main_view/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="flow_coordinator/main_view/credits" to="flow_coordinator" method="push_view_by_name" binds= ["credits_view"]]
+[connection signal="pressed" from="flow_coordinator/main_view/quit" to="." method="_on_quit_pressed"]
