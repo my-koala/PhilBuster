@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_kvhb0")
-reward_multiplier = 2.5
-time_multiplier = 1.0
-bust_multiplier = 2.5
+reward_multiplier = 2.0
+time_multiplier = 1.5
+bust_multiplier = 2.0
 time = 2
 price = 5
 pool_count = 2

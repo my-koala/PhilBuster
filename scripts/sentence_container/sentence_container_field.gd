@@ -237,9 +237,10 @@ func _get_verb_continuous_tense(verb: String) -> String:
 	if _irregular_verb_continuous_tenses.has(verb):
 		return _irregular_verb_continuous_tenses[verb]
 	
-	if verb.ends_with("e"):
+	if verb.ends_with("e") || verb.ends_with("y"):
 		return verb.substr(0, verb.length() - 1) + "ing"
-	if verb.ends_with("y") && verb.length() > 2:
+	
+	if verb.length() > 2:
 		var check_0: String = verb[-3]
 		var check_1: String = verb[-2]
 		var check_2: String = verb[-1]

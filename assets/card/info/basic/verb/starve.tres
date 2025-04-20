@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_d4umf")
-reward = 1
+reward = 2
 time = 1
 price = 2
 pool_count = 2

@@ -1,22 +1,30 @@
-[gd_scene load_steps=34 format=3 uid="uid://cdyp8mpw52ws3"]
+[gd_scene load_steps=43 format=3 uid="uid://cdyp8mpw52ws3"]
 
 [ext_resource type="Script" uid="uid://bjvyiulweseaw" path="res://scripts/card/card_library.gd" id="1_ujfqy"]
 [ext_resource type="Script" uid="uid://c5o0vh6ubr54t" path="res://scripts/game_stats.gd" id="2_fphxj"]
+[ext_resource type="Resource" uid="uid://dnufshybpgjg8" path="res://assets/topics/global.tres" id="2_jo4ar"]
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="2_km2eh"]
 [ext_resource type="Script" uid="uid://ifvr7v6vplvr" path="res://scripts/game.gd" id="2_tkxyu"]
+[ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="2_x1c6t"]
 [ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="3_wpieh"]
 [ext_resource type="Resource" uid="uid://cyt1qsaffv625" path="res://assets/card/info/basic/noun/government.tres" id="4_ew6cl"]
+[ext_resource type="Resource" uid="uid://cquievx6i3gvr" path="res://assets/topics/climate_change.tres" id="4_os0sp"]
+[ext_resource type="Resource" uid="uid://dtt4d4pps8f4n" path="res://assets/topics/drugs.tres" id="5_2ilju"]
 [ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="5_km2eh"]
+[ext_resource type="Resource" uid="uid://nml1xymcdsgc" path="res://assets/topics/foreign_policy.tres" id="5_mx5o8"]
 [ext_resource type="Resource" uid="uid://b674hr6hl055q" path="res://assets/card/info/basic/noun/earth.tres" id="6_wpieh"]
 [ext_resource type="Resource" uid="uid://bbx4do4nfchje" path="res://assets/card/info/basic/noun/history.tres" id="7_6eca0"]
+[ext_resource type="Resource" uid="uid://dus5pobp2nofj" path="res://assets/topics/immigration.tres" id="7_c0f84"]
+[ext_resource type="Resource" uid="uid://w6k7yio2oh78" path="res://assets/topics/inflation.tres" id="8_hhbx1"]
 [ext_resource type="Resource" uid="uid://3crekwgt02lo" path="res://assets/card/info/basic/noun/people.tres" id="8_t6sda"]
+[ext_resource type="Resource" uid="uid://cnuwsfwmdismw" path="res://assets/topics/koalas.tres" id="9_aycoj"]
 [ext_resource type="Resource" uid="uid://uiraqcnqqby1" path="res://assets/card/info/basic/noun/price.tres" id="9_isq2i"]
 [ext_resource type="Resource" uid="uid://crq4jecx05knf" path="res://assets/card/info/basic/noun/country.tres" id="10_ilivr"]
-[ext_resource type="Resource" uid="uid://brp6a7b33h4wp" path="res://assets/card/info/basic/verb/buy.tres" id="12_hsbq6"]
+[ext_resource type="Resource" uid="uid://dfrlxk6lu16la" path="res://assets/topics/orphans.tres" id="10_qxt8i"]
+[ext_resource type="Resource" uid="uid://brp6a7b33h4wp" path="res://assets/card/info/basic/verb/purchase.tres" id="12_hsbq6"]
 [ext_resource type="PackedScene" uid="uid://vekblgd3gvyy" path="res://assets/sfx/button_sfx_manager.tscn" id="12_wpieh"]
 [ext_resource type="PackedScene" uid="uid://ce5ej8armma4y" path="res://assets/session/session.tscn" id="13_h4xlo"]
 [ext_resource type="Resource" uid="uid://bhtk361554el3" path="res://assets/card/info/basic/verb/cut.tres" id="13_mp1se"]
-[ext_resource type="Resource" uid="uid://b7sqcg2mlgy4u" path="res://assets/card/info/basic/verb/eat.tres" id="14_ilivr"]
 [ext_resource type="PackedScene" uid="uid://m0dkott85qmk" path="res://assets/shop/shop.tscn" id="14_vvw4a"]
 [ext_resource type="Resource" uid="uid://c2hyjg87b7i0m" path="res://assets/card/info/basic/verb/kill.tres" id="15_5whvq"]
 [ext_resource type="PackedScene" uid="uid://b278yipnxx0xj" path="res://assets/transitions/transition.tscn" id="15_ew6cl"]
@@ -27,16 +35,17 @@
 [ext_resource type="Resource" uid="uid://gx3lna4pekxt" path="res://assets/card/info/basic/verb/move.tres" id="17_ilivr"]
 [ext_resource type="Resource" uid="uid://ynhgk4eldggm" path="res://assets/card/info/basic/verb/gape.tres" id="18_5whvq"]
 [ext_resource type="Resource" uid="uid://da2fvqntk4we1" path="res://assets/card/info/basic/verb/consume.tres" id="19_5whvq"]
+[ext_resource type="Resource" uid="uid://bp5uo4077q4ca" path="res://assets/card/info/basic/verb/ape.tres" id="22_bnlks"]
 [ext_resource type="PackedScene" uid="uid://blisf8vvuo532" path="res://assets/music/music_player.tscn" id="22_isq2i"]
 
 [sub_resource type="Curve" id="Curve_isq2i"]
 _limits = [16.0, 96.0, 0.0, 8.0]
-_data = [Vector2(0, 96), 0.0, -10.9409, 0, 0, Vector2(3.97765, 41.494), -12.3359, -12.3359, 0, 0, Vector2(8, 16), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 96), 0.0, -4.83078, 0, 0, Vector2(4.72471, 56.79), -12.3359, -12.3359, 0, 0, Vector2(8, 16), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_12kgx"]
-_limits = [1.0, 4.0, 0.0, 8.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(4.75362, 2.39205), 0.43353, 0.43353, 0, 0, Vector2(8, 4), 0.0, 0.0, 0, 0]
+_limits = [1.0, 4.0, 0.0, 12.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(7.90588, 2.37208), 0.43353, 0.43353, 0, 0, Vector2(12, 4), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_hsbq6"]
@@ -45,21 +54,23 @@ _data = [Vector2(0, 5), 0.0, 4.5, 0, 1, Vector2(10, 50), 4.5, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_pd2c5"]
-_limits = [60.0, 360.0, 0.0, 16.0]
-_data = [Vector2(0, 60), 0.0, 21.5184, 0, 0, Vector2(16, 360), 0.0, 0.0, 0, 0]
-point_count = 2
+_limits = [60.0, 720.0, 0.0, 16.0]
+_data = [Vector2(0, 60), 0.0, 40.9938, 0, 0, Vector2(10.9553, 216.463), 26.1542, 26.1542, 0, 0, Vector2(16, 512.047), 143.209, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Resource" id="Resource_vqaxa"]
 script = ExtResource("2_fphxj")
-starting_deck = Array[ExtResource("2_km2eh")]([ExtResource("4_ew6cl"), ExtResource("5_km2eh"), ExtResource("6_wpieh"), ExtResource("7_6eca0"), ExtResource("8_t6sda"), ExtResource("9_isq2i"), ExtResource("10_ilivr"), ExtResource("3_wpieh"), ExtResource("12_hsbq6"), ExtResource("13_mp1se"), ExtResource("14_ilivr"), ExtResource("15_5whvq"), ExtResource("16_td8xl"), ExtResource("17_ilivr"), ExtResource("18_5whvq"), ExtResource("19_5whvq")])
-starting_money = 0
+starting_deck = Array[ExtResource("2_km2eh")]([ExtResource("4_ew6cl"), ExtResource("5_km2eh"), ExtResource("6_wpieh"), ExtResource("7_6eca0"), ExtResource("8_t6sda"), ExtResource("9_isq2i"), ExtResource("10_ilivr"), ExtResource("3_wpieh"), ExtResource("12_hsbq6"), ExtResource("13_mp1se"), ExtResource("15_5whvq"), ExtResource("16_td8xl"), ExtResource("17_ilivr"), ExtResource("18_5whvq"), ExtResource("19_5whvq"), ExtResource("22_bnlks")])
+starting_money = 5
 discard_count = 5
 skip_duplicate_sentences = true
-use_global_sentences = true
+use_global_sentences = false
 bust_max_curve = SubResource("Curve_isq2i")
 time_max_curve = SubResource("Curve_pd2c5")
 inflation_curve = SubResource("Curve_12kgx")
 reroll_curve = SubResource("Curve_hsbq6")
+_topic_global = ExtResource("2_jo4ar")
+_topics = Array[ExtResource("2_x1c6t")]([ExtResource("4_os0sp"), ExtResource("5_mx5o8"), ExtResource("7_c0f84"), ExtResource("8_hhbx1"), ExtResource("9_aycoj"), ExtResource("10_qxt8i"), ExtResource("5_2ilju")])
 
 [node name="game" type="Node"]
 script = ExtResource("2_tkxyu")

@@ -6,8 +6,8 @@
 script = ExtResource("1_pi124")
 reward_multiplier = 5.0
 time_multiplier = 1.0
-bust_multiplier = 6.0
-time = 5
-price = 7
+bust_multiplier = 10.0
+time = 4
+price = 16
 pool_count = 2
 metadata/_custom_type_script = "uid://cprmc57tudof3"

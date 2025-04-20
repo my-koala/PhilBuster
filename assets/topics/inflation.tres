@@ -1,70 +1,87 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=32 format=3 uid="uid://w6k7yio2oh78"]
+[gd_resource type="Resource" script_class="Topic" load_steps=41 format=3 uid="uid://w6k7yio2oh78"]
 
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_4shac"]
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="2_vf6jt"]
-[ext_resource type="Resource" uid="uid://btc48l4t3phdq" path="res://assets/card/info/basic/noun/china.tres" id="3_g5qqw"]
-[ext_resource type="Resource" uid="uid://phpbucme08ir" path="res://assets/card/info/basic/noun/canada.tres" id="4_d8exr"]
-[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="5_53lkn"]
-[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="6_sglvf"]
-[ext_resource type="Resource" uid="uid://cepfjm0lrjr8b" path="res://assets/card/info/basic/noun/japan.tres" id="7_u218c"]
-[ext_resource type="Resource" uid="uid://dkyrkk54csccf" path="res://assets/card/info/basic/noun/jonathan.tres" id="8_mdpig"]
-[ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="9_xilvw"]
-[ext_resource type="Resource" uid="uid://bxwssu6gygxgq" path="res://assets/card/info/basic/noun/korea.tres" id="10_njyxu"]
-[ext_resource type="Resource" uid="uid://di5p0qmstfx4m" path="res://assets/card/info/basic/noun/marsupial.tres" id="11_i3vy1"]
-[ext_resource type="Resource" uid="uid://cqm80tt6clgqd" path="res://assets/card/info/basic/noun/marvel.tres" id="12_4whls"]
-[ext_resource type="Resource" uid="uid://pji6jyax5rr1" path="res://assets/card/info/basic/noun/milk.tres" id="13_fddn3"]
-[ext_resource type="Resource" uid="uid://uiraqcnqqby1" path="res://assets/card/info/basic/noun/price.tres" id="14_3yihu"]
-[ext_resource type="Resource" uid="uid://ny5ciekntcql" path="res://assets/card/info/basic/noun/tariff.tres" id="15_yo1rv"]
-[ext_resource type="Resource" uid="uid://ca2t4tjvrphtx" path="res://assets/card/info/basic/noun/the_eu.tres" id="16_fuig6"]
-[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="17_nii0g"]
-[ext_resource type="Resource" uid="uid://k8x1rtq71aqq" path="res://assets/card/info/basic/noun/wall.tres" id="18_n7hls"]
-[ext_resource type="Resource" uid="uid://x80e2em6oim0" path="res://assets/card/info/basic/noun/upholstery.tres" id="19_nnulg"]
-[ext_resource type="Resource" uid="uid://bp5uo4077q4ca" path="res://assets/card/info/basic/verb/bleed.tres" id="20_rr2vw"]
-[ext_resource type="Resource" uid="uid://bhtk361554el3" path="res://assets/card/info/basic/verb/cut.tres" id="21_8y4fa"]
-[ext_resource type="Resource" uid="uid://ca5f5kd88grxc" path="res://assets/card/info/basic/verb/mine.tres" id="22_kat5f"]
-[ext_resource type="Resource" uid="uid://b7lua867t3ref" path="res://assets/card/info/basic/verb/starve.tres" id="23_ahskd"]
-[ext_resource type="Resource" uid="uid://loxoiaw1001m" path="res://assets/card/info/basic/verb/steal.tres" id="24_jxaj4"]
-[ext_resource type="Resource" uid="uid://bilitm4bxpmtl" path="res://assets/card/info/modifier/adjective/abundant.tres" id="25_e2j8q"]
-[ext_resource type="Resource" uid="uid://dgjd8f7i5asta" path="res://assets/card/info/modifier/adjective/schizophrenic.tres" id="26_ocj8k"]
-[ext_resource type="Resource" uid="uid://cthwwlndf0mmt" path="res://assets/card/info/modifier/adjective/type_beat.tres" id="27_mr1e4"]
-[ext_resource type="Resource" uid="uid://b0rgrcj6y7ssh" path="res://assets/card/info/modifier/adjective/unironically.tres" id="28_101wb"]
-[ext_resource type="Resource" uid="uid://ct2jjquqwy65c" path="res://assets/card/info/modifier/adjective/very.tres" id="29_11i86"]
-[ext_resource type="Resource" uid="uid://cqwnepw8m01na" path="res://assets/card/info/modifier/adverb/eventually.tres" id="30_hkub5"]
-[ext_resource type="Resource" uid="uid://7x8piqv265ju" path="res://assets/card/info/modifier/adverb/serendipitously.tres" id="31_p4i88"]
+[ext_resource type="Resource" uid="uid://cttw3blf3wea0" path="res://assets/card/info/basic/noun/africa.tres" id="3_4whls"]
+[ext_resource type="Resource" uid="uid://dqryan8vypja2" path="res://assets/card/info/basic/noun/alien.tres" id="4_fddn3"]
+[ext_resource type="Resource" uid="uid://cvngo4yhfa56q" path="res://assets/card/info/basic/noun/bag.tres" id="5_3yihu"]
+[ext_resource type="Resource" uid="uid://dim83e0jnpbew" path="res://assets/card/info/basic/noun/capitalism.tres" id="6_yo1rv"]
+[ext_resource type="Resource" uid="uid://cbuoqwninc40k" path="res://assets/card/info/basic/noun/disease.tres" id="7_fuig6"]
+[ext_resource type="Resource" uid="uid://bbi5m8oncbjff" path="res://assets/card/info/basic/noun/drugs.tres" id="8_nii0g"]
+[ext_resource type="Resource" uid="uid://kp44w87qtbau" path="res://assets/card/info/basic/noun/flu.tres" id="9_n7hls"]
+[ext_resource type="Resource" uid="uid://dkpmg3wuulg3v" path="res://assets/card/info/basic/noun/food.tres" id="10_nnulg"]
+[ext_resource type="Resource" uid="uid://ddnpnfh7ldysy" path="res://assets/card/info/basic/noun/gas.tres" id="11_rr2vw"]
+[ext_resource type="Resource" uid="uid://dr67po7ck5la3" path="res://assets/card/info/basic/noun/goon.tres" id="12_8y4fa"]
+[ext_resource type="Resource" uid="uid://dkyrkk54csccf" path="res://assets/card/info/basic/noun/jonathan.tres" id="13_kat5f"]
+[ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="14_ahskd"]
+[ext_resource type="Resource" uid="uid://di5p0qmstfx4m" path="res://assets/card/info/basic/noun/marsupial.tres" id="15_jxaj4"]
+[ext_resource type="Resource" uid="uid://pji6jyax5rr1" path="res://assets/card/info/basic/noun/milk.tres" id="16_e2j8q"]
+[ext_resource type="Resource" uid="uid://chqvapeuyukqn" path="res://assets/card/info/basic/noun/money.tres" id="17_ocj8k"]
+[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/pentagon.tres" id="18_mr1e4"]
+[ext_resource type="Resource" uid="uid://uiraqcnqqby1" path="res://assets/card/info/basic/noun/price.tres" id="19_101wb"]
+[ext_resource type="Resource" uid="uid://epkeancc8p6k" path="res://assets/card/info/basic/noun/riffraff.tres" id="20_11i86"]
+[ext_resource type="Resource" uid="uid://bh0qp1iedfxva" path="res://assets/card/info/basic/noun/vaccination.tres" id="21_hkub5"]
+[ext_resource type="Resource" uid="uid://k8x1rtq71aqq" path="res://assets/card/info/basic/noun/wall.tres" id="22_p4i88"]
+[ext_resource type="Resource" uid="uid://bp5uo4077q4ca" path="res://assets/card/info/basic/verb/ape.tres" id="23_req1s"]
+[ext_resource type="Resource" uid="uid://buh38gwd47jrf" path="res://assets/card/info/basic/verb/blow.tres" id="24_7wqdn"]
+[ext_resource type="Resource" uid="uid://c4mc7k6j6ygk3" path="res://assets/card/info/basic/verb/boil.tres" id="25_ly1jn"]
+[ext_resource type="Resource" uid="uid://b2ijk4sbjjy5a" path="res://assets/card/info/basic/verb/bug.tres" id="26_ddtaw"]
+[ext_resource type="Resource" uid="uid://bg0p2jvksmp1h" path="res://assets/card/info/basic/verb/combat.tres" id="27_blj5y"]
+[ext_resource type="Resource" uid="uid://bhtk361554el3" path="res://assets/card/info/basic/verb/cut.tres" id="28_bak6l"]
+[ext_resource type="Resource" uid="uid://c7qhvkbb80de6" path="res://assets/card/info/basic/verb/extrapolate.tres" id="29_qbp4e"]
+[ext_resource type="Resource" uid="uid://btih6e7ffktnc" path="res://assets/card/info/basic/verb/defenestrate.tres" id="30_1jpq3"]
+[ext_resource type="Resource" uid="uid://b5pu774n7htq3" path="res://assets/card/info/basic/verb/invest.tres" id="31_bn1p8"]
+[ext_resource type="Resource" uid="uid://dbgdovgvu5tqe" path="res://assets/card/info/basic/verb/mar.tres" id="32_tydya"]
+[ext_resource type="Resource" uid="uid://dngf4fvrwx5j5" path="res://assets/card/info/basic/verb/moon.tres" id="33_fi1dq"]
+[ext_resource type="Resource" uid="uid://brp6a7b33h4wp" path="res://assets/card/info/basic/verb/purchase.tres" id="34_e6tll"]
+[ext_resource type="Resource" uid="uid://8hrta88wfemc" path="res://assets/card/info/basic/verb/repossess.tres" id="35_0oue8"]
+[ext_resource type="Resource" uid="uid://dgb3ajl53xfvf" path="res://assets/card/info/basic/verb/shoot.tres" id="36_e7d1c"]
+[ext_resource type="Resource" uid="uid://b7lua867t3ref" path="res://assets/card/info/basic/verb/starve.tres" id="37_sje2h"]
+[ext_resource type="Resource" uid="uid://hw18ralo1tu1" path="res://assets/card/info/basic/verb/tax.tres" id="38_re0ej"]
+[ext_resource type="Resource" uid="uid://loxoiaw1001m" path="res://assets/card/info/basic/verb/steal.tres" id="39_i585h"]
+[ext_resource type="Resource" uid="uid://bwncks4u6maal" path="res://assets/card/info/basic/verb/trade.tres" id="40_bm7oc"]
 
 [resource]
 script = ExtResource("2_vf6jt")
-sentences = PackedStringArray("The {n} is rising, we must {v} it!", "If we don\'t {v} the {n}, prices will continue to {v}!", "The {n} caused by inflation is impeding our ability to {v}!", "We all feel the impact of {n} . We must {v} it, before it\'s too late.", "The prices of {n} is too high!!", "We need to make {v} {n} affordable to all citizens.")
+sentences = PackedStringArray("Who needs {n} when we can {v} our way through the recession?", "Money go up. That, and the price of {v+} {n}.", "It\'s time we had a great {n} transfer from the {n} to the {n}.", "$200 for a {n}. Now that\'s not a bad deal if I say so myself.", "It\'s easy: Just use quantitative easing to {v} {n} inflation.", "More is better. That\'s why I {v} everyday.", "The rising price of {n} is justified because you can always {v} with it.", "Inflation is like {n}. Yep.", "I propose a new dual mandate: more {n}, and {v} the poor.", "We got to think more {n}: What {n} should we buy next?", "I don\'t get why {n} is making a point to {v} the economy.", "Forget the wealth of nations, what about the {n} of {n}?", "The only invisible hand here is {n} threatening to {v} my {n}.")
 words = Dictionary[ExtResource("1_4shac"), bool]({
-null: false,
-ExtResource("31_p4i88"): false,
-ExtResource("30_hkub5"): false,
-ExtResource("29_11i86"): true,
-ExtResource("28_101wb"): false,
-ExtResource("27_mr1e4"): false,
-ExtResource("26_ocj8k"): false,
-ExtResource("25_e2j8q"): false,
-ExtResource("24_jxaj4"): true,
-ExtResource("23_ahskd"): true,
-ExtResource("22_kat5f"): true,
-ExtResource("21_8y4fa"): true,
-ExtResource("20_rr2vw"): true,
-ExtResource("19_nnulg"): false,
-ExtResource("18_n7hls"): false,
-ExtResource("17_nii0g"): true,
-ExtResource("16_fuig6"): true,
-ExtResource("15_yo1rv"): true,
-ExtResource("14_3yihu"): true,
-ExtResource("13_fddn3"): true,
-ExtResource("12_4whls"): true,
-ExtResource("11_i3vy1"): false,
-ExtResource("10_njyxu"): true,
-ExtResource("9_xilvw"): false,
-ExtResource("8_mdpig"): false,
-ExtResource("7_u218c"): false,
-ExtResource("6_sglvf"): false,
-ExtResource("5_53lkn"): false,
-ExtResource("4_d8exr"): true,
-ExtResource("3_g5qqw"): true
+ExtResource("22_p4i88"): false,
+ExtResource("23_req1s"): false,
+ExtResource("24_7wqdn"): false,
+ExtResource("25_ly1jn"): false,
+ExtResource("26_ddtaw"): false,
+ExtResource("27_blj5y"): false,
+ExtResource("28_bak6l"): true,
+ExtResource("29_qbp4e"): false,
+ExtResource("30_1jpq3"): false,
+ExtResource("31_bn1p8"): false,
+ExtResource("32_tydya"): false,
+ExtResource("33_fi1dq"): false,
+ExtResource("34_e6tll"): true,
+ExtResource("35_0oue8"): true,
+ExtResource("36_e7d1c"): false,
+ExtResource("37_sje2h"): true,
+ExtResource("38_re0ej"): true,
+ExtResource("39_i585h"): true,
+ExtResource("40_bm7oc"): true,
+ExtResource("3_4whls"): false,
+ExtResource("4_fddn3"): false,
+ExtResource("5_3yihu"): true,
+ExtResource("6_yo1rv"): true,
+ExtResource("7_fuig6"): false,
+ExtResource("8_nii0g"): false,
+ExtResource("9_n7hls"): false,
+ExtResource("10_nnulg"): true,
+ExtResource("11_rr2vw"): true,
+ExtResource("12_8y4fa"): false,
+ExtResource("13_kat5f"): false,
+ExtResource("14_ahskd"): false,
+ExtResource("15_jxaj4"): false,
+ExtResource("16_e2j8q"): true,
+ExtResource("17_ocj8k"): true,
+ExtResource("18_mr1e4"): false,
+ExtResource("19_101wb"): true,
+ExtResource("20_11i86"): false,
+ExtResource("21_hkub5"): false
 })
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

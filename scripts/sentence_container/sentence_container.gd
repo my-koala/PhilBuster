@@ -72,7 +72,7 @@ func set_sentence(sentence: String) -> bool:
 		return false
 	
 	var reg_ex: RegEx = RegEx.new()
-	reg_ex.compile("\\{([NVnv])\\}")
+	reg_ex.compile("\\{([NVnv][+-]?)\\}")
 	
 	for token: String in sentence.split(" ", false):
 		var reg_ex_matches: Array[RegExMatch] = reg_ex.search_all(token)

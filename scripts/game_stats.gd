@@ -4,7 +4,6 @@ class_name GameStats
 
 ## Class that stores a player's stats, including deck, money, and purchases.
 
-const TOPIC_DIRECTORY: String = "res://assets/topics/"
 const DECK_MAX_COUNT: int = 30
 
 signal deck_card_info_added(card_info: CardInfo)
@@ -50,34 +49,20 @@ var _topic_memory_relevant: Dictionary[String, Dictionary] = {}# Dictionary[Stri
 var _topic_memory_irrelevant: Dictionary[String, Dictionary] = {}# Dictionary[String, Dictionary[String, bool]]
 var _topic_memory_neutral: Dictionary[String, Dictionary] = {}# Dictionary[String, Dictionary[String, bool]]
 
-static var _topic_global: Topic = null
-static var _topics: Dictionary[String, Topic] = {}
+@export
+var _topic_global: Topic = null
 
-static func _static_init() -> void:
-	for file_path: String in DirAccess.get_files_at(TOPIC_DIRECTORY):
-		print("GameStats | Loading topic '%s'..." % [file_path])
-		file_path = file_path.replace(".import", "")
-		file_path = file_path.replace(".remap", "")
-		
-		var topic: Topic = load(TOPIC_DIRECTORY + file_path) as Topic
-		if is_instance_valid(topic):
-			if topic.get_topic_name() == "global":
-				_topic_global = topic
-			else:
-				_topics[topic.get_topic_name()] = topic
-	
-	if !is_instance_valid(_topic_global):
-		push_error("GameStats | Failed to read global topic.")
-	
-	if _topics.is_empty():
-		push_error("GameStats | Topic pool is empty.")
+@export
+var _topics: Array[Topic] = []
 
-static func get_topic_names() -> PackedStringArray:
-	var topics: Array[String] = _topics.keys()
+func get_topic_names() -> PackedStringArray:
+	var topics: Array[String] = []
+	for topic: Topic in _topics:
+		topics.append(topic.get_topic_name())
 	topics.make_read_only()
 	return topics
 
-static func get_topic_count() -> int:
+func get_topic_count() -> int:
 	return _topics.size()
 
 func _init() -> void:
@@ -214,14 +199,20 @@ func rerolls_reset() -> void:
 var _topic_sentence_pool: PackedStringArray = PackedStringArray()
 
 func set_topic_name(topic_name: String) -> bool:
-	if !_topics.has(topic_name):
-		push_error("GameStats | Failed to set current topic to '%s': could not find topic name." % [topic_name])
-		return false
-	
 	if _topic_name == topic_name:
 		return true
 	
-	_topic = _topics[topic_name]
+	_topic = null
+	_topic_name = ""
+	
+	for topic: Topic in _topics:
+		if topic.get_topic_name().to_lower() == topic_name.to_lower():
+			_topic = topic
+	
+	if !is_instance_valid(_topic):
+		topic_reset_sentence_pool()
+		return false
+	
 	_topic_name = topic_name
 	topic_reset_sentence_pool()
 	return true
@@ -230,7 +221,7 @@ func topic_get_name() -> String:
 	return _topic_name
 
 func topic_randomize() -> void:
-	set_topic_name(_topics[_topics.keys()[randi_range(0, _topics.size() - 1)]].get_topic_name())
+	set_topic_name(_topics[randi_range(0, _topics.size() - 1)].get_topic_name())
 
 func topic_get_sentence() -> String:
 	if !is_instance_valid(_topic):
@@ -251,6 +242,23 @@ func topic_get_sentence() -> String:
 		_topic_sentence_pool.remove_at(topic_sentence_index)
 	
 	return topic_sentence
+var _irregular_verb_continuous_tenses: Dictionary[String, String] = {}
+
+func _get_verb_continuous_tense(verb: String) -> String:
+	if _irregular_verb_continuous_tenses.has(verb):
+		return _irregular_verb_continuous_tenses[verb]
+	
+	if verb.ends_with("e") || verb.ends_with("y"):
+		return verb.substr(0, verb.length() - 1) + "ing"
+	
+	if verb.length() > 2:
+		var check_0: String = verb[-3]
+		var check_1: String = verb[-2]
+		var check_2: String = verb[-1]
+		if !"aeiou".contains(check_0) && "aeiou".contains(check_1) && !"aeiou".contains(check_2):
+			return verb + check_2 + "ing"
+	return verb + "ing"
+
 
 func topic_reset_sentence_pool() -> void:
 	_topic_sentence_pool = PackedStringArray()

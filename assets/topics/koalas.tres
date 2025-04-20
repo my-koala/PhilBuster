@@ -1,60 +1,10 @@
-[gd_resource type="Resource" script_class="Topic" load_steps=27 format=3 uid="uid://cnuwsfwmdismw"]
+[gd_resource type="Resource" script_class="Topic" load_steps=3 format=3 uid="uid://cnuwsfwmdismw"]
 
 [ext_resource type="Script" uid="uid://ds8jogremg381" path="res://scripts/card/card_info.gd" id="1_e1iep"]
-[ext_resource type="Resource" uid="uid://bqdsi28ykg1ai" path="res://assets/card/info/basic/noun/the_pentagon.tres" id="2_e2nvq"]
-[ext_resource type="Resource" uid="uid://cttw3blf3wea0" path="res://assets/card/info/basic/noun/africa.tres" id="3_g8six"]
-[ext_resource type="Resource" uid="uid://btih6e7ffktnc" path="res://assets/card/info/basic/verb/defenestrate.tres" id="4_3lyuu"]
-[ext_resource type="Resource" uid="uid://phpbucme08ir" path="res://assets/card/info/basic/noun/canada.tres" id="4_m3hw0"]
-[ext_resource type="Resource" uid="uid://btc48l4t3phdq" path="res://assets/card/info/basic/noun/china.tres" id="5_r4p46"]
-[ext_resource type="Resource" uid="uid://drk0oxpmiqsnl" path="res://assets/card/info/basic/noun/gun_violence.tres" id="6_qrkdx"]
-[ext_resource type="Resource" uid="uid://cepfjm0lrjr8b" path="res://assets/card/info/basic/noun/japan.tres" id="7_g07k2"]
-[ext_resource type="Resource" uid="uid://dkyrkk54csccf" path="res://assets/card/info/basic/noun/jonathan.tres" id="8_a8t4h"]
-[ext_resource type="Resource" uid="uid://dxg5117dervpe" path="res://assets/card/info/basic/noun/koala.tres" id="9_sdowh"]
-[ext_resource type="Resource" uid="uid://k8x1rtq71aqq" path="res://assets/card/info/basic/noun/wall.tres" id="10_dcuip"]
-[ext_resource type="Resource" uid="uid://bxwssu6gygxgq" path="res://assets/card/info/basic/noun/korea.tres" id="10_eb6wi"]
-[ext_resource type="Resource" uid="uid://di5p0qmstfx4m" path="res://assets/card/info/basic/noun/marsupial.tres" id="11_y71en"]
-[ext_resource type="Resource" uid="uid://ef8tlv4tvtin" path="res://assets/card/info/basic/noun/mexico.tres" id="12_fvveg"]
-[ext_resource type="Resource" uid="uid://pji6jyax5rr1" path="res://assets/card/info/basic/noun/milk.tres" id="13_3l17s"]
-[ext_resource type="Resource" uid="uid://ckp6wa1dg7dxp" path="res://assets/card/info/basic/noun/mortality.tres" id="14_1o5p3"]
 [ext_resource type="Script" uid="uid://c7giyb4t438lj" path="res://scripts/topic/topic.gd" id="14_m3hw0"]
-[ext_resource type="Resource" uid="uid://ny5ciekntcql" path="res://assets/card/info/basic/noun/tariff.tres" id="15_psjev"]
-[ext_resource type="Resource" uid="uid://ca2t4tjvrphtx" path="res://assets/card/info/basic/noun/the_eu.tres" id="16_rghti"]
-[ext_resource type="Resource" uid="uid://c7qhvkbb80de6" path="res://assets/card/info/basic/verb/extrapolate.tres" id="20_yn0a2"]
-[ext_resource type="Resource" uid="uid://cgpqdc62r6wm8" path="res://assets/card/info/basic/verb/gas.tres" id="21_cu71q"]
-[ext_resource type="Resource" uid="uid://b7lua867t3ref" path="res://assets/card/info/basic/verb/starve.tres" id="22_57pw5"]
-[ext_resource type="Resource" uid="uid://blmbbju3dy8d" path="res://assets/card/info/modifier/adjective/judicial.tres" id="23_137bh"]
-[ext_resource type="Resource" uid="uid://7755wnusg5tx" path="res://assets/card/info/modifier/adjective/magnetic.tres" id="24_wpekb"]
-[ext_resource type="Resource" uid="uid://dgjd8f7i5asta" path="res://assets/card/info/modifier/adjective/schizophrenic.tres" id="25_hkkxn"]
-[ext_resource type="Resource" uid="uid://cj0smumkxwlw2" path="res://assets/card/info/modifier/adverb/subsequently.tres" id="26_iisxn"]
 
 [resource]
 script = ExtResource("14_m3hw0")
-sentences = PackedStringArray("We must {v} the {n} to protect the Koalas!", "Australia\'s ban of {n} will {v} the habitats of Koalas nation-wide!", "Koalas need {n} . If we don\'t {v} it for them, they will {v} .", "{n} might mean nothing to us, but Koalas would {v} without it.", "The Koala population will {v} unless we {v}.", "Koalas around the world need {n} to survive!")
-words = Dictionary[ExtResource("1_e1iep"), bool]({
-null: false,
-ExtResource("26_iisxn"): false,
-ExtResource("25_hkkxn"): false,
-ExtResource("24_wpekb"): false,
-ExtResource("23_137bh"): false,
-ExtResource("22_57pw5"): true,
-ExtResource("21_cu71q"): false,
-ExtResource("20_yn0a2"): false,
-ExtResource("4_3lyuu"): false,
-ExtResource("10_dcuip"): false,
-ExtResource("2_e2nvq"): false,
-ExtResource("16_rghti"): false,
-ExtResource("15_psjev"): false,
-ExtResource("14_1o5p3"): true,
-ExtResource("13_3l17s"): true,
-ExtResource("12_fvveg"): false,
-ExtResource("11_y71en"): true,
-ExtResource("10_eb6wi"): false,
-ExtResource("9_sdowh"): true,
-ExtResource("8_a8t4h"): false,
-ExtResource("7_g07k2"): false,
-ExtResource("6_qrkdx"): false,
-ExtResource("5_r4p46"): false,
-ExtResource("4_m3hw0"): false,
-ExtResource("3_g8six"): false
-})
+sentences = PackedStringArray("Have you seen a koala {v}? It just makes you want to {v}!", "Koalas got mean claws. Like {n}-mean, cutting-through-{n} kinda mean, ya know?", "Koala. {n}. {v}. And that\'s how I got chlamydia.", "LOOK AT IT!!!! IT\'S SO CUTE!!!! KAWAII DESU!!!", "Koala {n}. Koala {n}. Koala do {v}. Koala do {v}.", "Contrary to popular belief, koalas are in fact NOT bears! They\'re classified as {n} for their obvious {n}.", "Ah~ ye, this here tree mate, there {n} be, mmm... koala, please {v} me.", "Big ears, big {n}.", "We must provide an offering to our marsupial overlords. A {n} will do. ", "The wombat may {v}, but the koala can {v}.")
+words = Dictionary[ExtResource("1_e1iep"), bool]({})
 metadata/_custom_type_script = "uid://c7giyb4t438lj"

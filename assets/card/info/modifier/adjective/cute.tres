@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoModifierAdjective" load_steps=2 format=3 uid="uid://q1uap4d1uxjr"]
+
+[ext_resource type="Script" uid="uid://lfryctu523a1" path="res://scripts/card/card_info_modifier_adjective.gd" id="1_m5kqh"]
+
+[resource]
+script = ExtResource("1_m5kqh")
+reward_multiplier = 3.0
+time_multiplier = 0.0
+bust_multiplier = 2.0
+time = 1
+price = 5
+pool_count = 2
+metadata/_custom_type_script = "uid://lfryctu523a1"

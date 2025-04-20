@@ -43,14 +43,6 @@ var _loop: bool = false
 
 var _is_menu: bool = false
 
-func _input(event: InputEvent) -> void:
-	if Engine.is_editor_hint():
-		return
-	
-	if Input.is_action_just_pressed(&"mouse_left"):
-		pass
-		_transition
-
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return

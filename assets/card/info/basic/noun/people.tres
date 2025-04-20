@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_i2dys")
-reward = 1
+reward = 2
 time = 2
 price = 2
 pool_count = 2

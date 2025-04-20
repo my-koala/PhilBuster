@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardInfoModifierAdjective" load_steps=2 format=3 uid="uid://v53xc8plrvdi"]
+
+[ext_resource type="Script" uid="uid://lfryctu523a1" path="res://scripts/card/card_info_modifier_adjective.gd" id="1_x1jov"]
+
+[resource]
+script = ExtResource("1_x1jov")
+reward_multiplier = 4.0
+time_multiplier = 1.0
+bust_multiplier = 2.0
+time = 1
+price = 15
+pool_count = 2
+metadata/_custom_type_script = "uid://lfryctu523a1"
