@@ -37,18 +37,24 @@ var _audio_card_hover: AudioStreamPlayer = $audio/card_hover as AudioStreamPlaye
 var _button: Button = %button as Button
 @onready
 var _animation_player: AnimationPlayer = $animation_player as AnimationPlayer
+
 @onready
-var _container_stats_reward: Control = %container_stats/reward as Control
+var _container_stats_basic: VBoxContainer = %container_stats_basic as VBoxContainer
 @onready
-var _container_stats_reward_label: Label = %container_stats/reward/label as Label
+var _container_stats_basic_reward_label: Label = %container_stats_basic/reward/label as Label
 @onready
-var _container_stats_time: Control = %container_stats/time as Control
+var _container_stats_basic_time_label: Label = %container_stats_basic/time/label as Label
+
 @onready
-var _container_stats_time_label: Label = %container_stats/time/label as Label
+var _container_stats_modifier: VBoxContainer = %container_stats_modifier as VBoxContainer
 @onready
-var _container_stats_bust: Control = %container_stats/bust as Control
+var _container_stats_modifier_time_label: Label = %container_stats_modifier/time/label as Label
 @onready
-var _container_stats_bust_label: Label = %container_stats/bust/label as Label
+var _container_stats_modifier_reward_multiplier_label: Label = %container_stats_modifier/reward_multiplier/label as Label
+@onready
+var _container_stats_modifier_time_multiplier_label: Label = %container_stats_modifier/time_multiplier/label as Label
+@onready
+var _container_stats_modifier_bust_multiplier_label: Label = %container_stats_modifier/bust_multiplier/label as Label
 
 var _dirty: bool = true
 
@@ -98,9 +104,12 @@ func _update_display() -> void:
 		
 		var card_info_basic: CardInfoBasic = card_info as CardInfoBasic
 		if is_instance_valid(card_info_basic):
-			_container_stats_reward_label.text = str(card_info_basic.reward)
-			_container_stats_time_label.text = str(card_info_basic.time)
-			_container_stats_bust.visible = false
+			_container_stats_basic.visible = true
+			_container_stats_modifier.visible = false
+			
+			_container_stats_basic_reward_label.text = str(card_info_basic.reward)
+			_container_stats_basic_time_label.text = str(card_info_basic.time)
+			
 			if card_info is CardInfoBasicNoun:
 				_corner.color = CardInfoBasicNoun.get_color()
 				_label_speech.text = "(Noun)"
@@ -110,10 +119,14 @@ func _update_display() -> void:
 		
 		var card_info_modifier: CardInfoModifier = card_info as CardInfoModifier
 		if is_instance_valid(card_info_modifier):
-			_container_stats_reward_label.text = str("%.1fx" % [card_info_modifier.reward_multiplier])
-			_container_stats_time_label.text = str("%.1fx" % [card_info_modifier.time_multiplier])
-			_container_stats_bust_label.text = str("%.1fx" % [card_info_modifier.bust_multiplier])
-			_container_stats_bust.visible = true
+			_container_stats_basic.visible = false
+			_container_stats_modifier.visible = true
+			
+			_container_stats_modifier_time_label.text = str(card_info_modifier.time)
+			_container_stats_modifier_reward_multiplier_label.text = str("%.2fx" % [card_info_modifier.reward_multiplier])
+			_container_stats_modifier_time_multiplier_label.text = str("%.2fx" % [card_info_modifier.time_multiplier])
+			_container_stats_modifier_bust_multiplier_label.text = str("%.2fx" % [card_info_modifier.bust_multiplier])
+			
 			if card_info is CardInfoModifierAdjective:
 				_corner.color = CardInfoModifierAdjective.get_color()
 				_label_speech.text = "(Adjective)"

@@ -361,7 +361,59 @@ text = "(<Part of Speech>)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="container_stats" type="VBoxContainer" parent="display"]
+[node name="container_stats_basic" type="VBoxContainer" parent="display"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="reward" type="HBoxContainer" parent="display/container_stats_basic"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="label" type="Label" parent="display/container_stats_basic/reward"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="texture_rect" type="TextureRect" parent="display/container_stats_basic/reward"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_qhpts")
+expand_mode = 3
+
+[node name="time" type="HBoxContainer" parent="display/container_stats_basic"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="label" type="Label" parent="display/container_stats_basic/time"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="texture_rect" type="TextureRect" parent="display/container_stats_basic/time"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("4_k25dx")
+expand_mode = 3
+
+[node name="container_stats_modifier" type="VBoxContainer" parent="display"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -376,55 +428,73 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="reward" type="HBoxContainer" parent="display/container_stats"]
-custom_minimum_size = Vector2(0, 48)
+[node name="time" type="HBoxContainer" parent="display/container_stats_modifier"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="label" type="Label" parent="display/container_stats/reward"]
+[node name="label" type="Label" parent="display/container_stats_modifier/time"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 32
 text = "1"
 
-[node name="texture_rect" type="TextureRect" parent="display/container_stats/reward"]
-layout_mode = 2
-size_flags_horizontal = 2
-texture = ExtResource("3_qhpts")
-expand_mode = 3
-
-[node name="time" type="HBoxContainer" parent="display/container_stats"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="label" type="Label" parent="display/container_stats/time"]
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 32
-text = "1"
-
-[node name="texture_rect" type="TextureRect" parent="display/container_stats/time"]
+[node name="texture_rect" type="TextureRect" parent="display/container_stats_modifier/time"]
 layout_mode = 2
 size_flags_horizontal = 2
 texture = ExtResource("4_k25dx")
 expand_mode = 3
 
-[node name="bust" type="HBoxContainer" parent="display/container_stats"]
-custom_minimum_size = Vector2(0, 48)
+[node name="reward_multiplier" type="HBoxContainer" parent="display/container_stats_modifier"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="label" type="Label" parent="display/container_stats/bust"]
+[node name="label" type="Label" parent="display/container_stats_modifier/reward_multiplier"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 32
 text = "1"
 
-[node name="texture_rect" type="TextureRect" parent="display/container_stats/bust"]
+[node name="texture_rect" type="TextureRect" parent="display/container_stats_modifier/reward_multiplier"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_qhpts")
+expand_mode = 3
+
+[node name="time_multiplier" type="HBoxContainer" parent="display/container_stats_modifier"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="label" type="Label" parent="display/container_stats_modifier/time_multiplier"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="texture_rect" type="TextureRect" parent="display/container_stats_modifier/time_multiplier"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("4_k25dx")
+expand_mode = 3
+
+[node name="bust_multiplier" type="HBoxContainer" parent="display/container_stats_modifier"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="label" type="Label" parent="display/container_stats_modifier/bust_multiplier"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="texture_rect" type="TextureRect" parent="display/container_stats_modifier/bust_multiplier"]
 layout_mode = 2
 size_flags_horizontal = 2
 texture = ExtResource("5_3lkmd")

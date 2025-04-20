@@ -303,9 +303,9 @@ func _on_sentence_container_read_field(card_info: CardInfo) -> void:
 	elif is_instance_valid(card_info):
 		var card_info_modifier: CardInfoModifier = card_info as CardInfoModifier
 		if is_instance_valid(card_info_modifier):
+			_clock.add_time(card_info_modifier.time)
+			_game_stats.add_time_wasted(card_info_modifier.time)
 			_card_info_modifier_stack.append(card_info_modifier)
-		#_clock.add_time(card_info.time)
-		#_game_stats.add_time_wasted(card_info_basic.time)
 	else:
 		_bust_meter.add_bust(bust_field_empty)
 		_game_stats.add_bust_accumulated(bust_field_empty)
