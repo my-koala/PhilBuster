@@ -125,6 +125,12 @@ func stop_session(success: bool) -> void:
 		return
 	_session_active = false
 	
+	_drag_overlay.visible = false
+	_drag_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_hand_container_highlight.enabled = false
+	_session_discard.get_highlight().enabled = false
+	_sentence_container.highlight_fields(SentenceContainerField.CardType.NONE)
+	
 	_sentence_container.clear_sentence()
 	
 	for card_instance: CardInstance in _deck_card_instances:
@@ -336,6 +342,9 @@ func _on_card_instance_drag_started(card_instance: CardInstance) -> void:
 func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 	_drag_overlay.visible = false
 	_drag_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_hand_container_highlight.enabled = false
+	_session_discard.get_highlight().enabled = false
+	_sentence_container.highlight_fields(SentenceContainerField.CardType.NONE)
 	
 	var global_mouse_position: Vector2 = get_global_mouse_position()
 	
@@ -355,11 +364,6 @@ func _on_card_instance_drag_stopped(card_instance: CardInstance) -> void:
 		# Return to hand.
 		_hand_container_cards.add_child(card_instance)
 		card_instance.reset_physics_interpolation()
-	
-	# TODO: Highlight fields accessible to card instance.
-	_hand_container_highlight.enabled = false
-	_session_discard.get_highlight().enabled = false
-	_sentence_container.highlight_fields(SentenceContainerField.CardType.NONE)
 
 func _on_card_instance_hover_started(card_instance: CardInstance) -> void:
 	var word: String = card_instance.card_info.get_word()
